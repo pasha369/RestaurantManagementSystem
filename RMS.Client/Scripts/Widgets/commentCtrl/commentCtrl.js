@@ -56,7 +56,6 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function(data) {
-                        
                     },
                     error: function(err) {
                         console.log(err.status + " : " + err.statusText);

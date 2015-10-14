@@ -7,7 +7,8 @@
         'jquery-ui' : 'jquery-ui-1.10.3',
         "text"      : "text",
         "datepicker": "ThemeScripts/plugins/datepicker",
-        'bootstrap' : 'bootstrap.min'
+        'bootstrap' : 'bootstrap.min',
+        'toastr'    : 'toastr.min'
     },
 
 

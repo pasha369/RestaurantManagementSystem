@@ -1,9 +1,10 @@
 ﻿define(['knockout',
         'jquery',
         'jquery-ui',
+        'toastr',
         'text!Widgets/restaurantEditCtrl/restaurantEditCtrl.html'],
     function (ko, $) {
-
+        var toastr = require('toastr');
         $.widget("cc.restaurantEdit", {
 
             // These options will be used as defaults
@@ -25,8 +26,10 @@
                     this.Phone = ko.observable();
                     this.Description = ko.observable();
                     this.PhotoUrl = ko.observable();
-                    
-                    this.saveRestaurant = self._saveRestaurant;
+
+                    this.saveRestaurant = function() {
+                        self._saveRestaurant();
+                    };
                 };
 
                 self.options.viewModel = new restaurantVM();
@@ -61,13 +64,13 @@
             },
 
             _saveRestaurant: function () {
-
+                var self = this;
                 var url = '/Restaurant/RestaurantEdit/';
                 var data = {
-                    Id: self.options.restaurantVM.Id(),
-                    Name: self.options.restaurantVM.Title(),
-                    Phone: self.options.restaurantVM.Phone(),
-                    Description: self.options.restaurantVM.Description(),
+                    Id: self.options.viewModel.Id(),
+                    Name: self.options.viewModel.Title(),
+                    Phone: self.options.viewModel.Phone(),
+                    Description: self.options.viewModel.Description(),
                 };
 
                 $.ajax({
@@ -79,7 +82,7 @@
                     contentType: "application/json; charset=utf-8",
 
                     success: function (data) {
-                        console.log("Saved " + data);
+                        toastr.success("Saved successful");
                     },
                     error: function (err) {
                         alert(err.status + " : " + err.statusText);

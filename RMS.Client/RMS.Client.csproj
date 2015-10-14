@@ -43,6 +43,12 @@
     <Reference Include="Antlr3.Runtime">
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac">
+      <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
@@ -121,14 +127,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImageController.cs" />
-    <Compile Include="Controllers\ProfileController.cs" />
-    <Compile Include="Controllers\ReservationController.cs" />
-    <Compile Include="Controllers\RestaurantController.cs" />
-    <Compile Include="Controllers\ReviewController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\MVC\AccountController.cs" />
+    <Compile Include="Controllers\MVC\HomeController.cs" />
+    <Compile Include="Controllers\WebApi\ImageController.cs" />
+    <Compile Include="Controllers\MVC\ProfileController.cs" />
+    <Compile Include="Controllers\WebApi\ReservationController.cs" />
+    <Compile Include="Controllers\MVC\RestaurantController.cs" />
+    <Compile Include="Controllers\WebApi\ReviewController.cs" />
+    <Compile Include="Controllers\WebApi\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -234,6 +240,8 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tooltip.min.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Fonts\fontawesome-webfont.eot" />
     <Content Include="Content\Fonts\fontawesome-webfont.ttf" />
@@ -242,6 +250,8 @@
     <Content Include="Content\Fonts\FontAwesome.otf" />
     <Content Include="Images\ajax_loader.gif" />
     <Content Include="Images\bg\7.jpg" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.2.js" />
     <Content Include="Scripts\jquery-2.0.2.min.js" />
@@ -273,8 +283,8 @@
     <Content Include="Scripts\ThemeScripts\skyforms\jquery.maskedinput.min.js" />
     <Content Include="Scripts\ThemeScripts\skyforms\jquery.validate.min.js" />
     <Content Include="Scripts\ThemeScripts\smoothScroll.js" />
-    <Content Include="Scripts\ViewModel\RestaurantViewModel.js" />
-    <Content Include="Scripts\ViewModel\ReviewViewModel.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\Widgets\bookingCtrl\bookingCtrl.html" />
     <Content Include="Scripts\Widgets\bookingCtrl\bookingCtrl.js" />
     <Content Include="Scripts\Widgets\clientCtrl\clientCtrl.html" />
@@ -320,8 +330,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\Controller\" />
-    <Folder Include="Controllers\WebApi\" />
     <Folder Include="Images\users_pic\" />
   </ItemGroup>
   <ItemGroup>
