@@ -1,0 +1,30 @@
+﻿@using System.Web.Optimization
+@model RMS.Client.Models.View.BookingModel
+
+@{
+    ViewBag.Title = "BookTable";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section PageStyle
+{
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles/plugins/datepicker.css" />
+
+}
+
+<div id="book-table"></div>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        require(["jquery", "Widgets/bookingCtrl/bookingCtrl"], function ($) {
+            $(document).ready(function () {
+                $("#book-table").booking({
+                    restaurantId: "@Model.RestaurantId"
+                });
+            });
+        });
+
+    </script>
+}

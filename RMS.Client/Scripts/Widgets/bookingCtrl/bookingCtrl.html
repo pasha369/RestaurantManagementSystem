@@ -1,0 +1,31 @@
+﻿<div id="bookingctrl">
+    <form class="sky-form" style="padding: 120px">
+        <div class="container">
+            <div class="margin-bottom-20 ">
+
+                <div class="form-group">
+                    <label for="Msg">Msg: </label>
+                    <input type="text" name="Msg"
+                        data-bind="value: Msg" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="PeopleNum">Number of people: </label>
+                    <input type="text" name="PeopleNum"
+                        data-bind="value: PeopleNum" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="PeopleNum">Date: </label>
+                    <label class="input">
+                        <i class="icon-append fa fa-calendar"></i>
+                        <input type="datetime" id="date" name="date"
+                               data-bind="value: Date" class="form-control "/>
+                    </label>
+                </div>
+                <p>
+                    <input type="button" value="Reserve" class="btn-u btn-u-red" data-bind="click: $root.bookTable" />
+                </p>
+
+            </div>
+        </div>
+    </form>
+</div>

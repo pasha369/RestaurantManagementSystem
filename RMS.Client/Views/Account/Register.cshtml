@@ -1,0 +1,78 @@
+﻿@using System.Web.Optimization
+@model RMS.Client.Models.View.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@section PageStyle
+{
+    <link rel="stylesheet" href="~/Content/Styles/pages/page_log_reg_v2.css">
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+
+
+    <!--=== Content Part ===-->
+    <div class="container">
+        <!--Reg Block-->
+        <div class="reg-block">
+            <div class="reg-block-header">
+                <h2>Sign Up</h2>
+                <ul class="social-icons text-center">
+                    <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="#"></a></li>
+                    <li><a class="rounded-x social_twitter" data-original-title="Twitter" href="#"></a></li>
+                    <li><a class="rounded-x social_googleplus" data-original-title="Google Plus" href="#"></a></li>
+                    <li><a class="rounded-x social_linkedin" data-original-title="Linkedin" href="#"></a></li>
+                </ul>
+                <p>Already Signed Up? Click <a class="color-green" href="@Url.Action("Login")">Sign In</a> to login your account.</p>
+            </div>
+
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                @Html.TextBoxFor(model => model.Name, new {@class = "form-control", @placeholder = "Username"})
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                @Html.TextBoxFor(model => model.Login, new {@class = "form-control", @placeholder = "Login"})
+                @Html.ValidationMessageFor(model => model.Login)
+            </div>
+            <div class="input-group margin-bottom-20">
+                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                @Html.TextBoxFor(model => model.Password, new {@class = "form-control", @placeholder = "Password"})
+                @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            <div class="input-group margin-bottom-30">
+                <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                @Html.TextBoxFor(model => model.Phone, new {@class = "form-control", @placeholder = "Phone"})
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+            <hr>
+
+            <div class="checkbox">            
+                <label>
+                    <input type="checkbox"> 
+                    I read <a target="_blank" href="page_terms.html">Terms and Conditions</a>
+                </label>
+            </div>
+                                
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <button type="submit" class="btn-u btn-block">Register</button>                
+                </div>
+            </div>
+        </div>
+        <!--End Reg Block-->
+    </div>
+    <!--/container-->
+    <!--=== End Content Part ===-->
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

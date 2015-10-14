@@ -1,0 +1,32 @@
+﻿@model RMS.Client.Models.View.ProfileModel
+
+@{
+    ViewBag.Title = "RestaurateurPage";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+@section PageStyle
+{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="~/Content/Styles/pages/profile.css">
+}
+
+<!--=== Profile ===-->
+<div class="container content profile">
+
+</div>
+<!--=== End Profile ===-->
+
+@section Scripts
+{
+    <script>
+        require(["jquery", "Widgets/PhotoCtrl/PhotoCtrl",
+            'Widgets/clientCtrl/clientCtrl'], function ($) {
+                $(document).ready(function () {
+                    $('.content').client();
+                });
+            });
+
+    </script>
+}
+

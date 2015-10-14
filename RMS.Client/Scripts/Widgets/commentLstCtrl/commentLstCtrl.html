@@ -1,0 +1,19 @@
+﻿<div id="comment-list">
+    <div data-bind="foreach: Reviews">
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="assets/img/testimonials/img4.jpg" alt="" />
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading" data-bind="text: Author"><span>July 5,2013 / <a href="#">Reply</a></span></h4>
+                <p data-bind="text: Comment"></p>
+                Food template: 
+                        <ul style="list-style-type: none">
+                            <li data-bind="foreach: new Array(Food())">
+                                <i class="fa fa-star"></i>
+                            </li>
+                        </ul>
+            </div>
+        </div>
+    </div>
+</div>

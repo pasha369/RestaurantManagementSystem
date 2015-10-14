@@ -1,0 +1,75 @@
+﻿<div id="review">
+    <div class="sky-form" style="padding: 10px;">
+                    <h3>Leave a Comment</h3>
+                    <form action="." >
+                        <section>
+                            <label class="input">
+                                <i class="icon-append fa fa-user"></i>
+                                <input type="text" name="name" id="name" placeholder="Your name" data-bind="value: Author">
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="input">
+                                <i class="icon-append fa fa-envelope"></i>
+                                <input type="email" name="email" id="email" placeholder="Your e-mail">
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label"></label>
+                            <label class="textarea">
+                                <i class="icon-append fa fa-comment"></i>
+                                <textarea rows="3" name="comment" id="review" placeholder="Text of the review" data-bind="value: Comment"></textarea>
+                            </label>
+                        </section>
+
+                        <section>
+                            <div class="rating">
+                                <input type="radio" name="quality" id="quality-5" value="5" data-bind="checked: Food">
+                                <label for="quality-5"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="quality" id="quality-4" value="4" data-bind="checked: Food">
+                                <label for="quality-4"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="quality" id="quality-3" value="3" data-bind="checked: Food">
+                                <label for="quality-3"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="quality" id="quality-2" value="2" data-bind="checked: Food">
+                                <label for="quality-2"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="quality" id="quality-1" value="1" data-bind="checked: Food">
+                                <label for="quality-1"><i class="fa fa-star"></i></label>
+                                Food
+                            </div>
+
+                            <div class="rating">
+                                <input type="radio" name="Service" id="reliability-5" value="5" data-bind="checked: Service">
+                                <label for="reliability-5"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="Service" id="reliability-4" value="4" data-bind="checked: Service">
+                                <label for="reliability-4"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="Service" id="reliability-3" value="3" data-bind="checked: Service">
+                                <label for="reliability-3"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="Service" id="reliability-2" value="2" data-bind="checked: Service">
+                                <label for="reliability-2"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="Service" id="reliability-1" value="1" data-bind="checked: Service">
+                                <label for="reliability-1"><i class="fa fa-star"></i></label>
+                                Service
+                            </div>
+
+                            <div class="rating">
+                                <input type="radio" name="overall" id="overall-5" value="5" data-bind="checked: Stars">
+                                <label for="overall-5"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="overall" id="overall-4" value="4" data-bind="checked: Stars">
+                                <label for="overall-4"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="overall" id="overall-3" value="3" data-bind="checked: Stars">
+                                <label for="overall-3"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="overall" id="overall-2" value="2" data-bind="checked: Stars">
+                                <label for="overall-2"><i class="fa fa-star"></i></label>
+                                <input type="radio" name="overall" id="overall-1" value="1" data-bind="checked: Stars">
+                                <label for="overall-1"><i class="fa fa-star"></i></label>
+                                Overall rating
+                            </div>
+                        </section>
+
+                        <input class="btn-u"  type="button" data-bind="click: $root.saveReview" value="Send Message"/>
+                        
+                    </form>
+                </div>
+</div> 

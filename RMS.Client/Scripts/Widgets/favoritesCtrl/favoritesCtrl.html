@@ -1,0 +1,32 @@
+﻿<div id="favorites">
+    <div data-bind="foreach: favorites">
+
+        <ul class="list-group">
+            <li class="list-group-item resource-info">
+                <div class="row">
+                    <div class="col-sm-5 col-md-4 resource-thumbnail">
+
+                        <img data-bind="attr: { src: PhotoUrl}"  class="img-thumbnail img-responsive image_square">
+                    </div>
+                    <div class="col-sm-7 resource-contents">
+                        <h2 class="resouce-name"><a href="#" data-bind="text: Name"></a></h2>
+                        <div data-bind="text: Description"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-5 resource-props">
+
+                        <div class="action-buttons">
+                            <a class="btn btn-primary" role="button" data-bind="attr: {href: '/Restaurant/RestaurantDetail/' + Id}">Details</a>
+                            <a class="btn btn-primary" role="button" href="https://s3.amazonaws.com/planyo-extras/website/booking.html?mode=reserve&amp;resource_id=43368">Make reservation</a>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+            </li>
+
+
+
+        </ul>
+
+    </div>
+</div>

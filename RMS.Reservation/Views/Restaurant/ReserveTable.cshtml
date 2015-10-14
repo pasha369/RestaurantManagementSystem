@@ -1,0 +1,75 @@
+﻿@model RMS.Reservation.Models.ViewModel.ReserveModel
+
+@{
+    ViewBag.Title = "ReserveTable";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<h2>ReserveTable</h2>
+
+<h4>@Model.Restaurant.Name|@Model.From|@Model.Geusts</h4>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ReserveModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.From)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.From)
+            @Html.ValidationMessageFor(model => model.From)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Number)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Number)
+            @Html.ValidationMessageFor(model => model.Number)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SpecialRequest)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SpecialRequest)
+            @Html.ValidationMessageFor(model => model.SpecialRequest)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Geusts)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Geusts)
+            @Html.ValidationMessageFor(model => model.Geusts)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

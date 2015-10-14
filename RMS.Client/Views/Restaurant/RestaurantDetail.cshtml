@@ -1,0 +1,112 @@
+﻿@using System.Web.Optimization
+@model RMS.Client.Models.View.RestaurantModel
+
+@{
+    ViewBag.Title = "RestaurantDetail";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+
+<!--=== Content Part ===-->
+<div class="container content">
+    <div class="row">
+        <!-- Left Sidebar -->
+        <div class="col-md-12 md-margin-bottom-60">
+            <!--Blog Post-->
+            <div class="blog margin-bottom-60">
+                <h1>@Html.DisplayFor(model => model.Name), <small>Alabama</small></h1>
+
+                <div class="list-group-item-text " style="padding: 10px;">
+                    <ul class="list-unstyled list-inline ">
+                        <li>
+                            <span data-bind="foreach: new Array(Food())">
+                                <i class="fa fa-star color-green"></i>
+                            </span>
+                        </li>
+                        <li><i class="fa fa-comment-o"></i>
+                            @Model.CommentCount reviews</li>
+                        <button id="btnFavorite" class="pull-right btn btn-default "><i class="fa fa-thumbs-up">Add to Favorites</i></button>
+                    </ul>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-9">
+                        <img class="img-responsive" src="@Url.Content(Model.PhotoUrl)" alt="">
+                    </div>
+
+                </div>
+                <h2 class="margin-top-20"><b>About @Model.Name</b></h2>
+                <hr />
+                <div class="col-md-8">
+                    <p>
+                        @Html.DisplayFor(model => model.Description)
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <ul class="list-unstyled bg-grey" style="padding: 20px">
+                        <li>
+                            <address>
+                                <i class="fa fa-location-arrow"></i>
+                                507 Calles Street
+                                Austin, TX, 78702
+                            </address>
+                        </li>
+                        <li><i class="fa fa-phone"></i>@Model.Phone</li>
+                    </ul>
+                </div>
+                <div class="col-md-12 ">
+                    <a href="@Url.Action("BookTable", new { @Id = Model.Id })" class="btn btn-lg btn-primary centered" >Make reservation</a>
+
+                </div>
+
+            </div>
+            <!--End Blog Post-->
+
+            <div class="col-md-12">
+                <hr>
+                <div id="comment"></div>
+                <hr>
+            </div>
+
+            <div class="col-md-12">
+                <!-- Comment Form -->
+                <div class="comment-form"></div>
+                <!-- End Comment Form -->
+            </div>
+        </div>
+        <!-- End Left Sidebar -->
+
+    </div>
+    <!--/row-->
+</div>
+<!--/container-->
+<!--=== End Content Part ===-->
+
+@section Scripts {
+
+    <script>
+        require(["jquery",
+                "Widgets/commentLstCtrl/commentLstCtrl",
+                "Widgets/commentCtrl/commentCtrl"],
+            function ($) {
+                $(document).ready(function () {
+                    $("#comment").commentList({ RestaurantId: "@Model.Id" });
+                $('.comment-form').comment({ restaurantId: "@Model.Id" });
+                $('#btnFavorite').on('click', function () {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/Restaurant/AddFavorite/' + '@Model.Id',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function () {
+                            console.log('AddFavorite: success');
+                        },
+                        error: function (err) {
+                            console.log(err.status + " : " + err.statusText);
+                        }
+                    });
+                });
+            });
+            });
+    </script>
+}

@@ -1,0 +1,18 @@
+﻿body {
+}
+
+.btn-close {
+    float: right;
+    border: none;
+    background: none;
+}
+
+.search {
+    display: inline-block;
+    width: 100%;
+    border: none;
+    margin: 5px;
+}
+.search > div{
+    padding: 0;
+}

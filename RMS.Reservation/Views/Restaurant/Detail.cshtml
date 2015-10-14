@@ -1,0 +1,46 @@
+﻿@model RMS.Reservation.Models.ViewModel.DetailModel
+
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<h2>Detail</h2>
+
+<legend>@Model.Restaurant.Name</legend>
+
+<p>@Model.Restaurant.Description</p>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>DetailModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Guests)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Guests)
+            @Html.ValidationMessageFor(model => model.Guests)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Time)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Time)
+            @Html.ValidationMessageFor(model => model.Time)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+

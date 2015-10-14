@@ -1,0 +1,42 @@
+﻿<div id="search-ctrl">
+
+    <div class="search-block-v2 margin-top-20">
+        <div class="container">
+            <div class="col-md-6 col-md-offset-3 ">
+                
+                <div class="input-group">
+                    <input class="form-control" id="search-field"
+                        placeholder="Search words with regular expressions ..." type="text">
+                    <span class="input-group-btn">
+                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container s-results">
+        <ul id="search-results" class="list-group" data-bind="foreach: Restaurants">
+            <li class="list-group-item  margin-top-20">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <img src="#">
+                    </div>
+                    <div class="col-sm-7">
+                        <h2 data-bind="text: Name"></h2>
+                        <div data-bind="text: Description"></div>
+                    </div>
+                    <div class="col-sm-3 actions">
+                        <div class="lead">Total: €1008.00</div>
+                        <div>13 Oct 2015 - 31 Oct 2015</div>
+                        <div>18 nights</div>
+                        <br>
+                        <div><a class="btn btn-primary" role="button" href="#">Details</a> <a class="btn btn-primary" role="button" href="#">Make reservation</a></div>
+
+                    </div>
+                </div>
+                <hr>
+            </li>
+        </ul>
+    </div>
+</div>

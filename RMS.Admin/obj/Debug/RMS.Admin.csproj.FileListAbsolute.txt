@@ -1,0 +1,14 @@
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\RMS.Admin.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\RMS.Admin.pdb
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\AjaxControlToolkit.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\DataAccess.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\DataModel.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\EntityFramework.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\EntityFramework.SqlServer.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\DataAccess.pdb
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\DataModel.pdb
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\EntityFramework.xml
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\bin\EntityFramework.SqlServer.xml
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\obj\Debug\RMS.Admin.csprojResolveAssemblyReference.cache
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\obj\Debug\RMS.Admin.dll
+C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\RMS.Admin\obj\Debug\RMS.Admin.pdb

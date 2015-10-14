@@ -1,0 +1,62 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "RestaurantList";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section PageStyle
+{
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
+}
+<div class="container content-md">
+    <!-- Blog All Posts -->
+    <div class="col-md-9" data-bind="foreach: Restaurants">
+        <!-- News-->
+        <div class="row margin-bottom-20">
+            <div class="col-sm-5 sm-margin-bottom-20">
+                <img class="img-responsive" data-bind="attr: { src: PhotoUrl}" alt="">
+            </div>
+            <div class="col-sm-7 news-v3s">
+                <div class="news-v3-in-sm no-padding">
+                    <ul class="list-inline posted-info">
+                        <li>
+                            <span data-bind="foreach: new Array(4)">
+                                <i class="fa fa-star color-green"></i>
+                            </span>
+                        </li>
+                        <li><i class="fa fa-comment-o"></i>
+                            <span data-bind="text: CommentCount"></span> reviews</li>
+                        <li>
+                          
+                                <i class="fa fa-location-arrow"></i>
+                                507 Calles Street
+                                Austin, TX, 78702
+                           
+                        </li>
+                    </ul>
+                    <h2><a href="#" data-bind="attr: { 'href': '@Url.Action("RestaurantDetail", "Restaurant")?id=' + Id },
+                        text:Name"></a></h2>
+                    <p data-bind="text: Description"></p>
+                </div>
+            </div>
+        </div>
+        <!--/end row-->
+        <!-- End News-->
+
+        <div class="clearfix margin-bottom-20">
+            <hr>
+        </div>
+
+        <!-- Pager v3 -->
+        <ul class="pager pager-v3 pager-sm no-margin-bottom">
+            <li class="previous"><a href="#">&larr; Older</a></li>
+            <li class="page-amount">1 of 7</li>
+            <li class="next"><a href="#">Newer &rarr;</a></li>
+        </ul>
+        <!-- End Pager v3 -->
+    </div>
+    <!-- End Blog All Posts -->
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/Scripts/ViewModel/RestaurantViewModel.js")
+}
