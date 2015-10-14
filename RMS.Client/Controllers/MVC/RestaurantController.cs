@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataModel.Model;
 using Newtonsoft.Json;
@@ -11,6 +12,15 @@ namespace RMS.Client.Controllers.MVC
 {
     public class RestaurantController : System.Web.Mvc.Controller
     {
+        public IDataManager<Restaurant> _rstManager;
+        
+
+       
+        public RestaurantController(IDataManager<Restaurant> rstManager)
+        {
+            _rstManager = rstManager;
+        }
+
         //
         // GET: /Restaurant/
 
@@ -35,13 +45,10 @@ namespace RMS.Client.Controllers.MVC
             var manager = new RestaurantManager();
             var restaurant = manager.GetById(Id);
 
-            var rstModel = new RestaurantModel();
-
-            rstModel.Id = restaurant.Id;
-            rstModel.Name = restaurant.Name;
-            rstModel.Description = restaurant.Description;
-            rstModel.Phone = restaurant.PhoneNumber.ToString();
-            rstModel.PhotoUrl = restaurant.PhotoUrl;
+            Mapper.CreateMap<Restaurant, RestaurantModel>()
+                .ForMember(model => model.Phone,
+                opt => opt.MapFrom(r => r.PhoneNumber.ToString()));
+            var rstModel = Mapper.Map<RestaurantModel>(restaurant);
 
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
@@ -65,7 +72,7 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult RestaurantDetail(int Id)
         {
-            var restaurant = new RestaurantManager()
+            var restaurant = _rstManager
                 .GetAll()
                 .FirstOrDefault(r => r.Id == Id);
             if (restaurant != null)

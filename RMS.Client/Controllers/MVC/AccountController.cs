@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using AutoMapper;
 using DataAccess.Concrete;
 using DataModel.Model;
 using RMS.Client.Models.View;
@@ -69,10 +70,8 @@ namespace RMS.Client.Controllers.MVC
         {
             if(ModelState.IsValid)
             {
-                var user = new UserInfo();
-                user.Name = model.Name;
-                user.Login = model.Login;
-                user.Password = model.Password;
+                Mapper.CreateMap<RegisterModel, UserInfo>();
+                var user = Mapper.Map<UserInfo>(model);
                 user.Phone = Convert.ToInt32(model.Phone);
                 user.Position = Role.User;
 

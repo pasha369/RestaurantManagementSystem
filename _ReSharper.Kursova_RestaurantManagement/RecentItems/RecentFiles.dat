@@ -4,31 +4,38 @@
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:commentCtrl/f:commentCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:commentCtrl/f:commentCtrl.js" caret="2113" fromTop="2" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/f:main.js" caret="393" fromTop="9" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:restaurantEditCtrl/f:restaurantEditCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:restaurantEditCtrl/f:restaurantEditCtrl.js" caret="3043" fromTop="12" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:ProfileController.cs" caret="3912" fromTop="108" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:HomeController.cs" caret="53" fromTop="2" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:AccountController.cs" caret="277" fromTop="12" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ImageController.cs" caret="1685" fromTop="53" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ReservationController.cs" caret="1435" fromTop="44" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ReviewController.cs" caret="1755" fromTop="55" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:SearchController.cs" caret="162" fromTop="6" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="14477" fromTop="17" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/f:Global.asax.cs" caret="568" fromTop="19" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:RestaurantManager.cs" caret="1290" fromTop="11" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:AccountController.cs" caret="2089" fromTop="10" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:restaurantEditCtrl/f:restaurantEditCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantList.cshtml" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:RestaurantController.cs" caret="619" fromTop="4" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="14477" fromTop="17" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Core/d:Autofac/d:Modules/f:ManagerModule.cs" caret="487" fromTop="8" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Core/d:Autofac/f:AutofacConfig.cs" caret="744" fromTop="11" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:HomeController.cs" caret="53" fromTop="2" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:ProfileController.cs" caret="264" fromTop="12" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:RestaurantController.cs" caret="1027" fromTop="10" />
   </RecentFiles>
   <RecentEdits>
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:SearchController.cs" caret="162" fromTop="6" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ReviewController.cs" caret="1755" fromTop="55" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ReservationController.cs" caret="1435" fromTop="44" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ImageController.cs" caret="1685" fromTop="53" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:ProfileController.cs" caret="3912" fromTop="108" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:HomeController.cs" caret="53" fromTop="2" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:AccountController.cs" caret="2732" fromTop="87" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:commentCtrl/f:commentCtrl.js" caret="2113" fromTop="2" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="14477" fromTop="17" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/f:main.js" caret="393" fromTop="9" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:restaurantEditCtrl/f:restaurantEditCtrl.js" caret="3043" fromTop="12" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:RestaurantController.cs" caret="619" fromTop="4" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:AccountController.cs" caret="2098" fromTop="10" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/f:Global.asax.cs" caret="568" fromTop="19" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:ProfileController.cs" caret="264" fromTop="12" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Core/d:Autofac/d:Modules/f:ManagerModule.cs" caret="487" fromTop="8" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Core/d:Autofac/f:AutofacConfig.cs" caret="744" fromTop="23" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:RestaurantController.cs" caret="253" fromTop="2" />
   </RecentEdits>
 </RecentFiles>

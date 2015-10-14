@@ -1,5 +1,5 @@
-2015/10/14-19:15:02.314 c3c Recovering log #3
-2015/10/14-19:15:02.394 c3c Level-0 table #5: started
-2015/10/14-19:15:02.544 c3c Level-0 table #5: 489465 bytes OK
-2015/10/14-19:15:02.944 c3c Delete type=0 #3
-2015/10/14-19:15:02.944 c3c Delete type=3 #2
+2015/10/14-19:23:33.063 14f0 Recovering log #9
+2015/10/14-19:23:33.063 14f0 Level-0 table #11: started
+2015/10/14-19:23:33.215 14f0 Level-0 table #11: 295 bytes OK
+2015/10/14-19:23:33.312 14f0 Delete type=0 #9
+2015/10/14-19:23:33.312 14f0 Delete type=3 #7

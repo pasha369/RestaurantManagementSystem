@@ -10,6 +10,7 @@ namespace RMS.Client.Controllers.MVC
 {
     public class ProfileController : Controller
     {
+
         //
         // GET: /Profile/
         [Authorize(Roles = "User")]
