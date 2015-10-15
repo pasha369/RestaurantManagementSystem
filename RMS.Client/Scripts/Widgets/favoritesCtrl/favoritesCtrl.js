@@ -1,9 +1,10 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
+        'toastr',
         'text!Widgets/favoritesCtrl/favoritesCtrl.html'],
     function (ko, $, preloader) {
+        var toastr = require('toastr');
 
         $.widget("cc.favorites", {
-
             options: {
                 view: require('text!Widgets/favoritesCtrl/favoritesCtrl.html'),
                 viewModel: null,
@@ -18,6 +19,10 @@
                 function favoritesVM() {
 
                     this.favorites = ko.observableArray([]);
+
+                    this.remove = function(item) {
+                        self._removeFavorite(item);
+                    };
                 };
 
                 self.options.viewModel = new favoritesVM();
@@ -45,6 +50,29 @@
                         
                     }
                 });
+            },
+            _removeFavorite: function (item) {
+                var self = this;
+                var vm = self.options.viewModel;
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '/Profile/RemoveFavorite/' + item.Id,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    complete: function (data) {
+                        var index = self.options.viewModel.favorites().indexOf(item);
+                        if (index > -1) {
+                            self.options.viewModel.favorites.splice(index, 1);
+                        }
+                        toastr.success(item.Name + ' was removed'); 
+                    },
+                    error: function (err) {
+                        console.log(err.status + " : " + err.statusText);
+
+                    }
+                });
+                
             },
             
             _setOption: function (key, value) {

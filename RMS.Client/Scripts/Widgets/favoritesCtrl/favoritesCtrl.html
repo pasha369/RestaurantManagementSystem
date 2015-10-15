@@ -9,6 +9,7 @@
                         <img data-bind="attr: { src: PhotoUrl}"  class="img-thumbnail img-responsive image_square">
                     </div>
                     <div class="col-sm-7 resource-contents">
+                        <button class="btn warning" data-bind="click: $root.remove"><span class="fa fa-close"></span></button>
                         <h2 class="resouce-name"><a href="#" data-bind="text: Name"></a></h2>
                         <div data-bind="text: Description"></div>
                     </div>

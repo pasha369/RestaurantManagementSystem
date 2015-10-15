@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Services;
 using DataAccess.Concrete;
+using DataModel.Model;
 using RMS.Client.Models.View;
 
 namespace RMS.Client.Controllers.WebApi
@@ -33,12 +34,22 @@ namespace RMS.Client.Controllers.WebApi
         [WebMethod]
         public void RejectReservation(int Id)
         {
-            // TODO: delete reservation by ID
+            var rsvManager = new ReservationManager();
+            var reservarion = rsvManager.GetById(Id);
+            reservarion.Status = ReservationStatus.Canceled;
         }
+        public void RemoveReservation(int Id)
+        {
+            var rsvManager = new ReservationManager();
+            var reservarion = rsvManager.GetById(Id);
 
+            rsvManager.Delete(reservarion);
+        }
         public void ApplyReservation(int Id)
         {
-            // TODO: apply reservation by ID            
+            var rsvManager = new ReservationManager();
+            var reservarion = rsvManager.GetById(Id);
+            reservarion.Status = ReservationStatus.Confirmed;
         }
     }
 }

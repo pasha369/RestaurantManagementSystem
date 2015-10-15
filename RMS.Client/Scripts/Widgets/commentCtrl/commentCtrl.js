@@ -8,6 +8,7 @@
                 view: require('text!Widgets/commentCtrl/commentCtrl.html'),
                 viewModel: null,
                 restaurantId: null,
+                eventTrigger: null,
             },
 
             _create: function () {
@@ -26,7 +27,8 @@
                     this.Author = ko.observable();
                     this.RestaurantId = ko.observable(self.options.restaurantId);
 
-                    this.saveReview = function() {
+                    this.saveReview = function () {
+                       
                         self._saveReview();
                     };
                     
@@ -49,6 +51,7 @@
                     Author: vm.Author(),
                     RestaurantId: vm.RestaurantId()
                 });
+                self.options.eventTrigger.notify(review );
                 $.ajax({
                     type:'POST',
                     url: '/api/Review/Save',

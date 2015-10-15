@@ -94,6 +94,8 @@ namespace DataModel.Model
         [Required]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { set; get; }
+
+        public ReservationStatus Status { get; set; }
         [Required]
         public virtual UserInfo User { set; get; }
         [Required]
@@ -107,6 +109,15 @@ namespace DataModel.Model
         public int PeopleCount { set; get; }
         public string SpecialRequest { set; get; }
     }
+
+    public enum ReservationStatus
+    {
+        New,
+        Confirmed,
+        Canceled,
+        NoShow
+    }
+
     [Table("Favorite")]
     public class Favorite
     {
