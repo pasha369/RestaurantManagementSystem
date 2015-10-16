@@ -11,6 +11,7 @@
                 view: require('text!Widgets/commentLstCtrl/commentLstCtrl.html'),
                 viewModel : null,
                 RestaurantId: "-1",
+                eventTrigger : null,
             },
 
             // Set up the widget
@@ -24,6 +25,8 @@
                 };
 
                 self.options.viewModel = new commentListVM();
+                
+                self.options.eventTrigger.attach(self._refresh, this);
                 
                 ko.applyBindings(self.options.viewModel, $("#comment-list")[0]);
                 self._loadReviews(self.options.RestaurantId);
@@ -61,7 +64,10 @@
                     }
                 });
             },
-
+            _refresh: function(review) {
+                var self = this;
+                self.options.viewModel.Reviews.push(review);
+            },
             _setOption: function (key, value) {
                 $.Widget.prototype._setOption.apply(this, arguments);
                 this._super("_setOption", key, value);

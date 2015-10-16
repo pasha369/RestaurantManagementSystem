@@ -46,6 +46,9 @@
     <Reference Include="Autofac">
       <HintPath>..\packages\Autofac.3.5.2\lib\net40\Autofac.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.Mvc">
+      <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -135,6 +138,8 @@
     <Compile Include="Controllers\MVC\RestaurantController.cs" />
     <Compile Include="Controllers\WebApi\ReviewController.cs" />
     <Compile Include="Controllers\WebApi\SearchController.cs" />
+    <Compile Include="Core\Autofac\AutofacConfig.cs" />
+    <Compile Include="Core\Autofac\Modules\ManagerModule.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -253,6 +258,7 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
+    <Content Include="Scripts\Custom\EventTrigger.js" />
     <Content Include="Scripts\jquery-2.0.2.js" />
     <Content Include="Scripts\jquery-2.0.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.3.js" />
@@ -327,6 +333,7 @@
     <Content Include="Views\Profile\RestaurateurPage.cshtml" />
     <Content Include="Views\Restaurant\RestaurantEdit.cshtml" />
     <Content Include="Scripts\jquery-2.0.2.min.map" />
+    <Content Include="Views\Restaurant\DisplayTemplate\RestaurantModel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

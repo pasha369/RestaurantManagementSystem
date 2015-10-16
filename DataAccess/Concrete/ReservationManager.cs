@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,10 @@ namespace DataAccess.Concrete
 
         public void Delete(Reservation item)
         {
-            throw new NotImplementedException();
+            var reservation = _ctx.Reservations.FirstOrDefault(r => r.Id == item.Id);
+
+            _ctx.Reservations.Remove(reservation);
+            _ctx.SaveChanges();
         }
 
         public void Add(Reservation item)
@@ -26,7 +30,11 @@ namespace DataAccess.Concrete
 
         public void Update(Reservation item)
         {
-            throw new NotImplementedException();
+            var reservation = _ctx.Reservations.FirstOrDefault(r => r.Id == item.Id);
+            reservation.Status = item.Status;
+
+            _ctx.Entry(reservation).State = EntityState.Modified;
+            _ctx.SaveChanges();
         }
 
         public Reservation GetById(Reservation item)

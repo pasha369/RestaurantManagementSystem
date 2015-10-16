@@ -34,6 +34,11 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
+        public Review GetById(int Id)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Review> GetAll()
         {
             return _ctx.Reviews.ToList();

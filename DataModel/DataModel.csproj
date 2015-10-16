@@ -76,6 +76,10 @@
     <Compile Include="RestorauntContextMigrations\201510110120455_favorite2.Designer.cs">
       <DependentUpon>201510110120455_favorite2.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201510150713476_status.cs" />
+    <Compile Include="RestorauntContextMigrations\201510150713476_status.Designer.cs">
+      <DependentUpon>201510150713476_status.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201510110120455_favorite2.resx">
       <DependentUpon>201510110120455_favorite2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201510150713476_status.resx">
+      <DependentUpon>201510150713476_status.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

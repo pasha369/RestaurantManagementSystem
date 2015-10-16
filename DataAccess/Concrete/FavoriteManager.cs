@@ -11,12 +11,11 @@ namespace DataAccess.Concrete
 {
     public class FavoriteManager : IDataManager<Favorite>
     {
-        private RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
         
         public void Delete(Favorite item)
         {
-            var favorite = _ctx.Favorites
-                .FirstOrDefault(f => f.Id == item.Id);
+            var favorite = _ctx.Favorites.FirstOrDefault(f => f.Id == item.Id);
             _ctx.Favorites.Remove(favorite);
             _ctx.SaveChanges();
         }
@@ -36,6 +35,12 @@ namespace DataAccess.Concrete
         {
             throw new NotImplementedException();
         }
+
+        public Favorite GetById(int Id)
+        {
+            return _ctx.Favorites.FirstOrDefault(f => f.Id == Id);
+        }
+
         public List<Restaurant> GetByUser(int userId)
         {
             var lstFavorite = _ctx.Favorites
@@ -47,6 +52,13 @@ namespace DataAccess.Concrete
         public List<Favorite> GetAll()
         {
             throw new NotImplementedException();
+        }
+
+        public void Delete(int item, int id)
+        {
+            var favorite = _ctx.Favorites.FirstOrDefault(f => f.User.Id == id && f.Restaurant.Id == item);
+            _ctx.Favorites.Remove(favorite);
+            _ctx.SaveChanges();
         }
     }
 }

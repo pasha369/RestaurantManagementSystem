@@ -10,6 +10,7 @@ namespace RMS.Client.Controllers.MVC
 {
     public class ProfileController : Controller
     {
+
         //
         // GET: /Profile/
         [Authorize(Roles = "User")]
@@ -84,6 +85,15 @@ namespace RMS.Client.Controllers.MVC
                         
             return Json(strJSON, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult RemoveFavorite(Favorite item)
+        {
+            var fvrManager = new FavoriteManager();
+            var user = GetUserByLogin();
+
+            fvrManager.Delete(item.Id, user.Id);
+
+            return View();
+        }
         [HttpGet]
         public ActionResult GetUser()
         {
@@ -103,6 +113,16 @@ namespace RMS.Client.Controllers.MVC
                 return Json(model, JsonRequestBehavior.AllowGet);
             }
             return Json(string.Empty);
+        }
+
+        private UserInfo GetUserByLogin()
+        {
+            var userManager = new UserManager();
+
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = userManager.GetAll().FirstOrDefault(u => u.Login == login);
+
+            return user;
         }
     }
 }

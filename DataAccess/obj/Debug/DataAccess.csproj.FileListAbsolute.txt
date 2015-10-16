@@ -11,3 +11,20 @@ C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagemen
 C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\pasha\Documents\Visual Studio 2012\Projects\Kursova_RestaurantManagement\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\AjaxControlToolkit.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\Autofac.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\Autofac.Integration.Mvc.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\DataModel.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\DataModel.pdb
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\Autofac.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\Autofac.Integration.Mvc.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataAccess\obj\Debug\DataAccess.pdb
