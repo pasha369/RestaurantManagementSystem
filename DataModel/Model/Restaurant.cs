@@ -102,7 +102,7 @@ namespace DataModel.Model
         public virtual DinnerTable Table { set; get; }
         [Required]
         [DataType(DataType.DateTime)]
-        public DateTime DateTime { set; get; }
+        public DateTime From { set; get; }
         [DataType(DataType.DateTime)]
         public DateTime To { set; get; }
 

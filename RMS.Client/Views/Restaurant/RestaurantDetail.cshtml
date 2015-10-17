@@ -86,30 +86,13 @@
 
     <script>
         require(["jquery",
+                "Custom/EventTrigger",
                 "Widgets/commentLstCtrl/commentLstCtrl",
                 "Widgets/commentCtrl/commentCtrl",
-                "Custom/EventTrigger"],
+                ],
             function ($) {
                 
-                function EventTrigger() {
-
-                    this._listeners = [];
-                    
-
-                    this.attach = function (listener, context) {
-                        this._context = context;
-                        this._listeners.push(listener);
-                    };
-                    this.notify = function () {
-                        var index;
-
-                        for (index = 0; index < this._listeners.length; index += 1) {
-                            this._listeners[index].apply(this._context, arguments);
-                        }
-                    };
-                }
-
-
+                
                 $(document).ready(function () {
                     var eventTrigger = new EventTrigger();
                     $("#comment").commentList({ RestaurantId: "@Model.Id", eventTrigger: eventTrigger });

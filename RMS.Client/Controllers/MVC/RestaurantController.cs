@@ -25,6 +25,8 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult RestaurantList()
         {
             var items = _rstManager.GetAll();
+            var restaurantLst = new RestaurantLst();
+
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>()
@@ -34,8 +36,9 @@ namespace RMS.Client.Controllers.MVC
                     opt => opt.MapFrom(r => r.Reviews.Count()));
 
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+                restaurantLst.RestaurantModels.Add(model);
             }
-            return View();
+            return View(restaurantLst);
         }
         public ActionResult RestaurantEdit(int Id)
         {
@@ -128,8 +131,8 @@ namespace RMS.Client.Controllers.MVC
                     var login = System.Web.HttpContext.Current.User.Identity.Name;
                     reservation.User = userManager.GetAll().FirstOrDefault(u => u.Login == login);
                     reservation.PeopleCount = model.PeopleNum;
-                    reservation.DateTime = model.Date;
-                    reservation.To = model.Date;
+                    reservation.From = model.From;
+                    reservation.To = model.To;
                     reservation.SpecialRequest = model.Msg;
                     reservation.Table = table;
                     rsvManager.Add(reservation);

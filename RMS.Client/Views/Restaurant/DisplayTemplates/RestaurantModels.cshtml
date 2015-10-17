@@ -1,0 +1,39 @@
+﻿@model ICollection<RMS.Client.Models.View.RestaurantModel>
+
+@{
+    Layout = null;
+}
+
+
+@foreach(var item in @Model)
+{
+    <div class="row margin-bottom-20">
+        <div class="col-sm-5 sm-margin-bottom-20">
+            <img class="img-responsive" src="@Url.Content(item.PhotoUrl)" alt="">
+        </div>
+        <div class="col-sm-7 news-v3s">
+            <div class="news-v3-in-sm no-padding">
+                <ul class="list-inline posted-info">
+                    <li>
+                        <span >
+                            <i class="fa fa-star color-green"></i>
+                        </span>
+                    </li>
+                    <li><i class="fa fa-comment-o"></i>
+                        <span>@item.CommentCount</span> reviews</li>
+                    <li>
+                          
+                        <i class="fa fa-location-arrow"></i>
+                        507 Calles Street
+                        Austin, TX, 78702
+                           
+                    </li>
+                </ul>
+                <h2><a href="@Url.Action("RestaurantDetail", new{@Id = item.Id})">@item.Name</a></h2>
+                <p data-bind="text: Description"></p>
+            </div>
+        </div>
+    </div>
+    
+}
+

@@ -1,4 +1,7 @@
-﻿@using System.Web.Optimization
+﻿@model RMS.Client.Models.View.RestaurantLst
+
+@using System.Web.Optimization
+
 @{
     ViewBag.Title = "RestaurantList";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
@@ -7,12 +10,13 @@
 {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 }
+
 <div class="container content-md">
     <!-- Blog All Posts -->
     <div class="col-md-9" data-bind="foreach: Restaurants">
         <!-- News-->
         <div class="row margin-bottom-20">
-            <div class="col-sm-5 sm-margin-bottom-20">
+            @*            <div class="col-sm-5 sm-margin-bottom-20">
                 <img class="img-responsive" data-bind="attr: { src: PhotoUrl}" alt="">
             </div>
             <div class="col-sm-7 news-v3s">
@@ -37,7 +41,8 @@
                         text:Name"></a></h2>
                     <p data-bind="text: Description"></p>
                 </div>
-            </div>
+            </div>*@
+            @Html.DisplayFor(m => m.RestaurantModels)
         </div>
         <!--/end row-->
         <!-- End News-->

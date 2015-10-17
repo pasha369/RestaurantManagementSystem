@@ -14,7 +14,9 @@ namespace RMS.Client.Models.View
         public string Phone { get; set; }
         public string Msg { get; set; }
         [DataType(DataType.Date)]
-        public DateTime Date { get; set; }
+        public DateTime From { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime To { set; get; }
         public int PeopleNum { get; set; }
         public int RestaurantId { get; set; }
 

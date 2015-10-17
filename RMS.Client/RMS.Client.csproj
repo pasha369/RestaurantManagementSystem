@@ -147,6 +147,9 @@
     <Compile Include="Models\View\LoginModel.cs" />
     <Compile Include="Models\View\ProfileModel.cs" />
     <Compile Include="Models\View\RegisterModel.cs" />
+    <Compile Include="Models\View\ReservationLst.cs" />
+    <Compile Include="Models\View\ReservedTable.cs" />
+    <Compile Include="Models\View\RestaurantLst.cs" />
     <Compile Include="Models\View\RestaurantModel.cs" />
     <Compile Include="Models\View\ReviewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -265,6 +268,10 @@
     <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
     <Content Include="Scripts\text.js" />
@@ -333,7 +340,7 @@
     <Content Include="Views\Profile\RestaurateurPage.cshtml" />
     <Content Include="Views\Restaurant\RestaurantEdit.cshtml" />
     <Content Include="Scripts\jquery-2.0.2.min.map" />
-    <Content Include="Views\Restaurant\DisplayTemplate\RestaurantModel.cshtml" />
+    <Content Include="Views\Restaurant\DisplayTemplates\RestaurantModels.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
