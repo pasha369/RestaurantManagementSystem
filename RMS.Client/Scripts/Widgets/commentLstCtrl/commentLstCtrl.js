@@ -66,7 +66,18 @@
             },
             _refresh: function(review) {
                 var self = this;
-                self.options.viewModel.Reviews.push(review);
+                function Review(review) {
+                    this.Id = ko.observable(review.Id);
+                    this.Stars = ko.observable(review.Stars);
+                    this.Food = ko.observable(review.Food);
+                    this.Service = ko.observable(review.Service);
+                    this.Ambience = ko.observable(review.Ambience);
+                    this.Comment = ko.observable(review.Comment);
+                    this.Author = ko.observable(review.Author);
+                    this.RestaurantId = ko.observable(review.RestaurantId);
+
+                }
+                self.options.viewModel.Reviews.push(new Review(review));
             },
             _setOption: function (key, value) {
                 $.Widget.prototype._setOption.apply(this, arguments);
