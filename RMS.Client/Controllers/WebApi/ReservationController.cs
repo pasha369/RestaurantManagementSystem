@@ -5,6 +5,7 @@ using System.Web.Services;
 using DataAccess.Concrete;
 using DataModel.Model;
 using RMS.Client.Models.View;
+using System;
 
 namespace RMS.Client.Controllers.WebApi
 {
@@ -25,6 +26,32 @@ namespace RMS.Client.Controllers.WebApi
 
             return lstReservation;
         }
+
+        //public List<DateTime> GetFreeTime(int rstId, DateTime date)
+        //{
+        //    var rsvManager = new ReservationManager();
+        //    var curDate = DateTime.Now;
+        //    var current = new DateTime(curDate.Year, curDate.Month, curDate.Day, 9, 0, 0);
+        //    var to = new DateTime(curDate.Year, curDate.Month, curDate.Day, 18, 0, 0);
+        //    var ts = new TimeSpan(0, 30, 0);
+
+        //    List<DateTime> lstFree = new List<DateTime>();
+        //    List<DateTime> lstReserved = rsvManager.GetAll()
+        //        .Where(r => r.Table.Restaurant.Id == rstId && date.Date == date.Date)
+        //        .Select(r => r.From)
+        //        .ToList();
+
+        //    while(current < to){
+        //        current = current + ts;
+        //        if (lstReserved.Contains(current))
+        //        {
+        //            lstFree.Add(current);
+        //        }
+        //    }
+
+        //    return lstFree;
+        //}
+
         private List<BookingModel> GetReservationByTable(int Id)
         {
             var rsvManager = new ReservationManager();
