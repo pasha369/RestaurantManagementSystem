@@ -12,5 +12,6 @@ namespace RMS.Client.Models.View
         public int RestaurantId { set; get; }
         public string PhotoUrl { get; set; }
         public List<string> Education { get; set; }
+        public string Password { get; set; }
     }
 }

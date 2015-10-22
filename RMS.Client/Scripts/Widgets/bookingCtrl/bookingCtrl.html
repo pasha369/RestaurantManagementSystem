@@ -8,30 +8,35 @@
                     <textarea name="Msg" rows="10" 
                         data-bind="value: Msg" class="form-control" />
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-bind="validationElement: PeopleNum">
                     <label for="PeopleNum">Number of people: </label>
                     <input type="number" name="PeopleNum" min="1" value="1"
                         data-bind="value: PeopleNum" class="form-control" />
                 </div>
-                <div class="form-group">
+                <div class="form-group" data-bind="validationElement: Date">
                     <label for="PeopleNum">Date: </label>
                     <label class="input">
                         <i class="icon-append fa fa-calendar"></i>
                         <input type="datetime" id="date" name="date"
-                            data-bind="value: Date" class="form-control " />
+                               data-bind="value: Date" class="form-control " />
                     </label>
+
                 </div>
                 <div class="row">
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" data-bind="validationElement: From">
                         <label>From: </label>
-                        <select class="form-control">
-                            <option>11:00</option>
+                        <select id="from" class="form-control"
+                            data-bind="options : AvailableTime,
+                                       value : From,
+                                       optionsCaption : 'Choose...' ">
                         </select>
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-6" data-bind="validationElement: To">
                         <label>To: </label>
-                        <select class="form-control">
-                            <option>11:00</option>
+                        <select id="to" class="form-control"
+                            data-bind="options : AvailableTime,
+                                       value : To,
+                                       optionsCaption : 'Choose...' ">
                         </select>
                     </div>
                 </div>
@@ -44,3 +49,4 @@
         </div>
     </form>
 </div>
+

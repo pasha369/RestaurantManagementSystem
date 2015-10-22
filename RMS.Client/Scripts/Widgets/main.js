@@ -8,7 +8,7 @@
         "text"      : "text",
         "datepicker": "ThemeScripts/plugins/datepicker",
         'toastr': 'toastr.min',
-        'moment' :'moment.min'
+        'moment': 'moment.min',
     },
 
 

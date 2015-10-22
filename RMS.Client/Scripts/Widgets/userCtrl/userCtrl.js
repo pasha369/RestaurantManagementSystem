@@ -1,8 +1,9 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
-        'Widgets/userProfileCtrl/userProfileCtrl',
+        'Widgets/profileCtrl/profileCtrl',
         'Widgets/favoritesCtrl/favoritesCtrl',
+        'Widgets/profileEditCtrl/profileEditCtrl',
         'text!Widgets/userCtrl/userCtrl.html'],
-    function (ko, $, userProfileCtrl, favoritesCtrl) {
+    function (ko, $, profileCtrl, favoritesCtrl, profileEditCtrl) {
   
         $.widget("cc.user", {
             
@@ -17,7 +18,8 @@
 
                 $('.user-profile').userProfile();
                 $('.user-favorite').favorites().hide();
-
+                $('.user-settings').settings().hide();
+                
                 $('#btnProfile').on('click', function () {
                     self.options.current.hide();
                     self.options.current = $('.user-profile');
@@ -26,6 +28,11 @@
                 $('#btnFavorite').on('click', function () {
                     self.options.current.hide();
                     self.options.current = $('.user-favorite');
+                    self.options.current.show();
+                });
+                $('#btnSettings').on('click', function () {
+                    self.options.current.hide();
+                    self.options.current = $('.user-settings');
                     self.options.current.show();
                 });
 

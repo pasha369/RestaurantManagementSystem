@@ -31,6 +31,16 @@
                     this.Date = ko.observable();
                     this.PeopleNum = ko.observable();
 
+                    this.refresh = function() {
+                        self._loadReservation(self.options.RestaurantId);
+                    };
+                    this.apply = function(parameters) {
+
+                    };
+                    this.remove = function (item) {
+                        self._removeReservation(item);
+                    };
+
                 };
 
                 self.options.reservationVM = new ReservationVM();
@@ -40,17 +50,49 @@
                 self._loadReservation(this.options.RestaurantId);
 
             },
-
+            _applyReservation: function(item) {
+               
+            },
+            _removeReservation: function (item) {
+                var self = this;
+                $.ajax({
+                    type: "POST",
+                    url: '/api/Reservation/RemoveReservation/'+item.Id(),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function () {
+                        self._loadReservation(self.options.RestaurantId);
+                        
+                    },
+                    error: function (err) {
+                        console.log(err.status);
+                    },
+                });
+            },
             _loadReservation: function (restaurantId) {
-                var url = '/api/Reservation/GetByRestaurant/' + restaurantId;
+                var url = '/api/Reservation/GetByRestaurant/' ;
                 var self = this;
 
+                var day = $('input[name=day]').val() ;
+                var month = $('input[name=month]').val() ;
+                var year = $('input[name=year]').val() ;
+
+                var date = moment('01' + '-' + '01' + '-' + 2012, "MM-DD-YYYY").toDate();
+                
+                
                 $.ajax({
                     type: "GET",
                     url: url,
+                    data: {
+                        Id: restaurantId,
+                        day: day,
+                        month: month,
+                        year: year
+                    },
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
+                        self.options.reservationVM.Tables([]);
                         $.each(data, function (key, value) {
                             var current = jQuery.extend({}, value);
                             current.Reservations = self._fillRow(current.Reservations);
@@ -65,6 +107,7 @@
                                         v.To.replace("T", " ")
                                     );
                                     var reservation = {
+                                        Id: ko.observable(v.Id),
                                         Fullname: ko.observable(v.Fullname),
                                         Email: ko.observable(v.Email),
                                         Msg: ko.observable(v.Msg),
@@ -143,7 +186,7 @@
                 var idx = 0;
                 for (var i = 0; i < times.length; i++) {
                     var time = moment(times[i], 'hh:mm').toDate();
-                    if (time.getHours() == curDate.getHours()) {
+                    if (time.getHours() == curDate.getHours() ) {
                         idx = i;
                         break;
                     }

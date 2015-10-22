@@ -16,6 +16,7 @@ namespace RMS.Client.Controllers.WebApi
                 .Where(r => r.Name.ToLower().Contains(name.ToLower()))
                 .Select(r => new RestaurantModel()
                                  {
+                                     Id = r.Id,
                                      Name = r.Name,
                                      Description = r.Description,
                                  })

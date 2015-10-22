@@ -1,60 +1,88 @@
-﻿define(['knockout', 'jquery', 'jquery-ui', 'datepicker',
+﻿define(['knockout', "knockout.validation", 'jquery', 'jquery-ui', 'datepicker', 'moment',
         'text!Widgets/bookingCtrl/bookingCtrl.html'],
-    function (ko, $, datepicker) {
+    function (ko, validation, $, datepicker) {
+        var moment = require('moment');
 
         $.widget("cc.booking", {
 
             options: {
                 view: require('text!Widgets/bookingCtrl/bookingCtrl.html'),
-                viewModel : null,
-                restaurantId : null,
+                viewModel: null,
+                restaurantId: null,
             },
 
             _create: function () {
                 var self = this;
-                
+
                 self.element.html(self.options.view);
                 Datepicker.initDatepicker();
+
+
+                var validationConfig = ({
+                    insertMessages: true,
+                    decorateElement: true,
+                    errorElementClass: 'has-error',
+                    errorMessageClass: 'help-block'
+                });
                 
                 function bookingVM() {
+                    this.AvailableTime = ko.observableArray(['11:00', '11:30', '12:00', '12:30', '13:00', '13:30']);
                     
-                    this.Date = ko.observable();
-                    this.Msg = ko.observable();
-                    this.PeopleNum = ko.observable();
+                    this.From = ko.observable().extend({ required: true });
+                    this.To = ko.observable().extend({ required: true });
 
-                    this.bookTable = function() {
-                        self._bookTable();
+                    this.Msg = ko.observable();
+
+                    this.Date = ko.observable().extend({ required: true });
+                    this.PeopleNum = ko.observable().extend({ required: true });
+                    
+                    this.bookTable = function () {
+                        if (!self.options.viewModel.isValid()) {
+                            this.errors.showAllMessages();
+                        } else {
+                            self._bookTable();
+                        }
                     };
+                    
+                    this.errors = ko.validation.group(this);
                 };
 
-                self.options.viewModel = new bookingVM();
+                self.options.viewModel = ko.validatedObservable(new bookingVM());
 
-                ko.applyBindings(self.options.viewModel, $("#bookingctrl")[0]);
+                ko.validation.init(validationConfig, true);
+                ko.applyBindingsWithValidation(self.options.viewModel, $("#bookingctrl")[0]);
             },
             _bookTable: function () {
                 var self = this;
-                var vm = self.options.viewModel;
-                
+                var vm = self.options.viewModel();
+
+                var from = moment(vm.Date() + ' ' + vm.From(), "DD.MM.YYYY HH:mm").toDate();
+                var to = moment(vm.Date() + ' ' + vm.To(), "DD.MM.YYYY HH:mm").toDate();
+
                 var reservation = {
+                    From: from,
+                    To: to,
+
                     Date: vm.Date,
                     Msg: vm.Msg,
                     PeopleNum: vm.PeopleNum,
-                    RestaurantId : self.options.restaurantId
+
+                    RestaurantId: self.options.restaurantId
                 };
-                
+
                 $.ajax({
-                    type:'POST',
+                    type: 'POST',
                     url: '/Restaurant/BookTable',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    data : ko.toJSON(reservation),
+                    data: ko.toJSON(reservation),
                     success: function () {
                         console.log('bookTable: success');
                     },
                     error: function (err) {
                         console.log(err.status + " : " + err.statusText);
                     }
-                    
+
                 });
             },
             _setOption: function (key, value) {

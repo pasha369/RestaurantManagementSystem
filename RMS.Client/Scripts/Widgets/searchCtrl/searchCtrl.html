@@ -8,7 +8,7 @@
                     <input class="form-control" id="search-field"
                         placeholder="Search words with regular expressions ..." type="text">
                     <span class="input-group-btn">
-                        <button class="btn-u" type="button"><i class="fa fa-search"></i></button>
+                        <button class="btn-u" type="button" data-bind="click: $root.search"><i class="fa fa-search"></i></button>
                     </span>
                 </div>
             </div>
@@ -27,11 +27,11 @@
                         <div data-bind="text: Description"></div>
                     </div>
                     <div class="col-sm-3 actions">
-                        <div class="lead">Total: €1008.00</div>
-                        <div>13 Oct 2015 - 31 Oct 2015</div>
-                        <div>18 nights</div>
+                        <div>9 : 00 - 18:00</div>
                         <br>
-                        <div><a class="btn btn-primary" role="button" href="#">Details</a> <a class="btn btn-primary" role="button" href="#">Make reservation</a></div>
+                        <div><a class="btn btn-primary" role="button" data-bind="attr:{href:'/Restaurant/RestaurantDetail/' + Id}">Details</a> 
+                            <a class="btn btn-primary" role="button" href="#">Make reservation</a>
+                        </div>
 
                     </div>
                 </div>

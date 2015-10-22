@@ -19,9 +19,12 @@
                 <div class="list-group-item-text " style="padding: 10px;">
                     <ul class="list-unstyled list-inline ">
                         <li>
-                            <span data-bind="foreach: new Array(Food())">
+                        @for (int i = 0; i < Model.Rating; i++)
+                        {
+                            <span>
                                 <i class="fa fa-star color-green"></i>
                             </span>
+                        }
                         </li>
                         <li><i class="fa fa-comment-o"></i>
                             @Model.CommentCount reviews</li>
@@ -31,7 +34,7 @@
 
                 <div class="row">
                     <div class="col-md-9">
-                        <img class="img-responsive" src="@Url.Content(Model.PhotoUrl)" alt="">
+                        <img class="img-responsive" src="@Url.Content(Model.PhotoUrl ?? ' '.ToString())" alt="">
                     </div>
 
                 </div>

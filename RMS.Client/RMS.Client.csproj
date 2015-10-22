@@ -49,6 +49,9 @@
     <Reference Include="Autofac.Integration.Mvc">
       <HintPath>..\packages\Autofac.Mvc4.3.1.0\lib\net40\Autofac.Integration.Mvc.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac.Integration.WebApi">
+      <HintPath>..\packages\Autofac.WebApi.3.1.0\lib\net40\Autofac.Integration.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper">
       <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
@@ -268,6 +271,8 @@
     <Content Include="Scripts\jquery-ui-1.10.3.min.js" />
     <Content Include="Scripts\knockout-3.3.0.debug.js" />
     <Content Include="Scripts\knockout-3.3.0.js" />
+    <Content Include="Scripts\knockout.validation.js" />
+    <Content Include="Scripts\knockout.validation.min.js" />
     <Content Include="Scripts\moment-with-locales.js" />
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
@@ -311,8 +316,10 @@
     <Content Include="Scripts\Widgets\main.js" />
     <Content Include="Scripts\Widgets\photoCtrl\photoCtrl.html" />
     <Content Include="Scripts\Widgets\photoCtrl\photoCtrl.js" />
-    <Content Include="Scripts\Widgets\userProfileCtrl\userProfileCtrl.js" />
-    <Content Include="Scripts\Widgets\userProfileCtrl\userProfileCtrl.html" />
+    <Content Include="Scripts\Widgets\profileEditCtrl\profileEditCtrl.html" />
+    <Content Include="Scripts\Widgets\profileEditCtrl\profileEditCtrl.js" />
+    <Content Include="Scripts\Widgets\profileCtrl\profileCtrl.js" />
+    <Content Include="Scripts\Widgets\profileCtrl\profileCtrl.html" />
     <Content Include="Scripts\Widgets\reservationCtrl\reservationCtrl.html" />
     <Content Include="Scripts\Widgets\reservationCtrl\reservationCtrl.js" />
     <Content Include="Scripts\Widgets\restaurantEditCtrl\restaurantEditCtrl.html" />
@@ -341,6 +348,7 @@
     <Content Include="Views\Restaurant\RestaurantEdit.cshtml" />
     <Content Include="Scripts\jquery-2.0.2.min.map" />
     <Content Include="Views\Restaurant\DisplayTemplates\RestaurantModels.cshtml" />
+    <Content Include="Scripts\knockout.validation.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

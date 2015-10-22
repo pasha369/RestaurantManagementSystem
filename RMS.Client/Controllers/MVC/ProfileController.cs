@@ -107,6 +107,7 @@ namespace RMS.Client.Controllers.MVC
                 model.Id = user.Id;
                 model.Name = user.Name;
                 model.PhotoUrl = user.PhotoUrl;
+                model.Password = user.Password;
                 model.Phone = user.Phone.ToString();
                 model.Position = Enum.GetName(typeof(Role), user.Position);
 
@@ -123,6 +124,23 @@ namespace RMS.Client.Controllers.MVC
             var user = userManager.GetAll().FirstOrDefault(u => u.Login == login);
 
             return user;
+        }
+        [HttpPost]
+        public ActionResult ProfileEdit(ProfileModel model)
+        {
+            if(ModelState.IsValid)
+            {
+                var userManager = new UserManager();
+                var user = userManager.GetById(model.Id);
+
+                user.Name = model.Name;
+                user.Phone = user.Phone;
+                user.Password = user.Password;
+
+                userManager.Update(user);
+
+            }
+            return RedirectToAction("ProfilePage");
         }
     }
 }

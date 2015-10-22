@@ -1,9 +1,10 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
-        'Widgets/userProfileCtrl/userProfileCtrl',
+        'Widgets/profileCtrl/profileCtrl',
         'Widgets/reservationCtrl/reservationCtrl',
         'Widgets/restaurantEditCtrl/restaurantEditCtrl',
+        'Widgets/profileEditCtrl/profileEditCtrl',
         'text!Widgets/clientCtrl/clientCtrl.html'],
-    function (ko, $, userProfileCtrl, restaurantEditCtrl) {
+    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl) {
 
         $.widget("cc.client", {
 
@@ -18,10 +19,10 @@
                 self.element.html(self.options.view);
                 self._loadRestaurant();
                 
-                //$('.client-profile').userProfile();
+                $('.client-profile').userProfile();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.reserved-tbl').reservations({ RestaurantId: self.options.restaurant.Id }).hide();
-
+                $('.client-settings').settings().hide();
 
 
                 $('#btnProfile').on('click', function () {
@@ -37,6 +38,11 @@
                 $('#btnReservetions').on('click', function () {
                     self.options.current.hide();
                     self.options.current = $('.reserved-tbl');
+                    self.options.current.show();
+                });
+                $('#btnSettings').on('click', function () {
+                    self.options.current.hide();
+                    self.options.current = $('.client-settings');
                     self.options.current.show();
                 });
             },

@@ -30,12 +30,17 @@ namespace RMS.Client.Controllers.MVC
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>()
-                .ForMember(m => m.Phone,
-                    opt => opt.MapFrom(r => r.PhoneNumber.ToString()))
-                .ForMember(m => m.CommentCount,
-                    opt => opt.MapFrom(r => r.Reviews.Count()));
+                    .ForMember(m => m.Phone,
+                               opt => opt.MapFrom(r => r.PhoneNumber.ToString()));
+
 
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+                model.CommentCount = restaurant.Reviews.Count();
+                if (restaurant.Reviews.Count > 0)
+                {
+                    model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;
+                }
+
                 restaurantLst.RestaurantModels.Add(model);
             }
             return View(restaurantLst);
@@ -80,12 +85,15 @@ namespace RMS.Client.Controllers.MVC
             if (restaurant != null)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>()
-                .ForMember(m => m.Phone,
-                    opt => opt.MapFrom(r => r.PhoneNumber.ToString()))
-                .ForMember(m => m.CommentCount,
-                    opt => opt.MapFrom(r => r.Reviews.Count()));
+                    .ForMember(m => m.Phone,
+                               opt => opt.MapFrom(r => r.PhoneNumber.ToString()));
 
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+                model.CommentCount = restaurant.Reviews.Count();
+                if(restaurant.Reviews.Count > 0)
+                {
+                    model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;                    
+                }
 
                 return View(model);
             }
