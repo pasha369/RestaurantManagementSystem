@@ -19,6 +19,10 @@
                 function searchVM() {
 
                     this.Restaurants = ko.observableArray([]);
+
+                    this.search = function() {
+                        self._loadRestaurants();
+                    };
                 };
 
                 self.options.viewModel = new searchVM();
@@ -39,7 +43,9 @@
                     data: { name: $('#search-field').val() },
                     dataType: "json",
                     success: function (data) {
+                        vm.Restaurants([]);
                         $.each(data, function (key, value) {
+                            value.Description = value.Description.substring(0, 200) + '...';
                             vm.Restaurants.push(value);
                         });
                     },

@@ -22,6 +22,8 @@ namespace RMS.Client.Core.Autofac.Modules
                 .As<IDataManager<Reservation>>().InstancePerRequest();
             builder.Register(r => new UserManager())
                 .As<IDataManager<UserInfo>>().InstancePerRequest();
+            builder.Register(r => new ReservationManager())
+                .As<IDataManager<Reservation>>().InstancePerRequest();
 
             base.Load(builder);
         }

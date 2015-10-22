@@ -76,3 +76,5 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Aut
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\AutoMapper.xml
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.Mvc.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.Mvc.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.WebApi.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.WebApi.xml

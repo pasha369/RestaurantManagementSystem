@@ -22,7 +22,7 @@
                 $('.client-profile').userProfile();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.reserved-tbl').reservations({ RestaurantId: self.options.restaurant.Id }).hide();
-                $('.client-settings').settings();
+                $('.client-settings').settings().hide();
 
 
                 $('#btnProfile').on('click', function () {

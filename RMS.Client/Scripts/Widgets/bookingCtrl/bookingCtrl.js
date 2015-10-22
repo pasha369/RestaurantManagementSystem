@@ -54,7 +54,7 @@
             },
             _bookTable: function () {
                 var self = this;
-                var vm = self.options.viewModel;
+                var vm = self.options.viewModel();
 
                 var from = moment(vm.Date() + ' ' + vm.From(), "DD.MM.YYYY HH:mm").toDate();
                 var to = moment(vm.Date() + ' ' + vm.To(), "DD.MM.YYYY HH:mm").toDate();
