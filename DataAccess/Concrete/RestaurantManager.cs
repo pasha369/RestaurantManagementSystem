@@ -49,6 +49,7 @@ namespace DataAccess.Concrete
         }
         public List<DinnerTable> GetAllTable(int id)
         {
+
             var restaurant = _ctx.Restoraunts.FirstOrDefault(r => r.Id == id);
             var lstTables = new List<DinnerTable>();
             if (restaurant != null)
@@ -56,8 +57,8 @@ namespace DataAccess.Concrete
                 lstTables = restaurant.Halls.SelectMany(h => h.Tables).ToList();
             }
             return lstTables;
-        } 
+        }
 
-    
+
     }
 }

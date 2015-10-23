@@ -126,13 +126,13 @@ namespace RMS.Client.Controllers.MVC
                 var rstManager = new RestaurantManager();
                 var rsvManager = new ReservationManager();
                 var userManager = new UserManager();
-
+                var tblManager = new DinnerTableManager();
                 var table = rstManager.GetAllTable(model.RestaurantId)
                     .FirstOrDefault();
 
                 if (table != null)
                 {
-                    table.IsReserved = true;
+                    tblManager.Update(table);
 
                     var reservation = new Reservation();
 

@@ -2,8 +2,9 @@
         'jquery',
         'jquery-ui',
         'toastr',
+        'Custom/PhotoUpload',
         'text!Widgets/restaurantEditCtrl/restaurantEditCtrl.html'],
-    function (ko, $) {
+    function (ko, $, photoUpload) {
         var toastr = require('toastr');
         $.widget("cc.restaurantEdit", {
 
@@ -33,7 +34,9 @@
                 };
 
                 self.options.viewModel = new restaurantVM();
-
+                
+                PhotoUpload("#uploadImg", "/api/Image/UploadRstPic/" + self.options.restaurantId);
+                
                 ko.applyBindings(self.options.viewModel, $('#restaurant-edit')[0]);
                 self._loadRestaurant();
             },

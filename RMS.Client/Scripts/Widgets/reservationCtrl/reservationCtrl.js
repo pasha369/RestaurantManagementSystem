@@ -31,6 +31,8 @@
                     this.Date = ko.observable();
                     this.PeopleNum = ko.observable();
 
+
+
                     this.refresh = function() {
                         self._loadReservation(self.options.RestaurantId);
                     };
@@ -113,6 +115,15 @@
                                         Msg: ko.observable(v.Msg),
                                         Date: ko.observable(v.From.replace("T", " ")),
                                         PeopleNum: ko.observable(v.PeopleNum),
+                                        Status: ko.observable(v.Status),
+                                        StatusCss : ko.computed(function () {
+                                            if(this.Status == 0) {
+                                                return "new";
+                                            }
+                                            if(this.Status == 1) {
+                                                return "confirmed";
+                                            }
+                                        }, this),
                                         ColIdx: ko.observable(fromIdx),
                                         Colspan: ko.observable(toIdx - fromIdx)
                                     };

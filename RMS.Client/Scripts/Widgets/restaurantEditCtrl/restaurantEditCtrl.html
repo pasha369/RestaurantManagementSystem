@@ -1,11 +1,11 @@
 ﻿<h2>Restaurant edit page</h2>
 <div id="restaurant-edit">
     <form>
-        <fieldset>
+     
             <div class="center-block">
                 <div class="row">
-                    <div class="col-md-6 ">
-                        <img src="" class="img-responsive" data-bind="attr: { src : PhotoUrl }" />
+                    <div class="col-md-5 ">
+                        <img class="img-responsive" data-bind="attr: { src : PhotoUrl }" />
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
@@ -28,8 +28,8 @@
 
             <div class="form-group">
 
-                <input id="btnChangePhoto" class="btn-u btn-u-sm" value="Change photo" />
-
+                <!--<input id="btnChangePhoto" class="btn-u btn-u-sm" value="Change photo" />-->
+                <input type="file" class="file-upload" id="uploadImg"/>
             </div>
 
 
@@ -44,7 +44,6 @@
             <p>
                 <input type="button" class="btn btn-default" value="Save" data-bind="click: $root.saveRestaurant" />
             </p>
-        </fieldset>
     </form>
 </div>
 

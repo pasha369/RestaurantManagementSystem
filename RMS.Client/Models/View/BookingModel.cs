@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using DataModel.Model;
 
 namespace RMS.Client.Models.View
 {
@@ -23,6 +24,6 @@ namespace RMS.Client.Models.View
         public int PeopleNum { get; set; }
         public int RestaurantId { get; set; }
 
-        
+        public ReservationStatus Status { get; set; }
     }
 }

@@ -46,7 +46,7 @@ namespace DataAccess.Concrete
 
         public List<UserInfo> GetAll()
         {
-            return _ctx.UserInfos.ToList();
+                return _ctx.UserInfos.ToList();                
         }
 
         public List<UserInfo> GetAllApproved()

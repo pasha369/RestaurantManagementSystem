@@ -41,7 +41,10 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(JSON.parse(data), function (key, value) {
-                            value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            value.Description = value.Description.substring(0, 200) + '...';
+                            if (value.PhotoUrl) {
+                                value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            }
                             vm.favorites.push(value);
                         });
                     },

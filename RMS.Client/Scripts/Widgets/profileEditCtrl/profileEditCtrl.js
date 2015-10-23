@@ -1,4 +1,5 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
+        'Custom/PhotoUpload',
         'text!Widgets/profileEditCtrl/profileEditCtrl.html'],
     function (ko, $) {
 
@@ -27,6 +28,9 @@
                     };
                 };
                 self.options.viewModel = new userVM();
+
+                PhotoUpload("#uploadPhoto", "/api/Image/UploadPhoto/");
+
 
                 ko.applyBindings(self.options.viewModel, $('#profile-edit-ctrl')[0]);
                 self._loadProfile();

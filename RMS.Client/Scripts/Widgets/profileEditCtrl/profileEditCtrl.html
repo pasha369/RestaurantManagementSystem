@@ -1,14 +1,14 @@
 ﻿<div class="container-fluid" id="profile-edit-ctrl">
-    <h1>Edit Profile</h1>
+    <!--<h1>Edit Profile</h1>-->
   	<hr>
 	<div class="row">
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-          <img src="//placehold.it/100" class="avatar img-circle" alt="avatar">
+          <img src="" class="img-circle img-responsive" alt="avatar" data-bind="attr:{ src: PhotoUrl() ? PhotoUrl() : '//placehold.it/100'}">
           <h6>Upload a different photo...</h6>
-          <a class="btn-u btn-u-sm" href="#" id="btnChangePhoto">Change Picture</a>
-          <input class="form-control" type="file">
+<!--          <a class="btn-u btn-u-sm" href="#" id="btnChangePhoto">Change Picture</a>-->
+          <input class="file-upload" type="file" id="uploadPhoto">
         </div>
       </div>
       

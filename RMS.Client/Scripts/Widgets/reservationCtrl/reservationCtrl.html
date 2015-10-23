@@ -5,6 +5,12 @@
         overflow: auto;
         white-space: nowrap;
     }
+    .new {
+        background: red;
+    }
+    .confirmed {
+        background: greenyellow;
+    }
 </style>
 <div id="reservations">
     <div class="container-fluid">
@@ -46,7 +52,7 @@
                     <!-- /ko -->
 
                     <!-- ko if: $data -->
-                    <td data-bind="attr: {colspan: Colspan}" style="background: orange">
+                    <td data-bind="attr: {colspan: Colspan, class : StatusCss}"  >
                         <div>
                             <h4><span data-bind="text: Fullname"></span>
                                 <a href="#"><span class="pull-right fa fa-check "></span></a>
