@@ -6,107 +6,151 @@
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
-
-<!--=== Content Part ===-->
-<div class="container content">
-    <div class="row">
-        <!-- Left Sidebar -->
-        <div class="col-md-12 md-margin-bottom-60">
-            <!--Blog Post-->
-            <div class="blog margin-bottom-60">
-                <h1>@Html.DisplayFor(model => model.Name), <small>Alabama</small></h1>
-
-                <div class="list-group-item-text " style="padding: 10px;">
-                    <ul class="list-unstyled list-inline ">
-                        <li>
+<style>
+    #btnFavorite {
+        position: absolute;
+        top: 2%;
+        margin: 2%;
+        right: 2%;
+    }
+    .fixed {
+        position: fixed;
+    }
+</style>
+<div class="container-fluid margin-bottom-20">
+    <div class="col-md-2">
+        <ul class="nav fixed navbar-left hidden-xs hidden-sm">
+            <li><a href="#About" class="navbar-link">About</a></li>
+            <li><a href="#Reviews" class="navbar-link">Reviews</a></li>
+            <li><a href="#Reservation" class="navbar-link">Make reservation</a></li>
+        </ul>
+    </div>
+    <div class="col-md-10 pull-right">
+        <div id="About">
+            <h1>@Html.DisplayFor(model => model.Name), <small>Alabama</small></h1>
+            <div class="list-group-item-text " style="padding: 10px;">
+                <ul class="list-unstyled list-inline ">
+                    <li>
                         @for (int i = 0; i < Model.Rating; i++)
                         {
                             <span>
                                 <i class="fa fa-star color-green"></i>
                             </span>
                         }
-                        </li>
-                        <li><i class="fa fa-comment-o"></i>
-                            @Model.CommentCount reviews</li>
-                        <button id="btnFavorite" class="pull-right btn btn-default "><i class="fa fa-thumbs-up">Add to Favorites</i></button>
-                    </ul>
-                </div>
+                    </li>
+                    <li><i class="fa fa-comment-o"></i>
+                        @Model.CommentCount reviews</li>
+                </ul>
+            </div>
+            <div class="row ">
+                <div class="col-md-6 margin-bottom-20">
 
+
+                    <img class="img-responsive" src='@Url.Content(Model.PhotoUrl ?? "//placehold.it/600")' alt="">
+
+                    <button id="btnFavorite" class="pull-right btn btn-default ">
+                        <i class="fa fa-thumbs-up">Add to Favorites</i>
+                    </button>
+
+                </div>
+                <div class="col-md-6 ">
+                    <div class="fadeInRight animated">
+                        <header class="center-icon text-center">
+                            <h1><span>About</span> Us</h1>
+                            @*icon*@
+                            <div class="text-center ">
+                                <ul class="list-unstyled list-inline">
+                                    <li>
+                                        <address>
+                                            <i class="fa fa-location-arrow"></i>
+                                            507 Calles Street
+                                            Austin, TX, 78702
+                                        </address>
+                                    </li>
+                                    <li><i class="fa fa-phone"></i>@Model.Phone</li>
+                                </ul>
+                            </div>
+                        </header>
+                        <div class="contents">
+                            <h3>Welcome To @Model.Name.</h3>
+                            <p>@Model.Description</p>
+                        </div>
+                        <!-- /contents -->
+                    </div>
+                    <!-- /contents-container -->
+                </div>
+                <!-- /col-md-6 -->
+            </div>
+        </div>
+
+
+        <div class="col-md-12" id="Reviews">
+            <hr>
+            <div id="comment"></div>
+            <hr>
+        </div>
+
+
+
+        <div class="col-md-12">
+            <!-- Comment Form -->
+            <div class="comment-form"></div>
+            <!-- End Comment Form -->
+        </div>
+
+        <section class="section-block" >
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-9">
-                        <img class="img-responsive" src="@Url.Content(Model.PhotoUrl ?? ' '.ToString())" alt="">
+                    <div class="col-md-12 text-center">
+                        <h2 class="title">Reservations</h2>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3 ">
+                        <div>
+                            Booking a table has never been so easy with free &amp; instant online restaurant reservations, booking now!!
+                        </div>
+                    </div>
+                    <div class="col-md-12 contents-container text-center" id="Reservation">
+
+                        <h4><span>Open Hours</span></h4>
+                        <div class="voffset50"></div>
+                        <p><strong>Sunday to Tuesday</strong> 09.00 - 24:00 <strong>Friday and Sunday</strong> 08:00 - 03.00</p>
+                        <h3 class=""><i class="fa fa-phone"></i>@Html.DisplayFor(m => m.Phone)</h3>
+                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#book-now">Make reservation</button>
+
                     </div>
 
-                </div>
-                <h2 class="margin-top-20"><b>About @Model.Name</b></h2>
-                <hr />
-                <div class="col-md-8">
-                    <p>
-                        @Html.DisplayFor(model => model.Description)
-                    </p>
-                </div>
-                <div class="col-md-3">
-                    <ul class="list-unstyled bg-grey" style="padding: 20px">
-                        <li>
-                            <address>
-                                <i class="fa fa-location-arrow"></i>
-                                507 Calles Street
-                                Austin, TX, 78702
-                            </address>
-                        </li>
-                        <li><i class="fa fa-phone"></i>@Model.Phone</li>
-                    </ul>
-                </div>
-                <div class="col-md-12 ">
-                    @*<a href="@Url.Action("BookTable", new { @Id = Model.Id })" class="btn btn-lg btn-primary centered" >Make reservation</a>*@
 
+                    <div class="col-md-12 jt_col column_container">
+                        <div class="voffset60"></div>
+                        <div class="ornament"></div>
+                    </div>
                 </div>
 
             </div>
-            <!--End Blog Post-->
-
-            <div class="col-md-12">
-                <hr>
-                <div id="comment"></div>
-                <hr>
-            </div>
-
-            <div class="col-md-12">
-                <!-- Comment Form -->
-                <div class="comment-form"></div>
-                <!-- End Comment Form -->
-            </div>
-        </div>
-        <!-- End Left Sidebar -->
+        </section>
 
     </div>
-    <!--/row-->
 </div>
-<!--/container-->
-<!--=== End Content Part ===-->
 
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Make reservation</button>
 
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Make reservation</h4>
-      </div>
-        <div class="modal-body">
-            <div class="">
-                <div id="book-table-context"></div>            
+<div id="book-now" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Make reservation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div id="book-table-context"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
             </div>
         </div>
-      <div class="modal-footer">
-        
-      </div>
     </div>
-
-  </div>
 </div>
 
 @section Scripts {
@@ -117,31 +161,31 @@
                 "Widgets/commentLstCtrl/commentLstCtrl",
                 "Widgets/commentCtrl/commentCtrl",
                 "Widgets/bookingCtrl/bookingCtrl"
-                ],
+        ],
             function ($) {
-                
-                
+
+
                 $(document).ready(function () {
                     var eventTrigger = new EventTrigger();
                     $("#comment").commentList({ RestaurantId: "@Model.Id", eventTrigger: eventTrigger });
                     $('.comment-form').comment({ restaurantId: "@Model.Id", eventTrigger: eventTrigger });
                     $('#book-table-context').booking({ restaurantId: "@Model.Id" });
-                    
-                $('#btnFavorite').on('click', function () {
-                    $.ajax({
-                        type: 'POST',
-                        url: '/Restaurant/AddFavorite/' + '@Model.Id',
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function () {
-                            console.log('AddFavorite: success');
-                        },
-                        error: function (err) {
-                            console.log(err.status + " : " + err.statusText);
-                        }
+
+                    $('#btnFavorite').on('click', function () {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/Restaurant/AddFavorite/' + '@Model.Id',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function () {
+                                console.log('AddFavorite: success');
+                            },
+                            error: function (err) {
+                                console.log(err.status + " : " + err.statusText);
+                            }
+                        });
                     });
                 });
-            });
             });
     </script>
 }

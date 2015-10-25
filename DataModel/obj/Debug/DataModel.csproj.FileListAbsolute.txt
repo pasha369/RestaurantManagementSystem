@@ -22,7 +22,6 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\bin\Debu
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\bin\Debug\EntityFramework.xml
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.Init.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.ModReservation.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.photo.resources
@@ -34,3 +33,6 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debu
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.pdb
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.status.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.date.resources
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.UserInfo.resources
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.PhoneNumber.resources

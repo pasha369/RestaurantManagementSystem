@@ -14,9 +14,6 @@ namespace RMS.Admin.Pages.Forms
     public partial class RestaurantEdit : System.Web.UI.Page
     {
         public static List<DataModel.Model.Cuisine> Cuisines = new List<DataModel.Model.Cuisine>();
-        DropDownList _ddlCuisines;
-        DropDownList _ddlCountry;
-        DropDownList _ddlCity;
 
         static RestorauntModel restorauntModel = new RestorauntModel();
 
@@ -55,7 +52,7 @@ namespace RMS.Admin.Pages.Forms
 
             restaurant = restManager.GetById(restorauntModel.Id);
             restaurant.Name = txtName.Text;
-            restaurant.PhoneNumber = Convert.ToInt32(txtPhone.Text);
+            restaurant.PhoneNumber = txtPhone.Text;
             if (restaurant.Adress == null)
                 restaurant.Adress = new DataModel.Model.Address();
             if (GetDdlValue(fvRestorauntEdit, "ddlCity") != -1)

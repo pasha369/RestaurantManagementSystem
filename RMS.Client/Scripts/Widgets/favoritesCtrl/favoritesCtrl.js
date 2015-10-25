@@ -1,7 +1,7 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
-        'toastr',
+        'toastr','Widgets/bookingCtrl/bookingCtrl',
         'text!Widgets/favoritesCtrl/favoritesCtrl.html'],
-    function (ko, $, preloader) {
+    function (ko, $) {
         var toastr = require('toastr');
 
         $.widget("cc.favorites", {
@@ -22,6 +22,9 @@
 
                     this.remove = function(item) {
                         self._removeFavorite(item);
+                    };
+                    this.reserve = function (item) {
+                        $('#book-table-context').booking({ restaurantId: item.Id });
                     };
                 };
 

@@ -84,6 +84,14 @@
     <Compile Include="RestorauntContextMigrations\201510171537231_date.Designer.cs">
       <DependentUpon>201510171537231_date.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201510231503248_UserInfo.cs" />
+    <Compile Include="RestorauntContextMigrations\201510231503248_UserInfo.Designer.cs">
+      <DependentUpon>201510231503248_UserInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201510231538315_PhoneNumber.cs" />
+    <Compile Include="RestorauntContextMigrations\201510231538315_PhoneNumber.Designer.cs">
+      <DependentUpon>201510231538315_PhoneNumber.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -116,6 +124,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201510171537231_date.resx">
       <DependentUpon>201510171537231_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201510231503248_UserInfo.resx">
+      <DependentUpon>201510231503248_UserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201510231538315_PhoneNumber.resx">
+      <DependentUpon>201510231538315_PhoneNumber.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

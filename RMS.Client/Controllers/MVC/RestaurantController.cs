@@ -69,7 +69,7 @@ namespace RMS.Client.Controllers.MVC
 
                 restaurant.Name = model.Name;
                 restaurant.Description = model.Description;
-                restaurant.PhoneNumber = Convert.ToInt32(model.Phone);
+                restaurant.PhoneNumber = model.Phone;
 
                 _rstManager.Update(restaurant);
                 return RedirectToAction("RestaurantDetail", "Restaurant", new { Id = model.Id });
@@ -145,10 +145,10 @@ namespace RMS.Client.Controllers.MVC
                     reservation.Table = table;
                     rsvManager.Add(reservation);
 
-                    return RedirectToAction("RestaurantDetail", new { @Id = 1 });
+                    return Json(RedirectToAction("RestaurantDetail", new { @Id = 1 }));
                 }
             }
-            return View(model);
+            return Json("");
         }
 
         public ActionResult GetRestaurantByClient()

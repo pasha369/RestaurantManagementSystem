@@ -56,7 +56,9 @@
                         vm.Title(data.Name);
                         vm.Phone(data.Phone);
                         vm.Description(data.Description);
-                        vm.PhotoUrl(data.PhotoUrl.replace("~", ""));
+                        if (data.PhotoUrl) {
+                            vm.PhotoUrl(data.PhotoUrl.replace("~", ""));
+                        }
 
                     },
                     error: function (err) {

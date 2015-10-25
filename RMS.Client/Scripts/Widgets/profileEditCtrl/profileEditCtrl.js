@@ -1,8 +1,9 @@
-﻿define(['knockout', 'jquery', 'jquery-ui',
+﻿define(['knockout', 'jquery', 'jquery-ui', 'toastr',
         'Custom/PhotoUpload',
         'text!Widgets/profileEditCtrl/profileEditCtrl.html'],
     function (ko, $) {
-
+        var toastr = require('toastr');
+        
         $.widget("cc.settings", {
 
             options: {
@@ -22,6 +23,11 @@
                     this.Password = ko.observable();
                     this.Position = ko.observable();
                     this.PhotoUrl = ko.observable();
+                    
+                    this.Email = ko.observable();
+                    this.Skype = ko.observable();
+                    this.Facebook = ko.observable();
+                    this.About = ko.observable();
 
                     this.saveProfile = function() {
                         self._saveProfile();
@@ -45,11 +51,17 @@
                     url: '/Profile/GetUser',
                     datatype: 'json',
                     success: function (data) {
+                        
                         vm.Id(data.Id);
                         vm.Name(data.Name);
                         vm.Password(data.Password);
                         vm.Phone(data.Phone);
                         vm.Position(data.Position);
+                        vm.Email(data.Email);
+                        vm.Facebook(data.Facebook);
+                        vm.About(data.About);
+                        vm.Skype(data.Skype);
+                        
                         if (data.PhotoUrl) {
                             vm.PhotoUrl(data.PhotoUrl.replace('~', ''));
                         }
@@ -70,10 +82,14 @@
                         Id: vm.Id,
                         Name: vm.Name,
                         Password: vm.Password,
+                        Skype: vm.Skype,
+                        Email: vm.Email,
+                        Facebook: vm.Facebook,
+                        About: vm.About,
                         Phone: vm.Phone
                     },
                     success: function () {
-                        
+                        toastr.success("Saved successful");
                     },
                     error: function (err) {
                         console.log(err.status + " : " + err.statusText);

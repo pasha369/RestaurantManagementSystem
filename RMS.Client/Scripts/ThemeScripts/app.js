@@ -21,9 +21,9 @@ var App = function () {
 
     //Header Mega Menu
     function handleMegaMenu() {
-        jQuery(document).on('click', '.mega-menu .dropdown-menu', function(e) {
+        jQuery(document).on('click', '.mega-menu .dropdown-menu', function (e) {
             e.stopPropagation();
-        })
+        });
     }
 
     //Search Box (Header)

@@ -24,6 +24,14 @@ namespace DataModel.Contexts
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // remove any children first
+            //modelBuilder.Entity<Restaurant>()
+            //    .HasOptional(a => a.Halls)
+            //    .WithOptionalDependent()
+            //    .WillCascadeOnDelete(true);
+            //modelBuilder.Entity<Hall>()
+            //    .HasOptional(a => a.Tables)
+            //    .WithOptionalDependent()
+            //    .WillCascadeOnDelete(true);
 
             base.OnModelCreating(modelBuilder);
         }

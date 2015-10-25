@@ -79,7 +79,7 @@ namespace RMS.Client.Controllers.WebApi
 
             reservarion.Status = ReservationStatus.Confirmed;
 
-            rsvManager.Delete(reservarion);
+            rsvManager.Update(reservarion);
         }
     }
 }

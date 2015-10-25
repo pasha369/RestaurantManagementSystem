@@ -14,7 +14,7 @@ namespace DataAccess.Concrete
 {
     public class ReservationManager : IDataManager<Reservation>
     {
-        private RestorauntDbContext _ctx =  RestorauntDbContext.context;
+        private static  RestorauntDbContext _ctx =  RestorauntDbContext.context;
 
         public void Delete(Reservation item)
         {

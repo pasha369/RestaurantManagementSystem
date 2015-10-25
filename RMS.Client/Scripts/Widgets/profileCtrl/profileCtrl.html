@@ -11,8 +11,7 @@
                 <h2 data-bind="text: Name"></h2>
                 <span><strong>Position:</strong> <span data-bind="text: Position"></span></span>
                 <hr>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget massa nec turpis congue bibendum. Integer nulla felis, porta suscipit nulla et, dignissim commodo nunc. Morbi a semper nulla.</p>
-                <p>Proin mauris odio, pharetra quis ligula non, vulputate vehicula quam. Nunc in libero vitae nunc ultricies tincidunt ut sed leo. Sed luctus dui ut congue consequat. Cras consequat nisl ante, nec malesuada velit pellentesque ac. Pellentesque nec arcu in ipsum iaculis convallis.</p>
+                <p data-bind="text: About"></p>
             </div>
         </div>
     </div>
@@ -30,14 +29,15 @@
                 </div>
                 <div class="panel-body">
                     <ul class="list-unstyled social-contacts-v2 list-inline">
-                        <li><i class="rounded-x tw fa fa-twitter"></i><a href="#">edward.rooster</a></li>
-                        <li><i class="rounded-x fb fa fa-facebook"></i><a href="#">Edward Rooster</a></li>
-                        <li><i class="rounded-x sk fa fa-skype"></i><a href="#">edwardRooster77</a></li>
+                        <li><i class="rounded-x fb fa fa-facebook"></i>
+                            <a href="#" data-bind="text: Facebook"></a></li>
+                        <li><i class="rounded-x sk fa fa-skype"></i>
+                            <a href="#" data-bind="text: Skype"></a></li>
                         <li><i class="rounded-x gp fa fa-phone"></i>
-                            <span data-bind="Phone"></span>
-
+                            <span data-bind="text: Phone"></span>
                         </li>
-                        <li><i class="rounded-x gm fa fa-envelope"></i><a href="#">edward77@gmail.com</a></li>
+                        <li><i class="rounded-x gm fa fa-envelope"></i>
+                            <a href="#" data-bind="text: Email"></a></li>
                     </ul>
                 </div>
             </div>

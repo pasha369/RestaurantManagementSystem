@@ -22,7 +22,7 @@
                 
                 $('#btnProfile').on('click', function () {
                     self.options.current.hide();
-                    self.options.current = $('.user-profile');
+                    self.options.current = $('.user-profile').userProfile("LoadProfile");
                     self.options.current.show();
                 });
                 $('#btnFavorite').on('click', function () {

@@ -21,7 +21,8 @@
                 self.element.html(this.options.view);
 
                 function ReservationVM() {
-
+                    this.Client = ko.observable();
+                    
                     this.Tables = ko.observableArray([]);
                     this.Times = ko.observableArray([]);
 
@@ -36,11 +37,15 @@
                     this.refresh = function() {
                         self._loadReservation(self.options.RestaurantId);
                     };
-                    this.apply = function(parameters) {
-
+                    this.apply = function(item) {
+                        self._applyReservation(item);
                     };
                     this.remove = function (item) {
                         self._removeReservation(item);
+                    };
+                    this.detail = function(item) {
+                        self.options.reservationVM.Client(item);
+
                     };
 
                 };
@@ -52,8 +57,18 @@
                 self._loadReservation(this.options.RestaurantId);
 
             },
-            _applyReservation: function(item) {
-               
+            _applyReservation: function (item) {
+                var self = this;
+                $.ajax({
+                    type: "POST",
+                    url: '/api/Reservation/ApplyReservation/' + item.Id(),
+                    success: function() {
+                        self._loadReservation(self.options.RestaurantId);
+                    },
+                    error: function(err) {
+                        console.log(err.status);
+                    },
+                });
             },
             _removeReservation: function (item) {
                 var self = this;

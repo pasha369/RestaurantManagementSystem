@@ -46,6 +46,7 @@ namespace DataAccess.Concrete
 
         public List<UserInfo> GetAll()
         {
+
                 return _ctx.UserInfos.ToList();                
         }
 

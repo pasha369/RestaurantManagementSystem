@@ -44,7 +44,7 @@ namespace DataAccess.Concrete
 
         public List<Restaurant> GetAll()
         {
-            return _ctx.Restoraunts
+            return _ctx.Restoraunts.Include("Halls")
                 .ToList();
         }
         public List<DinnerTable> GetAllTable(int id)

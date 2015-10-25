@@ -14,13 +14,20 @@ namespace DataModel.Model
         [MaxLength(60)]
         public string Login { set; get; }
         public string PhotoUrl { get; set; }
-        public string Email { get; set; }
+
         [MaxLength(60)]
         public string Password { set; get; }
-        [DataType(DataType.PhoneNumber)]
-        public int Phone { set; get; }
-        public bool IsBanned { set; get; }
+
         public Role Position { set; get; }
+        // Contacts
+        public string About { get; set; }
+        public string Email { get; set; }
+        public string Facebook { get; set; }
+        public string Skype { get; set; }
+        [DataType(DataType.PhoneNumber)]
+        public string Phone { set; get; }
+
+        public bool IsBanned { set; get; }
     }
     [Table("CustomerInfo")]
     public class CustomerInfo:UserInfo
