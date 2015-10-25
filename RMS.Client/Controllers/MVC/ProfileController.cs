@@ -108,7 +108,12 @@ namespace RMS.Client.Controllers.MVC
                 model.Name = user.Name;
                 model.PhotoUrl = user.PhotoUrl;
                 model.Password = user.Password;
-                model.Phone = user.Phone.ToString();
+                model.About = user.About;
+                model.Email = user.Email;
+                model.Facebook = user.Facebook;
+                model.Skype = user.Skype;
+                model.Phone = user.Phone;
+
                 model.Position = Enum.GetName(typeof(Role), user.Position);
 
                 return Json(model, JsonRequestBehavior.AllowGet);
@@ -134,8 +139,13 @@ namespace RMS.Client.Controllers.MVC
                 var user = userManager.GetById(model.Id);
 
                 user.Name = model.Name;
-                user.Phone = user.Phone;
-                user.Password = user.Password;
+                user.About = model.About;
+
+                user.Email = model.Email;
+                user.Phone = model.Phone;
+                user.Facebook = model.Facebook;
+                user.Password = model.Password;
+                user.Skype = model.Skype;
 
                 userManager.Update(user);
 

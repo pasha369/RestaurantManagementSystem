@@ -1,66 +1,66 @@
 ﻿<RecentFiles>
   <RecentFiles>
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:commentLstCtrl/f:commentLstCtrl.js" caret="2984" fromTop="9" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:SearchController.cs" caret="440" fromTop="9" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:ProfileController.cs" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:AccountController.cs" caret="2065" fromTop="18" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:clientCtrl/f:clientCtrl.js" caret="1108" fromTop="7" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:photoCtrl/f:photoCtrl.html" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:RestaurantModel.cs" caret="358" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantEdit.cshtml" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantDetail.cshtml" caret="739" fromTop="8" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantList.cshtml" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/d:DisplayTemplates/f:RestaurantModels.cshtml" caret="491" fromTop="14" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:photoCtrl/f:photoCtrl.js" caret="1147" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:searchCtrl/f:searchCtrl.js" caret="887" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.html" caret="2467" fromTop="13" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.js" caret="2520" fromTop="12" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ClientManager.cs" caret="1268" fromTop="11" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:UserDataManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ReviewManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:RestaurantManager.cs" caret="0" fromTop="0" />
+    <File id="D9832E98-D8C7-4FC8-9096-440FBCEBC7B7/d:Contexts/f:RestorauntContext.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:HallManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:CityManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:CountryManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:CuisineManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:DinnerTableManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:FavoriteManager.cs" caret="0" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:MessageManager.cs" caret="0" fromTop="0" />
+    <File id="93A97112-7E44-49F7-8443-717DE5547D01/d:Pages/d:Contents/f:Address.aspx" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.js" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:searchCtrl/f:searchCtrl.html" caret="0" fromTop="0" />
-    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:UserManager.cs" caret="1440" fromTop="11" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ReservationController.cs" caret="502" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantList.cshtml" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Home/f:Index.cshtml" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:userCtrl/f:userCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:clientCtrl/f:clientCtrl.html" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileCtrl/f:profileCtrl.html" caret="114" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:userCtrl/f:userCtrl.html" caret="844" fromTop="17" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileEditCtrl/f:profileEditCtrl.html" caret="1908" fromTop="8" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileCtrl/f:profileCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:favoritesCtrl/f:favoritesCtrl.html" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/d:DisplayTemplates/f:RestaurantModels.cshtml" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileEditCtrl/f:profileEditCtrl.html" caret="0" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:bookingCtrl/f:bookingCtrl.html" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:commentCtrl/f:commentCtrl.html" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="13347" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:bookingCtrl/f:bookingCtrl.html" caret="403" fromTop="7" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Account/f:Register.cshtml" caret="2866" fromTop="6" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Account/f:Register.cshtml" caret="0" fromTop="0" />
     <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Account/f:Login.cshtml" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:restaurantEditCtrl/f:restaurantEditCtrl.html" caret="0" fromTop="0" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:RestaurantController.cs" caret="2964" fromTop="13" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ContextManager.cs" caret="1086" fromTop="23" />
   </RecentFiles>
   <RecentEdits>
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:ReservationLst.cs" caret="245" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:ReservedTable.cs" caret="222" fromTop="9" />
-    <File id="D9832E98-D8C7-4FC8-9096-440FBCEBC7B7/d:Model/f:Restaurant.cs" caret="3035" fromTop="14" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantList.cshtml" caret="1865" fromTop="14" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:RestaurantLst.cs" caret="246" fromTop="10" />
-    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ReservationManager.cs" caret="1190" fromTop="15" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/f:main.js" caret="384" fromTop="9" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:bookingCtrl/f:bookingCtrl.html" caret="1165" fromTop="19" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:bookingCtrl/f:bookingCtrl.js" caret="1093" fromTop="12" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:BookingModel.cs" caret="635" fromTop="15" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="13347" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileCtrl/f:profileCtrl.html" caret="294" fromTop="7" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:userCtrl/f:userCtrl.html" caret="1300" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileCtrl/f:profileCtrl.js" caret="77" fromTop="1" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileEditCtrl/f:profileEditCtrl.html" caret="1651" fromTop="2" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:ProfileController.cs" caret="4109" fromTop="16" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:ProfileModel.cs" caret="502" fromTop="14" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:profileEditCtrl/f:profileEditCtrl.js" caret="1622" fromTop="5" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:userCtrl/f:userCtrl.js" caret="817" fromTop="9" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:clientCtrl/f:clientCtrl.html" caret="1589" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:searchCtrl/f:searchCtrl.html" caret="1279" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:clientCtrl/f:clientCtrl.js" caret="1107" fromTop="7" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:searchCtrl/f:searchCtrl.js" caret="683" fromTop="1" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:WebApi/f:ReservationController.cs" caret="399" fromTop="5" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.html" caret="2649" fromTop="21" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.js" caret="2519" fromTop="12" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Models/d:View/f:RestaurantModel.cs" caret="358" fromTop="10" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/d:DisplayTemplates/f:RestaurantModels.cshtml" caret="1279" fromTop="21" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantDetail.cshtml" caret="739" fromTop="8" />
-    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Controllers/d:MVC/f:RestaurantController.cs" caret="2964" fromTop="13" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:favoritesCtrl/f:favoritesCtrl.html" caret="944" fromTop="4" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/d:DisplayTemplates/f:RestaurantModels.cshtml" caret="370" fromTop="13" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:favoritesCtrl/f:favoritesCtrl.js" caret="972" fromTop="14" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:searchCtrl/f:searchCtrl.html" caret="1520" fromTop="13" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:searchCtrl/f:searchCtrl.js" caret="84" fromTop="1" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:ThemeScripts/f:app.js" caret="823" fromTop="9" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantDetail.cshtml" caret="499" fromTop="5" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:clientCtrl/f:clientCtrl.html" caret="169" fromTop="5" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:userCtrl/f:userCtrl.html" caret="167" fromTop="4" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Home/f:Index.cshtml" caret="1804" fromTop="0" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Restaurant/f:RestaurantList.cshtml" caret="1109" fromTop="11" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Views/d:Shared/f:_BaseLayout.cshtml" caret="11219" fromTop="16" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.js" caret="1701" fromTop="6" />
+    <File id="5CEBB590-789F-4CA0-901D-744A1E7CF119/d:Scripts/d:Widgets/d:reservationCtrl/f:reservationCtrl.html" caret="5438" fromTop="12" />
+    <File id="D9832E98-D8C7-4FC8-9096-440FBCEBC7B7/d:Contexts/f:RestorauntContext.cs" caret="344" fromTop="8" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:AuthRepository.cs" caret="634" fromTop="17" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ClientManager.cs" caret="320" fromTop="6" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:CountryManager.cs" caret="397" fromTop="12" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:CuisineManager.cs" caret="411" fromTop="6" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:DinnerTableManager.cs" caret="1797" fromTop="24" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:FavoriteManager.cs" caret="373" fromTop="13" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:HallManager.cs" caret="392" fromTop="12" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:MessageManager.cs" caret="1207" fromTop="19" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:UserDataManager.cs" caret="443" fromTop="3" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ReviewManager.cs" caret="369" fromTop="8" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:RestaurantManager.cs" caret="404" fromTop="6" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:CityManager.cs" caret="312" fromTop="12" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ReservationManager.cs" caret="471" fromTop="5" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:UserManager.cs" caret="1134" fromTop="0" />
+    <File id="AF04C272-4734-4B66-AA9D-FE02F236833D/d:Concrete/f:ContextManager.cs" caret="33" fromTop="1" />
   </RecentEdits>
 </RecentFiles>

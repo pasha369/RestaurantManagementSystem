@@ -40,9 +40,6 @@
             $(document).ready(function() {
                 $('#btnFind').on('click', function () {
                     
-                    $('.search-block').addClass('search-result');
-                    $('.search-block').removeClass('search-block');
-                    
                     $('.search-result').search({
                         name: $('#search-field').val(),
                     });

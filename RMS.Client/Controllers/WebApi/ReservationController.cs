@@ -51,6 +51,7 @@ namespace RMS.Client.Controllers.WebApi
                                      Fullname = r.User.Name,
                                      Msg = r.SpecialRequest,
                                      PeopleNum = r.PeopleCount,
+                                     Status = r.Status,
                                      Phone = r.User.Phone.ToString()
                                  })
                                  .ToList();
@@ -78,7 +79,7 @@ namespace RMS.Client.Controllers.WebApi
 
             reservarion.Status = ReservationStatus.Confirmed;
 
-            rsvManager.Delete(reservarion);
+            rsvManager.Update(reservarion);
         }
     }
 }

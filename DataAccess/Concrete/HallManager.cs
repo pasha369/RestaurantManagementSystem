@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
 {
     public class HallManager : IDataManager<Hall>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Hall item)
         {
@@ -40,7 +40,9 @@ namespace DataAccess.Concrete
 
         public List<Hall> GetAll()
         {
-            return _ctx.Halls.Include("Tables").ToList();
+            return _ctx.Halls
+                .Include("Tables")
+                .Include("Restaurant").ToList();
         }
 
         public Hall GetById(int Id)

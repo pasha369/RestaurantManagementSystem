@@ -27,7 +27,7 @@
 
                 $('#btnProfile').on('click', function () {
                     self.options.current.hide();
-                    self.options.current = $('.client-profile');
+                    self.options.current = $('.client-profile').userProfile("LoadProfile");;
                     self.options.current.show();
                 });
                 $('#btnRestaurant').on('click', function () {

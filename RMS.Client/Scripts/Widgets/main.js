@@ -9,6 +9,7 @@
         "datepicker": "ThemeScripts/plugins/datepicker",
         'toastr': 'toastr.min',
         'moment': 'moment.min',
+        'owl-carousel': 'ThemeScripts/owl-carousel/owl.carousel',
     },
 
 

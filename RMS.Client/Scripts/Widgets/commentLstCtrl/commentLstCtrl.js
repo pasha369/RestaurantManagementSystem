@@ -3,15 +3,14 @@
         'jquery-ui',
         'text!Widgets/commentLstCtrl/commentLstCtrl.html'],
     function (ko, $) {
-
         $.widget("cc.commentList", {
 
             // These options will be used as defaults
             options: {
                 view: require('text!Widgets/commentLstCtrl/commentLstCtrl.html'),
-                viewModel : null,
+                viewModel: null,
                 RestaurantId: "-1",
-                eventTrigger : null,
+                eventTrigger: null,
             },
 
             // Set up the widget
@@ -19,19 +18,24 @@
                 this.element.html(this.options.view);
 
                 var self = this;
-                function commentListVM (){
-                    
+                function commentListVM() {
+
                     this.Reviews = ko.observableArray([]);
                 };
 
                 self.options.viewModel = new commentListVM();
-                
+
+                // Attach to event for react on new review
                 self.options.eventTrigger.attach(self._refresh, this);
-                
+
+
+
                 ko.applyBindings(self.options.viewModel, $("#comment-list")[0]);
+
+
                 self._loadReviews(self.options.RestaurantId);
             },
-            
+
             _loadReviews: function () {
                 var self = this;
                 var url = '/api/Review/GetAll/' + self.options.RestaurantId;
@@ -64,7 +68,7 @@
                     }
                 });
             },
-            _refresh: function(review) {
+            _refresh: function (review) {
                 var self = this;
                 function Review(review) {
                     this.Id = ko.observable(review.Id);

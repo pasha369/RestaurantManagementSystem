@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
 {
     public class RestaurantManager : IDataManager<Restaurant>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Restaurant item)
         {
@@ -44,11 +44,13 @@ namespace DataAccess.Concrete
 
         public List<Restaurant> GetAll()
         {
-            return _ctx.Restoraunts
+            return _ctx.Restoraunts.Include("Halls")
+                .Include("Cuisines")
                 .ToList();
         }
         public List<DinnerTable> GetAllTable(int id)
         {
+
             var restaurant = _ctx.Restoraunts.FirstOrDefault(r => r.Id == id);
             var lstTables = new List<DinnerTable>();
             if (restaurant != null)
@@ -56,8 +58,8 @@ namespace DataAccess.Concrete
                 lstTables = restaurant.Halls.SelectMany(h => h.Tables).ToList();
             }
             return lstTables;
-        } 
+        }
 
-    
+ 
     }
 }

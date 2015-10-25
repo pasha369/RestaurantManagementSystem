@@ -1,50 +1,51 @@
-﻿<h2>Restaurant edit page</h2>
-<div id="restaurant-edit">
-    <form>
-        <fieldset>
-            <div class="center-block">
-                <div class="row">
-                    <div class="col-md-6 ">
-                        <img src="" class="img-responsive" data-bind="attr: { src : PhotoUrl }" />
+﻿
+<div id="restaurant-edit" class="panel">
+
+    <form class="panel-body">
+        <h2 data-bind="text: Title" ></h2>
+
+        <div class="center-block">
+            <div class="row">
+                <div class="col-md-5 ">
+                    <img class="img-responsive" data-bind="attr: { src : PhotoUrl }" />
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Name">Name:</label>
+                        <input type="text" name="Name" class="form-control"
+                               data-bind="value: Title" />
+
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="Name">Name:</label>
-                            <input type="text" name="Name" class="form-control"
-                                   data-bind="value: Title" />
 
-                        </div>
+                    <div class="form-group">
+                        <label for="Phone">Phone:</label>
+                        <input name="Phone" type="tel"
+                               class="form-control" data-bind="value: Phone" />
 
-                        <div class="form-group">
-                            <label for="Phone">Phone:</label>
-                            <input name="Phone" type="number"
-                                   class="form-control" data-bind="value: Phone" />
-
-                        </div>
                     </div>
                 </div>
             </div>
-            <input type="hidden" id="rstId" data-bind="value: Id" />
+        </div>
+        <input type="hidden" id="rstId" data-bind="value: Id" />
 
-            <div class="form-group">
+        <div class="form-group">
 
-                <input id="btnChangePhoto" class="btn-u btn-u-sm" value="Change photo" />
+            <!--<input id="btnChangePhoto" class="btn-u btn-u-sm" value="Change photo" />-->
+            <input type="file" class="file-upload" id="uploadImg"/>
+        </div>
 
-            </div>
 
+        <div class="form-group">
+            <label for="Description">Description:</label>
+            <textarea rows="15"
+                      name="Description" class="form-control"
+                      data-bind="value: Description" />
 
-            <div class="form-group">
-                <label for="Description">Description:</label>
-                <textarea rows="15"
-                    name="Description" class="form-control"
-                    data-bind="value: Description" />
+        </div>
 
-            </div>
-
-            <p>
-                <input type="button" class="btn btn-default" value="Save" data-bind="click: $root.saveRestaurant" />
-            </p>
-        </fieldset>
+        <p>
+            <input type="button" class="btn btn-default" value="Save" data-bind="click: $root.saveRestaurant" />
+        </p>
     </form>
 </div>
 

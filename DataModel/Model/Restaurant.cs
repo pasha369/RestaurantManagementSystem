@@ -14,9 +14,11 @@ namespace DataModel.Model
         public int Id { set; get; }
         public string Name { set; get; }
         public string Description { get; set; }
-        public Address Adress { set; get; }
+
         [DataType(DataType.PhoneNumber)]
-        public int PhoneNumber { set; get; }
+        public string PhoneNumber { set; get; }
+        public Address Adress { set; get; }
+        
         public string PhotoUrl { get; set; }
         public virtual List<Hall> Halls { set; get; }
         public virtual List<Cuisine> Cuisines { set; get; }

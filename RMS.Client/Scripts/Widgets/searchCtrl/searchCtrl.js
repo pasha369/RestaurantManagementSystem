@@ -1,4 +1,5 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
+        'Widgets/bookingCtrl/bookingCtrl',
         'text!Widgets/searchCtrl/searchCtrl.html'],
     function (ko, $) {
 
@@ -22,6 +23,9 @@
 
                     this.search = function() {
                         self._loadRestaurants();
+                    };
+                    this.reserve = function (item) {
+                        $('#book-table-context').booking({ restaurantId: item.Id });
                     };
                 };
 

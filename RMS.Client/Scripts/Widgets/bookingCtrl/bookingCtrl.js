@@ -1,8 +1,9 @@
-﻿define(['knockout', "knockout.validation", 'jquery', 'jquery-ui', 'datepicker', 'moment',
+﻿define(['knockout', "knockout.validation", 'jquery', 'jquery-ui', 'datepicker', 'moment', 'toastr',
         'text!Widgets/bookingCtrl/bookingCtrl.html'],
     function (ko, validation, $, datepicker) {
         var moment = require('moment');
-
+        var toastr = require('toastr');
+        
         $.widget("cc.booking", {
 
             options: {
@@ -77,7 +78,7 @@
                     dataType: "json",
                     data: ko.toJSON(reservation),
                     success: function () {
-                        console.log('bookTable: success');
+                        toastr.success('Reservation saved');
                     },
                     error: function (err) {
                         console.log(err.status + " : " + err.statusText);

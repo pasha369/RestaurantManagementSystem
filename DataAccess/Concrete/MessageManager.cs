@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
 {
     public class MessageManager : IMessageManager
     {
-        static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void AddReview(Review review)
         {
@@ -44,5 +44,6 @@ namespace DataAccess.Concrete
         {
             return  _ctx.Reviews.Where(r => r.Status == Status.Unknown).ToList();
         }
+
     }
 }

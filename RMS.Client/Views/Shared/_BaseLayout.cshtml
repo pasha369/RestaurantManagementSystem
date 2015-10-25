@@ -1,12 +1,13 @@
 ﻿@{
     ViewBag.Title = "_BaseLayout";
+    ViewBag.Username = User.Identity.Name;
 }
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Discover | Unify - Responsive Website Template</title>
+    <title>Restaurant management system</title>
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -15,7 +16,7 @@
     <meta name="author" content="">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="~/favicon.ico">
 
     <!-- Web Fonts -->
     <link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
@@ -43,13 +44,12 @@
 
     <!-- CSS Theme -->
     <link rel="stylesheet" href="~/Content/Styles/theme-colors/default.css" id="style_color">
-    <link rel="stylesheet" href="~/Content/Styles/theme-skins/dark.css">
 
     <!-- CSS Customization -->
     <link rel="stylesheet" href="~/Content/Styles/custom.css">
-    
+
     <!-- CSS plugin -->
-    <link rel="stylesheet" href="~/Content/toastr.css"/>
+    <link rel="stylesheet" href="~/Content/toastr.css" />
 </head>
 
 <body>
@@ -79,7 +79,14 @@
                             </ul>
                         </li>
                         <li class="topbar-devider"></li>
-                        <li><a href="@Url.Action("ProfilePage", "Profile")">Profile</a></li>
+                        @if (ViewBag.Username == string.Empty)
+                        {
+                            <li><a href="@Url.Action("Register", "Account")">Register</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("ProfilePage", "Profile")">@ViewBag.Username</a></li>                        
+                        }
                         <li class="topbar-devider"></li>
                         <li><a href="@Url.Action("Login", "Account")">Login</a></li>
                     </ul>
@@ -101,15 +108,16 @@
                     <ul class="nav navbar-nav">
                         <!-- Home -->
                         <li>
-                            <a href="@Url.Action("Index", "Home")" >Home
-                            </a>
+                            <a href="@Url.Action("Index", "Home")" >Home</a>
                         </li>
                         <!-- End Home -->
 
                         <!-- Pages -->
                         <li>
-                            <a href="@Url.Action("RestaurantList", "Restaurant")">Restaurants
-                            </a>
+                            <a href="@Url.Action("RestaurantList", "Restaurant")">Restaurants</a>
+                        </li>
+                        <li>
+                            <a href="#">Countries</a>
                         </li>
                         <!-- End Pages -->
 
@@ -118,9 +126,9 @@
                             <i class="search fa fa-search search-btn"></i>
                             <div class="search-open">
                                 <div class="input-group animated fadeInDown">
-                                    <input type="text" class="form-control" placeholder="Search">
+                                    <input type="text" class="form-control" placeholder="Search" id="search-field-sm">
                                     <span class="input-group-btn">
-                                        <button class="btn-u" type="button">Go</button>
+                                        <button class="btn-u" type="button" id="btnFindSm">Go</button>
                                     </span>
                                 </div>
                             </div>
@@ -133,86 +141,12 @@
             <!--/navbar-collapse-->
         </div>
         <!--=== End Header ===-->
-
+        <div class="search-result">
         @RenderBody()
-
+            </div>
         <!--=== Footer Version 1 ===-->
         <div class="footer-v1">
             <div class="footer">
-                <div class="container">
-                    <div class="row">
-                        <!-- About -->
-                        <div class="col-md-3 md-margin-bottom-40">
-                            <a href="index.html">
-                                <img id="logo-footer" class="footer-logo" src="assets/img/logo2-default.png" alt=""></a>
-                            <p>About Unify dolor sit amet, consectetur adipiscing elit. Maecenas eget nisl id libero tincidunt sodales.</p>
-                            <p>Duis eleifend fermentum ante ut aliquam. Cras mi risus, dignissim sed adipiscing ut, placerat non arcu.</p>
-                        </div>
-                        <!--/col-md-3-->
-                        <!-- End About -->
-
-                        <!-- Latest -->
-                        <div class="col-md-3 md-margin-bottom-40">
-                            <div class="posts">
-                                <div class="headline">
-                                    <h2>Latest Posts</h2>
-                                </div>
-                                <ul class="list-unstyled latest-list">
-                                    <li>
-                                        <a href="#">Incredible content</a>
-                                        <small>May 8, 2014</small>
-                                    </li>
-                                    <li>
-                                        <a href="#">Best shoots</a>
-                                        <small>June 23, 2014</small>
-                                    </li>
-                                    <li>
-                                        <a href="#">New Terms and Conditions</a>
-                                        <small>September 15, 2014</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--/col-md-3-->
-                        <!-- End Latest -->
-
-                        <!-- Link List -->
-                        <div class="col-md-3 md-margin-bottom-40">
-                            <div class="headline">
-                                <h2>Useful Links</h2>
-                            </div>
-                            <ul class="list-unstyled link-list">
-                                <li><a href="#">About us</a><i class="fa fa-angle-right"></i></li>
-                                <li><a href="#">Portfolio</a><i class="fa fa-angle-right"></i></li>
-                                <li><a href="#">Latest jobs</a><i class="fa fa-angle-right"></i></li>
-                                <li><a href="#">Community</a><i class="fa fa-angle-right"></i></li>
-                                <li><a href="#">Contact us</a><i class="fa fa-angle-right"></i></li>
-                            </ul>
-                        </div>
-                        <!--/col-md-3-->
-                        <!-- End Link List -->
-
-                        <!-- Address -->
-                        <div class="col-md-3 map-img md-margin-bottom-40">
-                            <div class="headline">
-                                <h2>Contact Us</h2>
-                            </div>
-                            <address class="md-margin-bottom-40">
-                                25, Lorem Lis Street, Orange
-                                <br />
-                                California, US
-                                <br />
-                                Phone: 800 123 3456
-                                <br />
-                                Fax: 800 123 3456
-                                <br />
-                                Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
-                            </address>
-                        </div>
-                        <!--/col-md-3-->
-                        <!-- End Address -->
-                    </div>
-                </div>
             </div>
             <!--/footer-->
 
@@ -284,18 +218,34 @@
     <!-- JS Implementing Plugins -->
     <script type="text/javascript" src="~/Scripts/ThemeScripts/back-to-top.js"></script>
     <script type="text/javascript" src="~/Scripts/ThemeScripts/smoothScroll.js"></script>
-    <script type="text/javascript" src="~/Scripts/ThemeScripts/jquery.parallax.js"></script>
     <script type="text/javascript" src="~/Scripts/ThemeScripts/counter/waypoints.min.js"></script>
     <script type="text/javascript" src="~/Scripts/ThemeScripts/counter/jquery.counterup.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/ThemeScripts/owl-carousel/owl.carousel.js"></script>
+
     <!-- JS Customization -->
     <script type="text/javascript" src="~/Scripts/ThemeScripts/custom.js"></script>
     <!-- JS Page Level -->
     <script type="text/javascript" src="~/Scripts/ThemeScripts/app.js"></script>
-    <script type="text/javascript" src="~/Scripts/ThemeScripts/plugins/owl-carousel.js"></script>
-    <script type="text/javascript" src="~/Scripts/ThemeScripts/plugins/style-switcher.js"></script>
     <!-- JS SPA -->
 
     @RenderSection("Scripts", required: false)
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            App.init();
+        });
+    </script>
+@*      <script>
+          require(['jquery', 'Widgets/searchCtrl/searchCtrl'], function ($) {
+              $(document).ready(function () {
+                  $('#btnFindSm').on('click', function () {
+
+                      $('.search-result').search({
+                          name: $('#search-field-sm').val(),
+                      });
+                  });
+              });
+          })
+    </script>*@
+
 </body>
 </html>

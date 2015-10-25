@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
 {
     public class ClientManager : IDataManager<ClientInfo>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private static RestorauntDbContext _ctx = new RestorauntDbContext();
 
         public void Delete(ClientInfo item)
         {
@@ -51,5 +51,7 @@ namespace DataAccess.Concrete
         {
             return _ctx.ClientInfos.FirstOrDefault(c => c.Id == Id).Restaurant;
         }
+
+ 
     }
 }

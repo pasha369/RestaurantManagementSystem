@@ -35,7 +35,7 @@ namespace RMS.Admin.Pages.Forms
 
             restaurant = new DataModel.Model.Restaurant();
             restaurant.Name = (fvRestorauntEdit.FindControl("txtName") as TextBox).Text;
-            restaurant.PhoneNumber = Convert.ToInt32((fvRestorauntEdit.FindControl("txtPhone") as TextBox).Text);
+            restaurant.PhoneNumber = (fvRestorauntEdit.FindControl("txtPhone") as TextBox).Text;
             if (restaurant.Adress == null)
                 restaurant.Adress = new DataModel.Model.Address();
             if (GetDdlValue(fvRestorauntEdit, "ddlCity") != -1)

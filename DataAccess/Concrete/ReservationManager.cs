@@ -14,7 +14,7 @@ namespace DataAccess.Concrete
 {
     public class ReservationManager : IDataManager<Reservation>
     {
-        private RestorauntDbContext _ctx =  RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Reservation item)
         {
@@ -28,22 +28,9 @@ namespace DataAccess.Concrete
         {
             
             _ctx.Reservations.Add(item);
-            try
-            {
-                _ctx.SaveChanges();
-            }
-            catch (DbEntityValidationException dbEx)
-            {
-                foreach (var validationErrors in dbEx.EntityValidationErrors)
-                {
-                    foreach (var validationError in validationErrors.ValidationErrors)
-                    {
-                        Trace.TraceInformation("Property: {0} Error: {1}",
-                                                validationError.PropertyName,
-                                                validationError.ErrorMessage);
-                    }
-                }
-            } 
+
+            _ctx.SaveChanges();
+           
         }
 
         public void Update(Reservation item)
@@ -68,5 +55,6 @@ namespace DataAccess.Concrete
         {
             return _ctx.Reservations.ToList();
         }
+
     }
 }

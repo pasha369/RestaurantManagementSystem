@@ -11,7 +11,7 @@ namespace DataAccess.Concrete
 {
     public class FavoriteManager : IDataManager<Favorite>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
         
         public void Delete(Favorite item)
         {
@@ -59,6 +59,11 @@ namespace DataAccess.Concrete
             var favorite = _ctx.Favorites.FirstOrDefault(f => f.User.Id == id && f.Restaurant.Id == item);
             _ctx.Favorites.Remove(favorite);
             _ctx.SaveChanges();
+        }
+
+        public void Dispose()
+        {
+            _ctx.Dispose();
         }
     }
 }

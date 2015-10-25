@@ -13,50 +13,65 @@ namespace DataAccess.Concrete
 {
     public class UserManager : IDataManager<UserInfo>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(UserInfo item)
         {
-            var user = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
-            _ctx.UserInfos.Remove(user);
-            _ctx.Entry(user).State = EntityState.Deleted;
-            _ctx.SaveChanges();
+            using(var _ctx = new RestorauntDbContext())
+            {
+                var user = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
+                _ctx.UserInfos.Remove(user);
+                _ctx.Entry(user).State = EntityState.Deleted;
+                _ctx.SaveChanges();    
+            }
+            
         }
 
         public void Add(UserInfo item)
         {
-            _ctx.UserInfos.Add(item);
-            _ctx.SaveChanges();
+            using (var _ctx = new RestorauntDbContext())
+            {
+                _ctx.UserInfos.Add(item);
+                _ctx.SaveChanges();
+            }
         }
 
         public void Update(UserInfo item)
         {
-            var user = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
-            user.Name = item.Name;
-            user.Password = item.Password;
-            user.Position = item.Position;
-            _ctx.Entry(user).State = EntityState.Modified;
-            _ctx.SaveChanges();
+                var user = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
+                user.Name = item.Name;
+                user.Password = item.Password;
+                user.Position = item.Position;
+                _ctx.Entry(user).State = EntityState.Modified;
+                _ctx.SaveChanges();
+         
         }
 
         public UserInfo GetById(UserInfo item)
         {
-            return _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
+                return _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
+            
         }
 
         public List<UserInfo> GetAll()
         {
-            return _ctx.UserInfos.ToList();
+                return _ctx.UserInfos.ToList();
+            
         }
 
         public List<UserInfo> GetAllApproved()
         {
-            return _ctx.UserInfos.Where(u => u.IsBanned == false).ToList();
+
+                return _ctx.UserInfos.Where(u => u.IsBanned == false).ToList();
         }
 
         public UserInfo GetById(int Id)
         {
-            return _ctx.UserInfos.FirstOrDefault(u => u.Id == Id);
+
+                return _ctx.UserInfos.FirstOrDefault(u => u.Id == Id);
+
         }
+
+    
     }
 }

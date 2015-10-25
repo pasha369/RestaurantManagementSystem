@@ -10,9 +10,9 @@ using DataModel.Model;
 
 namespace DataAccess.Concrete
 {
-    public class CuisineManager : IDataManager<Cuisine>
+    public class CuisineManager : IDataManager<Cuisine>, IDisposable
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Cuisine item)
         {
@@ -46,6 +46,11 @@ namespace DataAccess.Concrete
         public List<Cuisine> GetAll()
         {
             return _ctx.Cuisines.ToList();
+        }
+
+        public void Dispose()
+        {
+            _ctx.Dispose();
         }
     }
 }

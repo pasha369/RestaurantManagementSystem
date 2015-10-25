@@ -14,9 +14,6 @@ namespace RMS.Admin.Pages.Contents
     public partial class Restaurant : System.Web.UI.Page
     {
         public static List<DataModel.Model.Cuisine> Cuisines = new List<DataModel.Model.Cuisine>();
-        DropDownList _ddlCuisines;
-        DropDownList _ddlCountry;
-        DropDownList _ddlCity;
 
         static RestorauntModel restorauntModel = new RestorauntModel();
 

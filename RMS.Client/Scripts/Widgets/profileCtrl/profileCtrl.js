@@ -19,16 +19,20 @@
                     this.Name = ko.observable();
                     this.Phone = ko.observable();
                     this.Position = ko.observable();
+                    this.About = ko.observable();
                     this.PhotoUrl = ko.observable();
+                    this.Skype = ko.observable();
+                    this.Facebook = ko.observable();
+                    this.Email = ko.observable();
                 };
                 self.options.viewModel = new userVM();
 
                 ko.applyBindings(self.options.viewModel, $('#user-profile-ctrl')[0]);
-                self._loadProfile();
+                self.LoadProfile();
 
                 
             },
-            _loadProfile: function () {
+            LoadProfile: function () {
                 var self = this;
                 var vm = self.options.viewModel;
                 $.ajax({
@@ -38,9 +42,13 @@
                     success: function (data) {
                         vm.Id(data.Id);
                         vm.Name(data.Name);
+                        vm.About(data.About);
                         vm.Phone(data.Phone);
                         vm.Position(data.Position);
-                        if(data.PhotoUrl) {
+                        vm.Email(data.Email);
+                        vm.Facebook(data.Facebook);
+                        vm.Skype(data.Skype);
+                        if (data.PhotoUrl) {
                             vm.PhotoUrl(data.PhotoUrl.replace('~', ''));
                         }
                     },

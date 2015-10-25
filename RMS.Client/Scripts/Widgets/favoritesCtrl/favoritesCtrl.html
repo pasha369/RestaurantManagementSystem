@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="col-sm-5 col-md-4 resource-thumbnail">
 
-                        <img data-bind="attr: { src: PhotoUrl}"  class="img-thumbnail img-responsive image_square">
+                        <img data-bind="attr: { src : PhotoUrl ? PhotoUrl : '//placehold.it/200'}" class="img-thumbnail img-responsive image_square">
                     </div>
                     <div class="col-sm-7 resource-contents">
                         <button class="btn warning" data-bind="click: $root.remove"><span class="fa fa-close"></span></button>
@@ -17,7 +17,7 @@
 
                         <div class="action-buttons">
                             <a class="btn btn-primary" role="button" data-bind="attr: {href: '/Restaurant/RestaurantDetail/' + Id}">Details</a>
-                            <a class="btn btn-primary" role="button" href="https://s3.amazonaws.com/planyo-extras/website/booking.html?mode=reserve&amp;resource_id=43368">Make reservation</a>
+                            <button class="btn btn-primary" data-bind="click: $root.reserve" data-toggle="modal" data-target="#book-now">Make reservation</button>
                         </div>
 
                     </div>
@@ -31,3 +31,24 @@
 
     </div>
 </div>
+
+<!--Make reservation-->
+<div id="book-now" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Make reservation</h4>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div id="book-table-context"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Make reservation-->

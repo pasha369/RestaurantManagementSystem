@@ -1,7 +1,7 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
-        'toastr',
+        'toastr','Widgets/bookingCtrl/bookingCtrl',
         'text!Widgets/favoritesCtrl/favoritesCtrl.html'],
-    function (ko, $, preloader) {
+    function (ko, $) {
         var toastr = require('toastr');
 
         $.widget("cc.favorites", {
@@ -23,6 +23,9 @@
                     this.remove = function(item) {
                         self._removeFavorite(item);
                     };
+                    this.reserve = function (item) {
+                        $('#book-table-context').booking({ restaurantId: item.Id });
+                    };
                 };
 
                 self.options.viewModel = new favoritesVM();
@@ -41,7 +44,10 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(JSON.parse(data), function (key, value) {
-                            value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            value.Description = value.Description.substring(0, 200) + '...';
+                            if (value.PhotoUrl) {
+                                value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            }
                             vm.favorites.push(value);
                         });
                     },
