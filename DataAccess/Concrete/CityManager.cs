@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
 {
     public class CityManager : IDataManager<City>
     {
-        public RestorauntDbContext _ctx = RestorauntDbContext.context;
+        public RestorauntDbContext _ctx = new ContextManager().Context;
 
 
    
@@ -49,7 +49,9 @@ namespace DataAccess.Concrete
 
         public List<City> GetAll()
         {
-            return _ctx.Cities.ToList();
+            return _ctx.Cities
+                .Include("Country").ToList();
         }
+
     }
 }

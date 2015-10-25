@@ -13,7 +13,7 @@ namespace DataAccess.Concrete
 {
     public class UserDataManager : IUserDataManager
     {
-        static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        static RestorauntDbContext _ctx = new ContextManager().Context;
 
 
 
@@ -69,5 +69,6 @@ namespace DataAccess.Concrete
             return lstBanUsers.ToList();
 
         }
+
     }
 }

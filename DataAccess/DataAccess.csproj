@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -65,6 +66,7 @@
     <Compile Include="Concrete\AuthRepository.cs" />
     <Compile Include="Concrete\CityManager.cs" />
     <Compile Include="Concrete\ClientManager.cs" />
+    <Compile Include="Concrete\ContextManager.cs" />
     <Compile Include="Concrete\CountryManager.cs" />
     <Compile Include="Concrete\CuisineManager.cs" />
     <Compile Include="Concrete\FavoriteManager.cs" />

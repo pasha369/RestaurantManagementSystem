@@ -12,7 +12,7 @@ namespace DataAccess.Concrete
 {
     public class CountryManager:IDataManager<Country>
     {
-        private static RestorauntDbContext _ctx  = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx  = new ContextManager().Context;
 
         public void Delete(Country item)
         {
@@ -50,5 +50,6 @@ namespace DataAccess.Concrete
         {
             return _ctx.Countries.ToList();
         }
+
     }
 }

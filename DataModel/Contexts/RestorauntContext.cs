@@ -10,7 +10,7 @@ namespace DataModel.Contexts
 {
     public class RestorauntDbContext : DbContext
     {
-        public static RestorauntDbContext context = new RestorauntDbContext();
+        //public static RestorauntDbContext context = new RestorauntDbContext();
 
         public RestorauntDbContext()
             : base("RestorauntDbEntities")

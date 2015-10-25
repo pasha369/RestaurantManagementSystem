@@ -13,7 +13,7 @@ namespace DataAccess.Concrete
 {
     public class DinnerTableManager : IDataManager<DinnerTable>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
 
         public void Delete(DinnerTable item)
@@ -60,5 +60,7 @@ namespace DataAccess.Concrete
         {
             return _ctx.Tables.FirstOrDefault(t => t.Id == Id);
         }
+
+    
     }
 }

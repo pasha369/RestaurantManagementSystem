@@ -11,7 +11,7 @@ namespace DataAccess.Concrete
 {
     public class ReviewManager : IDataManager<Review>
     {
-        private static RestorauntDbContext _ctx = RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Review item)
         {
@@ -47,5 +47,6 @@ namespace DataAccess.Concrete
         {
             return _ctx.Reviews.Where(r => r.Restaurant.Id == RestaurantId).ToList();
         }
+
     }
 }

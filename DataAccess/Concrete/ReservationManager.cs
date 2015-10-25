@@ -14,7 +14,7 @@ namespace DataAccess.Concrete
 {
     public class ReservationManager : IDataManager<Reservation>
     {
-        private static  RestorauntDbContext _ctx =  RestorauntDbContext.context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Reservation item)
         {
@@ -55,5 +55,6 @@ namespace DataAccess.Concrete
         {
             return _ctx.Reservations.ToList();
         }
+
     }
 }
