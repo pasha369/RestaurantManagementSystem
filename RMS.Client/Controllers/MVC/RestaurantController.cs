@@ -35,7 +35,10 @@ namespace RMS.Client.Controllers.MVC
 
 
                 var model = Mapper.Map<RestaurantModel>(restaurant);
-                model.CommentCount = restaurant.Reviews.Count();
+                if(restaurant.Reviews != null)
+                {
+                    model.CommentCount = restaurant.Reviews.Count();                    
+                }
                 if (restaurant.Reviews.Count > 0)
                 {
                     model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;

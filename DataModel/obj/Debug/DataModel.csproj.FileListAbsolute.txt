@@ -36,3 +36,4 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debu
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.UserInfo.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.PhoneNumber.resources
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.Author.resources

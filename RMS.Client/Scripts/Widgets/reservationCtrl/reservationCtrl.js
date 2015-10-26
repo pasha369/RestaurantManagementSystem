@@ -22,16 +22,18 @@
 
                 function ReservationVM() {
                     this.Client = ko.observable();
-                    
+                    this.StatusTypes = ko.observableArray([]);
+
                     this.Tables = ko.observableArray([]);
                     this.Times = ko.observableArray([]);
 
                     this.Fullname = ko.observable();
                     this.Email = ko.observable();
+                    this.Phone = ko.observable();
                     this.Msg = ko.observable();
                     this.Date = ko.observable();
                     this.PeopleNum = ko.observable();
-
+                    this.Status = ko.observable();
 
 
                     this.refresh = function() {
@@ -44,9 +46,15 @@
                         self._removeReservation(item);
                     };
                     this.detail = function(item) {
-                        self.options.reservationVM.Client(item);
+                        var vm = self.options.reservationVM;
+
+                        vm.Fullname(item.Fullname());
+                        vm.Phone(item.Phone());
+                        vm.PeopleNum(item.PeopleNum());
+                        vm.Date(item.Date());
 
                     };
+
 
                 };
 
@@ -55,7 +63,37 @@
 
                 ko.applyBindings(self.options.reservationVM, $("#reservations")[0]);
                 self._loadReservation(this.options.RestaurantId);
+                self._getStatusLst();
 
+            },
+            _getStatusLst: function() {
+                var self = this;
+                $.ajax({
+                    type: "GET",
+                    url: '/api/Reservation/GetRsvStatus/',
+                    success: function (data) {
+                        $.each(data, function(key, value) {
+                            self.options.reservationVM.StatusTypes.push(value);
+                        });
+                    },
+                    error: function (err) {
+                        console.log(err.status);
+                    },
+                });
+            },
+            _changeStatus: function (SelectedStatus) {
+                var self = this;
+                $.ajax({
+                    type: "POST",
+                    url: '/api/Reservation/ChangeStatus/',
+                    data: { RstId: self.options.RestaurantId, ReserveStatus: SelectedStatus },
+                    success: function () {
+                        self._loadReservation(self.options.RestaurantId);
+                    },
+                    error: function (err) {
+                        console.log(err.status);
+                    },
+                });
             },
             _applyReservation: function (item) {
                 var self = this;
@@ -127,6 +165,7 @@
                                         Id: ko.observable(v.Id),
                                         Fullname: ko.observable(v.Fullname),
                                         Email: ko.observable(v.Email),
+                                        Phone: ko.observable(v.Phone),
                                         Msg: ko.observable(v.Msg),
                                         Date: ko.observable(v.From.replace("T", " ")),
                                         PeopleNum: ko.observable(v.PeopleNum),
@@ -139,6 +178,24 @@
                                                 return "confirmed";
                                             }
                                         }, this),
+                                        SelectedStatus: ko.computed({
+                                            read : function() {
+                                                var statusTypes = self.options.reservationVM.StatusTypes();
+                                                var current = "";
+                                                for (var i = 0; i < statusTypes.length; i++) {
+                                                    if (this.Status == i) {
+                                                        current = statusTypes[i];
+                                                        break;
+                                                    }
+                                                }
+                                                return current;
+                                            },
+                                            write : function(value) {
+                                                self._changeStatus(value);
+                                            }
+                                            
+                                        }, this),
+
                                         ColIdx: ko.observable(fromIdx),
                                         Colspan: ko.observable(toIdx - fromIdx)
                                     };

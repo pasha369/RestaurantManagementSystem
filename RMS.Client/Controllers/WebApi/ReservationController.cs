@@ -81,5 +81,22 @@ namespace RMS.Client.Controllers.WebApi
 
             rsvManager.Update(reservarion);
         }
+
+        [HttpGet]
+        public List<string> GetRsvStatus()
+        {
+            return Enum.GetNames(typeof(ReservationStatus)).ToList();
+        }
+
+        [HttpPost]
+        public void ChangeStatus(RsvStatus rsvStatus)
+        {
+            var rsv = rsvManager.GetById(rsvStatus.RstId);
+            
+            ReservationStatus status;
+            Enum.TryParse(rsvStatus.ReserveStatus, out status);
+
+            rsv.Status = status;
+        }
     }
 }

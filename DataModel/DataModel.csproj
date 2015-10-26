@@ -92,6 +92,10 @@
     <Compile Include="RestorauntContextMigrations\201510231538315_PhoneNumber.Designer.cs">
       <DependentUpon>201510231538315_PhoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201510252303533_Author.cs" />
+    <Compile Include="RestorauntContextMigrations\201510252303533_Author.Designer.cs">
+      <DependentUpon>201510252303533_Author.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -130,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201510231538315_PhoneNumber.resx">
       <DependentUpon>201510231538315_PhoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201510252303533_Author.resx">
+      <DependentUpon>201510252303533_Author.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

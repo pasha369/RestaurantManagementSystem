@@ -60,12 +60,19 @@
                                 <asp:CheckBox ID="chbxSelect" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:BoundField HeaderText="Author" DataField="Author" />
+                        <asp:TemplateField HeaderText="Author" >
+                            <ItemTemplate>
+                                <%#Eval("Author.Name") %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:BoundField HeaderText="Comment" DataField="Comment" />
                         <asp:BoundField HeaderText="Date" DataField="ReviewTime" />
                     </Columns>
                 </asp:GridView>
-                <asp:DropDownList runat="server" ID="ddlAuthor" ItemType="DataModel.Model.Review" 
+                <asp:DropDownList runat="server" ID="ddlAuthor" 
+                    DataValueField="Id"
+                    DataTextField="Name"
+                    ItemType="DataModel.Model.UserInfo" 
                     OnSelectedIndexChanged="ddlAuthor_OnSelectedIndexChanged" AutoPostBack="True">
                 </asp:DropDownList>
                 <asp:Button runat="server" Text="Apply" ID="btnApply" CssClass="btn btn-default " OnClick="btnApplyClick" />

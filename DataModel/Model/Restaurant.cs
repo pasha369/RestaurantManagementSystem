@@ -57,8 +57,7 @@ namespace DataModel.Model
         public DateTime ReviewTime { set; get; }
 
         public Restaurant Restaurant { set; get; }
-        [MaxLength(60)]
-        public string Author { set; get; }
+        public virtual UserInfo Author { get; set; }
 
         public Status Status { set; get; }
     }
