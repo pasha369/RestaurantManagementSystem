@@ -40,6 +40,7 @@ namespace RMS.Client.Controllers.WebApi
                                  {
                                      Ambience = r.Ambience,
                                      Author = r.Author.Name,
+                                     PhotoUrl = r.Author.PhotoUrl,
                                      Food = r.Food,
                                      Comment = r.Comment,
                                      Service = r.Service,

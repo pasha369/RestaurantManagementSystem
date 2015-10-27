@@ -171,11 +171,18 @@
                                         PeopleNum: ko.observable(v.PeopleNum),
                                         Status: ko.observable(v.Status),
                                         StatusCss : ko.computed(function () {
-                                            if(this.Status == 0) {
-                                                return "new";
-                                            }
-                                            if(this.Status == 1) {
-                                                return "confirmed";
+                                            
+                                            switch (this.Status) {
+                                                case 0:
+                                                    return "new";
+                                                case 1:
+                                                    return "confirmed";
+                                                case 2:
+                                                    return "canceled";
+                                                case 3:
+                                                    return "noshow";
+                                                default:
+                                                    return "";
                                             }
                                         }, this),
                                         SelectedStatus: ko.computed({

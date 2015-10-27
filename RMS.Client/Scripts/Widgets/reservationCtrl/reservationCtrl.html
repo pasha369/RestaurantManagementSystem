@@ -6,17 +6,23 @@
         white-space: nowrap;
     }
 
-    .new, .confirmed {
+    .new, .confirmed, .canceled, .noshow {
         border: 1px solid rgb(178, 178, 178);
         box-shadow: 7px 8px 7px -7px rgba(0,0,0,0.75);
     }
 
         .new > div {
-            border-top: 2px solid red;
+            border-top: 2px solid orange;
         }
 
         .confirmed > div {
             border-top: 2px solid greenyellow;
+        }
+        .canceled > div {
+            border-top: 2px solid rgb(202, 0, 89);
+        }
+        .noshow > div {
+            border-top: 2px solid red;
         }
 
     .fixed-body {
