@@ -29,12 +29,9 @@ namespace RMS.Client.Controllers.MVC
 
             foreach (var restaurant in items)
             {
-                Mapper.CreateMap<Restaurant, RestaurantModel>()
-                    .ForMember(m => m.Phone,
-                               opt => opt.MapFrom(r => r.PhoneNumber.ToString()));
-
-
+                Mapper.CreateMap<Restaurant, RestaurantModel>();
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+
                 if(restaurant.Reviews != null)
                 {
                     model.CommentCount = restaurant.Reviews.Count();                    
@@ -70,9 +67,8 @@ namespace RMS.Client.Controllers.MVC
 
                 var restaurant = _rstManager.GetById(model.Id);
 
-                restaurant.Name = model.Name;
-                restaurant.Description = model.Description;
-                restaurant.PhoneNumber = model.Phone;
+                Mapper.CreateMap<RestaurantModel, Restaurant>();
+                Mapper.Map<RestaurantModel, Restaurant>(model, restaurant);
 
                 _rstManager.Update(restaurant);
                 return RedirectToAction("RestaurantDetail", "Restaurant", new { Id = model.Id });
@@ -82,16 +78,13 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult RestaurantDetail(int Id)
         {
-            var restaurant = _rstManager
-                .GetAll()
-                .FirstOrDefault(r => r.Id == Id);
+            var restaurant = _rstManager.GetById(Id);
+
             if (restaurant != null)
             {
-                Mapper.CreateMap<Restaurant, RestaurantModel>()
-                    .ForMember(m => m.Phone,
-                               opt => opt.MapFrom(r => r.PhoneNumber.ToString()));
-
+                Mapper.CreateMap<Restaurant, RestaurantModel>();
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+
                 model.CommentCount = restaurant.Reviews.Count();
                 if(restaurant.Reviews.Count > 0)
                 {
@@ -191,9 +184,7 @@ namespace RMS.Client.Controllers.MVC
         {
             var restaurant = _rstManager.GetById(Id);
 
-            Mapper.CreateMap<Restaurant, RestaurantModel>()
-                .ForMember(m => m.Phone,
-                opt => opt.MapFrom(r => r.PhoneNumber.ToString()));
+            Mapper.CreateMap<Restaurant, RestaurantModel>();
             var model = Mapper.Map<RestaurantModel>(restaurant);
 
             return model;
