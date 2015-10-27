@@ -29,7 +29,7 @@
                 <div data-bind="foreach: Reviews">
                     <div class="comment margin-bottom-20">
                         <div class="col-md-2">
-                            <img class="img-responsive" src="//placehold.it/200" />
+                            <img class="img-responsive" data-bind="attr: { src : PhotoUrl() ? PhotoUrl() : '//placehold.it/200'}"/>
                         </div>
                         <div class="col-md-10 text-left">
                             <h4 data-bind="text: Author">Fatoma Hassan</h4>
@@ -52,7 +52,7 @@
                             <div class="text-right">
                                 <ul style="list-style-type: none">
                                     <li data-bind="foreach: new Array(Food())">
-                                        <i class="fa fa-star"></i>
+                                        <i class="fa fa-star color-green"></i>
                                     </li>
                                 </ul>
                             </div>

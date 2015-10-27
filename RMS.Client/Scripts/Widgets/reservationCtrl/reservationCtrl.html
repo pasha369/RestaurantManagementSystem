@@ -6,21 +6,25 @@
         white-space: nowrap;
     }
 
-    .new, .confirmed{
+    .new, .confirmed, .canceled, .noshow {
         border: 1px solid rgb(178, 178, 178);
         box-shadow: 7px 8px 7px -7px rgba(0,0,0,0.75);
     }
-    .new > div {
-        border-top:2px solid  red;
-    }
-    .confirmed > div {
-        border-top:2px solid  greenyellow;
-    }
-        /*.new div, h4, p, span {
-            color: rgba(255, 255, 255, 0.56);
-        }*/
 
-    
+        .new > div {
+            border-top: 2px solid orange;
+        }
+
+        .confirmed > div {
+            border-top: 2px solid greenyellow;
+        }
+        .canceled > div {
+            border-top: 2px solid rgb(202, 0, 89);
+        }
+        .noshow > div {
+            border-top: 2px solid red;
+        }
+
     .fixed-body {
         overflow-x: scroll; /* force horizontal scrollbars (optional) */
         overflow-y: hidden; /* hide. we use the #simulated-body for it. */
@@ -69,23 +73,31 @@
 
                     <!-- ko if: $data -->
                     <td data-bind="attr: {colspan: Colspan, class : StatusCss}">
-                        <div class="container-fluid" >
+                        <div class="container-fluid">
                             <div class="row pull-right">
 
                                 <a href="#" data-bind="click: $root.apply"><span class=" fa fa-check "></span></a>
                                 <a href="#" data-bind="click: $root.remove"><span class=" fa fa-remove "></span></a>
 
                             </div>
+
+                            <div class="h5" data-bind="text: Fullname"></div>
                             <div class="row">
-                                <h4 data-bind="text: Fullname"></h4>
-                                <p>Status</p>
-                                <select class="form-control select">
-                                    <option>Show</option>
-                                    <option>No show</option>
-                                    <option>Confirmed</option>
-                                </select>
+                                <div class="col-md-3">
+                                    <p class="h6 ">Status</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <select class="form-control select" data-bind="options: $root.StatusTypes,
+                                                                                    optionText: $data,
+                                                                                    value: SelectedStatus">
+                                        <option data-bind="text: $data, attr:{selected: $parent.Status == $index  ? selected : null}"></option>
+                                    </select>
+                                </div>
                             </div>
-                            <button data-bind="click: $root.detail" data-toggle="modal" data-target="#mmodal">detail</button>
+                            <div class="block margin-top-20">
+                                    <button class="btn btn-info btn-block" data-bind="click: $root.detail" data-toggle="modal" data-target="#mmodal">detail</button>
+                            </div>
+
                         </div>
                     </td>
                     <!-- /ko -->
@@ -97,63 +109,47 @@
             </tbody>
         </table>
     </div>
-    
-    
-    <!--todo: modal-->
-    
+
+
+    <!-- Modal -->
+
     <div id="mmodal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Make reservation</h4>
+                    <h4 class="modal-title">Detail</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="">
-                         <table class="pull-left col-md-8 ">
-                         <tbody>
-                             <tr>
-                                 <td class="h6"><strong>Name</strong></td>
-                                 <td> </td>
-                                 <td class="h5" data-bind="text: Client.Fullname"></td>
-                             </tr>
-                             
-                             <tr>
-                                 <td class="h6"><strong>Phone</strong></td>
-                                 <td> </td>
-                                 <td class="h5" data-bind="text: Client.Phone"></td>
-                             </tr>
-                             
-                             <tr>
-                                 <td class="h6"><strong>People</strong></td>
-                                 <td> </td>
-                                 <td class="h5" data-bind="text: Client.PeopleNum"></td>
-                             </tr>
-                             
-                             <tr>
-                                 <td class="h6"><strong>Date</strong></td>
-                                 <td> </td>
-                                 <td class="h5" data-bind="text: Client.Date"></td>
-                             </tr>
-                             
-                             <tr>
-                                 <td class="h6"><strong>Preço Atacado</strong></td>
-                                 <td> </td>
-                                 <td class="h5">R$ 35,00</td>
-                             </tr> 
-                            
-                             <tr>
-                                 <td class="btn-mais-info text-primary">
-                                     <i class="open_info fa fa-plus-square-o"></i>
-                                     <i class="open_info hide fa fa-minus-square-o"></i> informações
-                                 </td>
-                                 <td> </td>
-                                 <td class="h5"></td>
-                             </tr> 
+                    <div class="container">
+                        <table class="pull-left col-md-8">
+                            <tbody>
+                                <tr>
+                                    <td class="h6"><strong>Name</strong></td>
+                                    <td></td>
+                                    <td class="h5" data-bind="text: Fullname"></td>
+                                </tr>
 
-                         </tbody>
-                    </table>
+                                <tr>
+                                    <td class="h6"><strong>Phone</strong></td>
+                                    <td></td>
+                                    <td class="h5" data-bind="text: Phone"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="h6"><strong>People</strong></td>
+                                    <td></td>
+                                    <td class="h5" data-bind="text: PeopleNum"></td>
+                                </tr>
+
+                                <tr>
+                                    <td class="h6"><strong>Date</strong></td>
+                                    <td></td>
+                                    <td class="h5" data-bind="text: Date"></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer">

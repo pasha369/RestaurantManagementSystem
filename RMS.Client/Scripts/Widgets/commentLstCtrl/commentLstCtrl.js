@@ -48,6 +48,9 @@
                     this.Ambience = ko.observable(review.Ambience);
                     this.Comment = ko.observable(review.Comment);
                     this.Author = ko.observable(review.Author);
+                    if (review.PhotoUrl) {
+                        this.PhotoUrl = ko.observable(review.PhotoUrl.replace('~', ""));
+                    }
                     this.RestaurantId = ko.observable(review.RestaurantId);
 
                 }

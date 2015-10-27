@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
+using AutoMapper;
+using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataModel.Model;
 using Newtonsoft.Json;
@@ -10,23 +12,27 @@ namespace RMS.Client.Controllers.MVC
 {
     public class ProfileController : Controller
     {
+        private IDataManager<UserInfo> _userManager;
+        private IDataManager<ClientInfo> _clientManager;
+
+        public ProfileController(IDataManager<UserInfo> userManager, IDataManager<ClientInfo> clientManager)
+        {
+            _userManager = userManager;
+            _clientManager = clientManager;
+        }
 
         //
         // GET: /Profile/
         [Authorize(Roles = "User")]
         public ActionResult UserPage()
         {
-            var userManager = new UserManager();
-            var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            var user = GetUserByLogin();
 
             if (user != null)
             {
-                var model = new ProfileModel();
-                model.Id = user.Id;
-                model.Name = user.Name;
-                model.PhotoUrl = user.PhotoUrl;
-                model.Phone = user.Phone.ToString();
+                Mapper.CreateMap<UserInfo, ProfileModel>();
+                var model = Mapper.Map<ProfileModel>(user);
+
                 model.Position = Enum.GetName(typeof(Role), user.Position);
 
                 return View(model);
@@ -37,16 +43,16 @@ namespace RMS.Client.Controllers.MVC
         [Authorize(Roles = "Restaurateur")]
         public ActionResult RestaurateurPage()
         {
-            var clientManager = new ClientManager();
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var clients = clientManager.GetAll();
+            var clients = _clientManager.GetAll();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
+
             if (client != null)
             {
                 var model = new ProfileModel();
                 model.Id = client.Id;
                 model.Name = client.UserInfo.Name;
-                model.Phone = client.UserInfo.Phone.ToString();
+                model.Phone = client.UserInfo.Phone;
                 model.Position = Enum.GetName(typeof(Role), client.UserInfo.Position);
                 model.RestaurantId = client.Restaurant.Id;
 
@@ -58,7 +64,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult ProfilePage()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var clients = new ClientManager().GetAll();
+            var clients = _clientManager.GetAll();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
             if(client != null)
             {
@@ -69,10 +75,8 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult Favorites()
         {
-            var userManager = new UserManager();
             var fvrManager = new FavoriteManager();
-            var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            var user = GetUserByLogin();
 
             var lstFavorites = fvrManager.GetByUser(user.Id);
             string strJSON = JsonConvert.SerializeObject(
@@ -85,6 +89,7 @@ namespace RMS.Client.Controllers.MVC
                         
             return Json(strJSON, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult RemoveFavorite(Favorite item)
         {
             var fvrManager = new FavoriteManager();
@@ -94,26 +99,16 @@ namespace RMS.Client.Controllers.MVC
 
             return View();
         }
+
         [HttpGet]
         public ActionResult GetUser()
         {
-            var userManager = new UserManager();
-            var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            var user = GetUserByLogin();
 
             if (user != null)
             {
-                var model = new ProfileModel();
-                model.Id = user.Id;
-                model.Name = user.Name;
-                model.PhotoUrl = user.PhotoUrl;
-                model.Password = user.Password;
-                model.About = user.About;
-                model.Email = user.Email;
-                model.Facebook = user.Facebook;
-                model.Skype = user.Skype;
-                model.Phone = user.Phone;
-
+                Mapper.CreateMap<UserInfo, ProfileModel>();
+                var model = Mapper.Map<ProfileModel>(user);
                 model.Position = Enum.GetName(typeof(Role), user.Position);
 
                 return Json(model, JsonRequestBehavior.AllowGet);
@@ -121,36 +116,28 @@ namespace RMS.Client.Controllers.MVC
             return Json(string.Empty);
         }
 
-        private UserInfo GetUserByLogin()
-        {
-            var userManager = new UserManager();
-
-            var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = userManager.GetAll().FirstOrDefault(u => u.Login == login);
-
-            return user;
-        }
         [HttpPost]
         public ActionResult ProfileEdit(ProfileModel model)
         {
             if(ModelState.IsValid)
             {
-                var userManager = new UserManager();
-                var user = userManager.GetById(model.Id);
+                var user = _userManager.GetById(model.Id);
 
-                user.Name = model.Name;
-                user.About = model.About;
+                Mapper.CreateMap<ProfileModel, UserInfo>();
+                Mapper.Map<ProfileModel, UserInfo>(model, user);
 
-                user.Email = model.Email;
-                user.Phone = model.Phone;
-                user.Facebook = model.Facebook;
-                user.Password = model.Password;
-                user.Skype = model.Skype;
-
-                userManager.Update(user);
+                _userManager.Update(user);
 
             }
             return RedirectToAction("ProfilePage");
+        }
+
+        private UserInfo GetUserByLogin()
+        {
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
+
+            return user;
         }
     }
 }

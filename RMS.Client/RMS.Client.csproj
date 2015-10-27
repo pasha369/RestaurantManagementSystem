@@ -155,6 +155,7 @@
     <Compile Include="Models\View\RestaurantLst.cs" />
     <Compile Include="Models\View\RestaurantModel.cs" />
     <Compile Include="Models\View\ReviewModel.cs" />
+    <Compile Include="Models\View\RsvStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

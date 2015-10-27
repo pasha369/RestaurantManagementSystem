@@ -1,5 +1,5 @@
-2015/10/24-23:12:57.441 12c0 Recovering log #17
-2015/10/24-23:12:57.507 12c0 Level-0 table #20: started
-2015/10/24-23:12:57.633 12c0 Level-0 table #20: 519785 bytes OK
-2015/10/24-23:12:57.698 12c0 Delete type=0 #17
-2015/10/24-23:12:57.699 12c0 Delete type=3 #15
+2015/10/27-08:44:18.978 ff4 Recovering log #34
+2015/10/27-08:44:18.978 ff4 Level-0 table #36: started
+2015/10/27-08:44:19.154 ff4 Level-0 table #36: 31619 bytes OK
+2015/10/27-08:44:19.241 ff4 Delete type=0 #34
+2015/10/27-08:44:19.242 ff4 Delete type=3 #32

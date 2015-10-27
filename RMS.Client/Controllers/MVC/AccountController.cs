@@ -79,8 +79,6 @@ namespace RMS.Client.Controllers.MVC
             {
                 Mapper.CreateMap<RegisterModel, UserInfo>();
                 var user = Mapper.Map<UserInfo>(model);
-
-                user.Phone = model.Phone;
                 user.Position = Role.User;
 
                 _userManager.Add(user);

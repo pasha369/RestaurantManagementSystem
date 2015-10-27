@@ -18,7 +18,7 @@ namespace RMS.Admin.Pages
             {
                 var lstReview = new MessageManager().GetAllReview();
                 
-                ddlAuthor.DataSource = lstReview.Select(r => r.Author);
+                ddlAuthor.DataSource = lstReview.Select(r => r.Author).Distinct();
                 ddlAuthor.DataBind();
                 ddlAuthor.Items.Insert(0, "------");
                 ddlAuthor.SelectedIndex = 0;
@@ -88,7 +88,7 @@ namespace RMS.Admin.Pages
             {
                 lstMsg = messageManager
                     .GetAllReview()
-                    .Where(r => ddlAuthor.SelectedValue.ToString() == r.Author)
+                    .Where(r => Convert.ToInt32(ddlAuthor.SelectedValue) == r.Author.Id)
                     .ToList();
             }
 

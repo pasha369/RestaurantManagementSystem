@@ -14,5 +14,6 @@ namespace RMS.Client.Models.View
         public string Comment { get; set; }
         public string Author { get; set; }
         public int RestaurantId { get; set; }
+        public string PhotoUrl { set; get; }
     }
 }

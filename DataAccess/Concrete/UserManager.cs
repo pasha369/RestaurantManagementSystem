@@ -61,15 +61,17 @@ namespace DataAccess.Concrete
 
         public List<UserInfo> GetAllApproved()
         {
-
                 return _ctx.UserInfos.Where(u => u.IsBanned == false).ToList();
         }
 
         public UserInfo GetById(int Id)
         {
-
                 return _ctx.UserInfos.FirstOrDefault(u => u.Id == Id);
+        }
 
+        public UserInfo GetUserByLogin(string login)
+        {
+            return _ctx.UserInfos.FirstOrDefault(u => u.Login == login);
         }
 
     

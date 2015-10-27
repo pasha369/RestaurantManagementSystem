@@ -23,7 +23,13 @@ namespace DataAccess.Concrete
 
         public void Add(ClientInfo item)
         {
-            _ctx.ClientInfos.Add(item);
+            var client = new ClientInfo()
+            {
+                Restaurant = _ctx.Restoraunts.FirstOrDefault(r => r.Id == item.Restaurant.Id),
+                UserInfo = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.UserInfo.Id),
+            };
+
+            _ctx.ClientInfos.Add(client);
             _ctx.SaveChanges();
         }
 

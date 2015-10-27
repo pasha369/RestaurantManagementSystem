@@ -49,6 +49,9 @@
                     success: function (data) {
                         vm.Restaurants([]);
                         $.each(data, function (key, value) {
+                            if (value.PhotoUrl) {
+                                value.PhotoUrl = value.PhotoUrl.replace('~', '');
+                            }
                             value.Description = value.Description.substring(0, 200) + '...';
                             vm.Restaurants.push(value);
                         });

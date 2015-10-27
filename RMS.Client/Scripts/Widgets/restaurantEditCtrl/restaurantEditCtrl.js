@@ -24,7 +24,7 @@
                 function restaurantVM() {
                     this.Id = ko.observable();
                     this.Title = ko.observable();
-                    this.Phone = ko.observable();
+                    this.PhoneNumber = ko.observable();
                     this.Description = ko.observable();
                     this.PhotoUrl = ko.observable();
 
@@ -54,7 +54,7 @@
                     success: function (data) {
                         vm.Id(data.Id);
                         vm.Title(data.Name);
-                        vm.Phone(data.Phone);
+                        vm.PhoneNumber(data.PhoneNumber);
                         vm.Description(data.Description);
                         if (data.PhotoUrl) {
                             vm.PhotoUrl(data.PhotoUrl.replace("~", ""));
@@ -74,7 +74,7 @@
                 var data = {
                     Id: self.options.viewModel.Id(),
                     Name: self.options.viewModel.Title(),
-                    Phone: self.options.viewModel.Phone(),
+                    PhoneNumber: self.options.viewModel.PhoneNumber(),
                     Description: self.options.viewModel.Description(),
                 };
 
