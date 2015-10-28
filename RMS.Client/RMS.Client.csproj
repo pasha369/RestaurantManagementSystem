@@ -134,6 +134,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MVC\AccountController.cs" />
+    <Compile Include="Controllers\MVC\CountriesController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
     <Compile Include="Controllers\WebApi\ImageController.cs" />
     <Compile Include="Controllers\MVC\ProfileController.cs" />
@@ -143,10 +144,12 @@
     <Compile Include="Controllers\WebApi\SearchController.cs" />
     <Compile Include="Core\Autofac\AutofacConfig.cs" />
     <Compile Include="Core\Autofac\Modules\ManagerModule.cs" />
+    <Compile Include="Filters\AjaxAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\View\BookingModel.cs" />
+    <Compile Include="Models\View\CountriesModel.cs" />
     <Compile Include="Models\View\LoginModel.cs" />
     <Compile Include="Models\View\ProfileModel.cs" />
     <Compile Include="Models\View\RegisterModel.cs" />
@@ -348,10 +351,12 @@
     <Content Include="Views\Restaurant\RestaurantDetail.cshtml" />
     <Content Include="Views\Restaurant\BookTable.cshtml" />
     <Content Include="Views\Profile\RestaurateurPage.cshtml" />
-    <Content Include="Views\Restaurant\RestaurantEdit.cshtml" />
     <Content Include="Scripts\jquery-2.0.2.min.map" />
-    <Content Include="Views\Restaurant\DisplayTemplates\RestaurantModels.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\Countries\ContriesPage.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Countries.cshtml" />
+    <Content Include="Views\Countries\GetRstByCountry.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RestaurantModels.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

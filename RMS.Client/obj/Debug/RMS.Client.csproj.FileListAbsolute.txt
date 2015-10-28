@@ -41,6 +41,9 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\RMS
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\RMS.Client.pdb
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Antlr3.Runtime.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.Mvc.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.WebApi.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\AutoMapper.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\DataAccess.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\DataModel.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\EntityFramework.dll
@@ -59,6 +62,9 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Dat
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\DataModel.pdb
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Antlr3.Runtime.pdb
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.Mvc.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.WebApi.xml
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\AutoMapper.xml
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\EntityFramework.xml
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\EntityFramework.SqlServer.xml
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Newtonsoft.Json.xml
@@ -72,9 +78,3 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Sys
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\obj\Debug\RMS.Client.csprojResolveAssemblyReference.cache
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\obj\Debug\RMS.Client.dll
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\obj\Debug\RMS.Client.pdb
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\AutoMapper.dll
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\AutoMapper.xml
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.Mvc.dll
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.Mvc.xml
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.WebApi.dll
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\RMS.Client\bin\Autofac.Integration.WebApi.xml

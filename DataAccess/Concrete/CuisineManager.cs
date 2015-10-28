@@ -10,7 +10,7 @@ using DataModel.Model;
 
 namespace DataAccess.Concrete
 {
-    public class CuisineManager : IDataManager<Cuisine>, IDisposable
+    public class CuisineManager : IDataManager<Cuisine>
     {
         private RestorauntDbContext _ctx = new ContextManager().Context;
 
@@ -48,9 +48,6 @@ namespace DataAccess.Concrete
             return _ctx.Cuisines.ToList();
         }
 
-        public void Dispose()
-        {
-            _ctx.Dispose();
-        }
+
     }
 }

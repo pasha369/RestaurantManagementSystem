@@ -1,0 +1,32 @@
+﻿@model RMS.Client.Models.View.RestaurantLst
+
+@{
+    ViewBag.Title = "GetRstByCountry";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Countries</h1>
+        <ul class="pull-right breadcrumb">
+                <li><a href="@Url.Action("ContriesPage")">Countries</a></li>
+                <li class="active"><a  href="">Restaurants</a></li>
+            </ul>
+    </div><!--/container-->
+</div>
+<div class="container content-md">
+    <!-- Blog All Posts -->
+    <div class="col-md-9" data-bind="foreach: Restaurants">
+        <!-- Restaurants-->
+        <div class="row margin-bottom-20">
+            @Html.DisplayFor(m => m.RestaurantModels)
+        </div>
+        <!--/end row-->
+        <!-- End Restaurants-->
+
+        <div class="clearfix margin-bottom-20">
+            <hr>
+        </div>
+    </div>
+    <!-- End Blog All Posts -->
+</div>

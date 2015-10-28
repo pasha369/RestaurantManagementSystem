@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -13,10 +14,12 @@ namespace RMS.Client.Controllers.MVC
     public class RestaurantController : System.Web.Mvc.Controller
     {
         private IDataManager<Restaurant> _rstManager;
+        private IDataManager<Cuisine> _cuisineManager; 
 
-        public RestaurantController(IDataManager<Restaurant> rstManager)
+        public RestaurantController(IDataManager<Restaurant> rstManager, IDataManager<Cuisine> cuisineManager)
         {
             _rstManager = rstManager;
+            _cuisineManager = cuisineManager;
         }
 
         //
@@ -24,17 +27,20 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult RestaurantList()
         {
+          
+
             var items = _rstManager.GetAll();
-            var restaurantLst = new RestaurantLst();
+            var restaurantLst = new RestaurantLst(_cuisineManager);
+    
 
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>();
                 var model = Mapper.Map<RestaurantModel>(restaurant);
 
-                if(restaurant.Reviews != null)
+                if (restaurant.Reviews != null)
                 {
-                    model.CommentCount = restaurant.Reviews.Count();                    
+                    model.CommentCount = restaurant.Reviews.Count();
                 }
                 if (restaurant.Reviews.Count > 0)
                 {
@@ -45,6 +51,21 @@ namespace RMS.Client.Controllers.MVC
             }
             return View(restaurantLst);
         }
+        [HttpPost]
+        public ActionResult RestaurantList(RestaurantLst model)
+        {
+            var restaurantLst = new RestaurantLst(_cuisineManager);
+            var restaurants = _rstManager.GetAll().Where(
+                r => r.Cuisines.FirstOrDefault(c => c.Name == model.Cuisine) != null
+                ).ToList();
+
+            Mapper.CreateMap<Restaurant, RestaurantModel>();
+            model.RestaurantModels = Mapper.Map<List<Restaurant>, List<RestaurantModel>>(restaurants);
+
+            model.Cuisines = restaurantLst.Cuisines;
+            return View(model);
+        }
+
         public ActionResult RestaurantEdit(int Id)
         {
 
@@ -86,9 +107,9 @@ namespace RMS.Client.Controllers.MVC
                 var model = Mapper.Map<RestaurantModel>(restaurant);
 
                 model.CommentCount = restaurant.Reviews.Count();
-                if(restaurant.Reviews.Count > 0)
+                if (restaurant.Reviews.Count > 0)
                 {
-                    model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;                    
+                    model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;
                 }
 
                 return View(model);

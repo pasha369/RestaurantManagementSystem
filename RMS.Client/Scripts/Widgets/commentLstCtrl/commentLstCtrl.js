@@ -61,6 +61,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function (data) {
+                        self.options.viewModel.Reviews([]);
                         $.each(data, function (key, value) {
                             var review = new Review(value);
                             self.options.viewModel.Reviews.push(review);
@@ -81,10 +82,12 @@
                     this.Ambience = ko.observable(review.Ambience);
                     this.Comment = ko.observable(review.Comment);
                     this.Author = ko.observable(review.Author);
+                    this.PhotoUrl = ko.observable();
                     this.RestaurantId = ko.observable(review.RestaurantId);
 
                 }
                 self.options.viewModel.Reviews.push(new Review(review));
+                self._loadReviews();
             },
             _setOption: function (key, value) {
                 $.Widget.prototype._setOption.apply(this, arguments);

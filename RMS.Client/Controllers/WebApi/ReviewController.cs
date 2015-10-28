@@ -5,12 +5,14 @@ using System.Web.Http;
 using System.Web.Services;
 using DataAccess.Concrete;
 using DataModel.Model;
+using RMS.Client.Filters;
 using RMS.Client.Models.View;
 
 namespace RMS.Client.Controllers.WebApi
 {
     public class ReviewController : ApiController
     {
+        [AjaxAuthorize]
         [WebMethod]
         public bool Save(ReviewModel model)
         {
@@ -29,7 +31,6 @@ namespace RMS.Client.Controllers.WebApi
 
             return true;
         }
-
         [HttpGet]
         public List<ReviewModel> GetAll(int Id)
         {

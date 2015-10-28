@@ -135,7 +135,10 @@ namespace RMS.Admin.Pages.Contents
         {
             var cityManager = new CityManager();
             var city = cityManager.GetById(currentId);
-            (sender as DropDownList).Items.FindByValue(city.Country.Id.ToString()).Selected = true;
+            if(city.Country != null)
+            {
+                (sender as DropDownList).Items.FindByValue(city.Country.Id.ToString()).Selected = true;
+            }
         }
     }
 }

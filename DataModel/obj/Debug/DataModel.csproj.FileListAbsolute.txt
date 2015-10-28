@@ -28,12 +28,11 @@ C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debu
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.rstPic.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.favorite.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.favorite2.resources
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.csproj.GenerateResource.Cache
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.dll
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.pdb
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.status.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.date.resources
-C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.csprojResolveAssemblyReference.cache
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.UserInfo.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.PhoneNumber.resources
 C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.RestorauntContextMigrations.Author.resources
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.csproj.GenerateResource.Cache
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.dll
+C:\Users\pasha\Documents\git.repos\RestaurantManagementSystem\DataModel\obj\Debug\DataModel.pdb

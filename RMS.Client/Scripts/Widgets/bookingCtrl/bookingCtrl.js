@@ -81,7 +81,9 @@
                         toastr.success('Reservation saved');
                     },
                     error: function (err) {
-                        console.log(err.status + " : " + err.statusText);
+                        if (e.status == 401) {
+                            window.location = "/Account/Login";
+                        }
                     }
 
                 });

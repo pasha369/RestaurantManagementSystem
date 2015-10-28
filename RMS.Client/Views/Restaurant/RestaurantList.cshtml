@@ -1,5 +1,6 @@
 ﻿@model RMS.Client.Models.View.RestaurantLst
 
+@using System.Collections
 @using System.Web.Optimization
 
 @{
@@ -11,8 +12,17 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 }
 
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Restaurants</h1>
+
+    </div>
+    <!--/container-->
+</div>
+
+
 <div class="container content-md">
-    <!-- Blog All Posts -->
+    <!-- All Restaurants -->
     <div class="col-md-9" data-bind="foreach: Restaurants">
         <!-- Restaurants-->
         <div class="row margin-bottom-20">
@@ -33,8 +43,32 @@
         </ul>
         <!-- End Pager v3 -->
     </div>
-    <!-- End Blog All Posts -->
+    <!-- End All Restaurants -->
+    <div class="col-md-3">
+        @using (Html.BeginForm("RestaurantList", "Restaurant", FormMethod.Post))
+        {
+            @Html.HiddenFor(x => x.Cuisines)
+            <div class="form-group">
+                @Html.LabelFor(m => m.Rating, "Sort by rating: ")
+                @Html.DropDownListFor(m => m.Rating,
+                                      new[] { new SelectListItem { Text = "True", Value = "1" }, new SelectListItem { Text = "False", Value = "0" } }, new { @class = "form-control select" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Rating, "Sort by recent visited: ")
+                @Html.DropDownListFor(m => m.Recent, new[] { new SelectListItem { Text = "True", Value = "1" }, new SelectListItem { Text = "False", Value = "0" } }, new { @class = "form-control select" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Rating, "Cuisines: ")
+                @Html.DropDownListFor(m => m.Cuisine, Model.Cuisines, new{@class = "form-control select"})
+            </div>
+        }
+    </div>
 </div>
 
 @section Scripts {
+    <script>
+        $('.select').on('change', function() {
+            this.form.submit();
+        })
+    </script>
 }

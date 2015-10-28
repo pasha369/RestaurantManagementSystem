@@ -30,7 +30,7 @@
 
                     </li>
                 </ul>
-                <h2><a href="@Url.Action("RestaurantDetail", new { @Id = item.Id })">@item.Name</a></h2>
+                <h2><a href="@Url.Action("RestaurantDetail", "Restaurant", new { @Id = item.Id })">@item.Name</a></h2>
                 <p>@item.Description.Substring(0, 50) ...</p>
             </div>
         </div>
