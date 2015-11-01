@@ -1,0 +1,28 @@
+﻿<div id="reservation-user-ctrl">
+    <div data-bind="foreach: Restaurants">
+        
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-sm-5 col-md-4">
+                        <img data-bind="attr: { src : PhotoUrl ? PhotoUrl : '//placehold.it/200'}" class="img-thumbnail img-responsive image_square">
+                    </div>
+                    <div class="col-sm-7">
+                        <button class="btn warning" data-bind="click: $root.remove"><span class="fa fa-close"></span></button>
+                        <h2><a href="#" data-bind="text: Name"></a></h2>
+                        <div data-bind="text: Description"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-5 resource-props">
+
+                        <div>
+                            <button class="btn btn-primary" data-bind="click: $root.enter" data-toggle="modal">Enter</button>
+                        </div>
+
+                    </div>
+                </div>
+                <hr>
+            </li>
+        </ul>
+
+    </div>
+</div>

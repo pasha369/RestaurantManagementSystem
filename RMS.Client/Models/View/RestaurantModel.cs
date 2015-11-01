@@ -13,7 +13,6 @@ namespace RMS.Client.Models.View
         public int Rating { set; get; }
         public Address Address { get; set; }
         public int CommentCount { get; set; }
-        public List<Cuisine> Cuisines { get; set; }
     }
 
     public class Address

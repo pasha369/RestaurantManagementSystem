@@ -23,6 +23,7 @@ namespace DataAccess.Concrete
 
         public void Add(Restaurant item)
         {
+            item.Menu = new DataModel.Model.Menu();
             _ctx.Restoraunts.Add(item);
             _ctx.SaveChanges();
         }

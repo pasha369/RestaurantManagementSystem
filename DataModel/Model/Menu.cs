@@ -26,6 +26,7 @@ namespace DataModel.Model
         public string Name { set; get; }
         public virtual Cuisine Cuisine { set; get; }
         public virtual List<Dish> Dishes { set; get; }
+        public virtual Menu Menu { set; get; }
     }
     [Table("Cuisine")]
     public class Cuisine

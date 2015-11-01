@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Services;
+using AutoMapper;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataModel.Model;
@@ -14,12 +15,38 @@ namespace RMS.Client.Controllers.WebApi
     {
 
         public IDataManager<Reservation> rsvManager;
+        private IDataManager<UserInfo> _userManager;
 
-        public ReservationController(IDataManager<Reservation> mng)
+        public ReservationController(IDataManager<Reservation> mng, IDataManager<UserInfo> userManager)
         {
             rsvManager = mng;
+            _userManager = userManager;
         }
+        /// <summary>
+        /// Get user reserved restaurants where he 
+        /// can enter after restaurateur confirm that user enter.
+        /// </summary>
+        /// <returns>User reserved restaurants</returns>
+        [HttpGet]
+        public List<RestaurantModel> GetUserReservation()
+        {
+            var user = GetUserByLogin();
+            var reservationLst = rsvManager.GetAll().Where(r => r.User.Id == user.Id).Select(r => r.Table.Restaurant);
+            
 
+            Mapper.CreateMap<Restaurant, RestaurantModel>();
+            var modelLst = Mapper.Map<List<RestaurantModel>>(reservationLst);
+
+            return modelLst;
+        }
+        /// <summary>
+        /// Get restaurant reservation by date.
+        /// </summary>
+        /// <param name="Id">restaurant id</param>
+        /// <param name="day"></param>
+        /// <param name="month"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
         [HttpGet]
         public List<ReservedTable> GetByRestaurant(int Id, int day, int month, int year)
         {
@@ -97,6 +124,13 @@ namespace RMS.Client.Controllers.WebApi
             Enum.TryParse(rsvStatus.ReserveStatus, out status);
 
             rsv.Status = status;
+        }
+        private UserInfo GetUserByLogin()
+        {
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
+
+            return user;
         }
     }
 }

@@ -1,10 +1,11 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
         'Widgets/profileCtrl/profileCtrl',
-        'Widgets/reservationCtrl/reservationCtrl',
+        'Widgets/reservation/reservationTblCtrl/reservationTblCtrl',
         'Widgets/restaurantEditCtrl/restaurantEditCtrl',
         'Widgets/profileEditCtrl/profileEditCtrl',
+        'Widgets/menu/menuEditCtrl/menuEditCtrl',
         'text!Widgets/clientCtrl/clientCtrl.html'],
-    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl) {
+    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl, menuCtrl) {
 
         $.widget("cc.client", {
 
@@ -21,7 +22,8 @@
                 
                 $('.client-profile').userProfile();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
-                $('.reserved-tbl').reservations({ RestaurantId: self.options.restaurant.Id }).hide();
+                $('.reserved-tbl').resevationTbl({ restaurantId: self.options.restaurant.Id }).hide();
+                $('.restaurant-menu').menuEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.client-settings').settings().hide();
 
 
@@ -38,6 +40,11 @@
                 $('#btnReservetions').on('click', function () {
                     self.options.current.hide();
                     self.options.current = $('.reserved-tbl');
+                    self.options.current.show();
+                });
+                $('#btnMenu').on('click', function () {
+                    self.options.current.hide();
+                    self.options.current = $('.restaurant-menu');
                     self.options.current.show();
                 });
                 $('#btnSettings').on('click', function () {

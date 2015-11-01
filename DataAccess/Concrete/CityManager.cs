@@ -14,9 +14,6 @@ namespace DataAccess.Concrete
     {
         public RestorauntDbContext _ctx = new ContextManager().Context;
 
-
-   
-
         public void Delete(City item)
         {
             var city = _ctx.Cities.FirstOrDefault(t => t.Id == item.Id);

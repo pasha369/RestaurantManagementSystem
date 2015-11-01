@@ -2,16 +2,16 @@
         'jquery',
         'jquery-ui',
         'moment',
-        'text!Widgets/reservationCtrl/reservationCtrl.html'],
+        'text!Widgets/reservation/reservationTblCtrl/reservationTblCtrl.html'],
     function (ko, $) {
         var moment = require('moment');
-        $.widget("cc.reservations", {
+        $.widget("cc.reservationTbl", {
 
             // These options will be used as defaults
             options: {
-                view: require('text!Widgets/reservationCtrl/reservationCtrl.html'),
+                view: require('text!Widgets/reservation/reservationTblCtrl/reservationTblCtrl.html'),
                 reservationVM: null,
-                RestaurantId: "-1",
+                restaurantId: "-1",
             },
 
             // Set up the widget
@@ -37,7 +37,7 @@
 
 
                     this.refresh = function() {
-                        self._loadReservation(self.options.RestaurantId);
+                        self._loadReservation(self.options.restaurantId);
                     };
                     this.apply = function(item) {
                         self._applyReservation(item);
@@ -62,7 +62,7 @@
                 self._fillTimes();
 
                 ko.applyBindings(self.options.reservationVM, $("#reservations")[0]);
-                self._loadReservation(this.options.RestaurantId);
+                self._loadReservation(this.options.restaurantId);
                 self._getStatusLst();
 
             },
@@ -86,9 +86,9 @@
                 $.ajax({
                     type: "POST",
                     url: '/api/Reservation/ChangeStatus/',
-                    data: { RstId: self.options.RestaurantId, ReserveStatus: SelectedStatus },
+                    data: { RstId: self.options.restaurantId, ReserveStatus: SelectedStatus },
                     success: function () {
-                        self._loadReservation(self.options.RestaurantId);
+                        self._loadReservation(self.options.restaurantId);
                     },
                     error: function (err) {
                         console.log(err.status);
@@ -101,7 +101,7 @@
                     type: "POST",
                     url: '/api/Reservation/ApplyReservation/' + item.Id(),
                     success: function() {
-                        self._loadReservation(self.options.RestaurantId);
+                        self._loadReservation(self.options.restaurantId);
                     },
                     error: function(err) {
                         console.log(err.status);
@@ -116,7 +116,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function () {
-                        self._loadReservation(self.options.RestaurantId);
+                        self._loadReservation(self.options.restaurantId);
                         
                     },
                     error: function (err) {

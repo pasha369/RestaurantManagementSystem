@@ -1,0 +1,12 @@
+﻿<div id="menu-ctrl">
+    <input type="text" class="form-control" data-bind="value: CategoryName"/>
+    <button type="button" class="btn btn-default" data-bind="click: $root.AddCategory"></button>
+    <div class="container" data-bind="foreach: Categories">
+        <h4 data-bind="text: Name"></h4>
+    </div>
+    Name:
+    <input type="text" data-bind="value: DishName" class="form-control"/>
+    Cost: 
+    <input type="text" data-bind="value: DishCost" class="form-control"/>
+    <button type="button" class="btn btn-block" data-bind="click: $root.AddDish"></button>
+</div>

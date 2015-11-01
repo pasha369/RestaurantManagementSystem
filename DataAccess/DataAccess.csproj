@@ -61,6 +61,9 @@
   <ItemGroup>
     <Compile Include="Abstract\IAuthRepository.cs" />
     <Compile Include="Abstract\IDataManager.cs" />
+    <Compile Include="Abstract\Menu\ICategoryManager.cs" />
+    <Compile Include="Abstract\Menu\IDishManager.cs" />
+    <Compile Include="Abstract\Menu\IMenuManager.cs" />
     <Compile Include="Abstract\IMessageManager.cs" />
     <Compile Include="Abstract\IUserDataManager.cs" />
     <Compile Include="Concrete\AuthRepository.cs" />
@@ -71,6 +74,9 @@
     <Compile Include="Concrete\CuisineManager.cs" />
     <Compile Include="Concrete\FavoriteManager.cs" />
     <Compile Include="Concrete\HallManager.cs" />
+    <Compile Include="Concrete\Menu\CategoryManager.cs" />
+    <Compile Include="Concrete\Menu\DishManager.cs" />
+    <Compile Include="Concrete\Menu\MenuManager.cs" />
     <Compile Include="Concrete\MessageManager.cs" />
     <Compile Include="Concrete\ReservationManager.cs" />
     <Compile Include="Concrete\RestaurantManager.cs" />

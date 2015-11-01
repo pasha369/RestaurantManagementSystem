@@ -71,15 +71,14 @@ namespace RMS.Client.Controllers.MVC
 
             var rstModel = GetModelById(Id);
 
-            return View(rstModel);
+            return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
         public ActionResult GetById(int Id)
         {
-
             var rstModel = GetModelById(Id);
-
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
         public ActionResult RestaurantEdit(RestaurantModel model)
         {

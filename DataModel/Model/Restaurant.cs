@@ -14,16 +14,16 @@ namespace DataModel.Model
         public int Id { set; get; }
         public string Name { set; get; }
         public string Description { get; set; }
+        public virtual Menu Menu { set; get; }
 
         [DataType(DataType.PhoneNumber)]
         public string PhoneNumber { set; get; }
         public Address Adress { set; get; }
-        
+
         public string PhotoUrl { get; set; }
         public virtual List<Hall> Halls { set; get; }
         public virtual List<Cuisine> Cuisines { set; get; }
         public virtual List<Review> Reviews { set; get; }
-
     }
 
     public enum Status
