@@ -1,5 +1,5 @@
-2015/10/31-12:09:44.673 e2c Recovering log #63
-2015/10/31-12:09:44.674 e2c Level-0 table #65: started
-2015/10/31-12:09:44.866 e2c Level-0 table #65: 3148 bytes OK
-2015/10/31-12:09:45.199 e2c Delete type=0 #63
-2015/10/31-12:09:45.200 e2c Delete type=3 #61
+2015/11/02-06:26:50.731 16d4 Recovering log #73
+2015/11/02-06:26:50.731 16d4 Level-0 table #75: started
+2015/11/02-06:26:50.800 16d4 Level-0 table #75: 5173 bytes OK
+2015/11/02-06:26:50.929 16d4 Delete type=0 #73
+2015/11/02-06:26:50.929 16d4 Delete type=3 #71

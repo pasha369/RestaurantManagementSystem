@@ -1,11 +1,11 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
         'Widgets/profileCtrl/profileCtrl',
-        'Widgets/reservation/reservationTblCtrl/reservationTblCtrl',
         'Widgets/restaurantEditCtrl/restaurantEditCtrl',
         'Widgets/profileEditCtrl/profileEditCtrl',
         'Widgets/menu/menuEditCtrl/menuEditCtrl',
+        'Widgets/reservations/reservationTblCtrl/reservationTblCtrl',
         'text!Widgets/clientCtrl/clientCtrl.html'],
-    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl, menuCtrl) {
+    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl, menuCtrl, reservationTblCtrl) {
 
         $.widget("cc.client", {
 
@@ -22,7 +22,7 @@
                 
                 $('.client-profile').userProfile();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
-                $('.reserved-tbl').resevationTbl({ restaurantId: self.options.restaurant.Id }).hide();
+                $('.reserved-tbl').reservationTbl({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.restaurant-menu').menuEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.client-settings').settings().hide();
 

@@ -2,14 +2,14 @@
         'jquery',
         'jquery-ui',
         'moment',
-        'text!Widgets/reservation/reservationTblCtrl/reservationTblCtrl.html'],
+        'text!Widgets/reservations/reservationTblCtrl/reservationTblCtrl.html'],
     function (ko, $) {
         var moment = require('moment');
         $.widget("cc.reservationTbl", {
 
             // These options will be used as defaults
             options: {
-                view: require('text!Widgets/reservation/reservationTblCtrl/reservationTblCtrl.html'),
+                view: require('text!Widgets/reservations/reservationTblCtrl/reservationTblCtrl.html'),
                 reservationVM: null,
                 restaurantId: "-1",
             },

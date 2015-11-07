@@ -60,7 +60,7 @@
                 var from = moment(vm.Date() + ' ' + vm.From(), "DD.MM.YYYY HH:mm").toDate();
                 var to = moment(vm.Date() + ' ' + vm.To(), "DD.MM.YYYY HH:mm").toDate();
 
-                var reservation = {
+                var model = {
                     From: from,
                     To: to,
 
@@ -73,15 +73,15 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/Restaurant/BookTable',
+                    url: '/api/Reservation/ReserveTable',
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    data: ko.toJSON(reservation),
+                    data: ko.toJSON(model),
                     success: function () {
                         toastr.success('Reservation saved');
                     },
                     error: function (err) {
-                        if (e.status == 401) {
+                        if (err.status == 401) {
                             window.location = "/Account/Login";
                         }
                     }

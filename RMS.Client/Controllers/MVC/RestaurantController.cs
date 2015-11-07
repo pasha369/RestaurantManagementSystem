@@ -127,12 +127,6 @@ namespace RMS.Client.Controllers.MVC
             });
             return Json(strJSON, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult BookTable(int Id)
-        {
-            var model = new BookingModel();
-            model.RestaurantId = Id;
-            return View(model);
-        }
 
         [HttpPost]
         public ActionResult BookTable(BookingModel model)

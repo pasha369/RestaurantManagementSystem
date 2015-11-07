@@ -1,7 +1,6 @@
 ﻿define(['knockout', "knockout.validation", 'jquery', 'jquery-ui', 'datepicker', 'moment', 'toastr',
         'text!Widgets/menu/menuEditCtrl/menuEditCtrl.html'],
     function (ko, validation, $, datepicker) {
-        var moment = require('moment');
         var toastr = require('toastr');
 
         $.widget("cc.menuEdit", {
@@ -19,8 +18,10 @@
 
                 function MenuVM() {
                     this.Categories = ko.observableArray([]);
-
+                    this.Category = ko.observable();
+                    // Category modal field.
                     this.CategoryName = ko.observable();
+                    // Dish modal field.
                     this.DishName = ko.observable();
                     this.DishCost = ko.observable();
                     
@@ -50,7 +51,6 @@
                         $.each(data, function(key, value) {
                             vm.Categories.push(value);
                         });
-                        toastr.success('Add category saved');
                     },
                     error: function (err) {
                         toastr.warning('Something wrong');
@@ -73,7 +73,7 @@
                     dataType: "json",
                     data: ko.toJSON(category),
                     success: function () {
-                        toastr.success('Add category saved');
+                        toastr.success(category.Name() + 'have been added');
                     },
                     error: function (err) {
                         toastr.warning('Something wrong');
@@ -86,9 +86,8 @@
                 var dish = {
                     Name: vm.DishName,
                     Cost: vm.DishCost,
-                    CategoryId: 1, //TODO: Category
+                    CategoryId: vm.Category().Id
                 };
-                
                 $.ajax({
                     type: 'POST',
                     url: '/api/Dish/Add',
@@ -96,7 +95,7 @@
                     dataType: "json",
                     data: ko.toJSON(dish),
                     success: function () {
-                        toastr.success('Add category saved');
+                        toastr.success(dish.Name() + ' has been added');
                     },
                     error: function (err) {
                         toastr.warning('Something wrong');

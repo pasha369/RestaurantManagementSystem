@@ -22,6 +22,35 @@ namespace RMS.Client.Controllers.WebApi
             rsvManager = mng;
             _userManager = userManager;
         }
+
+        [HttpPost]
+        public void ReserveTable(BookingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var rstManager = new RestaurantManager();
+                var tblManager = new DinnerTableManager();
+                
+                var table = rstManager.GetAllTable(model.RestaurantId)
+                    .FirstOrDefault();
+
+                if (table != null)
+                {
+                    tblManager.Update(table);
+
+                    var reservation = new Reservation();
+
+                    reservation.User = GetUserByLogin();
+                    reservation.PeopleCount = model.PeopleNum;
+                    reservation.From = model.From;
+                    reservation.To = model.To;
+                    reservation.SpecialRequest = model.Msg;
+                    reservation.Table = table;
+                    rsvManager.Add(reservation);
+                }
+            }
+        }
+
         /// <summary>
         /// Get user reserved restaurants where he 
         /// can enter after restaurateur confirm that user enter.
