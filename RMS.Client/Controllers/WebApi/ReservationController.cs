@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Http;
 using System.Web.Services;
+using AutoMapper;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataModel.Model;
@@ -14,12 +15,67 @@ namespace RMS.Client.Controllers.WebApi
     {
 
         public IDataManager<Reservation> rsvManager;
+        private IDataManager<UserInfo> _userManager;
 
-        public ReservationController(IDataManager<Reservation> mng)
+        public ReservationController(IDataManager<Reservation> mng, IDataManager<UserInfo> userManager)
         {
             rsvManager = mng;
+            _userManager = userManager;
         }
 
+        [HttpPost]
+        public void ReserveTable(BookingModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var rstManager = new RestaurantManager();
+                var tblManager = new DinnerTableManager();
+                
+                var table = rstManager.GetAllTable(model.RestaurantId)
+                    .FirstOrDefault();
+
+                if (table != null)
+                {
+                    tblManager.Update(table);
+
+                    var reservation = new Reservation();
+
+                    reservation.User = GetUserByLogin();
+                    reservation.PeopleCount = model.PeopleNum;
+                    reservation.From = model.From;
+                    reservation.To = model.To;
+                    reservation.SpecialRequest = model.Msg;
+                    reservation.Table = table;
+                    rsvManager.Add(reservation);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Get user reserved restaurants where he 
+        /// can enter after restaurateur confirm that user enter.
+        /// </summary>
+        /// <returns>User reserved restaurants</returns>
+        [HttpGet]
+        public List<RestaurantModel> GetUserReservation()
+        {
+            var user = GetUserByLogin();
+            var reservationLst = rsvManager.GetAll().Where(r => r.User.Id == user.Id).Select(r => r.Table.Restaurant);
+            
+
+            Mapper.CreateMap<Restaurant, RestaurantModel>();
+            var modelLst = Mapper.Map<List<RestaurantModel>>(reservationLst);
+
+            return modelLst;
+        }
+        /// <summary>
+        /// Get restaurant reservation by date.
+        /// </summary>
+        /// <param name="Id">restaurant id</param>
+        /// <param name="day"></param>
+        /// <param name="month"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
         [HttpGet]
         public List<ReservedTable> GetByRestaurant(int Id, int day, int month, int year)
         {
@@ -97,6 +153,13 @@ namespace RMS.Client.Controllers.WebApi
             Enum.TryParse(rsvStatus.ReserveStatus, out status);
 
             rsv.Status = status;
+        }
+        private UserInfo GetUserByLogin()
+        {
+            var login = System.Web.HttpContext.Current.User.Identity.Name;
+            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
+
+            return user;
         }
     }
 }

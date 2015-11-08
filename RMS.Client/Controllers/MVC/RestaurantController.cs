@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
@@ -13,10 +14,14 @@ namespace RMS.Client.Controllers.MVC
     public class RestaurantController : System.Web.Mvc.Controller
     {
         private IDataManager<Restaurant> _rstManager;
+        private IDataManager<Cuisine> _cuisineManager;
+        private IDataManager<Country> _countryManager; 
 
-        public RestaurantController(IDataManager<Restaurant> rstManager)
+        public RestaurantController(IDataManager<Restaurant> rstManager, IDataManager<Cuisine> cuisineManager, IDataManager<Country> countryManager)
         {
             _rstManager = rstManager;
+            _cuisineManager = cuisineManager;
+            _countryManager = countryManager;
         }
 
         //
@@ -25,16 +30,17 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult RestaurantList()
         {
             var items = _rstManager.GetAll();
-            var restaurantLst = new RestaurantLst();
-
+            var restaurantLst = new RestaurantLst(_cuisineManager);
+            restaurantLst.CountryList.AddRange(GetTopCountry());
+            restaurantLst.CuisineList.AddRange(GetTopCuisine());
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>();
                 var model = Mapper.Map<RestaurantModel>(restaurant);
 
-                if(restaurant.Reviews != null)
+                if (restaurant.Reviews != null)
                 {
-                    model.CommentCount = restaurant.Reviews.Count();                    
+                    model.CommentCount = restaurant.Reviews.Count();
                 }
                 if (restaurant.Reviews.Count > 0)
                 {
@@ -45,22 +51,69 @@ namespace RMS.Client.Controllers.MVC
             }
             return View(restaurantLst);
         }
-        public ActionResult RestaurantEdit(int Id)
+        public ActionResult RestaurantListCountry(string country)
         {
+            var items = _rstManager.GetAll().Where(r =>( r.Adress.Country != null?r.Adress.Country.Name:"") == country).ToList();
+            var restaurantLst = new RestaurantLst();
+            restaurantLst.CountryList.AddRange(GetTopCountry());
 
-            var rstModel = GetModelById(Id);
-
-            return View(rstModel);
+            foreach (var restaurant in items)
+            {
+                Mapper.CreateMap<Restaurant, RestaurantModel>();
+                var model = Mapper.Map<RestaurantModel>(restaurant);
+                restaurantLst.RestaurantModels.Add(model);
+            }
+            return View("RestaurantList", restaurantLst);
         }
-        public ActionResult GetById(int Id)
+
+        public ActionResult RestaurantListCuisine(string cuisine)
+        {
+            var items = _rstManager.GetAll()
+                .Where(r => r.Cuisines.Count != 0 && r.Cuisines.Exists(c => c.Name== cuisine) )
+                .ToList();
+            var restaurantLst = new RestaurantLst();
+            restaurantLst.CountryList.AddRange(GetTopCountry());
+            restaurantLst.CuisineList.AddRange(GetTopCuisine());
+
+            foreach (var restaurant in items)
+            {
+                Mapper.CreateMap<Restaurant, RestaurantModel>();
+                var model = Mapper.Map<RestaurantModel>(restaurant);
+                restaurantLst.RestaurantModels.Add(model);
+            }
+
+            return View("RestaurantList", restaurantLst);            
+        }
+        [HttpPost]
+        public ActionResult RestaurantList(RestaurantLst model)
+        {
+            model.CountryList.AddRange(GetTopCountry());
+            //var restaurantLst = new RestaurantLst(_cuisineManager);
+            //var restaurants = _rstManager.GetAll().Where(
+            //    r => r.Cuisines.FirstOrDefault(c => c.Name == model.Cuisine) != null
+            //    ).ToList();
+            //Mapper.CreateMap<Restaurant, RestaurantModel>();
+            //model.RestaurantModels = Mapper.Map<List<Restaurant>, List<RestaurantModel>>(restaurants);
+
+            //model.Cuisines = restaurantLst.Cuisines;
+            return View(model);
+        }
+
+        public ActionResult RestaurantEdit(int Id)
         {
 
             var rstModel = GetModelById(Id);
 
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetById(int Id)
+        {
+            var rstModel = GetModelById(Id);
+            return Json(rstModel, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpPost]
-        public ActionResult RestaurantEdit(RestaurantModel model)
+        public void RestaurantEdit(RestaurantModel model)
         {
             if (ModelState.IsValid)
             {
@@ -71,9 +124,7 @@ namespace RMS.Client.Controllers.MVC
                 Mapper.Map<RestaurantModel, Restaurant>(model, restaurant);
 
                 _rstManager.Update(restaurant);
-                return RedirectToAction("RestaurantDetail", "Restaurant", new { Id = model.Id });
             }
-            return View(model);
         }
 
         public ActionResult RestaurantDetail(int Id)
@@ -86,9 +137,9 @@ namespace RMS.Client.Controllers.MVC
                 var model = Mapper.Map<RestaurantModel>(restaurant);
 
                 model.CommentCount = restaurant.Reviews.Count();
-                if(restaurant.Reviews.Count > 0)
+                if (restaurant.Reviews.Count > 0)
                 {
-                    model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;                    
+                    model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;
                 }
 
                 return View(model);
@@ -106,45 +157,6 @@ namespace RMS.Client.Controllers.MVC
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
             return Json(strJSON, JsonRequestBehavior.AllowGet);
-        }
-        public ActionResult BookTable(int Id)
-        {
-            var model = new BookingModel();
-            model.RestaurantId = Id;
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult BookTable(BookingModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var rstManager = new RestaurantManager();
-                var rsvManager = new ReservationManager();
-                var userManager = new UserManager();
-                var tblManager = new DinnerTableManager();
-                var table = rstManager.GetAllTable(model.RestaurantId)
-                    .FirstOrDefault();
-
-                if (table != null)
-                {
-                    tblManager.Update(table);
-
-                    var reservation = new Reservation();
-
-                    var login = System.Web.HttpContext.Current.User.Identity.Name;
-                    reservation.User = userManager.GetAll().FirstOrDefault(u => u.Login == login);
-                    reservation.PeopleCount = model.PeopleNum;
-                    reservation.From = model.From;
-                    reservation.To = model.To;
-                    reservation.SpecialRequest = model.Msg;
-                    reservation.Table = table;
-                    rsvManager.Add(reservation);
-
-                    return Json(RedirectToAction("RestaurantDetail", new { @Id = 1 }));
-                }
-            }
-            return Json("");
         }
 
         public ActionResult GetRestaurantByClient()
@@ -165,7 +177,7 @@ namespace RMS.Client.Controllers.MVC
         }
 
         [HttpPost]
-        public ActionResult AddFavorite(int Id)
+        public void AddFavorite(int Id)
         {
             var userManager = new UserManager();
             var favoriteManager = new FavoriteManager();
@@ -176,8 +188,6 @@ namespace RMS.Client.Controllers.MVC
             favorite.Restaurant = _rstManager.GetById(Id);
             favorite.User = userManager.GetAll().FirstOrDefault(u => u.Login == login);
             favoriteManager.Add(favorite);
-
-            return View();
         }
 
         private RestaurantModel GetModelById(int Id)
@@ -189,5 +199,25 @@ namespace RMS.Client.Controllers.MVC
 
             return model;
         }
+
+        private IEnumerable<string> GetTopCountry()
+        {
+            var rst = _rstManager.GetAll();
+            var countryLst = rst
+                .GroupBy(r => r.Adress.Country)
+                .OrderByDescending(country => country.Count())
+                .Select(gr => new { Name = gr.Key.Name, Count = gr.Count() })
+                .Select(c => c.Name).Take(3);
+            return countryLst;
+        }
+
+        private IEnumerable<string> GetTopCuisine()
+        {
+            var cuisineLst = _cuisineManager.GetAll()
+                .OrderByDescending(c => c.Restoraunts.Count())
+                .Select(c => c.Name).AsEnumerable();
+
+            return cuisineLst;
+        } 
     }
 }

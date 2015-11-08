@@ -69,6 +69,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,20 +135,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MVC\AccountController.cs" />
+    <Compile Include="Controllers\MVC\CountriesController.cs" />
     <Compile Include="Controllers\MVC\HomeController.cs" />
     <Compile Include="Controllers\WebApi\ImageController.cs" />
     <Compile Include="Controllers\MVC\ProfileController.cs" />
+    <Compile Include="Controllers\WebApi\Menu\DishController.cs" />
+    <Compile Include="Controllers\WebApi\Menu\MenuController.cs" />
     <Compile Include="Controllers\WebApi\ReservationController.cs" />
     <Compile Include="Controllers\MVC\RestaurantController.cs" />
     <Compile Include="Controllers\WebApi\ReviewController.cs" />
     <Compile Include="Controllers\WebApi\SearchController.cs" />
     <Compile Include="Core\Autofac\AutofacConfig.cs" />
     <Compile Include="Core\Autofac\Modules\ManagerModule.cs" />
+    <Compile Include="Filters\AjaxAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\View\BookingModel.cs" />
+    <Compile Include="Models\View\CountriesModel.cs" />
     <Compile Include="Models\View\LoginModel.cs" />
+    <Compile Include="Models\View\MenuModels\CategoryModel.cs" />
+    <Compile Include="Models\View\MenuModels\DishModel.cs" />
     <Compile Include="Models\View\ProfileModel.cs" />
     <Compile Include="Models\View\RegisterModel.cs" />
     <Compile Include="Models\View\ReservationLst.cs" />
@@ -169,7 +177,6 @@
     <Content Include="Content\Styles\footers\footer-v1.css" />
     <Content Include="Content\Styles\headers\header-default.css" />
     <Content Include="Content\Styles\ie8.css" />
-    <Content Include="Content\Styles\owl-carousel\owl.carousel.css" />
     <Content Include="Content\Styles\Pages\blog.css" />
     <Content Include="Content\Styles\Pages\page_log_reg_v1.css" />
     <Content Include="Content\Styles\Pages\page_log_reg_v2.css" />
@@ -289,16 +296,10 @@
     <Content Include="Scripts\ThemeScripts\circles-master\circles.js" />
     <Content Include="Scripts\ThemeScripts\counter\jquery.counterup.min.js" />
     <Content Include="Scripts\ThemeScripts\counter\waypoints.min.js" />
-    <Content Include="Scripts\ThemeScripts\custom.js" />
     <Content Include="Scripts\ThemeScripts\jquery.parallax.js" />
     <Content Include="Scripts\ThemeScripts\jquery\jquery-migrate.min.js" />
     <Content Include="Scripts\ThemeScripts\jquery\jquery.min.js" />
-    <Content Include="Scripts\ThemeScripts\owl-carousel\owl.carousel.js" />
     <Content Include="Scripts\ThemeScripts\plugins\datepicker.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\masking.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\owl-carousel.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\style-switcher.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\validation.js" />
     <Content Include="Scripts\ThemeScripts\scrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\ThemeScripts\skyforms\jquery-ui.min.js" />
     <Content Include="Scripts\ThemeScripts\skyforms\jquery.maskedinput.min.js" />
@@ -317,14 +318,20 @@
     <Content Include="Scripts\Widgets\favoritesCtrl\favoritesCtrl.html" />
     <Content Include="Scripts\Widgets\favoritesCtrl\favoritesCtrl.js" />
     <Content Include="Scripts\Widgets\main.js" />
+    <Content Include="Scripts\Widgets\menu\menuEditCtrl\menuEditCtrl.html" />
+    <Content Include="Scripts\Widgets\menu\menuEditCtrl\menuEditCtrl.js" />
+    <Content Include="Scripts\Widgets\menu\menuUserCtrl\menuUserCtrl.html" />
+    <Content Include="Scripts\Widgets\menu\menuUserCtrl\menuUserCtrl.js" />
     <Content Include="Scripts\Widgets\photoCtrl\photoCtrl.html" />
     <Content Include="Scripts\Widgets\photoCtrl\photoCtrl.js" />
     <Content Include="Scripts\Widgets\profileEditCtrl\profileEditCtrl.html" />
     <Content Include="Scripts\Widgets\profileEditCtrl\profileEditCtrl.js" />
     <Content Include="Scripts\Widgets\profileCtrl\profileCtrl.js" />
     <Content Include="Scripts\Widgets\profileCtrl\profileCtrl.html" />
-    <Content Include="Scripts\Widgets\reservationCtrl\reservationCtrl.html" />
-    <Content Include="Scripts\Widgets\reservationCtrl\reservationCtrl.js" />
+    <Content Include="Scripts\Widgets\reservations\reservationTblCtrl\reservationTblCtrl.html" />
+    <Content Include="Scripts\Widgets\reservations\reservationTblCtrl\reservationTblCtrl.js" />
+    <Content Include="Scripts\Widgets\reservations\reservationUserCtrl\reservationUserCtrl.html" />
+    <Content Include="Scripts\Widgets\reservations\reservationUserCtrl\reservationUserCtrl.js" />
     <Content Include="Scripts\Widgets\restaurantEditCtrl\restaurantEditCtrl.html" />
     <Content Include="Scripts\Widgets\restaurantEditCtrl\restaurantEditCtrl.js" />
     <Content Include="Scripts\Widgets\searchCtrl\searchCtrl.html" />
@@ -346,12 +353,14 @@
     <Content Include="Views\Profile\UserPage.cshtml" />
     <Content Include="Views\Restaurant\RestaurantList.cshtml" />
     <Content Include="Views\Restaurant\RestaurantDetail.cshtml" />
-    <Content Include="Views\Restaurant\BookTable.cshtml" />
     <Content Include="Views\Profile\RestaurateurPage.cshtml" />
-    <Content Include="Views\Restaurant\RestaurantEdit.cshtml" />
     <Content Include="Scripts\jquery-2.0.2.min.map" />
-    <Content Include="Views\Restaurant\DisplayTemplates\RestaurantModels.cshtml" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
+    <Content Include="Views\Countries\ContriesPage.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Countries.cshtml" />
+    <Content Include="Views\Countries\GetRstByCountry.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\RestaurantModels.cshtml" />
+    <Content Include="Views\Restaurant\PartialViews\FilterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

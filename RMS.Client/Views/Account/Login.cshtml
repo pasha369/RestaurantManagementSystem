@@ -42,7 +42,7 @@
                     @(Html.ViewData.ModelState.IsValidField("Password") ? null : "has-error")">
                     <div class="input-group margin-bottom-20">
                         <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password" })
+                        @Html.TextBoxFor(model => model.Password, new { @class = "form-control", @placeholder = "Password", @type="password" })
                     </div>
                     <p class=" help-block ">@Html.ValidationMessageFor(model => model.Password)</p>
                 </div>

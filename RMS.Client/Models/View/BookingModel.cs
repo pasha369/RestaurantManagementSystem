@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 using DataModel.Model;
 
@@ -14,13 +15,13 @@ namespace RMS.Client.Models.View
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Msg { get; set; }
-        [Required]
+        [DataMember(IsRequired = true)]
         [DataType(DataType.Date)]
         public DateTime From { get; set; }
-        [Required]
+        [DataMember(IsRequired = true)]
         [DataType(DataType.Date)]
         public DateTime To { set; get; }
-        [Required]
+        [DataMember(IsRequired = true)]
         public int PeopleNum { get; set; }
         public int RestaurantId { get; set; }
 

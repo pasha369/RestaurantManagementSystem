@@ -1,5 +1,4 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
-        'Widgets/bookingCtrl/bookingCtrl',
         'text!Widgets/searchCtrl/searchCtrl.html'],
     function (ko, $) {
 

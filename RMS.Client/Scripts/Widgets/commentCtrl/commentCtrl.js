@@ -48,20 +48,22 @@
                     Service: vm.Service(),
                     Ambience: vm.Ambience(),
                     Comment: vm.Comment(),
-                    Author: vm.Author(),
                     RestaurantId: vm.RestaurantId()
                 });
-                self.options.eventTrigger.notify(review );
+                
                 $.ajax({
                     type:'POST',
                     url: '/api/Review/Save',
                     data: ko.toJSON(review),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: function(data) {
+                    success: function (data) {
+                        self.options.eventTrigger.notify(review);
                     },
-                    error: function(err) {
-                        console.log(err.status + " : " + err.statusText);
+                    error: function (e) {
+                        if (e.status == 401) {
+                            window.location = "/Account/Login";
+                        }
                     } 
                 });
             },

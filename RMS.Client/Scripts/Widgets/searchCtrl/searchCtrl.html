@@ -1,6 +1,6 @@
-﻿<div id="search-ctrl">
+﻿<div id="search-ctrl" class="container">
 
-    <div class="search-block-v2 margin-top-20">
+    <div class="search-block-v2 margin-top-20 margin-bottom-20">
         <div class="container">
             <div class="col-md-6 col-md-offset-3 ">
 
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container s-results">
         <ul id="search-results" class="list-group" data-bind="foreach: Restaurants">
             <li class="list-group-item  margin-top-20">
@@ -31,9 +31,7 @@
                         <br>
                         <div>
                             <a class="btn btn-primary" role="button" data-bind="attr:{href:'/Restaurant/RestaurantDetail/' + Id}">Details</a>
-                            <button class="btn btn-primary" role="button" data-bind="click: $root.reserve" data-toggle="modal" data-target="#book-now">Make reservation</button>
                         </div>
-
                     </div>
                 </div>
                 <hr>
@@ -41,24 +39,3 @@
         </ul>
     </div>
 </div>
-
-<!--Make reservation-->
-<div id="book-now" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Make reservation</h4>
-            </div>
-            <div class="modal-body">
-                <div class="">
-                    <div id="book-table-context"></div>
-                </div>
-            </div>
-            <div class="modal-footer">
-            </div>
-        </div>
-    </div>
-</div>
-<!-- End Make reservation-->

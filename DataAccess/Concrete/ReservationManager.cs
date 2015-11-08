@@ -53,7 +53,7 @@ namespace DataAccess.Concrete
 
         public List<Reservation> GetAll()
         {
-            return _ctx.Reservations.ToList();
+            return _ctx.Reservations.Include(x => x.Table.Restaurant).ToList();
         }
 
     }

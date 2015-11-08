@@ -1,25 +1,4 @@
-﻿<!--<div id="comment-list">
-    <div data-bind="foreach: Reviews">
-        <div class="media">
-            <a class="pull-left" href="#">
-                <img class="media-object" src="assets/img/testimonials/img4.jpg" alt="" />
-            </a>
-            <div class="media-body">
-                <h4 class="media-heading" data-bind="text: Author"><span>July 5,2013 / <a href="#">Reply</a></span></h4>
-                <p data-bind="text: Comment"></p>
-                Food template: 
-                        <ul style="list-style-type: none">
-                            <li data-bind="foreach: new Array(Food())">
-                                <i class="fa fa-star"></i>
-                            </li>
-                        </ul>
-            </div>
-        </div>
-    </div>
-</div>-->
-
-
-<div id="comment-list">
+﻿<div id="comment-list">
     <div class="container-fluid">
         <i class="pull-right">
             <span data-bind="text: Reviews().length"></span> Reviews
@@ -32,7 +11,7 @@
                             <img class="img-responsive" data-bind="attr: { src : PhotoUrl() ? PhotoUrl() : '//placehold.it/200'}"/>
                         </div>
                         <div class="col-md-10 text-left">
-                            <h4 data-bind="text: Author">Fatoma Hassan</h4>
+                            <h4 data-bind="text: Author"></h4>
 
                             <blockquote>
                                 <p data-bind="text: Comment"></p>

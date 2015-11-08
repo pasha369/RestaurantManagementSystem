@@ -23,6 +23,7 @@ namespace DataAccess.Concrete
 
         public void Add(Restaurant item)
         {
+            item.Menu = new DataModel.Model.Menu();
             _ctx.Restoraunts.Add(item);
             _ctx.SaveChanges();
         }
@@ -45,7 +46,8 @@ namespace DataAccess.Concrete
         public List<Restaurant> GetAll()
         {
             return _ctx.Restoraunts.Include("Halls")
-                .Include("Cuisines")
+                .Include(x => x.Cuisines)
+                .Include(x => x.Adress)
                 .ToList();
         }
         public List<DinnerTable> GetAllTable(int id)

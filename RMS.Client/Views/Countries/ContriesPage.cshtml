@@ -1,0 +1,18 @@
+﻿@model RMS.Client.Models.View.CountriesModel
+
+@{
+    ViewBag.Title = "ContriesPage";
+    Layout = "~/Views/Shared/_BaseLayout.cshtml";
+}
+@section PageStyle
+{
+    <link rel="stylesheet" href="~/Content/Styles/Pages/portfolio-v1.css"/>
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Countries</h1>
+    </div><!--/container-->
+</div>
+
+@Html.DisplayFor(m => m.Countries)

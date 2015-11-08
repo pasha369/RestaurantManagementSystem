@@ -65,7 +65,7 @@ namespace RMS.Client.Controllers.MVC
         public  ActionResult Logout()
         {
             FormsAuthentication.SignOut();
-            return View();
+            return RedirectToAction("ProfilePage", "Profile");
         }
 
         public ActionResult Register()

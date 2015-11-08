@@ -1,5 +1,6 @@
 ﻿@model RMS.Client.Models.View.RestaurantLst
 
+@using System.Collections
 @using System.Web.Optimization
 
 @{
@@ -11,9 +12,46 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 }
 
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">Restaurants</h1>
+    </div>
+    <!--/container-->
+</div>
+
+
 <div class="container content-md">
-    <!-- Blog All Posts -->
-    <div class="col-md-9" data-bind="foreach: Restaurants">
+    <div class="col-md-4 visible-lg-block">
+        <div class="panel-sea">
+            <div class="panel-body">
+                <div class="headline">
+                    <h2>Countries</h2>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All countries</a></li>
+                    @foreach (var item in Model.CountryList)
+                    {
+                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCountry", "Restaurant", new { @country = item })">@item</a></li>
+                    }
+                    <li class="list-group-item"><a href="@Url.Action("ContriesPage", "Countries")"><small>See all countries</small></a></li>
+                </ul>
+                <div class="headline">
+                    <h2>Cuisine</h2>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All cuisines</a></li>
+                    @foreach (var item in Model.CuisineList)
+                    {
+                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCuisine", "Restaurant", new {@cuisine = item})">@item</a></li>
+                    }
+
+                    <li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- All Restaurants -->
+    <div class="col-md-6" data-bind="foreach: Restaurants">
         <!-- Restaurants-->
         <div class="row margin-bottom-20">
             @Html.DisplayFor(m => m.RestaurantModels)
@@ -33,8 +71,5 @@
         </ul>
         <!-- End Pager v3 -->
     </div>
-    <!-- End Blog All Posts -->
+    <!-- End All Restaurants -->
 </div>
-
-@section Scripts {
-}

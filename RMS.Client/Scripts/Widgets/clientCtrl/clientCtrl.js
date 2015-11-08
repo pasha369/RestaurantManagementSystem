@@ -1,16 +1,17 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
         'Widgets/profileCtrl/profileCtrl',
-        'Widgets/reservationCtrl/reservationCtrl',
         'Widgets/restaurantEditCtrl/restaurantEditCtrl',
         'Widgets/profileEditCtrl/profileEditCtrl',
+        'Widgets/menu/menuEditCtrl/menuEditCtrl',
+        'Widgets/reservations/reservationTblCtrl/reservationTblCtrl',
         'text!Widgets/clientCtrl/clientCtrl.html'],
-    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl) {
+    function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl, menuCtrl, reservationTblCtrl) {
 
         $.widget("cc.client", {
 
             options: {
                 view: require('text!Widgets/clientCtrl/clientCtrl.html'),
-                current: $('.client-info'),
+                current: null,
                 restaurant: null
             },
 
@@ -19,9 +20,10 @@
                 self.element.html(self.options.view);
                 self._loadRestaurant();
                 
-                $('.client-profile').userProfile();
+                self.options.current = $('.client-profile').userProfile();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
-                $('.reserved-tbl').reservations({ RestaurantId: self.options.restaurant.Id }).hide();
+                $('.reserved-tbl').reservationTbl({ restaurantId: self.options.restaurant.Id }).hide();
+                $('.restaurant-menu').menuEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.client-settings').settings().hide();
 
 
@@ -38,6 +40,11 @@
                 $('#btnReservetions').on('click', function () {
                     self.options.current.hide();
                     self.options.current = $('.reserved-tbl');
+                    self.options.current.show();
+                });
+                $('#btnMenu').on('click', function () {
+                    self.options.current.hide();
+                    self.options.current = $('.restaurant-menu');
                     self.options.current.show();
                 });
                 $('#btnSettings').on('click', function () {

@@ -1,0 +1,184 @@
+﻿<style>
+    .panel-default > .panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+    }
+
+    .bordered {
+        border: 1px solid #AAA;
+        
+    }
+
+    .food-list {
+        line-height: 3em;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .panel-group .panel {
+        border-radius: 0;
+        border: none;
+    }
+
+        .panel-group .panel a:hover {
+            text-decoration: none;
+        }
+
+    /* MENU STYLES */
+    .item {
+        zoom: 1;
+        position: relative;
+        clip: auto;
+        overflow: hidden;
+    }
+
+    .info {
+        position: relative;
+        text-align: right;
+        white-space: nowrap;
+        margin-bottom: 5px;
+    }
+
+    .dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        border-bottom: 1px dotted #aaa;
+        height: 77%;
+    }
+
+    .name {
+        background: #fffdf8;
+        float: left;
+        margin-right: 20px;
+        padding-right: 4px;
+        position: relative;
+        font-weight: 900;
+    }
+
+    .price {
+        background: #fffdf8;
+        padding-left: 4px;
+        position: relative;
+    }
+
+    .legend span {
+        padding: 3px 15px;
+        background: #000;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        margin: 0 10px 0 0;
+    }
+
+    .legend {
+        display: block;
+        margin: 10px 0 15px 0;
+    }
+
+        .legend .veg {
+            background: #3ca318;
+        }
+
+        .legend .spicy {
+            background: #ff7e00;
+        }
+
+        .legend a {
+            display: inline-block;
+            padding: 3px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background .1s ease-in-out;
+            -moz-transition: background .1s ease-in-out;
+            -webkit-transition: background .1s ease-in-out;
+        }
+
+            .legend a.add {
+                background: #ab0b00;
+                color: #fff;
+            }
+
+                .legend a.add:hover {
+                    background: #febf14;
+                    color: #050403;
+                    text-decoration: none;
+                }
+
+            .legend a.remove {
+                background: #ab0b00;
+                color: #fff;
+            }
+
+                .legend a.remove:hover {
+                    background: #febf14;
+                    color: #050403;
+                    text-decoration: none;
+                }
+
+    .order span {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 10px;
+    }
+
+    .legend a.active {
+        background: #febf14;
+        color: #050403;
+    }
+
+        .legend a.active:hover {
+            background: #ab0b00;
+            color: #fff;
+        }
+</style>
+<div class="row" style="text-align: center;">
+    <div class="col-md-12">
+        <h2>ORDER ONLINE / <strong>OUR MENU</strong> / 
+        <a href="http://showcase.webdesignpla.net/restaurante/menu.html">OPEN FULL PAGE MENU</a></h2>
+    </div>
+</div>
+
+
+<div id="menu-user-ctrl">
+    <div class="row">
+        <div class="panel-group bordered" id="accordion" role="tablist" aria-multiselectable="true" data-bind="foreach: Categories">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab">
+                    <h4 class="panel-title">
+                        <a class="collapsed " data-toggle="collapse" data-parent="#accordion"
+                            data-bind="attr:{href:'#collapseFour'+$index()}" aria-expanded="false" aria-controls="collapseFour">MENU / <strong data-bind="text: Name"></strong>
+                        </a>
+                    </h4>
+                </div>
+                <div data-bind="attr: {id:'collapseFour'+$index()}" class="panel-collapse collapse" role="tabpanel">
+                    <div class="panel-body" data-bind="foreach: DishModels">
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="item" id="Div1">
+                                    <div class="info">
+                                        <div class="dots"></div>
+                                        <span class="name">
+                                            <span data-bind="text: $index() + 1"></span>. 
+                                                <span data-bind="text: Name"></span>
+                                        </span>
+                                        <span class="price">$ <span data-bind="text: Cost"></span></span>
+                                    </div>
+                                    <div class="description">Shrimp wrapped in taro, deep fried and served with chili sauce</div>
+                                    <div class="legend"><span>SPICY</span><a class="add item_add" href="javascript:;">ADD</a></div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+</div>
+<!-- menus -->
+

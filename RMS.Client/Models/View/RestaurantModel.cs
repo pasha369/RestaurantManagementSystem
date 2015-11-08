@@ -1,4 +1,7 @@
-﻿namespace RMS.Client.Models.View
+﻿using System.Collections.Generic;
+using DataModel.Model;
+
+namespace RMS.Client.Models.View
 {
     public class RestaurantModel
     {

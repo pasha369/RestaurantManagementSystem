@@ -9,23 +9,19 @@
 <style>
     #btnFavorite {
         position: absolute;
-        top: 2%;
-        margin: 2%;
+        top: -5%;
+        margin: 5%;
         right: 2%;
     }
+
     .fixed {
         position: fixed;
     }
 </style>
+
 <div class="container-fluid margin-bottom-20">
-    <div class="col-md-2">
-        <ul class="nav fixed navbar-left hidden-xs hidden-sm">
-            <li><a href="#About" class="navbar-link">About</a></li>
-            <li><a href="#Reviews" class="navbar-link">Reviews</a></li>
-            <li><a href="#Reservation" class="navbar-link">Make reservation</a></li>
-        </ul>
-    </div>
-    <div class="col-md-10 pull-right">
+
+    <div class="col-md-12">
         <div id="About">
             <h1>@Html.DisplayFor(model => model.Name), <small>Alabama</small></h1>
             <div class="list-group-item-text " style="padding: 10px;">
@@ -48,8 +44,8 @@
 
                     <img class="img-responsive" src='@Url.Content(Model.PhotoUrl ?? "//placehold.it/600")' alt="">
 
-                    <button id="btnFavorite" class="pull-right btn btn-default ">
-                        <i class="fa fa-thumbs-up">Add to Favorites</i>
+                    <button id="btnFavorite" class="pull-right btn btn-group">
+                        <i class="fa fa-heart"></i>
                     </button>
 
                 </div>
@@ -83,22 +79,23 @@
             </div>
         </div>
 
+        @if (HttpContext.Current.User.IsInRole("User"))
+        {
+            
+            <div class="col-md-12" id="Reviews">
+                <hr>
+                <div id="comment"></div>
+                <hr>
+            </div>
+ 
+            <div class="col-md-12">
+                <!-- Comment Form -->
+                <div class="comment-form"></div>
+                <!-- End Comment Form -->
+            </div>
+        }
 
-        <div class="col-md-12" id="Reviews">
-            <hr>
-            <div id="comment"></div>
-            <hr>
-        </div>
-
-
-
-        <div class="col-md-12">
-            <!-- Comment Form -->
-            <div class="comment-form"></div>
-            <!-- End Comment Form -->
-        </div>
-
-        <section class="section-block" >
+        <section class="section-block">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-center">
@@ -115,8 +112,10 @@
                         <div class="voffset50"></div>
                         <p><strong>Sunday to Tuesday</strong> 09.00 - 24:00 <strong>Friday and Sunday</strong> 08:00 - 03.00</p>
                         <h3 class=""><i class="fa fa-phone"></i>@Html.DisplayFor(m => m.PhoneNumber)</h3>
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#book-now">Make reservation</button>
-
+                        @if (HttpContext.Current.User.IsInRole("User"))
+                        {
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#book-now">Make reservation</button>
+                        }
                     </div>
 
 

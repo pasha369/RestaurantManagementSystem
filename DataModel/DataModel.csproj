@@ -96,6 +96,10 @@
     <Compile Include="RestorauntContextMigrations\201510252303533_Author.Designer.cs">
       <DependentUpon>201510252303533_Author.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201510312018202_Menu.cs" />
+    <Compile Include="RestorauntContextMigrations\201510312018202_Menu.Designer.cs">
+      <DependentUpon>201510312018202_Menu.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -137,6 +141,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201510252303533_Author.resx">
       <DependentUpon>201510252303533_Author.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201510312018202_Menu.resx">
+      <DependentUpon>201510312018202_Menu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

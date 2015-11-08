@@ -87,7 +87,7 @@ namespace RMS.Admin.Pages.Forms
             }
 
             var address = restaurant.Adress;
-            if (address != null)
+            if (address.Country != null)
             {
                 ddlCountry.SelectedValue = restaurant.Adress.Country.Name;
                 ddlCity.SelectedValue = restaurant.Adress.City.Name;

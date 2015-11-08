@@ -49,6 +49,9 @@ namespace DataModel.Contexts
         public DbSet<ClientInfo> ClientInfos { set; get; }
 
         public DbSet<Menu> Menu { set; get; }
+        public DbSet<Dish> Dishes { set; get; }
+        public DbSet<Category> Categories { set; get; }
+
         public DbSet<Receipt> Orders { set; get; }
 
         public DbSet<Country> Countries { set; get; }
