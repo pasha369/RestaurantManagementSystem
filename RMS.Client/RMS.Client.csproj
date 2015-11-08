@@ -177,7 +177,6 @@
     <Content Include="Content\Styles\footers\footer-v1.css" />
     <Content Include="Content\Styles\headers\header-default.css" />
     <Content Include="Content\Styles\ie8.css" />
-    <Content Include="Content\Styles\owl-carousel\owl.carousel.css" />
     <Content Include="Content\Styles\Pages\blog.css" />
     <Content Include="Content\Styles\Pages\page_log_reg_v1.css" />
     <Content Include="Content\Styles\Pages\page_log_reg_v2.css" />
@@ -297,16 +296,10 @@
     <Content Include="Scripts\ThemeScripts\circles-master\circles.js" />
     <Content Include="Scripts\ThemeScripts\counter\jquery.counterup.min.js" />
     <Content Include="Scripts\ThemeScripts\counter\waypoints.min.js" />
-    <Content Include="Scripts\ThemeScripts\custom.js" />
     <Content Include="Scripts\ThemeScripts\jquery.parallax.js" />
     <Content Include="Scripts\ThemeScripts\jquery\jquery-migrate.min.js" />
     <Content Include="Scripts\ThemeScripts\jquery\jquery.min.js" />
-    <Content Include="Scripts\ThemeScripts\owl-carousel\owl.carousel.js" />
     <Content Include="Scripts\ThemeScripts\plugins\datepicker.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\masking.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\owl-carousel.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\style-switcher.js" />
-    <Content Include="Scripts\ThemeScripts\plugins\validation.js" />
     <Content Include="Scripts\ThemeScripts\scrollbar\jquery.mCustomScrollbar.concat.min.js" />
     <Content Include="Scripts\ThemeScripts\skyforms\jquery-ui.min.js" />
     <Content Include="Scripts\ThemeScripts\skyforms\jquery.maskedinput.min.js" />
@@ -360,7 +353,6 @@
     <Content Include="Views\Profile\UserPage.cshtml" />
     <Content Include="Views\Restaurant\RestaurantList.cshtml" />
     <Content Include="Views\Restaurant\RestaurantDetail.cshtml" />
-    <Content Include="Views\Restaurant\BookTable.cshtml" />
     <Content Include="Views\Profile\RestaurateurPage.cshtml" />
     <Content Include="Scripts\jquery-2.0.2.min.map" />
     <Content Include="Scripts\knockout.validation.min.js.map" />
@@ -368,6 +360,7 @@
     <Content Include="Views\Shared\DisplayTemplates\Countries.cshtml" />
     <Content Include="Views\Countries\GetRstByCountry.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\RestaurantModels.cshtml" />
+    <Content Include="Views\Restaurant\PartialViews\FilterPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,15 +15,43 @@
 <div class="breadcrumbs">
     <div class="container">
         <h1 class="pull-left">Restaurants</h1>
-
     </div>
     <!--/container-->
 </div>
 
 
 <div class="container content-md">
+    <div class="col-md-4 visible-lg-block">
+        <div class="panel-sea">
+            <div class="panel-body">
+                <div class="headline">
+                    <h2>Countries</h2>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All countries</a></li>
+                    @foreach (var item in Model.CountryList)
+                    {
+                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCountry", "Restaurant", new { @country = item })">@item</a></li>
+                    }
+                    <li class="list-group-item"><a href="@Url.Action("ContriesPage", "Countries")"><small>See all countries</small></a></li>
+                </ul>
+                <div class="headline">
+                    <h2>Cuisine</h2>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All cuisines</a></li>
+                    @foreach (var item in Model.CuisineList)
+                    {
+                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCuisine", "Restaurant", new {@cuisine = item})">@item</a></li>
+                    }
+
+                    <li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <!-- All Restaurants -->
-    <div class="col-md-9" data-bind="foreach: Restaurants">
+    <div class="col-md-6" data-bind="foreach: Restaurants">
         <!-- Restaurants-->
         <div class="row margin-bottom-20">
             @Html.DisplayFor(m => m.RestaurantModels)
@@ -44,31 +72,4 @@
         <!-- End Pager v3 -->
     </div>
     <!-- End All Restaurants -->
-    <div class="col-md-3">
-        @using (Html.BeginForm("RestaurantList", "Restaurant", FormMethod.Post))
-        {
-            @Html.HiddenFor(x => x.Cuisines)
-            <div class="form-group">
-                @Html.LabelFor(m => m.Rating, "Sort by rating: ")
-                @Html.DropDownListFor(m => m.Rating,
-                                      new[] { new SelectListItem { Text = "True", Value = "1" }, new SelectListItem { Text = "False", Value = "0" } }, new { @class = "form-control select" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Rating, "Sort by recent visited: ")
-                @Html.DropDownListFor(m => m.Recent, new[] { new SelectListItem { Text = "True", Value = "1" }, new SelectListItem { Text = "False", Value = "0" } }, new { @class = "form-control select" })
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Rating, "Cuisines: ")
-                @Html.DropDownListFor(m => m.Cuisine, Model.Cuisines, new{@class = "form-control select"})
-            </div>
-        }
-    </div>
 </div>
-
-@section Scripts {
-    <script>
-        $('.select').on('change', function() {
-            this.form.submit();
-        })
-    </script>
-}

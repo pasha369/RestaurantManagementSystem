@@ -10,14 +10,14 @@
             
             options: {
                 view: require('text!Widgets/userCtrl/userCtrl.html'),
-                current: $('.user-info')
+                current: null
             },
 
             _create: function () {
                 var self = this;
                 self.element.html(self.options.view);
 
-                $('.user-profile').userProfile();
+                self.options.current =  $('.user-profile').userProfile();
                 $('.user-favorite').favorites().hide();
                 $('.user-reservations').userReservations().hide();
                 $('.user-settings').settings().hide();

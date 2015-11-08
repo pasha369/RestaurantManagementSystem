@@ -8,7 +8,7 @@
 @foreach (var item in @Model)
 {
     <div class="row margin-bottom-20">
-        <div class="col-sm-5 sm-margin-bottom-20">
+        <div class="col-sm-2 sm-margin-bottom-20">
             <img class="img-responsive" src='@Url.Content(item.PhotoUrl ?? "//placehold.it/250")' alt="">
         </div>
         <div class="col-sm-7">
@@ -30,7 +30,7 @@
 
                     </li>
                 </ul>
-                <h2><a href="@Url.Action("RestaurantDetail", "Restaurant", new { @Id = item.Id })">@item.Name</a></h2>
+                <h3><a href="@Url.Action("RestaurantDetail", "Restaurant", new { @Id = item.Id })">@item.Name</a></h3>
                 <p>@item.Description.Substring(0, 50) ...</p>
             </div>
         </div>

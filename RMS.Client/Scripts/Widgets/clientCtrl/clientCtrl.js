@@ -11,7 +11,7 @@
 
             options: {
                 view: require('text!Widgets/clientCtrl/clientCtrl.html'),
-                current: $('.client-info'),
+                current: null,
                 restaurant: null
             },
 
@@ -20,7 +20,7 @@
                 self.element.html(self.options.view);
                 self._loadRestaurant();
                 
-                $('.client-profile').userProfile();
+                self.options.current = $('.client-profile').userProfile();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.reserved-tbl').reservationTbl({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.restaurant-menu').menuEdit({ restaurantId: self.options.restaurant.Id }).hide();
