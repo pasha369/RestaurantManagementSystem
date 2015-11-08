@@ -1,6 +1,0 @@
-<Modules>
-  <Module PersistentId="5CEBB590-789F-4CA0-901D-744A1E7CF119" ModuleId="RMS.Client" />
-  <Module PersistentId="AF04C272-4734-4B66-AA9D-FE02F236833D" ModuleId="DataAccess" />
-  <Module PersistentId="D9832E98-D8C7-4FC8-9096-440FBCEBC7B7" ModuleId="DataModel" />
-  <Module PersistentId="93A97112-7E44-49F7-8443-717DE5547D01" ModuleId="RMS.Admin" />
-</Modules>
