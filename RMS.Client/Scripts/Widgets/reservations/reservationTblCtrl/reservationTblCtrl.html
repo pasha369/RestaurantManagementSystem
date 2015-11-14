@@ -92,7 +92,8 @@
                                     <div class="col-md-9">
                                         <select class="form-control select" data-bind="options: $root.StatusTypes,
                                                                                     optionText: $data,
-                                                                                    value: SelectedStatus">
+                                                                                    value: SelectedStatus, 
+                                            event:{ change: $root.statusChanged}">
                                             <option data-bind="text: $data, attr:{selected: $parent.Status == $index  ? selected : null}"></option>
                                         </select>
                                     </div>

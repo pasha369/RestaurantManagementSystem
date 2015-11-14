@@ -15,17 +15,12 @@ namespace RMS.Client.Controllers.MVC
     {
         private IDataManager<Restaurant> _rstManager;
         private IDataManager<Cuisine> _cuisineManager;
-        private IDataManager<Country> _countryManager; 
 
-        public RestaurantController(IDataManager<Restaurant> rstManager, IDataManager<Cuisine> cuisineManager, IDataManager<Country> countryManager)
+        public RestaurantController(IDataManager<Restaurant> rstManager, IDataManager<Cuisine> cuisineManager)
         {
             _rstManager = rstManager;
             _cuisineManager = cuisineManager;
-            _countryManager = countryManager;
         }
-
-        //
-        // GET: /Restaurant/
 
         public ActionResult RestaurantList()
         {
@@ -84,28 +79,13 @@ namespace RMS.Client.Controllers.MVC
 
             return View("RestaurantList", restaurantLst);            
         }
-        [HttpPost]
-        public ActionResult RestaurantList(RestaurantLst model)
-        {
-            model.CountryList.AddRange(GetTopCountry());
-            //var restaurantLst = new RestaurantLst(_cuisineManager);
-            //var restaurants = _rstManager.GetAll().Where(
-            //    r => r.Cuisines.FirstOrDefault(c => c.Name == model.Cuisine) != null
-            //    ).ToList();
-            //Mapper.CreateMap<Restaurant, RestaurantModel>();
-            //model.RestaurantModels = Mapper.Map<List<Restaurant>, List<RestaurantModel>>(restaurants);
-
-            //model.Cuisines = restaurantLst.Cuisines;
-            return View(model);
-        }
 
         public ActionResult RestaurantEdit(int Id)
         {
-
             var rstModel = GetModelById(Id);
-
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult GetById(int Id)
         {
             var rstModel = GetModelById(Id);
@@ -215,7 +195,8 @@ namespace RMS.Client.Controllers.MVC
         {
             var cuisineLst = _cuisineManager.GetAll()
                 .OrderByDescending(c => c.Restoraunts.Count())
-                .Select(c => c.Name).AsEnumerable();
+                .Select(c => c.Name)
+                .Take(3).AsEnumerable();
 
             return cuisineLst;
         } 
