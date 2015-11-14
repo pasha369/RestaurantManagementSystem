@@ -1,4 +1,5 @@
 ﻿define(['knockout', "knockout.validation", 'jquery', 'jquery-ui', 'datepicker', 'moment', 'toastr',
+        'Custom/timeOperations',
         'text!Widgets/bookingCtrl/bookingCtrl.html'],
     function (ko, validation, $, datepicker) {
         var moment = require('moment');
@@ -17,7 +18,7 @@
 
                 self.element.html(self.options.view);
                 Datepicker.initDatepicker();
-
+                var timeOperator = new TimeOperator();
 
                 var validationConfig = ({
                     insertMessages: true,
@@ -27,7 +28,7 @@
                 });
                 
                 function bookingVM() {
-                    this.AvailableTime = ko.observableArray(['11:00', '11:30', '12:00', '12:30', '13:00', '13:30']);
+                    this.AvailableTime = ko.observableArray([]);
                     
                     this.From = ko.observable().extend({ required: true });
                     this.To = ko.observable().extend({ required: true });
@@ -49,7 +50,8 @@
                 };
 
                 self.options.viewModel = ko.validatedObservable(new bookingVM());
-
+                timeOperator.fill(self.options.viewModel().AvailableTime);
+             
                 ko.validation.init(validationConfig, true);
                 ko.applyBindingsWithValidation(self.options.viewModel, $("#bookingctrl")[0]);
             },

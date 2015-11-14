@@ -34,7 +34,7 @@
                     this.Date = ko.observable();
                     this.PeopleNum = ko.observable();
                     this.Status = ko.observable();
-
+                    this.CurStatus = ko.observable();
 
                     this.refresh = function() {
                         self._loadReservation(self.options.restaurantId);
@@ -54,7 +54,11 @@
                         vm.Date(item.Date());
 
                     };
-
+                    this.statusChanged = function (obj, event) {
+                        if (event.originalEvent) { //user changed
+                            self._changeStatus(obj);
+                        }
+                    }
 
                 };
 
@@ -81,12 +85,13 @@
                     },
                 });
             },
-            _changeStatus: function (SelectedStatus) {
+            _changeStatus: function (curReservation) {
                 var self = this;
+                
                 $.ajax({
                     type: "POST",
                     url: '/api/Reservation/ChangeStatus/',
-                    data: { RstId: self.options.restaurantId, ReserveStatus: SelectedStatus },
+                    data: { RstId: curReservation.Id(), ReserveStatus: self.options.reservationVM.CurStatus() },
                     success: function () {
                         self._loadReservation(self.options.restaurantId);
                     },
@@ -197,8 +202,8 @@
                                                 }
                                                 return current;
                                             },
-                                            write : function(value) {
-                                                self._changeStatus(value);
+                                            write: function (value) {
+                                                self.options.reservationVM.CurStatus(value);
                                             }
                                             
                                         }, this),
@@ -254,7 +259,7 @@
                 current.setMinutes(0);
                 
                 while (current.getHours() != 18) {
-                    var time = moment(current).format('hh:mm');
+                    var time = moment(current).format('HH:mm');
                     
                     self.options.reservationVM.Times.push(time);
                     current = add(current, 30);
@@ -272,10 +277,10 @@
             _getDateIdx: function (date) {
                 var times = this.options.reservationVM.Times();
                 
-                var curDate = moment(date, 'YYYY-MM-DD hh:mm:ss').toDate();
+                var curDate = moment(date, 'YYYY-MM-DD HH:mm:ss').toDate();
                 var idx = 0;
                 for (var i = 0; i < times.length; i++) {
-                    var time = moment(times[i], 'hh:mm').toDate();
+                    var time = moment(times[i], 'HH:mm').toDate();
                     if (time.getHours() == curDate.getHours() ) {
                         idx = i;
                         break;

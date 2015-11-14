@@ -1,6 +1,6 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
         'toastr', 'Widgets/bookingCtrl/bookingCtrl',
-    'Widgets/menu/menuUserCtrl/menuUserCtrl',
+        'Widgets/menu/menuUserCtrl/menuUserCtrl',
         'text!Widgets/reservations/reservationUserCtrl/reservationUserCtrl.html'],
     function (ko, $) {
         var toastr = require('toastr');
