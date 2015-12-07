@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using DataAccess.Abstract;
 using DataModel.Model;
+using PagedList;
 using RMS.Client.Models.View;
 
 namespace RMS.Client.Controllers.MVC
@@ -35,14 +36,14 @@ namespace RMS.Client.Controllers.MVC
             return View(model);
         }
 
-        public ActionResult GetRstByCountry(string country)
+        public ActionResult GetRstByCountry(string country, int? page)
         {
             var model = new RestaurantLst();
             var restaurants = _rstManager.GetAll();
             var lst = restaurants.Where(r => r.Adress.Country != null && r.Adress.Country.Name == country).ToList();
 
             Mapper.CreateMap<Restaurant, RestaurantModel>();
-            model.RestaurantModels = Mapper.Map<List<Restaurant>, List<RestaurantModel>>(lst);
+            model.RestaurantModels = Mapper.Map<List<Restaurant>, List<RestaurantModel>>(lst).ToPagedList(page??1, 3);
 
             return View(model);
         }

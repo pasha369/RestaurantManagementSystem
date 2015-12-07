@@ -1,7 +1,5 @@
-﻿@model RMS.Client.Models.View.RestaurantLst
-
-@using System.Collections
-@using System.Web.Optimization
+﻿@using PagedList.Mvc
+@model RMS.Client.Models.View.RestaurantLst
 
 @{
     ViewBag.Title = "RestaurantList";
@@ -19,57 +17,31 @@
     <!--/container-->
 </div>
 
-
 <div class="container content-md">
-    <div class="col-md-4 visible-lg-block">
-        <div class="panel-sea">
-            <div class="panel-body">
-                <div class="headline">
-                    <h2>Countries</h2>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All countries</a></li>
-                    @foreach (var item in Model.CountryList)
-                    {
-                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCountry", "Restaurant", new { @country = item })">@item</a></li>
-                    }
-                    <li class="list-group-item"><a href="@Url.Action("ContriesPage", "Countries")"><small>See all countries</small></a></li>
-                </ul>
-                <div class="headline">
-                    <h2>Cuisine</h2>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All cuisines</a></li>
-                    @foreach (var item in Model.CuisineList)
-                    {
-                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCuisine", "Restaurant", new {@cuisine = item})">@item</a></li>
-                    }
-
-                    <li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- All Restaurants -->
-    <div class="col-md-6" data-bind="foreach: Restaurants">
+    @Html.Partial("PartialViews/LeftSidebarPartial")
+    <div class="col-md-6">
         <!-- Restaurants-->
         <div class="row margin-bottom-20">
             @Html.DisplayFor(m => m.RestaurantModels)
         </div>
-        <!--/end row-->
         <!-- End Restaurants-->
 
         <div class="clearfix margin-bottom-20">
             <hr>
         </div>
-
-        <!-- Pager v3 -->
-        <ul class="pager pager-v3 pager-sm no-margin-bottom">
-            <li class="previous"><a href="#">&larr; Older</a></li>
-            <li class="page-amount">1 of 7</li>
-            <li class="next"><a href="#">Newer &rarr;</a></li>
-        </ul>
-        <!-- End Pager v3 -->
+        <!-- Pagination -->
+        @if (!string.IsNullOrEmpty(Request.Params["country"]))
+        {
+            @Html.PagedListPager(Model.RestaurantModels, page => Url.Action("RestaurantListCountry", new { page, country = Request.Params["country"] }))            
+        }
+        else if (!string.IsNullOrEmpty(Request.Params["cuisine"]))
+        {
+            @Html.PagedListPager(Model.RestaurantModels, page => Url.Action("RestaurantListCuisine", new { page, country = Request.Params["cuisine"] }))
+        }
+        else
+        {
+            @Html.PagedListPager(Model.RestaurantModels, page => Url.Action("RestaurantList", new { page })) 
+        }
+        <!-- End Pagination -->
     </div>
-    <!-- End All Restaurants -->
 </div>

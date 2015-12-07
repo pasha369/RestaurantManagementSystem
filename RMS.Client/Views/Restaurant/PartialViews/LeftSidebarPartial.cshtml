@@ -1,0 +1,29 @@
+﻿<div class="col-md-4 visible-lg-block " style="margin-top: -60px;">
+    <div class="panel-sea">
+        <div class="panel-body">
+            <div class="headline">
+                <h2>Countries</h2>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All countries</a></li>
+                @foreach (var item in Model.CountryList)
+                {
+                    <li class="list-group-item"><a href="@Url.Action("RestaurantListCountry", "Restaurant", new { @country = item })">@item</a></li>
+                }
+                <li class="list-group-item"><a href="@Url.Action("ContriesPage", "Countries")"><small>See all countries</small></a></li>
+            </ul>
+            <div class="headline">
+                <h2>Cuisine</h2>
+            </div>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All cuisines</a></li>
+                @foreach (var item in Model.CuisineList)
+                {
+                    <li class="list-group-item"><a href="@Url.Action("RestaurantListCuisine", "Restaurant", new { @cuisine = item })">@item</a></li>
+                }
+
+                <li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataModel.Model;
 using Newtonsoft.Json;
+using PagedList;
 using RMS.Client.Models.View;
 
 namespace RMS.Client.Controllers.MVC
@@ -15,19 +16,28 @@ namespace RMS.Client.Controllers.MVC
     {
         private IDataManager<Restaurant> _rstManager;
         private IDataManager<Cuisine> _cuisineManager;
+        private readonly int RESTAURANT_ON_PAGE = 3;
+        private readonly int FIRST_PAGE = 1;
 
         public RestaurantController(IDataManager<Restaurant> rstManager, IDataManager<Cuisine> cuisineManager)
         {
             _rstManager = rstManager;
             _cuisineManager = cuisineManager;
         }
-
-        public ActionResult RestaurantList()
+        /// <summary>
+        /// Restaurant list
+        /// </summary>
+        /// <param name="page">current page</param>
+        /// <returns>RestaurantList view</returns>
+        public ActionResult RestaurantList(int? page)
         {
             var items = _rstManager.GetAll();
+
             var restaurantLst = new RestaurantLst(_cuisineManager);
+
             restaurantLst.CountryList.AddRange(GetTopCountry());
             restaurantLst.CuisineList.AddRange(GetTopCuisine());
+            var restaurants = new List<RestaurantModel>();
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>();
@@ -37,61 +47,84 @@ namespace RMS.Client.Controllers.MVC
                 {
                     model.CommentCount = restaurant.Reviews.Count();
                 }
-                if (restaurant.Reviews.Count > 0)
+                if (restaurant.Reviews != null && restaurant.Reviews.Count > 0)
                 {
                     model.Rating = restaurant.Reviews.Sum(r => r.Food) / restaurant.Reviews.Count;
                 }
-
-                restaurantLst.RestaurantModels.Add(model);
+                restaurants.Add(model);
             }
+            restaurantLst.RestaurantModels = restaurants.ToPagedList(page ?? FIRST_PAGE, RESTAURANT_ON_PAGE);
             return View(restaurantLst);
         }
-        public ActionResult RestaurantListCountry(string country)
+        /// <summary>
+        /// Restaurant list by country
+        /// </summary>
+        /// <param name="country">choosen country</param>
+        /// <param name="page">current page</param>
+        /// <returns></returns>
+        public ActionResult RestaurantListCountry(string country, int? page)
         {
-            var items = _rstManager.GetAll().Where(r =>( r.Adress.Country != null?r.Adress.Country.Name:"") == country).ToList();
+            var items = _rstManager.GetAll().Where(r => (r.Adress.Country != null ? r.Adress.Country.Name : "") == country).ToList();
             var restaurantLst = new RestaurantLst();
             restaurantLst.CountryList.AddRange(GetTopCountry());
-
+            var restaurants = new List<RestaurantModel>();
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>();
                 var model = Mapper.Map<RestaurantModel>(restaurant);
-                restaurantLst.RestaurantModels.Add(model);
+                restaurants.Add(model);
             }
+            restaurantLst.RestaurantModels = restaurants.ToPagedList(page ?? FIRST_PAGE, RESTAURANT_ON_PAGE);
             return View("RestaurantList", restaurantLst);
         }
-
-        public ActionResult RestaurantListCuisine(string cuisine)
+        /// <summary>
+        /// Restaurant list by cuisine
+        /// </summary>
+        /// <param name="cuisine">choosen cuisine</param>
+        /// <param name="page">current page</param>
+        /// <returns></returns>
+        public ActionResult RestaurantListCuisine(string cuisine, int? page)
         {
             var items = _rstManager.GetAll()
-                .Where(r => r.Cuisines.Count != 0 && r.Cuisines.Exists(c => c.Name== cuisine) )
+                .Where(r => r.Cuisines.Count != 0 && r.Cuisines.Exists(c => c.Name == cuisine))
                 .ToList();
             var restaurantLst = new RestaurantLst();
             restaurantLst.CountryList.AddRange(GetTopCountry());
             restaurantLst.CuisineList.AddRange(GetTopCuisine());
-
+            var restaurants = new List<RestaurantModel>();
             foreach (var restaurant in items)
             {
                 Mapper.CreateMap<Restaurant, RestaurantModel>();
                 var model = Mapper.Map<RestaurantModel>(restaurant);
-                restaurantLst.RestaurantModels.Add(model);
+                restaurants.Add(model);
             }
-
-            return View("RestaurantList", restaurantLst);            
+            restaurantLst.RestaurantModels = restaurants.ToPagedList(page ?? FIRST_PAGE, RESTAURANT_ON_PAGE);
+            return View("RestaurantList", restaurantLst);
         }
-
+        /// <summary>
+        /// Get restaurant model for edit
+        /// </summary>
+        /// <param name="Id">restaurant Id</param>
+        /// <returns>RestaurantModel</returns>
         public ActionResult RestaurantEdit(int Id)
         {
             var rstModel = GetModelById(Id);
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
-
+        /// <summary>
+        /// Get model by Id
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public ActionResult GetById(int Id)
         {
             var rstModel = GetModelById(Id);
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
-
+        /// <summary>
+        /// Edit restaurant
+        /// </summary>
+        /// <param name="model">editable restaurant</param>
         [HttpPost]
         public void RestaurantEdit(RestaurantModel model)
         {
@@ -106,7 +139,11 @@ namespace RMS.Client.Controllers.MVC
                 _rstManager.Update(restaurant);
             }
         }
-
+        /// <summary>
+        /// Get restaurant detail
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns>RestaurantModel</returns>
         public ActionResult RestaurantDetail(int Id)
         {
             var restaurant = _rstManager.GetById(Id);
@@ -199,6 +236,6 @@ namespace RMS.Client.Controllers.MVC
                 .Take(3).AsEnumerable();
 
             return cuisineLst;
-        } 
+        }
     }
 }

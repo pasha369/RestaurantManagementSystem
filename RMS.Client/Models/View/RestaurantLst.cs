@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataModel.Model;
+using PagedList;
 
 namespace RMS.Client.Models.View
 {
@@ -22,12 +23,12 @@ namespace RMS.Client.Models.View
         public List<string> CuisineList { get; set; }
         public IEnumerable<SelectListItem> Cuisines { get; set; }
         [UIHint("RestaurantModels")]
-        public List<RestaurantModel> RestaurantModels { get; set; }
+        public PagedList.IPagedList<RestaurantModel> RestaurantModels { get; set; }
+
         public RestaurantLst()
         {
             this.CountryList = new List<string>();
             this.CuisineList = new List<string>();
-            this.RestaurantModels = new List<RestaurantModel>();
         }
         public RestaurantLst(IDataManager<Cuisine> cuisinManager) : this()
         {
