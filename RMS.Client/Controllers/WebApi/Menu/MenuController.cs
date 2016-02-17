@@ -35,7 +35,7 @@ namespace RMS.Client.Controllers.WebApi.Menu
                 o => o.MapFrom(c => c.Dishes));
             var categoryLst = new List<CategoryModel>();
 
-            Mapper.Map<List<Category>, List<CategoryModel>>(menu.Categories, categoryLst);
+            Mapper.Map<List<Category>, List<CategoryModel>>(menu.Categories.ToList(), categoryLst);
 
             return categoryLst;
         }

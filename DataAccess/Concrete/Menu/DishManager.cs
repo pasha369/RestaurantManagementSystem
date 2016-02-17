@@ -16,7 +16,8 @@ namespace DataAccess.Concrete.Menu
 
         public void Add(Category category, Dish dish)
         {
-            category.Dishes.Add(dish);
+            _ctx.Categories.Find(category.Id).Dishes.Add(dish);
+            //category.Dishes.Add(dish);
             _ctx.SaveChanges();
         }
 

@@ -13,7 +13,7 @@ namespace DataAccess.Concrete.Menu
 
         public DataModel.Model.Menu GetByRestaurant(int rstId)
         {
-            return _ctx.Menu.FirstOrDefault(m => m.Id == rstId);
+            return _ctx.Restoraunts.Find(rstId).Menu;
         }
     }
 }
