@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-
-namespace RMS.Client.Models.View
+﻿namespace RMS.Client.Models.View
 {
     public class ProfileModel
     {
         public int Id { get; set; }
+
         public string Name { get; set; }
+
         public string PhotoUrl { get; set; }
 
         public string Position { get; set; }
@@ -15,9 +15,13 @@ namespace RMS.Client.Models.View
         public string Password { get; set; }
 
         public string About { set; get; }
+
         public string Facebook { get; set; }
+
         public string Email { get; set; }
+
         public string Skype { get; set; }
+
         public string Phone { get; set; }
     }
 }

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -38,6 +35,7 @@ namespace DataAccess.Concrete
         {
             return _ctx.Restoraunts.FirstOrDefault(r => r.Id == item.Id);
         }
+
         public Restaurant GetById(int id)
         {
             return _ctx.Restoraunts.FirstOrDefault(r => r.Id == id);
@@ -61,7 +59,5 @@ namespace DataAccess.Concrete
             }
             return lstTables;
         }
-
- 
     }
 }

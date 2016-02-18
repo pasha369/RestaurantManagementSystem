@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web.Http;
+﻿using System.Web.Http;
 using AutoMapper;
 using DataAccess.Abstract.Menu;
 using DataModel.Model;
@@ -25,7 +20,6 @@ namespace RMS.Client.Controllers.WebApi.Menu
         [HttpPost]
         public void Add(DishModel model)
         {
-            Mapper.CreateMap<DishModel, Dish>();
             var dish = Mapper.Map<Dish>(model);
             var category = _categoryManager.GetById(model.CategoryId);
 

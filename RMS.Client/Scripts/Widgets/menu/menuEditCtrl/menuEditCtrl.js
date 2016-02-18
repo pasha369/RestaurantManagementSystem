@@ -45,7 +45,7 @@
                     type: 'Get',
                     url: '/api/Menu/GetCategories/',
                     contentType: "application/json; charset=utf-8",
-                    data: {rstId: 1},
+                    data: { rstId: self.options.restaurantId },
                     dataType: "json",
                     success: function (data) {
                         $.each(data, function(key, value) {

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract.Menu;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -17,7 +13,6 @@ namespace DataAccess.Concrete.Menu
         public void Add(Category category, Dish dish)
         {
             _ctx.Categories.Find(category.Id).Dishes.Add(dish);
-            //category.Dishes.Add(dish);
             _ctx.SaveChanges();
         }
 

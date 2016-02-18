@@ -17,7 +17,7 @@ namespace RMS.Client.Controllers.WebApi
         public bool Save(ReviewModel model)
         {
             var reviewManager = new ReviewManager();
-            
+
             var review = new Review();
             review.Restaurant = new RestaurantManager().GetById(model.RestaurantId);
             review.ReviewTime = DateTime.Now;
@@ -26,29 +26,30 @@ namespace RMS.Client.Controllers.WebApi
             review.Food = model.Food;
             review.Ambience = model.Ambience;
             review.Service = model.Service;
-            
+
             reviewManager.Add(review);
 
             return true;
         }
+
         [HttpGet]
         public List<ReviewModel> GetAll(int Id)
         {
-            
+
             var reviewManager = new ReviewManager();
             var lstReview = reviewManager.GetByRestaurant(Id)
                 .Select(r => new ReviewModel()
-                                 {
-                                     Ambience = r.Ambience,
-                                     Author = r.Author.Name,
-                                     PhotoUrl = r.Author.PhotoUrl,
-                                     Food = r.Food,
-                                     Comment = r.Comment,
-                                     Service = r.Service,
-                                     Stars = r.Stars,
-                                 })
+                {
+                    Ambience = r.Ambience,
+                    Author = r.Author.Name,
+                    PhotoUrl = r.Author.PhotoUrl,
+                    Food = r.Food,
+                    Comment = r.Comment,
+                    Service = r.Service,
+                    Stars = r.Stars,
+                })
                 .ToList();
-            
+
 
             return lstReview;
         }
@@ -56,7 +57,6 @@ namespace RMS.Client.Controllers.WebApi
         private UserInfo GetUserInfo()
         {
             var userManager = new UserManager();
-
             var login = System.Web.HttpContext.Current.User.Identity.Name;
             var user = userManager.GetUserByLogin(login);
 

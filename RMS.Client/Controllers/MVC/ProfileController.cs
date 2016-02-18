@@ -27,12 +27,9 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult UserPage()
         {
             var user = GetUserByLogin();
-
             if (user != null)
             {
-                Mapper.CreateMap<UserInfo, ProfileModel>();
                 var model = Mapper.Map<ProfileModel>(user);
-
                 model.Position = Enum.GetName(typeof(Role), user.Position);
 
                 return View(model);
@@ -66,7 +63,7 @@ namespace RMS.Client.Controllers.MVC
             var login = System.Web.HttpContext.Current.User.Identity.Name;
             var clients = _clientManager.GetAll();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
-            if(client != null)
+            if (client != null)
             {
                 return RedirectToAction("RestaurateurPage");
             }
@@ -86,7 +83,7 @@ namespace RMS.Client.Controllers.MVC
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
-                        
+
             return Json(strJSON, JsonRequestBehavior.AllowGet);
         }
 
@@ -119,11 +116,9 @@ namespace RMS.Client.Controllers.MVC
         [HttpPost]
         public ActionResult ProfileEdit(ProfileModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = _userManager.GetById(model.Id);
-
-                Mapper.CreateMap<ProfileModel, UserInfo>();
                 Mapper.Map<ProfileModel, UserInfo>(model, user);
 
                 _userManager.Update(user);

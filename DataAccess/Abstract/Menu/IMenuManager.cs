@@ -1,6 +1,4 @@
-﻿using DataModel.Model;
-
-namespace DataAccess.Abstract.Menu
+﻿namespace DataAccess.Abstract.Menu
 {
     public interface IMenuManager
     {

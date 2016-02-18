@@ -29,8 +29,6 @@ namespace DataAccess.Concrete
 
         public void Update(Cuisine item)
         {
-            //var cuisine = _ctx.Cuisines.FirstOrDefault(c => c.Id == item.Id);
-            //cuisine.Name = item.Name;
             _ctx.Entry(item).State = EntityState.Modified;
             _ctx.SaveChanges();
         }
@@ -39,15 +37,15 @@ namespace DataAccess.Concrete
         {
             return _ctx.Cuisines.FirstOrDefault(c => c.Id == item.Id);
         }
+
         public Cuisine GetById(int id)
         {
             return _ctx.Cuisines.FirstOrDefault(c => c.Id == id);
         }
+
         public List<Cuisine> GetAll()
         {
             return _ctx.Cuisines.ToList();
         }
-
-
     }
 }

@@ -14,18 +14,25 @@ namespace RMS.Client.Controllers.MVC
     {
         private IDataManager<UserInfo> _userManager;
 
-        public AccountController(IDataManager<UserInfo> userManager )
+        public AccountController(IDataManager<UserInfo> userManager)
         {
             _userManager = userManager;
         }
-            //
-        // GET: /Account/
+
+        /// <summary>
+        /// Get login view
+        /// </summary>
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
 
+        /// <summary>
+        /// If user exist redirect to profile
+        /// </summary>
+        /// <param name="login">View model with credentials</param>
+        /// <returns>Profile page</returns>
         [HttpPost]
         public ActionResult Login(LoginModel login)
         {
@@ -36,9 +43,9 @@ namespace RMS.Client.Controllers.MVC
                 {
                     // Create ticket 
                     var ticket = new FormsAuthenticationTicket(1, login.Username,
-                        DateTime.Now, DateTime.Now.AddMinutes(2880), 
-                        false, 
-                        Enum.GetName(typeof(Role), user.Position), 
+                        DateTime.Now, DateTime.Now.AddMinutes(2880),
+                        false,
+                        Enum.GetName(typeof(Role), user.Position),
                         FormsAuthentication.FormsCookiePath);
                     // Encode ticket
                     string hash = FormsAuthentication.Encrypt(ticket);
@@ -53,7 +60,7 @@ namespace RMS.Client.Controllers.MVC
 
                     if (user.Position == Role.User)
                         return RedirectToAction("UserPage", "Profile");
-                    if(user.Position == Role.Restaurateur)
+                    if (user.Position == Role.Restaurateur)
                         return RedirectToAction("RestaurateurPage", "Profile");
 
                 }
@@ -62,22 +69,33 @@ namespace RMS.Client.Controllers.MVC
             return View(login);
         }
 
-        public  ActionResult Logout()
+        /// <summary>
+        /// Logout
+        /// </summary>
+        public ActionResult Logout()
         {
             FormsAuthentication.SignOut();
             return RedirectToAction("ProfilePage", "Profile");
         }
 
+        /// <summary>
+        /// Get register view.
+        /// </summary>
         public ActionResult Register()
         {
             return View();
         }
+
+        /// <summary>
+        /// Register user in system.
+        /// </summary>
+        /// <param name="model">View model with user data.</param>
+        /// <returns>If model not valid return errors else redirect to profile.</returns>
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Mapper.CreateMap<RegisterModel, UserInfo>();
                 var user = Mapper.Map<UserInfo>(model);
                 user.Position = Role.User;
 

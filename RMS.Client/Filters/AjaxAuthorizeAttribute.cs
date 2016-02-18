@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Web;
-using System.Web.Mvc;
 
 namespace RMS.Client.Filters
 {
@@ -12,7 +7,7 @@ namespace RMS.Client.Filters
     {
         protected override void HandleUnauthorizedRequest(System.Web.Http.Controllers.HttpActionContext actionContext)
         {
-            if(IsAjaxRequest())
+            if (IsAjaxRequest())
             {
                 if (!HttpContext.Current.User.Identity.IsAuthenticated)
                 {
@@ -21,10 +16,10 @@ namespace RMS.Client.Filters
             }
             else
             {
-                base.HandleUnauthorizedRequest(actionContext);                
+                base.HandleUnauthorizedRequest(actionContext);
             }
         }
-        
+
         public static bool IsAjaxRequest()
         {
             return HttpContext.Current.Request.Headers["X-Requested-With"] != null && HttpContext.Current.Request.Headers["X-Requested-With"] == "XMLHttpRequest";

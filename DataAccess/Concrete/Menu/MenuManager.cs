@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DataAccess.Abstract;
-using DataAccess.Abstract.Menu;
+﻿using DataAccess.Abstract.Menu;
 using DataModel.Contexts;
 
 namespace DataAccess.Concrete.Menu
@@ -13,7 +9,8 @@ namespace DataAccess.Concrete.Menu
 
         public DataModel.Model.Menu GetByRestaurant(int rstId)
         {
-            return _ctx.Restoraunts.Find(rstId).Menu;
+            var menu = _ctx.Restoraunts.Find(rstId)?.Menu;
+            return menu;
         }
     }
 }

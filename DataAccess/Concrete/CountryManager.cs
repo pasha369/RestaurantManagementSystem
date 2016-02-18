@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
 
 namespace DataAccess.Concrete
 {
-    public class CountryManager:IDataManager<Country>
+    public class CountryManager : IDataManager<Country>
     {
-        private RestorauntDbContext _ctx  = new ContextManager().Context;
+        private RestorauntDbContext _ctx = new ContextManager().Context;
 
         public void Delete(Country item)
         {
@@ -43,7 +40,7 @@ namespace DataAccess.Concrete
 
         public Country GetById(int id)
         {
-            return _ctx.Countries.FirstOrDefault(c => c.Id == id);            
+            return _ctx.Countries.FirstOrDefault(c => c.Id == id);
         }
 
         public List<Country> GetAll()

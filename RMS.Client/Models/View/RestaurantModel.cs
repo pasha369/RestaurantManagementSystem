@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using DataModel.Model;
-
-namespace RMS.Client.Models.View
+﻿namespace RMS.Client.Models.View
 {
     public class RestaurantModel
     {
@@ -13,12 +10,5 @@ namespace RMS.Client.Models.View
         public int Rating { set; get; }
         public Address Address { get; set; }
         public int CommentCount { get; set; }
-    }
-
-    public class Address
-    {
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Street { get; set; }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -12,7 +10,7 @@ namespace DataAccess.Concrete
     public class FavoriteManager : IDataManager<Favorite>
     {
         private RestorauntDbContext _ctx = new ContextManager().Context;
-        
+
         public void Delete(Favorite item)
         {
             var favorite = _ctx.Favorites.FirstOrDefault(f => f.Id == item.Id);
@@ -48,7 +46,8 @@ namespace DataAccess.Concrete
                 .Select(f => f.Restaurant)
                 .ToList();
             return lstFavorite;
-        } 
+        }
+
         public List<Favorite> GetAll()
         {
             throw new NotImplementedException();

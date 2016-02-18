@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Web.Http;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
 using DataModel.Model;
 using RMS.Client.Models.View;
 
@@ -22,7 +21,7 @@ namespace RMS.Client.Controllers.WebApi
         {
             var lstRestaurant = new List<RestaurantModel>();
 
-            if(!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(name))
             {
                 lstRestaurant = _rstManager.GetAll()
                     .Where(r => r.Name.ToLower().Contains(name.ToLower()))
@@ -32,10 +31,10 @@ namespace RMS.Client.Controllers.WebApi
                         Name = r.Name,
                         Description = r.Description,
                     })
-                    .ToList();    
+                    .ToList();
             }
-            
+
             return lstRestaurant;
-        } 
+        }
     }
 }
