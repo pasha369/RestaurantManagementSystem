@@ -34,8 +34,10 @@
                             </span>
                         }
                     </li>
-                    <li><i class="fa fa-comment-o"></i>
-                        @Model.CommentCount reviews</li>
+                    <li>
+                        <i class="fa fa-comment-o"></i>
+                        @Model.CommentCount reviews
+                    </li>
                 </ul>
             </div>
             <div class="row ">
@@ -81,13 +83,12 @@
 
         @if (HttpContext.Current.User.IsInRole("User"))
         {
-            
             <div class="col-md-12" id="Reviews">
                 <hr>
                 <div id="comment"></div>
                 <hr>
             </div>
- 
+
             <div class="col-md-12">
                 <!-- Comment Form -->
                 <div class="comment-form"></div>
@@ -117,7 +118,6 @@
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#book-now">Make reservation</button>
                         }
                     </div>
-
 
                     <div class="col-md-12 jt_col column_container">
                         <div class="voffset60"></div>
@@ -162,8 +162,6 @@
                 "Widgets/bookingCtrl/bookingCtrl"
         ],
             function ($) {
-
-
                 $(document).ready(function () {
                     var eventTrigger = new EventTrigger();
                     $("#comment").commentList({ RestaurantId: "@Model.Id", eventTrigger: eventTrigger });
