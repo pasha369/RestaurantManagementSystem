@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Linq;
+using System.Web.Http;
+using System.Web.Services;
 using AutoMapper;
 using DataAccess.Abstract.Menu;
 using DataModel.Model;
@@ -9,21 +11,31 @@ namespace RMS.Client.Controllers.WebApi.Menu
     public class DishController : ApiController
     {
         private IDishManager _dishManager;
+        private IManager<Ingredient> _ingredientManager; 
         private ICategoryManager _categoryManager;
 
-        public DishController(IDishManager dishManager, ICategoryManager categoryManager)
+        public DishController(IDishManager dishManager, ICategoryManager categoryManager, IManager<Ingredient> ingredientManager)
         {
             _dishManager = dishManager;
             _categoryManager = categoryManager;
+            _ingredientManager = ingredientManager;
         }
 
         [HttpPost]
-        public void Add(DishModel model)
+        public void Add(DishModel dishModel)
         {
-            var dish = Mapper.Map<Dish>(model);
-            var category = _categoryManager.GetById(model.CategoryId);
+            var dish = Mapper.Map<Dish>(dishModel);
+            dish.Category = _categoryManager.GetById(dishModel.CategoryId);
+            dish.Ingredients = _ingredientManager.Get()
+                .Where(x => dishModel.IngredientIds.Contains(x.Id))
+                .ToList();
+            _dishManager.Add(dish);
+        }
 
-            _dishManager.Add(category, dish);
+        [WebMethod]
+        public void Remove(int id)
+        {
+            _dishManager.Delete(id);
         }
     }
 }

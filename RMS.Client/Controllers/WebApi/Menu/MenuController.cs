@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Web.Http;
 using System.Web.Services;
 using AutoMapper;
@@ -13,12 +15,14 @@ namespace RMS.Client.Controllers.WebApi.Menu
     {
         private IMenuManager _menuManager;
         private ICategoryManager _categoryManager;
-
+        private IManager<Ingredient> _ingredientManager;
+         
         public MenuController(IMenuManager menuManager,
-            ICategoryManager categoryManager)
+            ICategoryManager categoryManager, IManager<Ingredient> ingredientManager)
         {
             _menuManager = menuManager;
             _categoryManager = categoryManager;
+            _ingredientManager = ingredientManager;
         }
 
         [WebMethod]
@@ -26,7 +30,6 @@ namespace RMS.Client.Controllers.WebApi.Menu
         {
             var menu = _menuManager.GetByRestaurant(rstId);
             var categoryLst = Mapper.Map<List<Category>, List<CategoryModel>>(menu?.Categories.ToList());
-
             return categoryLst;
         }
 
@@ -37,5 +40,16 @@ namespace RMS.Client.Controllers.WebApi.Menu
             _categoryManager.Add(model.MenuId, category);
         }
 
+        [HttpPost]
+        public HttpResponseMessage GetIngredients()
+        {
+            var result = _ingredientManager.Get()
+                .Select(x => new {
+                    Id = x.Id,
+                    Name = x.Name
+                })
+                .ToList();
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        } 
     }
 }

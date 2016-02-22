@@ -63,9 +63,11 @@
     <Compile Include="Abstract\IDataManager.cs" />
     <Compile Include="Abstract\Menu\ICategoryManager.cs" />
     <Compile Include="Abstract\Menu\IDishManager.cs" />
-    <Compile Include="Abstract\Menu\IMenuManager.cs" />
     <Compile Include="Abstract\IMessageManager.cs" />
     <Compile Include="Abstract\IUserDataManager.cs" />
+    <Compile Include="Abstract\Menu\IManager.cs" />
+    <Compile Include="Abstract\Menu\IMenuManager.cs" />
+    <Compile Include="Concrete\Menu\IngredientManager.cs" />
     <Compile Include="Concrete\AuthRepository.cs" />
     <Compile Include="Concrete\CityManager.cs" />
     <Compile Include="Concrete\ClientManager.cs" />
