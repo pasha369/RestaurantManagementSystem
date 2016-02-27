@@ -6,7 +6,7 @@ namespace DataModel.Contexts
     public class RestorauntDbContext : DbContext
     {
         public RestorauntDbContext()
-            : base("RestorauntDbEntities")
+            : base("name=RestorauntDbEntities")
         {
             Database.SetInitializer<RestorauntDbContext>(null);
         }

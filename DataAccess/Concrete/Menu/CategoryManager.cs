@@ -13,19 +13,15 @@ namespace DataAccess.Concrete.Menu
         public void Add(int menuId, Category category)
         {
             var menu = _ctx.Menu.FirstOrDefault(m => m.Id == menuId);
-            if (menu != null) 
+            if (menu != null)
                 menu.Categories.Add(category);
             _ctx.SaveChanges();
         }
 
-        public void Remove(int menuId, Category category)
+        public void Remove(int categoryId)
         {
-            var menu = _ctx.Menu.FirstOrDefault(m => m.Id == menuId);
-            if (menu != null)
-            {
-                var curCategory = menu.Categories.FirstOrDefault(c => c.Id == category.Id);
-                menu.Categories.Remove(curCategory);
-            }
+            var curCategory = _ctx.Categories.FirstOrDefault(c => c.Id == categoryId);
+            _ctx.Categories.Remove(curCategory);
             _ctx.SaveChanges();
         }
 

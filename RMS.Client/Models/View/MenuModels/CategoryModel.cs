@@ -9,7 +9,7 @@ namespace RMS.Client.Models.View.MenuModels
     {
         public int Id { set; get; }
         public string Name { set; get; }
-        public int MenuId { get; set; }
+        public int RestaurantId { get; set; }
         public  List<DishItemModel> DishModels { set; get; } 
     }
 

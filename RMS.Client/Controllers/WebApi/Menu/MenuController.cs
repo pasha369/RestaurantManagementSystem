@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Services;
 using AutoMapper;
+using DataAccess.Abstract;
 using DataAccess.Abstract.Menu;
 using DataModel.Model;
 using RMS.Client.Models.View.MenuModels;
@@ -16,13 +17,15 @@ namespace RMS.Client.Controllers.WebApi.Menu
         private IMenuManager _menuManager;
         private ICategoryManager _categoryManager;
         private IManager<Ingredient> _ingredientManager;
-         
+        private IDataManager<Restaurant> _restaurantManager; 
+
         public MenuController(IMenuManager menuManager,
-            ICategoryManager categoryManager, IManager<Ingredient> ingredientManager)
+            ICategoryManager categoryManager, IManager<Ingredient> ingredientManager, IDataManager<Restaurant> restaurantManager)
         {
             _menuManager = menuManager;
             _categoryManager = categoryManager;
             _ingredientManager = ingredientManager;
+            _restaurantManager = restaurantManager;
         }
 
         [WebMethod]
@@ -33,11 +36,20 @@ namespace RMS.Client.Controllers.WebApi.Menu
             return categoryLst;
         }
 
-        [HttpPost]
-        public void AddCategory(CategoryModel model)
+        [WebMethod]
+        public CategoryModel AddCategory(CategoryModel model)
         {
-            var category = Mapper.Map<Category>(model);
-            _categoryManager.Add(model.MenuId, category);
+            var restaurant = _restaurantManager.GetById(model.RestaurantId);
+            var categoryEntity = Mapper.Map<Category>(model);
+            _categoryManager.Add(restaurant.Menu.Id, categoryEntity);
+            var categoryModel = Mapper.Map<CategoryModel>(categoryEntity);
+            return categoryModel;
+        }
+
+        [WebMethod]
+        public void RemoveCategory(int id)
+        {
+            _categoryManager.Remove(id);
         }
 
         [HttpPost]

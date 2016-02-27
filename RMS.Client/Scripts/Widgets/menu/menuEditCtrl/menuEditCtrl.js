@@ -30,6 +30,9 @@
                     this.AddCategory = function () {
                         self._addCategory();
                     };
+                    this.RemoveCategory = function() {
+                        self._removeCategory();
+                    }
                     this.AddDish = function() {
                         self._addDish();
                     };
@@ -92,7 +95,7 @@
                 var vm = self.options.viewModel;
                 var category = {
                     Name: vm.CategoryName(),
-                    MenuId: 1
+                    RestaurantId: self.options.restaurantId
                 };
                 
                 $.ajax({
@@ -101,8 +104,33 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: ko.toJSON(category),
-                    success: function () {
-                        toastr.success(category.Name() + 'have been added');
+                    success: function (data) {
+                        var categoryModel = {
+                            Id: ko.observable(data.Id),
+                            Name: ko.observable(data.Name),
+                            DishModels: ko.observableArray(data.DishModels)
+                        };
+                        vm.Categories.push(categoryModel);
+                        toastr.success(categoryModel.Name() + 'have been added');
+                    },
+                    error: function (err) {
+                        toastr.warning('Something wrong');
+                    }
+                });
+            },
+
+            _removeCategory: function() {
+                var self = this;
+                var vm = self.options.viewModel;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/Menu/RemoveCategory/' + vm.Category().Id(),
+                    dataType: "json",
+                    success: function (data) {
+                        vm.Categories.remove(vm.Category());
+                        toastr.success(vm.Category().Name + 'have been added');
+                        vm.Category(null);
                     },
                     error: function (err) {
                         toastr.warning('Something wrong');
@@ -150,16 +178,13 @@
                     url: '/api/Dish/Remove/' + dish.Id,
                     dataType: 'json',
                     success: function () {
-                        //self._loadCategories();        
                         vm.Category().DishModels.remove(dish);
-                        //vm.Category.DishModels.remove(dish);
                         toastr.success(dish.Name + ' has been removed');
                     }
                 });
             },
 
             _setOption: function (key, value) {
-
                 $.Widget.prototype._setOption.apply(this, arguments);
                 this._super("_setOption", key, value);
             },

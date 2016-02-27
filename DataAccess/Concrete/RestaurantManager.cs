@@ -48,6 +48,7 @@ namespace DataAccess.Concrete
                 .Include(x => x.Adress)
                 .ToList();
         }
+
         public List<DinnerTable> GetAllTable(int id)
         {
 
@@ -55,7 +56,7 @@ namespace DataAccess.Concrete
             var lstTables = new List<DinnerTable>();
             if (restaurant != null)
             {
-                lstTables = restaurant.Halls.SelectMany(h => h.Tables).ToList();
+                lstTables = restaurant.Halls?.SelectMany(h => h.Tables).ToList();
             }
             return lstTables;
         }

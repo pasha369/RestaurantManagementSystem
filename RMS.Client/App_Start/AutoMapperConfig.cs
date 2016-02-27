@@ -21,7 +21,7 @@ namespace RMS.Client.App_Start
                 .ForMember(m => m.Description, o => o.MapFrom(x => string.Join(" ,", x.Ingredients.Select(c => c.Name))));
             Mapper.CreateMap<Category, CategoryModel>()
                 .ForMember(m => m.DishModels, o => o.MapFrom(c => c.Dishes));
-            Mapper.CreateMap<CategoryModel, Category>();
+            Mapper.CreateMap<CategoryModel, Category>();    
         }
     }
 }

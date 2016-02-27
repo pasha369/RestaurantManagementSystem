@@ -1,7 +1,7 @@
 ﻿<div id="menu-ctrl" class="panel">
     <div class="panel-body">
         <div class="input-group-btn">
-            <div class="col-xs-offset-2 col-md-8 no-padding">
+            <div class="col-xs-offset-2 col-md-7 no-padding">
                 <select id="to" class="form-control"
                         data-bind="options : Categories,
                                 optionsText: 'Name',
@@ -9,6 +9,7 @@
                                 optionsCaption : 'Choose...' "></select>
             </div>
             <button class="btn btn-default" data-toggle="modal" data-target="#add-category"><i class="fa fa-plus "></i></button>
+            <button class="btn btn-default" data-toggle="modal" data-bind="click: $root.RemoveCategory"><i class="fa fa-minus "></i></button>
         </div>
 
         <div class="container-fluid" data-bind="with: Category">
@@ -35,9 +36,11 @@
 
         </div>
         <div class="padding-top-5">
+            <!-- ko if: Category -->
             <div class="col-xs-offset-3 col-xs-6">
                 <button class="btn btn-default btn-block" data-toggle="modal" data-target="#add-dish"><i class="fa fa-plus "></i> dish</button>
             </div>
+            <!-- /ko -->
         </div>
     </div>
     <!-- Add category-->
