@@ -82,12 +82,12 @@ namespace RMS.Client.Controllers.WebApi
             var rstManager = new RestaurantManager();
 
             List<ReservedTable> lstReservation = rstManager.GetAllTable(Id)
-                .Select(t => new ReservedTable()
-                {
+                ?.Select(t => new ReservedTable(){
                     Id = t.Id,
                     Num = t.Number,
                     Reservations = GetReservationByTable(t.Id, date)
-                }).ToList();
+                })
+                .ToList();
 
             return lstReservation;
         }
