@@ -24,7 +24,7 @@ namespace RMS.Admin.Pages.Contents
                 fvCuisineEdit.ChangeMode(FormViewMode.Edit);
                 currentId = Convert.ToInt32(e.CommandArgument);
                 var temp = new List<DataModel.Model.Cuisine>();
-                temp.Add(cuisineManager.GetById(currentId));
+                temp.Add(cuisineManager.Get(currentId));
                 fvCuisineEdit.DataSource = temp;
                 fvCuisineEdit.DataBind();
 
@@ -42,7 +42,7 @@ namespace RMS.Admin.Pages.Contents
 
             if (fvCuisineEdit.CurrentMode == FormViewMode.Edit)
             {
-                var cuisine = cuisineManager.GetById(currentId);
+                var cuisine = cuisineManager.Get(currentId);
                 cuisine.Name = txtName.Text;
                 cuisineManager.Update(cuisine);
             }

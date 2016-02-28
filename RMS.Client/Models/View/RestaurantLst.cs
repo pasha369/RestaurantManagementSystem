@@ -36,7 +36,7 @@ namespace RMS.Client.Models.View
         public RestaurantLst(IDataManager<Cuisine> cuisinManager) : this()
         {
             _cuisinManager = cuisinManager;
-            Cuisines = _cuisinManager.GetAll()
+            Cuisines = _cuisinManager.Get()
                 .Select(c => new SelectListItem() { Text = c.Name, Value = c.Name }).AsEnumerable()
             ;
         }

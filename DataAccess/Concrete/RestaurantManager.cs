@@ -36,12 +36,12 @@ namespace DataAccess.Concrete
             return _ctx.Restoraunts.FirstOrDefault(r => r.Id == item.Id);
         }
 
-        public Restaurant GetById(int id)
+        public Restaurant Get(int id)
         {
             return _ctx.Restoraunts.FirstOrDefault(r => r.Id == id);
         }
 
-        public List<Restaurant> GetAll()
+        public List<Restaurant> Get()
         {
             return _ctx.Restoraunts.Include("Halls")
                 .Include(x => x.Cuisines)

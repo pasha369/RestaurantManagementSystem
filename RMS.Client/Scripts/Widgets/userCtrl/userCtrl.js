@@ -23,26 +23,26 @@
                 $('.user-settings').settings().hide();
 
                 $('#btnProfile').on('click', function () {
+                    $(".menu-order").html('');
                     self.options.current.hide();
                     self.options.current = $('.user-profile').userProfile("LoadProfile");
                     self.options.current.show();
                 });
                 $('#btnFavorite').on('click', function () {
+                    $(".menu-order").html('');
                     self.options.current.hide();
                     self.options.current = $('.user-favorite');
                     self.options.current.show();
                 });
                 $('#btnReservations').on('click', function () {
-                    // Destroy ctrl with menu.
-                    $('.user-reservations').userReservations('destroy');
-                    // Show ctrl with reservations.
-                    $('.user-reservations').userReservations();
-                    
+                    $(".menu-order").html('');
+                    $("#reservation-user-ctrl").show();
                     self.options.current.hide();
                     self.options.current = $('.user-reservations');
                     self.options.current.show();
                 });
                 $('#btnSettings').on('click', function () {
+                    $(".menu-order").html('');
                     self.options.current.hide();
                     self.options.current = $('.user-settings');
                     self.options.current.show();

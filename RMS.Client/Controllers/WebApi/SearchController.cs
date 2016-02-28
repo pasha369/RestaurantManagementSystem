@@ -23,7 +23,7 @@ namespace RMS.Client.Controllers.WebApi
 
             if (!string.IsNullOrEmpty(name))
             {
-                lstRestaurant = _rstManager.GetAll()
+                lstRestaurant = _rstManager.Get()
                     .Where(r => r.Name.ToLower().Contains(name.ToLower()))
                     .Select(r => new RestaurantModel()
                     {

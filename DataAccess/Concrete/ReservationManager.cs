@@ -43,12 +43,12 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public Reservation GetById(int id)
+        public Reservation Get(int id)
         {
             return _ctx.Reservations.FirstOrDefault(r => r.Id == id);
         }
 
-        public List<Reservation> GetAll()
+        public List<Reservation> Get()
         {
             return _ctx.Reservations.Include(x => x.Table.Restaurant).ToList();
         }

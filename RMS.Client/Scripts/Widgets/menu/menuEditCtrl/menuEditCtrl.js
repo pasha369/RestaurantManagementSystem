@@ -26,6 +26,7 @@
                     this.DishName = ko.observable();
                     this.DishCost = ko.observable();
                     this.DishIngredients = ko.observableArray();
+                    this.DishDescription = ko.observable();
 
                     this.AddCategory = function () {
                         self._addCategory();
@@ -46,6 +47,7 @@
                 self._loadCategories();
                 self._loadIngredients();
             },
+
             _loadCategories: function () {
                 var self = this;
                 var vm = self.options.viewModel;
@@ -56,8 +58,7 @@
                     contentType: "application/json; charset=utf-8",
                     data: { rstId: self.options.restaurantId },
                     dataType: "json",
-                    success: function (data) {
-                        
+                    success: function (data) {  
                         $.each(data, function (key, value) {
                             var category = {
                                 Id: ko.observable(value.Id),
@@ -148,10 +149,11 @@
                 });
 
                 var dish = {
-                    Name: vm.DishName,
-                    Cost: vm.DishCost,
+                    Name: vm.DishName(),
+                    Cost: vm.DishCost(),
                     CategoryId: vm.Category().Id,
-                    IngredientIds: ingrediantsIds
+                    IngredientIds: ingrediantsIds,
+                    Description: vm.DishDescription()
                 };
                 $.ajax({
                     type: 'POST',
@@ -159,9 +161,15 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     data: ko.toJSON(dish),
-                    success: function () {
-                        vm.Category().DishModels.push(dish);
-                        toastr.success(dish.Name() + ' has been added');
+                    success: function (savedDish) {
+                        
+                        vm.Category().DishModels.push(savedDish);
+
+                        vm.DishName(null);
+                        vm.DishCost(null);
+                        vm.DishDescription(null);
+
+                        toastr.success(savedDish.Name + ' has been added');
                     },
                     error: function (err) {
                         toastr.warning('Something wrong');

@@ -15,22 +15,22 @@
         <div class="container-fluid" data-bind="with: Category">
             <table class="table table-striped table-responsive">
                 <thead>
-                    <tr>
-                        <td>Name</td>
-                        <td>Description</td>
-                        <td>Cost</td>
-                        <td></td>
-                    </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>Description</td>
+                    <td>Cost</td>
+                    <td></td>
+                </tr>
                 </thead>
                 <tbody>
-                    <!-- ko foreach: DishModels-->
-                    <tr>
-                        <td data-bind="text: Name"></td>
-                        <td data-bind="text: Description"></td>
-                        <td data-bind="text: Cost"></td>
-                        <td><a href="javascript:;" data-bind="click: $root.RemoveDish"><i class="fa fa-minus"></i></a></td>
-                    </tr>
-                    <!-- /ko -->
+                <!-- ko foreach: DishModels-->
+                <tr>
+                    <td data-bind="text: Name"></td>
+                    <td data-bind="text: Description"></td>
+                    <td data-bind="text: Cost"></td>
+                    <td><a href="javascript:;" data-bind="click: $root.RemoveDish"><i class="fa fa-minus"></i></a></td>
+                </tr>
+                <!-- /ko -->
                 </tbody>
             </table>
 
@@ -43,7 +43,8 @@
             <!-- /ko -->
         </div>
     </div>
-    <!-- Add category-->
+
+    <!-- ADD CATEGORY-->
     <div id="add-category" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
@@ -68,11 +69,11 @@
             </div>
         </div>
     </div>
-    <!-- End Add category -->
-    <!--Add dish-->
+    <!-- END ADD CATEGORY -->
+
+    <!--MODAL ADD DISH-->
     <div id="add-dish" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -102,6 +103,11 @@
 
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <textarea class="form-control" placeholder="Please enter description..." data-bind="value: DishDescription"></textarea>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-xs-offset-2 col-xs-8">
                                 <button type="button" class="btn btn-default btn-block" data-bind="click: $root.AddDish">Save dish</button>
@@ -115,7 +121,7 @@
             </div>
         </div>
     </div>
-    <!-- End Add dish-->
+    <!-- END MODAL ADD DISH-->
 </div>
 
 

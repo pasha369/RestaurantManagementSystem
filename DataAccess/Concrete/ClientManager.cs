@@ -43,11 +43,11 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public ClientInfo GetById(int Id)
+        public ClientInfo Get(int Id)
         {
             return _ctx.ClientInfos.FirstOrDefault(c => c.Id == Id);
         }
-        public List<ClientInfo> GetAll()
+        public List<ClientInfo> Get()
         {
             return _ctx.ClientInfos.ToList();
         }

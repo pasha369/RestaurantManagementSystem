@@ -32,7 +32,7 @@ namespace RMS.Client.Core.Autofac.Modules
                 .As<IDataManager<Country>>().InstancePerRequest();
             builder.Register(r => new CuisineManager())
                 .As<IDataManager<Cuisine>>().InstancePerRequest();
-            // Menu managers.
+      
             builder.Register(r => new CategoryManager())
                 .As<ICategoryManager>().InstancePerRequest();
             builder.Register(r => new DishManager())
@@ -41,6 +41,8 @@ namespace RMS.Client.Core.Autofac.Modules
                 .As<IMenuManager>().InstancePerRequest();
             builder.Register(r => new IngredientManager())
                 .As<IManager<Ingredient>>().InstancePerRequest();
+            builder.Register(r => new OrderManager())
+                .As<IDataManager<Order>>().InstancePerRequest();
 
             base.Load(builder);
         }

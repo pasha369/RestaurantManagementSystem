@@ -32,9 +32,9 @@ namespace RMS.Admin.Pages.Contents
                 var dataManager = new RestaurantManager();
                 var hallManager = new HallManager();
 
-                var curRestaurant = dataManager.GetById(restaurantId);
+                var curRestaurant = dataManager.Get(restaurantId);
 
-                var hall = hallManager.GetById(currentId);
+                var hall = hallManager.Get(currentId);
                 hall.Number = txtNumber.Text;
                 hall.Restaurant = curRestaurant;
 
@@ -50,7 +50,7 @@ namespace RMS.Admin.Pages.Contents
                 var dataManager = new RestaurantManager();
                 var hallManager = new HallManager();
 
-                var curRestaurant = dataManager.GetById(restaurantId);
+                var curRestaurant = dataManager.Get(restaurantId);
 
                 var hall = new DataModel.Model.Hall();
                 hall.Number = txtNumber.Text;
@@ -68,7 +68,7 @@ namespace RMS.Admin.Pages.Contents
             var ddl = fv.FindControl(name) as DropDownList;
             if (ddl != null)
             {
-                ddl.DataSource = manager.GetAll();
+                ddl.DataSource = manager.Get();
                 ddl.DataBind();
             }
             return ddl;
@@ -126,7 +126,7 @@ namespace RMS.Admin.Pages.Contents
             if (fv.CurrentMode == FormViewMode.Edit)
             {
                 var hallManager = new HallManager();
-                var hall = hallManager.GetById(currentId);
+                var hall = hallManager.Get(currentId);
 
 
                 var txtNumber = fv.FindControl("txtNumber") as TextBox;

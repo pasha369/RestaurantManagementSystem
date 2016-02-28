@@ -131,47 +131,32 @@
         }
 </style>
 
-<div id="menu-user-ctrl">
+<div id="order-list-ctrl">
     <div class="row" style="text-align: center;">
         <div class="col-md-12">
             <h2>
-                <a data-bind="click: $root.showOrder" href="javascript:;">
-                    ORDER ONLINE
-                </a> / <strong>OUR MENU</strong>
+                <strong>ORDER ONLINE</strong>/
+                <a data-bind="click: $root.showMenu" href="javascript:;">
+                    OUR MENU
+                </a> 
             </h2>
         </div>
     </div>
-
-    <div class="panel-group bordered" id="accordion" role="tablist" aria-multiselectable="true" data-bind="foreach: Categories">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                    <a class="collapsed " data-toggle="collapse" data-parent="#accordion"
-                       data-bind="attr:{href:'#collapseFour'+$index()}" aria-expanded="false" aria-controls="collapseFour">
-                        Category / <strong data-bind="text: Name"></strong>
-                    </a>
-                </h4>
-            </div>
-            <div data-bind="attr: {id:'collapseFour'+$index()}" class="panel-collapse collapse" role="tabpanel">
-                <div class="panel-body">
-                    <div class="row" data-bind="foreach: DishModels">
-                        <div class="col-md-6">
-                            <div class="item" id="Div1">
-                                <div class="info">
-                                    <div class="dots"></div>
-                                    <span class="name">
-                                        <span data-bind="text: $index() + 1"></span>.
-                                        <span data-bind="text: Name"></span>
-                                    </span>
-                                    <span class="price">$ <span data-bind="text: Cost"></span></span>
-                                </div>
-                                <div class="description" data-bind="text: Description">Shrimp wrapped in taro, deep fried and served with chili sauce</div>
-                                <div class="legend"><a class="add item_add" href="javascript:;" data-bind="click: $root.addToOrder">ADD TO ORDER</a></div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="row" data-bind="foreach: OrderDishes">
+        <div class="col-md-6">
+            <div class="item" id="Div1">
+                <div class="info">
+                    <div class="dots"></div>
+                    <span class="name">
+                        <span data-bind="text: $index() + 1"></span>.
+                        <span data-bind="text: Name"></span>
+                    </span>
+                    <span class="price">$ <span data-bind="text: Cost"></span></span>
                 </div>
+                <div class="description" data-bind="text: Description">Shrimp wrapped in taro, deep fried and served with chili sauce</div>
+                <div class="legend"><a class="add item_add" href="javascript:;" data-bind="click: $root.removeDish">REMOVE FROM ORDER</a></div>
             </div>
         </div>
     </div>
+
 </div>

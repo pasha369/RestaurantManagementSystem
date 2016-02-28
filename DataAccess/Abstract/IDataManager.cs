@@ -8,7 +8,7 @@ namespace DataAccess.Abstract
         void Add(T item);
         void Update(T item);
         T GetById(T item);
-        T GetById(int Id);
-        List<T> GetAll();
+        T Get(int Id);
+        List<T> Get();
     }
 }

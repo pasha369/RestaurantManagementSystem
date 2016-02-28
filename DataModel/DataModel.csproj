@@ -114,6 +114,14 @@
     <Compile Include="RestorauntContextMigrations\201602212106179_AddDishesToIng.Designer.cs">
       <DependentUpon>201602212106179_AddDishesToIng.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201602270959365_AddOrder.cs" />
+    <Compile Include="RestorauntContextMigrations\201602270959365_AddOrder.Designer.cs">
+      <DependentUpon>201602270959365_AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201602271106207_AddReceipt.cs" />
+    <Compile Include="RestorauntContextMigrations\201602271106207_AddReceipt.Designer.cs">
+      <DependentUpon>201602271106207_AddReceipt.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -169,6 +177,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201602212106179_AddDishesToIng.resx">
       <DependentUpon>201602212106179_AddDishesToIng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602270959365_AddOrder.resx">
+      <DependentUpon>201602270959365_AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602271106207_AddReceipt.resx">
+      <DependentUpon>201602271106207_AddReceipt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

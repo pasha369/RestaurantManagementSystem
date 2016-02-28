@@ -22,7 +22,7 @@ namespace DataModel.Contexts
         public virtual DbSet<Menu> Menu { set; get; }
         public virtual DbSet<Dish> Dishes { set; get; }
         public virtual DbSet<Category> Categories { set; get; }
-        public virtual DbSet<Receipt> Orders { set; get; }
+        public virtual DbSet<Order> Orders { set; get; }
         public virtual DbSet<Country> Countries { set; get; }
         public virtual DbSet<City> Cities { set; get; }
         public virtual DbSet<Reservation> Reservations { set; get; }

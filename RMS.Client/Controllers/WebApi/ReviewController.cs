@@ -19,7 +19,7 @@ namespace RMS.Client.Controllers.WebApi
             var reviewManager = new ReviewManager();
 
             var review = new Review();
-            review.Restaurant = new RestaurantManager().GetById(model.RestaurantId);
+            review.Restaurant = new RestaurantManager().Get(model.RestaurantId);
             review.ReviewTime = DateTime.Now;
             review.Comment = model.Comment;
             review.Author = GetUserInfo();

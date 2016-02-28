@@ -1,14 +1,17 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
+        'toastr',
         'Widgets/bookingCtrl/bookingCtrl',
         'text!Widgets/menu/menuUserCtrl/menuUserCtrl.html'],
     function (ko, $) {
+        var toastr = require('toastr');
 
         $.widget("cc.menuUser", {
 
             options: {
                 view: require('text!Widgets/menu/menuUserCtrl/menuUserCtrl.html'),
                 viewModel: null,
-                restaurantId: null
+                restaurantId: null,
+                eventTrigger: null
             },
 
             _create: function () {
@@ -19,6 +22,18 @@
                     
                     this.Categories = ko.observableArray([]);
                     
+                    this.showOrders = function() {
+                        $("#menu-user-ctrl").hide();
+                        $("#order-list-ctrl").show();
+                    }
+                    this.addToOrder = function(dish) {
+                        self.options.eventTrigger.notify(dish);
+                        toastr.success(dish.Name + " was added to order.");
+                    }
+                    this.showOrder = function() {
+                        $('#order').show();
+                        $('#menu').hide();
+                    }
                 }
                 this.options.viewModel = new MenuUserVM();
                 ko.applyBindings(self.options.viewModel, $("#menu-user-ctrl")[0]);

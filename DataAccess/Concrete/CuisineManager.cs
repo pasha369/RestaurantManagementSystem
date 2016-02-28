@@ -38,12 +38,12 @@ namespace DataAccess.Concrete
             return _ctx.Cuisines.FirstOrDefault(c => c.Id == item.Id);
         }
 
-        public Cuisine GetById(int id)
+        public Cuisine Get(int id)
         {
             return _ctx.Cuisines.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<Cuisine> GetAll()
+        public List<Cuisine> Get()
         {
             return _ctx.Cuisines.ToList();
         }

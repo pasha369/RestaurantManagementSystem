@@ -168,6 +168,7 @@
     <Compile Include="Controllers\MVC\ProfileController.cs" />
     <Compile Include="Controllers\WebApi\Menu\DishController.cs" />
     <Compile Include="Controllers\WebApi\Menu\MenuController.cs" />
+    <Compile Include="Controllers\WebApi\Menu\OrderController.cs" />
     <Compile Include="Controllers\WebApi\ReservationController.cs" />
     <Compile Include="Controllers\MVC\RestaurantController.cs" />
     <Compile Include="Controllers\WebApi\ReviewController.cs" />
@@ -184,6 +185,7 @@
     <Compile Include="Models\View\LoginModel.cs" />
     <Compile Include="Models\View\MenuModels\CategoryModel.cs" />
     <Compile Include="Models\View\MenuModels\DishModel.cs" />
+    <Compile Include="Models\View\OrderModels\OrderItemModel.cs" />
     <Compile Include="Models\View\ProfileModel.cs" />
     <Compile Include="Models\View\RegisterModel.cs" />
     <Compile Include="Models\View\ReservationLst.cs" />
@@ -358,6 +360,8 @@
     <Content Include="Scripts\Widgets\menu\menuEditCtrl\menuEditCtrl.js" />
     <Content Include="Scripts\Widgets\menu\menuUserCtrl\menuUserCtrl.html" />
     <Content Include="Scripts\Widgets\menu\menuUserCtrl\menuUserCtrl.js" />
+    <Content Include="Scripts\Widgets\order\orderListCtrl\orderListCtrl.html" />
+    <Content Include="Scripts\Widgets\order\orderListCtrl\orderListCtrl.js" />
     <Content Include="Scripts\Widgets\photoCtrl\photoCtrl.html" />
     <Content Include="Scripts\Widgets\photoCtrl\photoCtrl.js" />
     <Content Include="Scripts\Widgets\profileEditCtrl\profileEditCtrl.html" />

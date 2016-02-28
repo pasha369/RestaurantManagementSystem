@@ -22,7 +22,7 @@ namespace RMS.Client.Controllers.WebApi.Menu
         }
 
         [HttpPost]
-        public void Add(DishModel dishModel)
+        public DishModel Add(DishModel dishModel)
         {
             var dish = Mapper.Map<Dish>(dishModel);
             dish.Category = _categoryManager.GetById(dishModel.CategoryId);
@@ -30,6 +30,7 @@ namespace RMS.Client.Controllers.WebApi.Menu
                 .Where(x => dishModel.IngredientIds.Contains(x.Id))
                 .ToList();
             _dishManager.Add(dish);
+            return Mapper.Map<DishModel>(dish);
         }
 
         [WebMethod]

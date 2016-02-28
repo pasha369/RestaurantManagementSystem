@@ -47,12 +47,12 @@ namespace DataAccess.Concrete
             return _ctx.Tables.FirstOrDefault(r => r.Id == item.Id);
         }
 
-        public List<DinnerTable> GetAll()
+        public List<DinnerTable> Get()
         {
             return _ctx.Tables.ToList();
         }
 
-        public DinnerTable GetById(int Id)
+        public DinnerTable Get(int Id)
         {
             return _ctx.Tables.FirstOrDefault(t => t.Id == Id);
         }

@@ -38,12 +38,12 @@ namespace DataAccess.Concrete
             return _ctx.Countries.FirstOrDefault(c => c.Id == item.Id);
         }
 
-        public Country GetById(int id)
+        public Country Get(int id)
         {
             return _ctx.Countries.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<Country> GetAll()
+        public List<Country> Get()
         {
             return _ctx.Countries.ToList();
         }

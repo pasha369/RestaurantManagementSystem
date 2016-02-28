@@ -49,7 +49,7 @@ namespace DataAccess.Concrete
 
         }
 
-        public List<UserInfo> GetAll()
+        public List<UserInfo> Get()
         {
             return _ctx.UserInfos.ToList();
 
@@ -60,7 +60,7 @@ namespace DataAccess.Concrete
             return _ctx.UserInfos.Where(u => u.IsBanned == false).ToList();
         }
 
-        public UserInfo GetById(int Id)
+        public UserInfo Get(int Id)
         {
             return _ctx.UserInfos.FirstOrDefault(u => u.Id == Id);
         }

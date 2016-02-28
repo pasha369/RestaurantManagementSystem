@@ -40,7 +40,7 @@ namespace RMS.Admin.Pages.Contents
             var ddl = fv.FindControl(name) as DropDownList;
             if (ddl != null)
             {
-                ddl.DataSource = manager.GetAll();
+                ddl.DataSource = manager.Get();
                 ddl.DataBind();
             }
         }

@@ -35,12 +35,12 @@ namespace DataAccess.Concrete
             return _ctx.Cities.FirstOrDefault(c => c.Id == item.Id);
         }
 
-        public City GetById(int id)
+        public City Get(int id)
         {
             return _ctx.Cities.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<City> GetAll()
+        public List<City> Get()
         {
             return _ctx.Cities
                 .Include("Country").ToList();

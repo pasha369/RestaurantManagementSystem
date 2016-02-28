@@ -59,7 +59,7 @@ namespace RMS.Admin.Pages.Contents
                 int Id = Convert.ToInt32(element);
                 var dinnerTable = new DataModel.Model.DinnerTable();
 
-                dinnerTable.Restaurant = dataManager.GetById(Id);
+                dinnerTable.Restaurant = dataManager.Get(Id);
                 dinnerTable.Number = Convert.ToInt32(GetValueFromTextbox("txtNumber"));
                 dinnerTable.Hall = hallManager.GetById(new Hall() { Id = hallId });
 
@@ -68,10 +68,10 @@ namespace RMS.Admin.Pages.Contents
             }
             if (fvTable.CurrentMode == FormViewMode.Edit)
             {
-                var table = tableManager.GetById(currentId);
+                var table = tableManager.Get(currentId);
                 table.Number = Convert.ToInt32(GetValueFromTextbox("txtNumber"));
-                table.Restaurant = restManager.GetById(GetDdlValue(fvTable, "ddlRestaurant"));
-                table.Hall = hallManager.GetById(GetDdlValue(fvTable, "ddlHall"));
+                table.Restaurant = restManager.Get(GetDdlValue(fvTable, "ddlRestaurant"));
+                table.Hall = hallManager.Get(GetDdlValue(fvTable, "ddlHall"));
                 tableManager.Update(table);
             }
             gvTables.DataBind();
@@ -120,7 +120,7 @@ namespace RMS.Admin.Pages.Contents
                 var tableManager = new DinnerTableManager();
                 fvTable.ChangeMode(FormViewMode.Edit);
                 var lst = new List<DinnerTable>();
-                lst.Add(tableManager.GetById(currentId));
+                lst.Add(tableManager.Get(currentId));
                 fvTable.DataSource = lst;
                 fvTable.DataBind();
                 ShowModal();
@@ -135,7 +135,7 @@ namespace RMS.Admin.Pages.Contents
             var ddlRestaurant = fvTable.FindControl("ddlRestaurant") as DropDownList;
 
             var restaurantId = Convert.ToInt32(ddlRestaurant.SelectedValue);
-            var restaurant = dataManager.GetById(restaurantId);
+            var restaurant = dataManager.Get(restaurantId);
 
             ddl.DataSource = restaurant.Halls;
         }

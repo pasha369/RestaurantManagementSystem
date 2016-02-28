@@ -39,7 +39,7 @@ namespace RMS.Client.Controllers.WebApi.Menu
         [WebMethod]
         public CategoryModel AddCategory(CategoryModel model)
         {
-            var restaurant = _restaurantManager.GetById(model.RestaurantId);
+            var restaurant = _restaurantManager.Get(model.RestaurantId);
             var categoryEntity = Mapper.Map<Category>(model);
             _categoryManager.Add(restaurant.Menu.Id, categoryEntity);
             var categoryModel = Mapper.Map<CategoryModel>(categoryEntity);

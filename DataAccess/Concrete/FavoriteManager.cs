@@ -34,7 +34,7 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public Favorite GetById(int Id)
+        public Favorite Get(int Id)
         {
             return _ctx.Favorites.FirstOrDefault(f => f.Id == Id);
         }
@@ -48,7 +48,7 @@ namespace DataAccess.Concrete
             return lstFavorite;
         }
 
-        public List<Favorite> GetAll()
+        public List<Favorite> Get()
         {
             throw new NotImplementedException();
         }

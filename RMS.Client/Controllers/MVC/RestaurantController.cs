@@ -23,7 +23,7 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult RestaurantList()
         {
-            var items = _rstManager.GetAll();
+            var items = _rstManager.Get();
             var restaurantLst = new RestaurantLst(_cuisineManager);
             restaurantLst.CountryList.AddRange(GetTopCountry());
             restaurantLst.CuisineList.AddRange(GetTopCuisine());
@@ -46,7 +46,7 @@ namespace RMS.Client.Controllers.MVC
         }
         public ActionResult RestaurantListCountry(string country)
         {
-            var items = _rstManager.GetAll().Where(r => (r.Adress.Country != null ? r.Adress.Country.Name : "") == country).ToList();
+            var items = _rstManager.Get().Where(r => (r.Adress.Country != null ? r.Adress.Country.Name : "") == country).ToList();
             var restaurantLst = new RestaurantLst();
             restaurantLst.CountryList.AddRange(GetTopCountry());
 
@@ -60,7 +60,7 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult RestaurantListCuisine(string cuisine)
         {
-            var items = _rstManager.GetAll()
+            var items = _rstManager.Get()
                 .Where(r => r.Cuisines.Count != 0 && r.Cuisines.Exists(c => c.Name == cuisine))
                 .ToList();
             var restaurantLst = new RestaurantLst();
@@ -93,7 +93,7 @@ namespace RMS.Client.Controllers.MVC
         {
             if (ModelState.IsValid)
             {
-                var restaurant = _rstManager.GetById(model.Id);
+                var restaurant = _rstManager.Get(model.Id);
                 Mapper.Map<RestaurantModel, Restaurant>(model, restaurant);
 
                 _rstManager.Update(restaurant);
@@ -102,7 +102,7 @@ namespace RMS.Client.Controllers.MVC
 
         public ActionResult RestaurantDetail(int Id)
         {
-            var restaurant = _rstManager.GetById(Id);
+            var restaurant = _rstManager.Get(Id);
 
             if (restaurant != null)
             {
@@ -122,7 +122,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult GetAll()
         {
             string strJSON = JsonConvert.SerializeObject(
-                _rstManager.GetAll(),
+                _rstManager.Get(),
                 Formatting.Indented,
             new JsonSerializerSettings
             {
@@ -136,7 +136,7 @@ namespace RMS.Client.Controllers.MVC
             var login = System.Web.HttpContext.Current.User.Identity.Name;
             var clientManager = new ClientManager();
 
-            var client = clientManager.GetAll().FirstOrDefault(c => c.UserInfo.Login == login);
+            var client = clientManager.Get().FirstOrDefault(c => c.UserInfo.Login == login);
 
             string restaurant = JsonConvert.SerializeObject(
                 client.Restaurant,
@@ -157,14 +157,14 @@ namespace RMS.Client.Controllers.MVC
             var favorite = new Favorite();
             var login = System.Web.HttpContext.Current.User.Identity.Name;
 
-            favorite.Restaurant = _rstManager.GetById(Id);
-            favorite.User = userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            favorite.Restaurant = _rstManager.Get(Id);
+            favorite.User = userManager.Get().FirstOrDefault(u => u.Login == login);
             favoriteManager.Add(favorite);
         }
 
         private RestaurantModel GetModelById(int Id)
         {
-            var restaurant = _rstManager.GetById(Id);
+            var restaurant = _rstManager.Get(Id);
             var model = Mapper.Map<RestaurantModel>(restaurant);
 
             return model;
@@ -172,7 +172,7 @@ namespace RMS.Client.Controllers.MVC
 
         private IEnumerable<string> GetTopCountry()
         {
-            var rst = _rstManager.GetAll();
+            var rst = _rstManager.Get();
             var countryLst = rst
                 .GroupBy(r => r.Adress.Country)
                 .OrderByDescending(country => country.Count())
@@ -183,7 +183,7 @@ namespace RMS.Client.Controllers.MVC
 
         private IEnumerable<string> GetTopCuisine()
         {
-            var cuisineLst = _cuisineManager.GetAll()
+            var cuisineLst = _cuisineManager.Get()
                 .OrderByDescending(c => c.Restoraunts.Count())
                 .Select(c => c.Name)
                 .Take(3).AsEnumerable();

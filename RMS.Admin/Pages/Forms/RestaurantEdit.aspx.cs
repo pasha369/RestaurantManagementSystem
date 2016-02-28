@@ -50,15 +50,15 @@ namespace RMS.Admin.Pages.Forms
             var txtName = fvRestorauntEdit.FindControl("txtName") as TextBox;
             var txtPhone = fvRestorauntEdit.FindControl("txtPhone") as TextBox;
 
-            restaurant = restManager.GetById(restorauntModel.Id);
+            restaurant = restManager.Get(restorauntModel.Id);
             restaurant.Name = txtName.Text;
             restaurant.PhoneNumber = txtPhone.Text;
             if (restaurant.Adress == null)
                 restaurant.Adress = new DataModel.Model.Address();
             if (GetDdlValue(fvRestorauntEdit, "ddlCity") != -1)
-                restaurant.Adress.City = cityManager.GetById(GetDdlValue(fvRestorauntEdit, "ddlCity"));
+                restaurant.Adress.City = cityManager.Get(GetDdlValue(fvRestorauntEdit, "ddlCity"));
             if (GetDdlValue(fvRestorauntEdit, "ddlCountry") != -1)
-                restaurant.Adress.Country = countryManager.GetById(GetDdlValue(fvRestorauntEdit, "ddlCountry"));
+                restaurant.Adress.Country = countryManager.Get(GetDdlValue(fvRestorauntEdit, "ddlCountry"));
             restaurant.Adress.Street = (fvRestorauntEdit.FindControl("txtStreet") as TextBox).Text;
             restaurant.Description = (fvRestorauntEdit.FindControl("txtDesc") as TextBox).Text;
             restaurant.Cuisines = restorauntModel.Cuisines;
@@ -71,7 +71,7 @@ namespace RMS.Admin.Pages.Forms
         {
             var dataManager = new RestaurantManager();
             restorauntModel.Id = Convert.ToInt32(Request.QueryString["Id"]);
-            var restaurant = dataManager.GetById(restorauntModel.Id);
+            var restaurant = dataManager.Get(restorauntModel.Id);
             var gvCuisines = fvRestorauntEdit.FindControl("gvCuisines") as GridView;
             restorauntModel.Cuisines = restaurant.Cuisines;
             var ddlCity = fvRestorauntEdit.FindControl("ddlCity") as DropDownList;
@@ -107,7 +107,7 @@ namespace RMS.Admin.Pages.Forms
             var ddl = fv.FindControl(name) as DropDownList;
             if (ddl != null)
             {
-                ddl.DataSource = manager.GetAll();
+                ddl.DataSource = manager.Get();
                 ddl.DataBind();
             }
         }

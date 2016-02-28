@@ -59,7 +59,7 @@ namespace RMS.Client.Controllers.WebApi
         public List<RestaurantModel> GetUserReservation()
         {
             var user = GetUserByLogin();
-            var reservationLst = rsvManager.GetAll()
+            var reservationLst = rsvManager.Get()
                 .Where(r => r.User.Id == user.Id)
                 .Select(r => r.Table.Restaurant);
             var modelLst = Mapper.Map<List<RestaurantModel>>(reservationLst);
@@ -94,7 +94,7 @@ namespace RMS.Client.Controllers.WebApi
 
         private List<BookingModel> GetReservationByTable(int Id, DateTime date)
         {
-            List<BookingModel> lstReservation = rsvManager.GetAll().
+            List<BookingModel> lstReservation = rsvManager.Get().
                 Where(r => r.Table.Id == Id && r.From.Day == date.Day &&
                     r.From.Month == date.Month && r.From.Year == date.Year)
                                 .Select(r => new BookingModel()
@@ -117,21 +117,21 @@ namespace RMS.Client.Controllers.WebApi
         [WebMethod]
         public void RejectReservation(int Id)
         {
-            var reservarion = rsvManager.GetById(Id);
+            var reservarion = rsvManager.Get(Id);
             reservarion.Status = ReservationStatus.Canceled;
         }
 
         [HttpPost]
         public void RemoveReservation(int Id)
         {
-            var reservarion = rsvManager.GetById(Id);
+            var reservarion = rsvManager.Get(Id);
 
             rsvManager.Delete(reservarion);
         }
 
         public void ApplyReservation(int Id)
         {
-            var reservarion = rsvManager.GetById(Id);
+            var reservarion = rsvManager.Get(Id);
             reservarion.Status = ReservationStatus.Confirmed;
             rsvManager.Update(reservarion);
         }
@@ -145,7 +145,7 @@ namespace RMS.Client.Controllers.WebApi
         [HttpPost]
         public void ChangeStatus(RsvStatus rsvStatus)
         {
-            var rsv = rsvManager.GetById(rsvStatus.RstId);
+            var rsv = rsvManager.Get(rsvStatus.RstId);
             ReservationStatus status;
             Enum.TryParse(rsvStatus.ReserveStatus, out status);
             rsv.Status = status;
@@ -154,7 +154,7 @@ namespace RMS.Client.Controllers.WebApi
         private UserInfo GetUserByLogin()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            var user = _userManager.Get().FirstOrDefault(u => u.Login == login);
             return user;
         }
     }

@@ -41,7 +41,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult RestaurateurPage()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var clients = _clientManager.GetAll();
+            var clients = _clientManager.Get();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
 
             if (client != null)
@@ -61,7 +61,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult ProfilePage()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var clients = _clientManager.GetAll();
+            var clients = _clientManager.Get();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
             if (client != null)
             {
@@ -118,7 +118,7 @@ namespace RMS.Client.Controllers.MVC
         {
             if (ModelState.IsValid)
             {
-                var user = _userManager.GetById(model.Id);
+                var user = _userManager.Get(model.Id);
                 Mapper.Map<ProfileModel, UserInfo>(model, user);
 
                 _userManager.Update(user);
@@ -130,7 +130,7 @@ namespace RMS.Client.Controllers.MVC
         private UserInfo GetUserByLogin()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            var user = _userManager.Get().FirstOrDefault(u => u.Login == login);
 
             return user;
         }

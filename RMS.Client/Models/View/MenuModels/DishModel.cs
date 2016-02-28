@@ -31,5 +31,10 @@ namespace RMS.Client.Models.View.MenuModels
         /// Gets or sets categoryId.
         /// </summary>
         public int CategoryId { get; set; }
+
+        /// <summary>
+        /// Gets or sets description.
+        /// </summary>
+        public string Description { get; set; }
     }
 }

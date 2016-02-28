@@ -24,7 +24,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult ContriesPage()
         {
             var model = new CountriesModel();
-            model.Countries = _countryManager.GetAll()
+            model.Countries = _countryManager.Get()
                 .Select((x, i) => new { Index = i, Value = x })
                 .GroupBy(x => x.Index / 3)
                 .Select(x => x.Select(v => v.Value).ToList())
@@ -36,7 +36,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult GetRstByCountry(string country)
         {
             var model = new RestaurantLst();
-            var restaurants = _rstManager.GetAll();
+            var restaurants = _rstManager.Get();
             var lst = restaurants.Where(r => r.Adress.Country != null && r.Adress.Country.Name == country).ToList();
 
             Mapper.CreateMap<Restaurant, RestaurantModel>();
