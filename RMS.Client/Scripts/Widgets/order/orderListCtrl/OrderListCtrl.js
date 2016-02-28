@@ -19,23 +19,45 @@
                 function OrderListVM() {
                     this.OrderDishes = ko.observableArray([]);
 
-                    this.showMenu = function() {
+                    this.showMenu = function () {
                         $("#menu").show();
                         $("#order").hide();
                     }
 
-                    this.removeDish = function(dish) {
+                    this.removeDish = function (dish) {
                         self.options.viewModel.OrderDishes.remove(dish);
                         toastr.success(dish.Name + " was removed from order.");
+                    }
+
+                    this.makeOrder = function () {
+                        self._makeOrder();
                     }
                 }
                 this.options.viewModel = new OrderListVM();
                 this.options.eventTrigger.attach(this._addDishToOrder, this);
                 ko.applyBindings(self.options.viewModel, $("#order-list-ctrl")[0]);
             },
-           
-            _addDishToOrder: function(dish) {
+
+            _addDishToOrder: function (dish) {
                 this.options.viewModel.OrderDishes.push(dish);
+            },
+
+            _makeOrder: function () {
+                var self = this;
+                var vm = this.options.viewModel;
+                $.ajax({
+                    type: 'POST',
+                    url: '/api/Order/MakeOrder/',
+                    data: {
+                        Id: 0,
+                        Dishes: vm.OrderDishes(),
+                        RestaurantId: self.options.restaurantId
+                    },
+                    dataType: 'json',
+                    success: function (data) {
+                        toastr.success("Order was created. Please wait your order in progress...");
+                    }
+                });
             },
 
             _setOption: function (key, value) {

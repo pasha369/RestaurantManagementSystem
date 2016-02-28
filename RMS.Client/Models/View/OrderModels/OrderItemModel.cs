@@ -1,4 +1,5 @@
-﻿using RMS.Client.Models.View.MenuModels;
+﻿using System.Collections.Generic;
+using RMS.Client.Models.View.MenuModels;
 
 namespace RMS.Client.Models.View.OrderModels
 {
@@ -13,9 +14,9 @@ namespace RMS.Client.Models.View.OrderModels
         public int Id { get; set; }
 
         /// <summary>
-        /// Gets or sets dish.
+        /// Gets or sets Dishes.
         /// </summary>
-        public DishItemModel Dish { get; set; }
+        public List<DishItemModel> Dishes { get; set; }
 
         /// <summary>
         /// Gets or sets RestaurantId.

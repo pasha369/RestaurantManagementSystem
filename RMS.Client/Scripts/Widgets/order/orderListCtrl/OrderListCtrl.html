@@ -154,9 +154,15 @@
                     <span class="price">$ <span data-bind="text: Cost"></span></span>
                 </div>
                 <div class="description" data-bind="text: Description">Shrimp wrapped in taro, deep fried and served with chili sauce</div>
-                <div class="legend"><a class="add item_add" href="javascript:;" data-bind="click: $root.removeDish">REMOVE FROM ORDER</a></div>
+                <div class="legend"><a class="add item_add" href="javascript:;" data-bind="click: $root.removeDish">REMOVE FROM ORDER</a>
+                </div>
             </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-xs-12">
+            <a class="btn-u btn-u-red btn-block btn-brd" href="javascript:;" data-bind="click: $root.makeOrder">Make Order</a>
+        </div>
+    </div>
+    
 </div>

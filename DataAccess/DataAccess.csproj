@@ -79,8 +79,9 @@
     <Compile Include="Concrete\Menu\CategoryManager.cs" />
     <Compile Include="Concrete\Menu\DishManager.cs" />
     <Compile Include="Concrete\Menu\MenuManager.cs" />
-    <Compile Include="Concrete\Menu\OrderManager.cs" />
+    <Compile Include="Concrete\Order\OrderManager.cs" />
     <Compile Include="Concrete\MessageManager.cs" />
+    <Compile Include="Concrete\Order\ReceiptManager.cs" />
     <Compile Include="Concrete\ReservationManager.cs" />
     <Compile Include="Concrete\RestaurantManager.cs" />
     <Compile Include="Concrete\DinnerTableManager.cs" />

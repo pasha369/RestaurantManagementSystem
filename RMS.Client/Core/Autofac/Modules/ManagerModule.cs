@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using DataAccess.Abstract.Menu;
 using DataAccess.Concrete;
 using DataAccess.Concrete.Menu;
+using DataAccess.Concrete.Order;
 using DataModel.Model;
 
 namespace RMS.Client.Core.Autofac.Modules
@@ -43,7 +44,8 @@ namespace RMS.Client.Core.Autofac.Modules
                 .As<IManager<Ingredient>>().InstancePerRequest();
             builder.Register(r => new OrderManager())
                 .As<IDataManager<Order>>().InstancePerRequest();
-
+            builder.Register(r => new ReceiptManager())
+                .As<IDataManager<Receipt>>().InstancePerRequest();
             base.Load(builder);
         }
 

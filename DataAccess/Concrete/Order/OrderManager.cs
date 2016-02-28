@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using DataAccess.Abstract;
 using DataModel.Contexts;
-using DataModel.Model;
 
-namespace DataAccess.Concrete.Menu
+namespace DataAccess.Concrete.Order
 {
     /// <summary>
     /// Represents data manager for orders.
     /// </summary>
-    public class OrderManager : IDataManager<Order>
+    public class OrderManager : IDataManager<DataModel.Model.Order>
     {
         private RestorauntDbContext _ctx = new ContextManager().Context;
 
-        public void Delete(Order item)
+        public void Delete(DataModel.Model.Order item)
         {
             throw new NotImplementedException();
         }
@@ -23,17 +22,17 @@ namespace DataAccess.Concrete.Menu
         /// Add order to orders.
         /// </summary>
         /// <param name="item">Order item</param>
-        public void Add(Order item)
+        public void Add(DataModel.Model.Order item)
         {
             _ctx.Orders.Add(item);
         }
 
-        public void Update(Order item)
+        public void Update(DataModel.Model.Order item)
         {
             throw new NotImplementedException();
         }
 
-        public Order GetById(Order item)
+        public DataModel.Model.Order GetById(DataModel.Model.Order item)
         {
             throw new NotImplementedException();
         }
@@ -43,7 +42,7 @@ namespace DataAccess.Concrete.Menu
         /// </summary>
         /// <param name="Id">Order id</param>
         /// <returns>Order data</returns>
-        public Order Get(int Id)
+        public DataModel.Model.Order Get(int Id)
         {
             return _ctx.Orders.Find(Id);
         }
@@ -52,7 +51,7 @@ namespace DataAccess.Concrete.Menu
         /// Get all orders.
         /// </summary>
         /// <returns>Order list</returns>
-        public List<Order> Get()
+        public List<DataModel.Model.Order> Get()
         {
             return _ctx.Orders.ToList();
         }
