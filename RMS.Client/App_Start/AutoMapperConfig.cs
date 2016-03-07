@@ -31,6 +31,10 @@ namespace RMS.Client.App_Start
                 .ForMember(m => m.DishModels, o => o.MapFrom(c => c.Dishes));
             Mapper
                 .CreateMap<CategoryModel, Category>();
+            Mapper
+                .CreateMap<DinnerTable, TableViewModel>()
+                .ForMember(m => m.TableId, o => o.MapFrom(c => c.Id))
+                .ForMember(m => m.Restaurant, o => o.MapFrom(c => c.Restaurant));
         }
     }
 }

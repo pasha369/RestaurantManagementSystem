@@ -194,6 +194,7 @@
     <Compile Include="Models\View\RestaurantModel.cs" />
     <Compile Include="Models\View\ReviewModel.cs" />
     <Compile Include="Models\View\RsvStatus.cs" />
+    <Compile Include="Models\View\TableViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>

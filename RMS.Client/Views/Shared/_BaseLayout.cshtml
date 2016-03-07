@@ -59,7 +59,6 @@
             <div class="container-fluid">
                 <!-- Logo -->
                 <!-- End Logo -->
-
                 <!-- Topbar -->
                 <div class="topbar">
                     <ul class="loginbar pull-right">
@@ -72,15 +71,14 @@
                         }
                         else
                         {
-                            <li><a href="@Url.Action("ProfilePage", "Profile")">@ViewBag.Username</a></li>  
+                            <li><a href="@Url.Action("ProfilePage", "Profile")">@ViewBag.Username</a></li>
                             <li class="topbar-devider"></li>
-                            <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>                      
+                            <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
                         }
 
                     </ul>
                 </div>
                 <!-- End Topbar -->
-
                 <!-- Toggle get grouped for better mobile display -->
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -89,13 +87,12 @@
                 <!-- End Toggle -->
             </div>
             <!--/end container-->
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
                 <div class="no-padding">
                     <ul class="nav navbar-nav">
                         <li>
-                            <a href="@Url.Action("Index", "Home")" >Home</a>
+                            <a href="@Url.Action("Index", "Home")">Home</a>
                         </li>
                         <li>
                             <a href="@Url.Action("RestaurantList", "Restaurant")">Restaurants</a>
@@ -137,7 +134,7 @@
                         <div class="col-md-6">
                             <p>
                                 Copyright 2015 &copy; All Rights Reserved.
-                           <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+                                <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
                             </p>
                         </div>
 
@@ -190,12 +187,13 @@
         <!--=== End Footer Version 1 ===-->
     </div>
     <!--/End Wrapepr-->
-
     <!-- JS Global Compulsory -->
-    <script src='@Url.Content("~/Scripts/jquery-2.0.2.min.js")'></script>
-    <script src='@Url.Content("~/Scripts/ThemeScripts/bootstrap/bootstrap.min.js")'></script>
+
     <script src='@Url.Content("~/Scripts/require.js")'></script>
     <script src='@Url.Content("~/Scripts/Widgets/main.js")'></script>
+    <script src='@Url.Content("~/Scripts/jquery-2.0.2.min.js")'></script>
+
+    <script src='@Url.Content("~/Scripts/ThemeScripts/bootstrap/bootstrap.min.js")'></script>
     <!-- JS Implementing Plugins -->
     <script type="text/javascript" src='@Url.Content("~/Scripts/ThemeScripts/back-to-top.js")'></script>
     <script type="text/javascript" src='@Url.Content("~/Scripts/ThemeScripts/smoothScroll.js")'></script>

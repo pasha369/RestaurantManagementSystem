@@ -44,11 +44,13 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(data, function (key, value) {
-                            value.Description = value.Description.substring(0, 200) + '...';
-                            if (value.PhotoUrl) {
-                                value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            var reservation = value.Restaurant;
+                            reservation.Description = reservation.Description.substring(0, 200) + '...';
+                            if (reservation.PhotoUrl) {
+                                reservation.PhotoUrl = reservation.PhotoUrl.replace("~", "");
                             }
-                            vm.Restaurants.push(value);
+                            reservation.TableId = value.TableId;
+                            vm.Restaurants.push(value.Restaurant);
                         });
                     },
                     error: function (err) {
@@ -67,7 +69,7 @@
                 $(".menu-order").append($('<div id="menu"></div>'));
                 $(".menu-order").append($('<div id="order"></div>'));
                 $('#menu').menuUser({ restaurantId: item.Id, eventTrigger: eventTrigger });
-                $('#order').orderListCtrl({ restaurantId: item.Id, eventTrigger: eventTrigger });
+                $('#order').orderListCtrl({ tableId: item.TableId, restaurantId: item.Id, eventTrigger: eventTrigger });
                 $('#order').hide();
             },
 

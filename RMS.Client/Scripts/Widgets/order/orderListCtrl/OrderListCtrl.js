@@ -8,6 +8,7 @@
             options: {
                 view: require('text!Widgets/order/orderListCtrl/orderListCtrl.html'),
                 viewModel: null,
+                tableId: null,
                 restaurantId: null,
                 eventTrigger: null
             },
