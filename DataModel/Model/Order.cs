@@ -30,6 +30,7 @@ namespace DataModel.Model
         public virtual UserInfo Client { set; get; }
         public virtual List<Order> ClientOrders { set; get; }
         public ReceiptStatus ReceiptStatus { get; set; }
+        public virtual DinnerTable Table { get; set; }
     }
 
     public enum ReceiptStatus { Open, Closed }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using DataAccess.Abstract;
 using DataModel.Contexts;
@@ -29,7 +30,8 @@ namespace DataAccess.Concrete.Order
 
         public void Update(DataModel.Model.Order item)
         {
-            throw new NotImplementedException();
+            _ctx.Entry(item).State = EntityState.Modified;
+            _ctx.SaveChanges();
         }
 
         public DataModel.Model.Order GetById(DataModel.Model.Order item)

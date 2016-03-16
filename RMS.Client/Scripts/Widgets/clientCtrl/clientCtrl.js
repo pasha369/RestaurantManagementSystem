@@ -4,6 +4,7 @@
         'Widgets/profileEditCtrl/profileEditCtrl',
         'Widgets/menu/menuEditCtrl/menuEditCtrl',
         'Widgets/reservations/reservationTblCtrl/reservationTblCtrl',
+        'Widgets/order/orderManageCtrl/orderManageCtrl',
         'text!Widgets/clientCtrl/clientCtrl.html'],
     function (ko, $, profileCtrl, restaurantEditCtrl, profileEditCtrl, menuCtrl, reservationTblCtrl) {
 
@@ -21,6 +22,7 @@
                 self._loadRestaurant();
                 
                 self.options.current = $('.client-profile').userProfile();
+                $('.orders').orderManageCtrl().hide();
                 $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.reserved-tbl').reservationTbl({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.restaurant-menu').menuEdit({ restaurantId: self.options.restaurant.Id }).hide();
@@ -40,6 +42,11 @@
                 $('#btnReservetions').on('click', function () {
                     self.options.current.hide();
                     self.options.current = $('.reserved-tbl');
+                    self.options.current.show();
+                });
+                $('#btnOrder').on('click', function () {
+                    self.options.current.hide();
+                    self.options.current = $('.orders');
                     self.options.current.show();
                 });
                 $('#btnMenu').on('click', function () {

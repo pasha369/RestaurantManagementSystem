@@ -22,5 +22,10 @@ namespace RMS.Client.Models.View.OrderModels
         /// Gets or sets RestaurantId.
         /// </summary>
         public int RestaurantId { get; set; }
+
+        /// <summary>
+        /// Gets or sets TableId.
+        /// </summary>
+        public int TableId { get; set; }
     }
 }

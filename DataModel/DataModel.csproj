@@ -122,6 +122,14 @@
     <Compile Include="RestorauntContextMigrations\201602271106207_AddReceipt.Designer.cs">
       <DependentUpon>201602271106207_AddReceipt.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201603081320169_AddReceiptStatus.cs" />
+    <Compile Include="RestorauntContextMigrations\201603081320169_AddReceiptStatus.Designer.cs">
+      <DependentUpon>201603081320169_AddReceiptStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201603081332053_AddReceiptTable.cs" />
+    <Compile Include="RestorauntContextMigrations\201603081332053_AddReceiptTable.Designer.cs">
+      <DependentUpon>201603081332053_AddReceiptTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -183,6 +191,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201602271106207_AddReceipt.resx">
       <DependentUpon>201602271106207_AddReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201603081320169_AddReceiptStatus.resx">
+      <DependentUpon>201603081320169_AddReceiptStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201603081332053_AddReceiptTable.resx">
+      <DependentUpon>201603081332053_AddReceiptTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

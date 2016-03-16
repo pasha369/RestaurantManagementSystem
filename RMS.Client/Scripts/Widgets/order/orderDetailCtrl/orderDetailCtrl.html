@@ -1,0 +1,47 @@
+﻿<div id="order-detail-ctrl" class="panel">
+    <div class="panel-body">
+        <div class="margin-bottom-15">
+            <div class="colxs-12">
+                <div class="text-right">
+                    <a href="javascript:;" class="btn-u btn-u-default" data-bind="click: $root.BackToOrders">Back to orders</a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped invoice-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Item</th>
+                    <th class="hidden-sm">Description</th>
+                    <th>Quantity</th>
+                    <th>Unit Cost</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody data-bind="foreach: Dishes">
+                <tr>
+                    <td data-bind="text: $index()"></td>
+                    <td data-bind="text: Name"></td>
+                    <td data-bind="text: Description" class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
+                    <td>252</td>
+                    <td>$52</td>
+                    <td>
+                        <select id="to" class="form-control"
+                                data-bind="options : $root.StatusTypes,
+                                value : Status,
+                                optionsCaption : 'Choose...', event:{ change: $root.StatusChanged} "></select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <ul class="list-unstyled invoice-total-info">
+                    <li><strong>Total Amount:</strong> $109365</li>
+                </ul>
+                <button class="btn-u sm-margin-bottom-10" onclick="javascript:;" data-bind="click: $root.CloseOrder"><i class="fa fa-close"></i> Close order</button>
+                <button class="btn-u sm-margin-bottom-10" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>
+            </div>
+        </div>
+    </div>
+</div>

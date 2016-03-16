@@ -1,6 +1,5 @@
 ﻿<div id="reservation-user-ctrl">
     <div data-bind="foreach: Restaurants">
-        
         <ul class="list-group">
             <li class="list-group-item panel">
                 <div class="row">
@@ -13,16 +12,13 @@
                         <div data-bind="text: Description"></div>
                     </div>
                     <div class="col-sm-12 col-md-5 resource-props">
-
                         <div>
                             <button class="btn btn-primary" data-bind="click: $root.enter" data-toggle="modal">Enter</button>
                         </div>
-
                     </div>
                 </div>
                 <hr>
             </li>
         </ul>
-
     </div>
 </div>
