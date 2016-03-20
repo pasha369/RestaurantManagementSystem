@@ -13,7 +13,6 @@
                     <th>#</th>
                     <th>Item</th>
                     <th class="hidden-sm">Description</th>
-                    <th>Quantity</th>
                     <th>Unit Cost</th>
                     <th>Status</th>
                 </tr>
@@ -23,8 +22,7 @@
                     <td data-bind="text: $index()"></td>
                     <td data-bind="text: Name"></td>
                     <td data-bind="text: Description" class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
-                    <td>252</td>
-                    <td>$52</td>
+                    <td data-bind="text: Cost"></td>
                     <td>
                         <select id="to" class="form-control"
                                 data-bind="options : $root.StatusTypes,
@@ -37,7 +35,7 @@
         <div class="row">
             <div class="col-xs-12 text-right">
                 <ul class="list-unstyled invoice-total-info">
-                    <li><strong>Total Amount:</strong> $109365</li>
+                    <li><strong>Total Amount:</strong> <span data-bind="text: Total"></span></li>
                 </ul>
                 <button class="btn-u sm-margin-bottom-10" onclick="javascript:;" data-bind="click: $root.CloseOrder"><i class="fa fa-close"></i> Close order</button>
                 <button class="btn-u sm-margin-bottom-10" onclick="javascript:window.print();"><i class="fa fa-print"></i> Print</button>

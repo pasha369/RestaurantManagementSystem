@@ -86,11 +86,13 @@ namespace RMS.Client.Controllers.WebApi.Order
                 .Select(x => new
                 {
                     OrderId = x.Id,
+                    ClientName = x.Client.Name,
                     TableNumber = x.Table != null ? x.Table.Number : 0,
                     Dishes = x.ClientOrders.Select(d => d != null ? new
                     {
                         Name = d.Dish.Name,
-                        Description = d.Dish.Description
+                        Description = d.Dish.Description,
+                        Cost = d.Dish.Cost
                     } : null).ToList()
                 })
                 .ToList();

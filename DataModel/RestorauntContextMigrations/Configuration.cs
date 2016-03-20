@@ -44,144 +44,144 @@ namespace DataModel.RestorauntContextMigrations
                 new Cuisine() { Id = 4, Name = "Cuban" }
                 );
             // Restaurant
-            context.Restoraunts.AddOrUpdate(x => x.Id,
-                     new Restaurant()
-                     {
-                         Id = 1,
-                         Name = "Almeida",
-                         Description = "The route between the Almeida theatre over the road and this D&D" +
-                                       " London restaurant is a well-trodden one: visit of an evening and there’s an exodus before curtain-up." +
-                                       "cooking, which is broadly modern French with a few excursions around Europe and Britain",
-                         Cuisines = new List<Cuisine>
-                         {
-                             context.Cuisines.FirstOrDefault(c => c.Id == 1)
-                         }
-                     },
-                     new Restaurant()
-                     {
-                         Id = 2,
-                         Name = "Antepliler",
-                         Description = "There are two very different Anteplilers in north London. " +
-                                       "The Green Lanes branch is a straightforward, functional canteen, " +
-                                       "but this time we visited the Upper Street restaurant, which feels like it’s been lifted straight out of a lifestyle magazine.",
-                         Cuisines = new List<Cuisine>
-                         {
-                             context.Cuisines.FirstOrDefault(c => c.Id == 2)
-                         },
-                         Adress = new Address()
-                                      {
-                                          Country = context.Countries.FirstOrDefault(c => c.Id == 7),
-                                      }
-                     },
-                     new Restaurant()
-                     {
-                         Id = 3,
-                         Name = "Elk in the Woods",
-                         Description = "Having started out as a bar, the Elk presents more of a gastro " +
-                                       "face during busy lunchtimes, but regulars to this Camden Passage " +
-                                       "haunt aren’t discouraged from ordering up a Cucumber Martini (with Hendrick’s gin, £8) or Tobia Rioja and occupying a wooden table for a while.",
-                         Cuisines = new List<Cuisine>
-                         {
-                             context.Cuisines.FirstOrDefault(c => c.Id == 2)
-                         },
-                         Adress = new Address()
-                         {
-                             Country = context.Countries.FirstOrDefault(c => c.Id == 8),
-                         }
-                     },
-                     new Restaurant()
-                     {
-                         Id = 4,
-                         Name = "Halza",
-                         Description = "The Green Lanes branch is a straightforward, functional canteen, ",
-                         Cuisines = new List<Cuisine>
-                         {
-                             context.Cuisines.FirstOrDefault(c => c.Id == 2)
-                         },
-                         Adress = new Address()
-                                      {
-                                          Country = context.Countries.FirstOrDefault(c => c.Id == 9),
-                                      }
-                     },
-                     new Restaurant()
-                     {
-                         Id = 5,
-                         Name = "Affer",
-                         Description = "There are two very different Anteplilers in north London. ",
-                         Cuisines = new List<Cuisine>{context.Cuisines.FirstOrDefault(c => c.Id == 2)},
-                         Adress = new Address(){Country = context.Countries.FirstOrDefault(c => c.Id == 8)}
-                     }
-                     );
+            //context.Restoraunts.AddOrUpdate(x => x.Id,
+            //         new Restaurant()
+            //         {
+            //             Id = 1,
+            //             Name = "Almeida",
+            //             Description = "The route between the Almeida theatre over the road and this D&D" +
+            //                           " London restaurant is a well-trodden one: visit of an evening and there’s an exodus before curtain-up." +
+            //                           "cooking, which is broadly modern French with a few excursions around Europe and Britain",
+            //             Cuisines = new List<Cuisine>
+            //             {
+            //                 context.Cuisines.FirstOrDefault(c => c.Id == 1)
+            //             }
+            //         },
+            //         new Restaurant()
+            //         {
+            //             Id = 2,
+            //             Name = "Antepliler",
+            //             Description = "There are two very different Anteplilers in north London. " +
+            //                           "The Green Lanes branch is a straightforward, functional canteen, " +
+            //                           "but this time we visited the Upper Street restaurant, which feels like it’s been lifted straight out of a lifestyle magazine.",
+            //             Cuisines = new List<Cuisine>
+            //             {
+            //                 context.Cuisines.FirstOrDefault(c => c.Id == 2)
+            //             },
+            //             Adress = new Address()
+            //                          {
+            //                              Country = context.Countries.FirstOrDefault(c => c.Id == 7),
+            //                          }
+            //         },
+            //         new Restaurant()
+            //         {
+            //             Id = 3,
+            //             Name = "Elk in the Woods",
+            //             Description = "Having started out as a bar, the Elk presents more of a gastro " +
+            //                           "face during busy lunchtimes, but regulars to this Camden Passage " +
+            //                           "haunt aren’t discouraged from ordering up a Cucumber Martini (with Hendrick’s gin, £8) or Tobia Rioja and occupying a wooden table for a while.",
+            //             Cuisines = new List<Cuisine>
+            //             {
+            //                 context.Cuisines.FirstOrDefault(c => c.Id == 2)
+            //             },
+            //             Adress = new Address()
+            //             {
+            //                 Country = context.Countries.FirstOrDefault(c => c.Id == 8),
+            //             }
+            //         },
+            //         new Restaurant()
+            //         {
+            //             Id = 4,
+            //             Name = "Halza",
+            //             Description = "The Green Lanes branch is a straightforward, functional canteen, ",
+            //             Cuisines = new List<Cuisine>
+            //             {
+            //                 context.Cuisines.FirstOrDefault(c => c.Id == 2)
+            //             },
+            //             Adress = new Address()
+            //                          {
+            //                              Country = context.Countries.FirstOrDefault(c => c.Id == 9),
+            //                          }
+            //         },
+            //         new Restaurant()
+            //         {
+            //             Id = 5,
+            //             Name = "Affer",
+            //             Description = "There are two very different Anteplilers in north London. ",
+            //             Cuisines = new List<Cuisine>{context.Cuisines.FirstOrDefault(c => c.Id == 2)},
+            //             Adress = new Address(){Country = context.Countries.FirstOrDefault(c => c.Id == 8)}
+            //         }
+            //         );
             // User Info
-            context.UserInfos.AddOrUpdate(x => x.Id,
-                new Model.UserInfo()
-                {
-                    Id = 1,
-                    About = "Personal identity is the unique identity of persons " +
-                            "through time. That is to say, the necessary and sufficient " +
-                            "conditions under which a person at one time and " +
-                            "a person at another time can be said to be the " +
-                            "same person, persisting through time",
-                    Email = "sample@ukr.net",
-                    Facebook = "sample",
-                    Name = "Bacevich Andrew",
-                    Login = "Bac",
-                    Password = "123",
-                    Phone = "(094)1233432",
-                    PhotoUrl = "",
-                    Position = Role.Restaurateur,
-                    Skype = "Bac"
-                },
-                new Model.UserInfo()
-                {
-                    Id = 2,
-                    About = "Personal identity is the unique identity of persons " +
-                            "through time. That is to say, the necessary and sufficient " +
-                            "conditions under which a person at one time and " +
-                            "a person at another time can be said to be the " +
-                            "same person, persisting through time",
-                    Email = "sample1@ukr.net",
-                    Facebook = "sample1",
-                    Name = "Becker Carl",
-                    Login = "Bec",
-                    Password = "123",
-                    Phone = "(094)1233432",
-                    PhotoUrl = "",
-                    Position = Role.Restaurateur,
-                    Skype = "Bec"
-                },
-                new Model.UserInfo()
-                {
-                    Id = 3,
-                    About = "Personal identity is the unique identity of persons " +
-                            "through time. That is to say, the necessary and sufficient " +
-                            "conditions under which a person at one time and " +
-                            "a person at another time can be said to be the " +
-                            "same person, persisting through time",
-                    Email = "sample2@ukr.net",
-                    Facebook = "sample2",
-                    Name = "Bach Richard",
-                    Login = "Bah",
-                    Password = "123",
-                    Phone = "(094)1233432",
-                    PhotoUrl = "",
-                    Position = Role.User,
-                    Skype = "Bah"
-                });
-            // Client
-            context.ClientInfos.AddOrUpdate(x => x.Id,
-                new ClientInfo()
-                {
-                    Id = 1,
-                    Restaurant = context.Restoraunts.FirstOrDefault(r => r.Id == 1),
-                    UserInfo = context.UserInfos.FirstOrDefault(u => u.Id == 1)
-                },
-                new ClientInfo()
-                {
-                    Id = 2,
-                    Restaurant = context.Restoraunts.FirstOrDefault(r => r.Id == 2),
-                    UserInfo = context.UserInfos.FirstOrDefault(u => u.Id == 2)
-                });
+            //context.UserInfos.AddOrUpdate(x => x.Id,
+            //    new Model.UserInfo()
+            //    {
+            //        Id = 1,
+            //        About = "Personal identity is the unique identity of persons " +
+            //                "through time. That is to say, the necessary and sufficient " +
+            //                "conditions under which a person at one time and " +
+            //                "a person at another time can be said to be the " +
+            //                "same person, persisting through time",
+            //        Email = "sample@ukr.net",
+            //        Facebook = "sample",
+            //        Name = "Bacevich Andrew",
+            //        Login = "Bac",
+            //        Password = "123",
+            //        Phone = "(094)1233432",
+            //        PhotoUrl = "",
+            //        Position = Role.Restaurateur,
+            //        Skype = "Bac"
+            //    },
+            //    new Model.UserInfo()
+            //    {
+            //        Id = 2,
+            //        About = "Personal identity is the unique identity of persons " +
+            //                "through time. That is to say, the necessary and sufficient " +
+            //                "conditions under which a person at one time and " +
+            //                "a person at another time can be said to be the " +
+            //                "same person, persisting through time",
+            //        Email = "sample1@ukr.net",
+            //        Facebook = "sample1",
+            //        Name = "Becker Carl",
+            //        Login = "Bec",
+            //        Password = "123",
+            //        Phone = "(094)1233432",
+            //        PhotoUrl = "",
+            //        Position = Role.Restaurateur,
+            //        Skype = "Bec"
+            //    },
+            //    new Model.UserInfo()
+            //    {
+            //        Id = 3,
+            //        About = "Personal identity is the unique identity of persons " +
+            //                "through time. That is to say, the necessary and sufficient " +
+            //                "conditions under which a person at one time and " +
+            //                "a person at another time can be said to be the " +
+            //                "same person, persisting through time",
+            //        Email = "sample2@ukr.net",
+            //        Facebook = "sample2",
+            //        Name = "Bach Richard",
+            //        Login = "Bah",
+            //        Password = "123",
+            //        Phone = "(094)1233432",
+            //        PhotoUrl = "",
+            //        Position = Role.User,
+            //        Skype = "Bah"
+            //    });
+            //// Client
+            //context.ClientInfos.AddOrUpdate(x => x.Id,
+            //    new ClientInfo()
+            //    {
+            //        Id = 1,
+            //        Restaurant = context.Restoraunts.FirstOrDefault(r => r.Id == 1),
+            //        UserInfo = context.UserInfos.FirstOrDefault(u => u.Id == 1)
+            //    },
+            //    new ClientInfo()
+            //    {
+            //        Id = 2,
+            //        Restaurant = context.Restoraunts.FirstOrDefault(r => r.Id == 2),
+            //        UserInfo = context.UserInfos.FirstOrDefault(u => u.Id == 2)
+            //    });
 
             context.SaveChanges();
 

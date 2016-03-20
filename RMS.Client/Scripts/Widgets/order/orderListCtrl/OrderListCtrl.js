@@ -22,9 +22,9 @@
                 function OrderListVM() {
                     this.OrderDishes = ko.observableArray([]);
 
-                    this.ActiveDishes = ko.observableArray([{Name: 'Test',Cost: 10}]);
-                    this.WaitDishes = ko.observableArray([{ Name: 'WaitTest', Cost: 10 }]);
-                    this.DoneDishes = ko.observableArray([{ Name: 'DoneTest', Cost: 10 }]);
+                    this.ActiveDishes = ko.observableArray([]);
+                    this.WaitDishes = ko.observableArray([]);
+                    this.DoneDishes = ko.observableArray([]);
 
                     this.showMenu = function () {
                         $("#menu").show();

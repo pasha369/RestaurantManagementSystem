@@ -157,11 +157,14 @@
     <script>
         require(["jquery",
                 "Custom/EventTrigger",
+                'toastr',
                 "Widgets/commentLstCtrl/commentLstCtrl",
                 "Widgets/commentCtrl/commentCtrl",
                 "Widgets/bookingCtrl/bookingCtrl"
         ],
             function ($) {
+                var toastr = require('toastr');
+
                 $(document).ready(function () {
                     var eventTrigger = new EventTrigger();
                     $("#comment").commentList({ RestaurantId: "@Model.Id", eventTrigger: eventTrigger });
@@ -176,6 +179,7 @@
                             dataType: "json",
                             success: function () {
                                 console.log('AddFavorite: success');
+                                toastr.success("@Model.Name added to your favorite list.");
                             },
                             error: function (err) {
                                 console.log(err.status + " : " + err.statusText);

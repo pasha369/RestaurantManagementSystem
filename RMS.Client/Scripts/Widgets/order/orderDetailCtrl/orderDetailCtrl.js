@@ -21,7 +21,7 @@
                 function OrderDetailVM() {
                     this.StatusTypes = ko.observableArray(['Wait', 'Active', 'Ready']);
                     this.Dishes = ko.observableArray([]);
-                    
+                    this.Total = ko.observable();
                     this.CloseOrder = function() {
                         self._closeOrder();
                     }
@@ -50,14 +50,17 @@
             _initOrderDetail: function () {
                 var self = this;
                 var vm = self.options.viewModel;
-
+                var total = 0;
                 $.each(self.options.order.Dishes, function (k, v) {
                     vm.Dishes.push({
                         Name: v.Name,
                         Description: v.Description,
+                        Cost: v.Cost,
                         Status: 'Active',
                     });
+                    total += v.Cost;
                 });
+                vm.Total(total);
             },
 
             _closeOrder: function () {

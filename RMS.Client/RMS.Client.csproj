@@ -207,6 +207,7 @@
     <Compile Include="Models\View\Address.cs" />
     <Compile Include="Models\View\BookingModel.cs" />
     <Compile Include="Models\View\CountriesModel.cs" />
+    <Compile Include="Models\View\HomeViewModel.cs" />
     <Compile Include="Models\View\LoginModel.cs" />
     <Compile Include="Models\View\MenuModels\CategoryModel.cs" />
     <Compile Include="Models\View\MenuModels\DishModel.cs" />
@@ -337,6 +338,9 @@
     <None Include="Properties\PublishProfiles\rstms - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\rstms - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
+    <Content Include="Images\default\food-salad-restaurant-person.jpg" />
+    <Content Include="Images\default\default-restaurant.jpg" />
+    <Content Include="Images\default\no_image_profile.jpg" />
     <Content Include="Scripts\Custom\EventTrigger.js" />
     <Content Include="Scripts\Custom\PhotoUpload.js" />
     <Content Include="Scripts\Custom\timeOperations.js" />

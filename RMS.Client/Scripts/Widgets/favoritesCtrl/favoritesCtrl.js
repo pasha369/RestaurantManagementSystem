@@ -44,7 +44,7 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(JSON.parse(data), function (key, value) {
-                            value.Description = value.Description.substring(0, 200) + '...';
+                            value.Description = value.Description.length > 50 ? value.Description.substring(0, 50) + '...' : value.Description;
                             if (value.PhotoUrl) {
                                 value.PhotoUrl = value.PhotoUrl.replace("~", "");
                             }

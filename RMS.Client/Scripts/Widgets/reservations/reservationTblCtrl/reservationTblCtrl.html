@@ -61,10 +61,13 @@
 <div id="reservations" class="panel ">
     <div class="panel-body">
         <div class="row">
-            <div class="form-group col-md-4 col-xs-12">
-
-                <input type="datetime" id="date" name="date"
-                       data-bind="value: Date" class="form-control"/>
+            <div class="form-group col-xs-12">
+                <label for="date" class="col-xs-2">Reservation date: </label>
+                <div class="col-xs-6 pull-left">
+                    <input type="datetime" id="date" name="date"
+                           data-bind="value: Date" class="form-control" />    
+                </div>
+                
             </div>
         </div>
 

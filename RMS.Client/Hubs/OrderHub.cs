@@ -30,8 +30,10 @@ namespace RMS.Client.Hubs
         {
             var clientManager = new ClientManager();
             var restaurant = _restaurantManager.Get(order.RestaurantId);
+            var client = clientManager.Get().FirstOrDefault(x => x.UserInfo.Login == Context.User.Identity.Name);
             var table = restaurant.Halls.SelectMany(x => x.Tables).FirstOrDefault(x => x.Id == tableId);
             var user = clientManager.Get().FirstOrDefault(x => x.Restaurant.Id == order.RestaurantId);
+            order.ClientName = client?.UserInfo.Name;
             Clients.User(user.UserInfo.Login).addOrderToPage(order, table.Number);
         }
 

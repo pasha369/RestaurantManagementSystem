@@ -58,7 +58,6 @@ namespace DataModel.Model
 
         public Restaurant Restaurant { set; get; }
         public virtual UserInfo Author { get; set; }
-
         public Status Status { set; get; }
     }
 

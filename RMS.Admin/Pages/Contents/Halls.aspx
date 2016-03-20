@@ -18,13 +18,13 @@
 
         <asp:ObjectDataSource runat="server"
             ID="dsRestoraunts"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             DataObjectTypeName="DataModel.Model.Restaurant"
             TypeName="DataAccess.Concrete.RestaurantManager"></asp:ObjectDataSource>
 
         <asp:ObjectDataSource runat="server"
             ID="dsHall"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             DeleteMethod="Delete"
             DataObjectTypeName="DataModel.Model.Hall"
             TypeName="DataAccess.Concrete.HallManager"></asp:ObjectDataSource>

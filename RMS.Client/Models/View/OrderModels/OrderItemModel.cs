@@ -27,5 +27,10 @@ namespace RMS.Client.Models.View.OrderModels
         /// Gets or sets TableId.
         /// </summary>
         public int TableId { get; set; }
+
+        /// <summary>
+        /// Gets or sets client name.
+        /// </summary>
+        public string ClientName { get; set; }  
     }
 }

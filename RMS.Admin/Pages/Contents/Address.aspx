@@ -7,7 +7,7 @@
     <div class="wrapper">
 
         <asp:ObjectDataSource ID="odsCountry" runat="server"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             InsertMethod="Add"
             DeleteMethod="Delete"
             UpdateMethod="Update"
@@ -16,7 +16,7 @@
 
 
         <asp:ObjectDataSource ID="odsCities" runat="server"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             InsertMethod="Add"
             DeleteMethod="Delete"
             UpdateMethod="Update"

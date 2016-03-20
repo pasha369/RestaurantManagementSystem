@@ -30,7 +30,7 @@
             TypeName="DataAccess.Concrete.UserManager"></asp:ObjectDataSource>
         <asp:ObjectDataSource runat="server"
             ID="dsClients"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             DeleteMethod="Delete"
             DataObjectTypeName="DataModel.Model.ClientInfo"
             TypeName="DataAccess.Concrete.ClientManager"></asp:ObjectDataSource>

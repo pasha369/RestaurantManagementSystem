@@ -10,6 +10,9 @@ using RMS.Client.Models.View;
 
 namespace RMS.Client.Controllers.MVC
 {
+    /// <summary>
+    /// Represents restaurant controller.
+    /// </summary>
     public class RestaurantController : System.Web.Mvc.Controller
     {
         private IDataManager<Restaurant> _rstManager;
@@ -88,6 +91,10 @@ namespace RMS.Client.Controllers.MVC
             return Json(rstModel, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Restaurant edit.
+        /// </summary>
+        /// <param name="model">Restaurant model.</param>
         [HttpPost]
         public void RestaurantEdit(RestaurantModel model)
         {
@@ -100,6 +107,11 @@ namespace RMS.Client.Controllers.MVC
             }
         }
 
+        /// <summary>
+        /// Get restaurant detail.
+        /// </summary>
+        /// <param name="Id">Restaurant id.</param>
+        /// <returns>view</returns>
         public ActionResult RestaurantDetail(int Id)
         {
             var restaurant = _rstManager.Get(Id);
@@ -119,6 +131,10 @@ namespace RMS.Client.Controllers.MVC
             return View();
         }
 
+        /// <summary>
+        /// Get all reservation.
+        /// </summary>
+        /// <returns>json reservation.</returns>
         public ActionResult GetAll()
         {
             string strJSON = JsonConvert.SerializeObject(
@@ -131,6 +147,10 @@ namespace RMS.Client.Controllers.MVC
             return Json(strJSON, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Get resraurant by client.
+        /// </summary>
+        /// <returns>client restaurant.</returns>
         public ActionResult GetRestaurantByClient()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
@@ -148,8 +168,13 @@ namespace RMS.Client.Controllers.MVC
             return Json(restaurant, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// Add restaurant to favorite list
+        /// </summary>
+        /// <param name="Id">Restaurant id.</param>
+        /// <returns></returns>
         [HttpPost]
-        public void AddFavorite(int Id)
+        public ActionResult AddFavorite(int Id)
         {
             var userManager = new UserManager();
             var favoriteManager = new FavoriteManager();
@@ -160,6 +185,7 @@ namespace RMS.Client.Controllers.MVC
             favorite.Restaurant = _rstManager.Get(Id);
             favorite.User = userManager.Get().FirstOrDefault(u => u.Login == login);
             favoriteManager.Add(favorite);
+            return Json(new {result = "success"}, JsonRequestBehavior.AllowGet);
         }
 
         private RestaurantModel GetModelById(int Id)

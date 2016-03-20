@@ -53,7 +53,8 @@
                         $.each(data, function(k, v) {
                             self.options.viewModel.Orders.push({
                                 Order: { OrderId: v.OrderId, Dishes: v.Dishes },
-                                TableNumber: v.TableNumber
+                                TableNumber: v.TableNumber,
+                                ClientName: v.ClientName
                             });
                         });
                     }
