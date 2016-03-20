@@ -19,7 +19,7 @@
 
         <asp:ObjectDataSource runat="server"
             ID="dsRestoraunts"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             DataObjectTypeName="DataModel.Model.Restaurant"
             TypeName="DataAccess.Concrete.RestaurantManager"></asp:ObjectDataSource>
 
@@ -27,7 +27,7 @@
             ID="dsTable"
             InsertMethod="Add"
             DeleteMethod="Delete"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             UpdateMethod="Update"
             DataObjectTypeName="DataModel.Model.DinnerTable"
             TypeName="DataAccess.Concrete.DinnerTableManager"></asp:ObjectDataSource>

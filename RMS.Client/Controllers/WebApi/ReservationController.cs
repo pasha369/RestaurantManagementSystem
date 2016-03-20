@@ -11,18 +11,29 @@ using System;
 
 namespace RMS.Client.Controllers.WebApi
 {
+    /// <summary>
+    /// Represents reservation controller.
+    /// </summary>
     public class ReservationController : ApiController
     {
-
         public IDataManager<Reservation> rsvManager;
         private IDataManager<UserInfo> _userManager;
 
+        /// <summary>
+        /// Initialize BookingModel instance.
+        /// </summary>
+        /// <param name="mng">Reservation manager</param>
+        /// <param name="userManager">User manager</param>
         public ReservationController(IDataManager<Reservation> mng, IDataManager<UserInfo> userManager)
         {
             rsvManager = mng;
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Reserve table.
+        /// </summary>
+        /// <param name="model">Booking model</param>
         [HttpPost]
         public void ReserveTable(BookingModel model)
         {
@@ -30,9 +41,10 @@ namespace RMS.Client.Controllers.WebApi
             {
                 var rstManager = new RestaurantManager();
                 var tblManager = new DinnerTableManager();
-                
+
+                var reservations = rsvManager.Get().Where(x => x.Table.Restaurant.Id == model.RestaurantId);
                 var table = rstManager.GetAllTable(model.RestaurantId)
-                    .FirstOrDefault();
+                    .FirstOrDefault(x => reservations.FirstOrDefault(r => r.Table == x && r.From <= model.From && r.To >= model.From) == null);
 
                 if (table != null)
                 {
@@ -57,17 +69,17 @@ namespace RMS.Client.Controllers.WebApi
         /// </summary>
         /// <returns>User reserved restaurants</returns>
         [HttpGet]
-        public List<RestaurantModel> GetUserReservation()
+        public List<TableViewModel> GetUserReservation()
         {
             var user = GetUserByLogin();
-            var reservationLst = rsvManager.GetAll().Where(r => r.User.Id == user.Id).Select(r => r.Table.Restaurant);
-            
-
-            Mapper.CreateMap<Restaurant, RestaurantModel>();
-            var modelLst = Mapper.Map<List<RestaurantModel>>(reservationLst);
+            var tableList = rsvManager.Get()
+                .Where(r => r.User.Id == user.Id && r.Status == ReservationStatus.Confirmed)
+                .Select(r => r.Table);
+            var modelLst = Mapper.Map<List<TableViewModel>>(tableList);
 
             return modelLst;
         }
+
         /// <summary>
         /// Get restaurant reservation by date.
         /// </summary>
@@ -83,58 +95,61 @@ namespace RMS.Client.Controllers.WebApi
             var rstManager = new RestaurantManager();
 
             List<ReservedTable> lstReservation = rstManager.GetAllTable(Id)
-                .Select(t => new ReservedTable()
-                                 {
-                                     Id = t.Id,
-                                     Num = t.Number,
-                                     Reservations = GetReservationByTable(t.Id, date),
-                                 }).ToList();
+                ?.Select(t => new ReservedTable(){
+                    Id = t.Id,
+                    Num = t.Number,
+                    Reservations = GetReservationByTable(t.Id, date)
+                })
+                .ToList();
 
             return lstReservation;
         }
 
         private List<BookingModel> GetReservationByTable(int Id, DateTime date)
         {
-            List<BookingModel> lstReservation = rsvManager.GetAll().
-                Where(r => r.Table.Id == Id && r.From.Day == date.Day && 
-                    r.From.Month == date.Month && r.From.Year == date.Year )
-                                .Select(r => new BookingModel()
-                                 {
-                                     Id = r.Id,
-                                     From = r.From,
-                                     To = r.To,
-                                     Email = r.User.Email,
-                                     Fullname = r.User.Name,
-                                     Msg = r.SpecialRequest,
-                                     PeopleNum = r.PeopleCount,
-                                     Status = r.Status,
-                                     Phone = r.User.Phone.ToString()
-                                 })
-                                 .ToList();
+            if (rsvManager.Get().Count() > 0)
+            {
+                List<BookingModel> lstReservation = rsvManager.Get().
+                    Where(r => r.Table.Id == Id && r.From.Day == date.Day &&
+                               r.From.Month == date.Month && r.From.Year == date.Year)
+                    .Select(r => new BookingModel()
+                    {
+                        Id = r.Id,
+                        From = r.From,
+                        To = r.To,
+                        Email = r.User.Email,
+                        Fullname = r.User.Name,
+                        Msg = r.SpecialRequest,
+                        PeopleNum = r.PeopleCount,
+                        Status = r.Status,
+                        Phone = r.User.Phone.ToString()
+                    })
+                    .ToList();
 
-            return lstReservation;
+                return lstReservation;
+            }
+            return new List<BookingModel>();
         }
+
         [WebMethod]
         public void RejectReservation(int Id)
         {
-
-            var reservarion = rsvManager.GetById(Id);
+            var reservarion = rsvManager.Get(Id);
             reservarion.Status = ReservationStatus.Canceled;
         }
+
         [HttpPost]
         public void RemoveReservation(int Id)
         {
-            var reservarion = rsvManager.GetById(Id);
+            var reservarion = rsvManager.Get(Id);
 
             rsvManager.Delete(reservarion);
         }
+
         public void ApplyReservation(int Id)
         {
-            
-            var reservarion = rsvManager.GetById(Id);
-
+            var reservarion = rsvManager.Get(Id);
             reservarion.Status = ReservationStatus.Confirmed;
-
             rsvManager.Update(reservarion);
         }
 
@@ -147,18 +162,16 @@ namespace RMS.Client.Controllers.WebApi
         [HttpPost]
         public void ChangeStatus(RsvStatus rsvStatus)
         {
-            var rsv = rsvManager.GetById(rsvStatus.RstId);
-            
+            var rsv = rsvManager.Get(rsvStatus.RstId);
             ReservationStatus status;
             Enum.TryParse(rsvStatus.ReserveStatus, out status);
-
             rsv.Status = status;
         }
+
         private UserInfo GetUserByLogin()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
-
+            var user = _userManager.Get().FirstOrDefault(u => u.Login == login);
             return user;
         }
     }

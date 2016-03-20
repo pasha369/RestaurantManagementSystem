@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web.UI.WebControls;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -32,7 +28,7 @@ namespace DataAccess.Concrete
 
                 if (hall != null)
                 {
-                    if(hall.Tables == null)
+                    if (hall.Tables == null)
                         hall.Tables = new List<DinnerTable>();
                     hall.Tables.Add(item);
                 }
@@ -51,16 +47,14 @@ namespace DataAccess.Concrete
             return _ctx.Tables.FirstOrDefault(r => r.Id == item.Id);
         }
 
-        public List<DinnerTable> GetAll()
+        public List<DinnerTable> Get()
         {
             return _ctx.Tables.ToList();
         }
 
-        public DinnerTable GetById(int Id)
+        public DinnerTable Get(int Id)
         {
             return _ctx.Tables.FirstOrDefault(t => t.Id == Id);
         }
-
-    
     }
 }

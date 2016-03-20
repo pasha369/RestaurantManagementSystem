@@ -1,6 +1,8 @@
 ﻿define(['knockout', 'jquery', 'jquery-ui',
+        "Custom/EventTrigger",
         'toastr', 'Widgets/bookingCtrl/bookingCtrl',
         'Widgets/menu/menuUserCtrl/menuUserCtrl',
+        'Widgets/order/orderListCtrl/orderListCtrl',
         'text!Widgets/reservations/reservationUserCtrl/reservationUserCtrl.html'],
     function (ko, $) {
         var toastr = require('toastr');
@@ -30,6 +32,7 @@
                 ko.applyBindings(self.options.viewModel, $("#reservation-user-ctrl")[0]);
                 self._loadRestaurants();
             },
+
             _loadRestaurants: function () {
                 var self = this;
                 var vm = self.options.viewModel;
@@ -41,11 +44,13 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(data, function (key, value) {
-                            value.Description = value.Description.substring(0, 200) + '...';
-                            if (value.PhotoUrl) {
-                                value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            var reservation = value.Restaurant;
+                            reservation.Description = reservation.Description.substring(0, 200) + '...';
+                            if (reservation.PhotoUrl) {
+                                reservation.PhotoUrl = reservation.PhotoUrl.replace("~", "");
                             }
-                            vm.Restaurants.push(value);
+                            reservation.TableId = value.TableId;
+                            vm.Restaurants.push(value.Restaurant);
                         });
                     },
                     error: function (err) {
@@ -54,11 +59,18 @@
                     }
                 });
             },
+
             /* Load restaurant menu when user click on button enter.
             */
             _enter: function (item) {
                 var self = this;
-                $("#reservation-user-ctrl").menuUser({ restaurantId: item.Id });
+                $("#reservation-user-ctrl").hide();
+                var eventTrigger = new EventTrigger();
+                $(".menu-order").append($('<div id="menu"></div>'));
+                $(".menu-order").append($('<div id="order"></div>'));
+                $('#menu').menuUser({ restaurantId: item.Id, eventTrigger: eventTrigger });
+                $('#order').orderListCtrl({ tableId: item.TableId, restaurantId: item.Id, eventTrigger: eventTrigger });
+                $('#order').hide();
             },
 
             _setOption: function (key, value) {

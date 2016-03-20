@@ -28,7 +28,7 @@ namespace RMS.Admin.Pages.Contents
                 currentId = Convert.ToInt32(e.CommandArgument);
                 var temp = new List<DataModel.Model.Country>();
                 // Bind data
-                temp.Add(countryManager.GetById(currentId));
+                temp.Add(countryManager.Get(currentId));
                 fvAddressEdit.DataSource = temp;
                 fvAddressEdit.DataBind();
                 PopupHelper.ShowPopup("#pop", this);
@@ -50,7 +50,7 @@ namespace RMS.Admin.Pages.Contents
 
             if (fvAddressEdit.CurrentMode == FormViewMode.Edit)
             {
-                var country = countryManager.GetById(currentId);
+                var country = countryManager.Get(currentId);
                 country.Name = txtName.Text;
                 countryManager.Update(country);
             }
@@ -78,7 +78,7 @@ namespace RMS.Admin.Pages.Contents
                 var ddlCountry = fvCity.FindControl("ddlCountry") as DropDownList;
                 
                 // Bind data
-                var city = cityManager.GetById(currentId);
+                var city = cityManager.Get(currentId);
 
                 temp.Add(city);
                 fvCity.DataSource = temp;
@@ -109,14 +109,14 @@ namespace RMS.Admin.Pages.Contents
             {
                 var city = new City();
                 city.Name = txtName.Text;
-                city.Country = countryManager.GetById(countryId);
+                city.Country = countryManager.Get(countryId);
                 cityManager.Add(city);
             }
             if (fvCity.CurrentMode == FormViewMode.Edit)
             {
-                var city = cityManager.GetById(currentId);
+                var city = cityManager.Get(currentId);
                 city.Name = txtName.Text;
-                city.Country = countryManager.GetById(countryId);
+                city.Country = countryManager.Get(countryId);
                 cityManager.Update(city);
             }
             gvCities.DataBind();
@@ -134,7 +134,7 @@ namespace RMS.Admin.Pages.Contents
         protected void ddlCountry_OnPreRender(object sender, EventArgs e)
         {
             var cityManager = new CityManager();
-            var city = cityManager.GetById(currentId);
+            var city = cityManager.Get(currentId);
             if(city.Country != null)
             {
                 (sender as DropDownList).Items.FindByValue(city.Country.Id.ToString()).Selected = true;

@@ -39,6 +39,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -100,12 +102,42 @@
     <Compile Include="RestorauntContextMigrations\201510312018202_Menu.Designer.cs">
       <DependentUpon>201510312018202_Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="RestorauntContextMigrations\201602211933441_AddIngredients.cs" />
+    <Compile Include="RestorauntContextMigrations\201602211933441_AddIngredients.Designer.cs">
+      <DependentUpon>201602211933441_AddIngredients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201602211945594_AddCategoryToDish.cs" />
+    <Compile Include="RestorauntContextMigrations\201602211945594_AddCategoryToDish.Designer.cs">
+      <DependentUpon>201602211945594_AddCategoryToDish.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201602212106179_AddDishesToIng.cs" />
+    <Compile Include="RestorauntContextMigrations\201602212106179_AddDishesToIng.Designer.cs">
+      <DependentUpon>201602212106179_AddDishesToIng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201602270959365_AddOrder.cs" />
+    <Compile Include="RestorauntContextMigrations\201602270959365_AddOrder.Designer.cs">
+      <DependentUpon>201602270959365_AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201602271106207_AddReceipt.cs" />
+    <Compile Include="RestorauntContextMigrations\201602271106207_AddReceipt.Designer.cs">
+      <DependentUpon>201602271106207_AddReceipt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201603081320169_AddReceiptStatus.cs" />
+    <Compile Include="RestorauntContextMigrations\201603081320169_AddReceiptStatus.Designer.cs">
+      <DependentUpon>201603081320169_AddReceiptStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RestorauntContextMigrations\201603081332053_AddReceiptTable.cs" />
+    <Compile Include="RestorauntContextMigrations\201603081332053_AddReceiptTable.Designer.cs">
+      <DependentUpon>201603081332053_AddReceiptTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="RestorauntContextMigrations\Configuration.cs" />
     <Compile Include="Model\UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -144,6 +176,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RestorauntContextMigrations\201510312018202_Menu.resx">
       <DependentUpon>201510312018202_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602211933441_AddIngredients.resx">
+      <DependentUpon>201602211933441_AddIngredients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602211945594_AddCategoryToDish.resx">
+      <DependentUpon>201602211945594_AddCategoryToDish.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602212106179_AddDishesToIng.resx">
+      <DependentUpon>201602212106179_AddDishesToIng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602270959365_AddOrder.resx">
+      <DependentUpon>201602270959365_AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201602271106207_AddReceipt.resx">
+      <DependentUpon>201602271106207_AddReceipt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201603081320169_AddReceiptStatus.resx">
+      <DependentUpon>201603081320169_AddReceiptStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RestorauntContextMigrations\201603081332053_AddReceiptTable.resx">
+      <DependentUpon>201603081332053_AddReceiptTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,45 +1,54 @@
-﻿@{
+﻿@model RMS.Client.Models.View.HomeViewModel
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
 }
 
-
-    <!--=== Search Block ===-->
-    <div class="search-block ">
-        <div class="container">
-            <div class="col-md-6 col-md-offset-3">
-                <h1>Restaurant <span class="color-green">management</span> system</h1>
-
-                <div class="input-group">
-                    <input id="search-field" type="text" class="form-control" placeholder="Search words with regular expressions ..." > 
-                    <span class="input-group-btn">
-                        <button id="btnFind" class="btn-u btn-u-lg" type="button"><i class="fa fa-search"></i></button>
-                    </span>
-                </div>
-
-                <form action="" class="sky-form page-search-form">
-                    <div class="inline-group">                    
-                        <label class="checkbox"><input type="checkbox" name="checkbox-inline" checked><i></i>Recent</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Related</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Popular</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox-inline"><i></i>Most Common</label>
-                    </div>
-                </form>    
+<!--=== Search Block ===-->
+<div class="search-block ">
+    <div class="container">
+        <div class="col-md-6 col-md-offset-3">
+            <h1>
+                Restaurant <span class="color-green">management</span> system
+            </h1>
+            <div class="input-group">
+                <input id="search-field" type="text" class="form-control" placeholder="Search words with regular expressions ...">
+                <span class="input-group-btn">
+                    <button id="btnFind" class="btn-u btn-u-lg" type="button"><i class="fa fa-search"></i></button>
+                </span>
             </div>
-        </div>    
-    </div><!--/container-->     
-    <!--=== End Search Block ===-->
-
-    <!--=== Content ===-->
-
-    <!--=== End Content ===-->
+        </div>
+    </div>
+</div><!--/container-->
+<!--=== End Search Block ===-->
+<!--=== Content ===-->
+<div class="container">
+    <div class="headline margin-bottom-35">
+        <h2>Most popular</h2>
+    </div>
+    <div class="row">
+        @foreach (var restaurant in Model.Restaurants)
+        {
+            <div class="col-xs-4">
+                <div class="easy-block-v2">
+                    <div class="easy-bg-v2 rgba-blue">Top</div>
+                    <img src="~/Images/default/default-restaurant.jpg" />
+                    <h3>@restaurant.Name</h3>
+                    <a class="btn-u btn-u-sm" href="@Url.Action("RestaurantDetail", "Restaurant", new {Id = restaurant.Id})">Detail</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<!--=== End Content ===-->
 @section Scripts
 {
     <script>
         require(['jquery', 'Widgets/searchCtrl/searchCtrl'], function ($) {
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('#btnFind').on('click', function () {
-                    
+
                     $('.search-result').search({
                         name: $('#search-field').val(),
                     });

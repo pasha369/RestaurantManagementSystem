@@ -1,9 +1,10 @@
-﻿define(['knockout',
+﻿define(['knockout', 
         'jquery',
         'jquery-ui',
+        'datepicker',
         'moment',
         'text!Widgets/reservations/reservationTblCtrl/reservationTblCtrl.html'],
-    function (ko, $) {
+    function (ko, $, datepicker) {
         var moment = require('moment');
         $.widget("cc.reservationTbl", {
 
@@ -19,13 +20,16 @@
                 var self = this;
 
                 self.element.html(this.options.view);
+                Datepicker.initDatepicker();
 
                 function ReservationVM() {
                     this.Client = ko.observable();
                     this.StatusTypes = ko.observableArray([]);
-
+                    
                     this.Tables = ko.observableArray([]);
                     this.Times = ko.observableArray([]);
+
+                    this.Date = ko.observable();
 
                     this.Fullname = ko.observable();
                     this.Email = ko.observable();
@@ -36,9 +40,6 @@
                     this.Status = ko.observable();
                     this.CurStatus = ko.observable();
 
-                    this.refresh = function() {
-                        self._loadReservation(self.options.restaurantId);
-                    };
                     this.apply = function(item) {
                         self._applyReservation(item);
                     };
@@ -51,22 +52,23 @@
                         vm.Fullname(item.Fullname());
                         vm.Phone(item.Phone());
                         vm.PeopleNum(item.PeopleNum());
-                        vm.Date(item.Date());
-
                     };
                     this.statusChanged = function (obj, event) {
                         if (event.originalEvent) { //user changed
                             self._changeStatus(obj);
                         }
                     }
-
                 };
-
+                
                 self.options.reservationVM = new ReservationVM();
-                self._fillTimes();
 
+                self._fillTimes();
+                self.options.reservationVM.Date.subscribe(function (newValue) {
+                    self._loadReservation(self.options.restaurantId);
+                });
+                self.options.reservationVM.Date(moment(new Date()).format("DD.MM.YYYY"));
                 ko.applyBindings(self.options.reservationVM, $("#reservations")[0]);
-                self._loadReservation(this.options.restaurantId);
+                self._loadReservation(self.options.restaurantId);
                 self._getStatusLst();
 
             },
@@ -137,7 +139,7 @@
                 var month = $('input[name=month]').val() ;
                 var year = $('input[name=year]').val() ;
 
-                var date = moment('01' + '-' + '01' + '-' + 2012, "MM-DD-YYYY").toDate();
+                var date = moment(self.options.reservationVM.Date(), "DD.MM.YYYY").toDate();
                 
                 
                 $.ajax({
@@ -145,9 +147,9 @@
                     url: url,
                     data: {
                         Id: restaurantId,
-                        day: day,
-                        month: month,
-                        year: year
+                        day: date.getDate(),
+                        month: date.getMonth() + 1,
+                        year: date.getFullYear()
                     },
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
@@ -225,7 +227,7 @@
 
                     },
                     error: function (err) {
-                        alert(err.status + " : " + err.statusText);
+                        console.log(err.status + " : " + err.statusText);
                     }
                 });
             },

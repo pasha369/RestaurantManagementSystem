@@ -39,9 +39,9 @@ namespace RMS.Admin.Pages.Forms
             if (restaurant.Adress == null)
                 restaurant.Adress = new DataModel.Model.Address();
             if (GetDdlValue(fvRestorauntEdit, "ddlCity") != -1)
-                restaurant.Adress.City = cityManager.GetById(GetDdlValue(fvRestorauntEdit, "ddlCity"));
+                restaurant.Adress.City = cityManager.Get(GetDdlValue(fvRestorauntEdit, "ddlCity"));
             if (GetDdlValue(fvRestorauntEdit, "ddlCountry") != -1)
-                restaurant.Adress.Country = countryManager.GetById(GetDdlValue(fvRestorauntEdit, "ddlCountry"));
+                restaurant.Adress.Country = countryManager.Get(GetDdlValue(fvRestorauntEdit, "ddlCountry"));
             restaurant.Adress.Street = (fvRestorauntEdit.FindControl("txtStreet") as TextBox).Text;
             restaurant.Description = (fvRestorauntEdit.FindControl("txtDesc") as TextBox).Text;
 
@@ -58,7 +58,7 @@ namespace RMS.Admin.Pages.Forms
             var ddl = fv.FindControl(name) as DropDownList;
             if (ddl != null)
             {
-                ddl.DataSource = manager.GetAll();
+                ddl.DataSource = manager.Get();
                 ddl.DataBind();
             }
         }

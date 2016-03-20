@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
+using RMS.Client.App_Start;
 using RMS.Client.Core.Autofac;
 
 namespace RMS.Client
@@ -17,6 +18,8 @@ namespace RMS.Client
     {
         protected void Application_Start()
         {
+            AutoMapperConfig.RegisterMapping();
+
             AutofacConfig.Config();
 
             AreaRegistration.RegisterAllAreas();

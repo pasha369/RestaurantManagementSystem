@@ -7,6 +7,7 @@ using DataAccess.Abstract;
 using DataAccess.Abstract.Menu;
 using DataAccess.Concrete;
 using DataAccess.Concrete.Menu;
+using DataAccess.Concrete.Order;
 using DataModel.Model;
 
 namespace RMS.Client.Core.Autofac.Modules
@@ -32,16 +33,20 @@ namespace RMS.Client.Core.Autofac.Modules
                 .As<IDataManager<Country>>().InstancePerRequest();
             builder.Register(r => new CuisineManager())
                 .As<IDataManager<Cuisine>>().InstancePerRequest();
-
-
-            // Menu managers.
+            builder.Register(r => new DinnerTableManager())
+                .As<IDataManager<DinnerTable>>().InstancePerRequest();
             builder.Register(r => new CategoryManager())
                 .As<ICategoryManager>().InstancePerRequest();
             builder.Register(r => new DishManager())
                 .As<IDishManager>().InstancePerRequest();
             builder.Register(r => new MenuManager())
                 .As<IMenuManager>().InstancePerRequest();
-
+            builder.Register(r => new IngredientManager())
+                .As<IManager<Ingredient>>().InstancePerRequest();
+            builder.Register(r => new OrderManager())
+                .As<IDataManager<Order>>().InstancePerRequest();
+            builder.Register(r => new ReceiptManager())
+                .As<IDataManager<Receipt>>().InstancePerRequest();
             base.Load(builder);
         }
 

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -45,11 +43,11 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public ClientInfo GetById(int Id)
+        public ClientInfo Get(int Id)
         {
             return _ctx.ClientInfos.FirstOrDefault(c => c.Id == Id);
         }
-        public List<ClientInfo> GetAll()
+        public List<ClientInfo> Get()
         {
             return _ctx.ClientInfos.ToList();
         }

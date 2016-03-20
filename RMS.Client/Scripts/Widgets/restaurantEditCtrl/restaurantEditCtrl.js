@@ -90,7 +90,7 @@
                         toastr.success("Saved successful");
                     },
                     error: function (err) {
-                        alert(err.status + " : " + err.statusText);
+                        console.log(err.status + " : " + err.statusText);
                     }
                 });
             },

@@ -14,6 +14,7 @@
                 var event = new Event(context, listener);
                 this._listeners.push(event);
             };
+
             this.notify = function() {
                 var index;
 

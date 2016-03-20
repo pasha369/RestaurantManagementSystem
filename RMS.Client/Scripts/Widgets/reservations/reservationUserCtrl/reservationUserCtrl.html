@@ -1,28 +1,30 @@
 ﻿<div id="reservation-user-ctrl">
+    <!-- ko if: Restaurants().length == 0-->
+    <div class="tag-box tag-box-v2 margin-bottom-40">
+        <h2>My reservation is empty.</h2>
+    </div>
+    <!-- /ko -->​
     <div data-bind="foreach: Restaurants">
-        
         <ul class="list-group">
-            <li class="list-group-item">
+            <li class="list-group-item panel">
                 <div class="row">
                     <div class="col-sm-5 col-md-4">
                         <img data-bind="attr: { src : PhotoUrl ? PhotoUrl : '//placehold.it/200'}" class="img-thumbnail img-responsive image_square">
-                    </div>
-                    <div class="col-sm-7">
-                        <button class="btn warning" data-bind="click: $root.remove"><span class="fa fa-close"></span></button>
-                        <h2><a href="#" data-bind="text: Name"></a></h2>
-                        <div data-bind="text: Description"></div>
-                    </div>
-                    <div class="col-sm-12 col-md-5 resource-props">
-
-                        <div>
+                        <div class="col-xs-offset-4">
                             <button class="btn btn-primary" data-bind="click: $root.enter" data-toggle="modal">Enter</button>
                         </div>
+                    </div>
+                    <div class="col-xs-7" style="word-break: break-all;">
+                        <h2><a href="#" data-bind="text: Name"></a>
+                        </h2>
+                        <div style="word-break: break-all;" data-bind="text: Description"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-5 resource-props">
 
                     </div>
                 </div>
                 <hr>
             </li>
         </ul>
-
     </div>
 </div>

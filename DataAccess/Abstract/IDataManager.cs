@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DataModel.Contexts;
-using DataModel.Model;
+﻿using System.Collections.Generic;
 
 namespace DataAccess.Abstract
 {
@@ -14,7 +8,7 @@ namespace DataAccess.Abstract
         void Add(T item);
         void Update(T item);
         T GetById(T item);
-        T GetById(int Id);
-        List<T> GetAll();
+        T Get(int Id);
+        List<T> Get();
     }
 }

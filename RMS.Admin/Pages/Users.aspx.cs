@@ -25,7 +25,7 @@ namespace RMS.Admin.Pages
             {
                 var clientManager = new ClientManager();
                 currentId = Convert.ToInt32(e.CommandArgument);
-                var client = clientManager.GetById(currentId);
+                var client = clientManager.Get(currentId);
                 fvRestaurateur.ChangeMode(FormViewMode.Edit);
                 var src = new List<ClientInfo>();
                 src.Add(client);
@@ -73,10 +73,10 @@ namespace RMS.Admin.Pages
 
             if (fvRestaurateur.CurrentMode == FormViewMode.Edit)
             {
-                var client = clientManager.GetById(currentId);
-                client.Restaurant = rstManager.GetById(ddlRestaurant);
+                var client = clientManager.Get(currentId);
+                client.Restaurant = rstManager.Get(ddlRestaurant);
                 
-                var user = userManager.GetById(ddlUsers);
+                var user = userManager.Get(ddlUsers);
                 user.Position = Role.Restaurateur;
                 userManager.Update(user);
                 client.UserInfo = user;
@@ -87,9 +87,9 @@ namespace RMS.Admin.Pages
             else if (fvRestaurateur.CurrentMode == FormViewMode.Insert)
             {
                 var client = new ClientInfo();
-                client.Restaurant = rstManager.GetById(ddlRestaurant);
+                client.Restaurant = rstManager.Get(ddlRestaurant);
 
-                var user = userManager.GetById(ddlUsers);
+                var user = userManager.Get(ddlUsers);
 
                 user.Position = Role.Restaurateur;
                 userManager.Update(user);
@@ -122,7 +122,7 @@ namespace RMS.Admin.Pages
             var rstManager = new RestaurantManager();
 
             var ddl = sender as DropDownList;
-            ddl.DataSource = rstManager.GetAll();
+            ddl.DataSource = rstManager.Get();
             
         }
 
@@ -131,7 +131,7 @@ namespace RMS.Admin.Pages
             var userManager = new UserManager();
 
             var ddl = sender as DropDownList;
-            ddl.DataSource = userManager.GetAll();
+            ddl.DataSource = userManager.Get();
         }
     }
 }

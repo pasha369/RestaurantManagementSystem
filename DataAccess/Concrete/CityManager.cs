@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -39,12 +35,12 @@ namespace DataAccess.Concrete
             return _ctx.Cities.FirstOrDefault(c => c.Id == item.Id);
         }
 
-        public City GetById(int id)
+        public City Get(int id)
         {
             return _ctx.Cities.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<City> GetAll()
+        public List<City> Get()
         {
             return _ctx.Cities
                 .Include("Country").ToList();

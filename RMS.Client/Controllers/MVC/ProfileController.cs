@@ -27,12 +27,9 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult UserPage()
         {
             var user = GetUserByLogin();
-
             if (user != null)
             {
-                Mapper.CreateMap<UserInfo, ProfileModel>();
                 var model = Mapper.Map<ProfileModel>(user);
-
                 model.Position = Enum.GetName(typeof(Role), user.Position);
 
                 return View(model);
@@ -44,7 +41,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult RestaurateurPage()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var clients = _clientManager.GetAll();
+            var clients = _clientManager.Get();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
 
             if (client != null)
@@ -64,9 +61,9 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult ProfilePage()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var clients = _clientManager.GetAll();
+            var clients = _clientManager.Get();
             var client = clients.FirstOrDefault(u => u.UserInfo.Login == login);
-            if(client != null)
+            if (client != null)
             {
                 return RedirectToAction("RestaurateurPage");
             }
@@ -86,7 +83,7 @@ namespace RMS.Client.Controllers.MVC
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects
             });
-                        
+
             return Json(strJSON, JsonRequestBehavior.AllowGet);
         }
 
@@ -119,11 +116,9 @@ namespace RMS.Client.Controllers.MVC
         [HttpPost]
         public ActionResult ProfileEdit(ProfileModel model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var user = _userManager.GetById(model.Id);
-
-                Mapper.CreateMap<ProfileModel, UserInfo>();
+                var user = _userManager.Get(model.Id);
                 Mapper.Map<ProfileModel, UserInfo>(model, user);
 
                 _userManager.Update(user);
@@ -135,7 +130,7 @@ namespace RMS.Client.Controllers.MVC
         private UserInfo GetUserByLogin()
         {
             var login = System.Web.HttpContext.Current.User.Identity.Name;
-            var user = _userManager.GetAll().FirstOrDefault(u => u.Login == login);
+            var user = _userManager.Get().FirstOrDefault(u => u.Login == login);
 
             return user;
         }

@@ -1,0 +1,250 @@
+﻿<style>
+    .panel-default > .panel-heading {
+        color: #333;
+        background-color: #f5f5f5;
+    }
+
+    .bordered {
+        border: 1px solid #AAA;
+    }
+
+    .food-list {
+        line-height: 3em;
+        border-bottom: 1px dotted #ccc;
+    }
+
+    .panel-group .panel {
+        border-radius: 0;
+        border: none;
+    }
+
+        .panel-group .panel a:hover {
+            text-decoration: none;
+        }
+
+    /* MENU STYLES */
+    .item {
+        zoom: 1;
+        position: relative;
+        clip: auto;
+        overflow: hidden;
+    }
+
+    .info {
+        position: relative;
+        text-align: right;
+        white-space: nowrap;
+        margin-bottom: 5px;
+    }
+
+    .dots {
+        position: absolute;
+        left: 0;
+        right: 0;
+        border-bottom: 1px dotted #aaa;
+        height: 77%;
+    }
+
+    .name {
+        background: #fffdf8;
+        float: left;
+        margin-right: 20px;
+        padding-right: 4px;
+        position: relative;
+        font-weight: 900;
+    }
+
+    .price {
+        background: #fffdf8;
+        padding-left: 4px;
+        position: relative;
+    }
+
+    .legend span {
+        padding: 3px 15px;
+        background: #000;
+        font-size: 14px;
+        font-weight: bold;
+        color: #fff;
+        margin: 0 10px 0 0;
+    }
+
+    .legend {
+        display: block;
+        margin: 10px 0 15px 0;
+    }
+
+        .legend .veg {
+            background: #3ca318;
+        }
+
+        .legend .spicy {
+            background: #ff7e00;
+        }
+
+        .legend a {
+            display: inline-block;
+            padding: 3px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: background .1s ease-in-out;
+            -moz-transition: background .1s ease-in-out;
+            -webkit-transition: background .1s ease-in-out;
+        }
+
+            .legend a.add {
+                background: #ab0b00;
+                color: #fff;
+            }
+
+                .legend a.add:hover {
+                    background: #febf14;
+                    color: #050403;
+                    text-decoration: none;
+                }
+
+            .legend a.remove {
+                background: #ab0b00;
+                color: #fff;
+            }
+
+                .legend a.remove:hover {
+                    background: #febf14;
+                    color: #050403;
+                    text-decoration: none;
+                }
+
+    .order span {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 10px;
+    }
+
+    .legend a.active {
+        background: #febf14;
+        color: #050403;
+    }
+
+        .legend a.active:hover {
+            background: #ab0b00;
+            color: #fff;
+        }
+
+    .tab-v2 .nav-tabs li.active.wait a {
+        border-top: solid 2px #febf14;
+    }
+
+    .tab-v2 .nav-tabs li.active.done a {
+        border-top: solid 2px #ab0b00;
+    }
+</style>
+
+<div id="order-list-ctrl" class="panel">
+    <div class="panel-body">
+        <div class="row" style="text-align: center;">
+            <div class="col-md-12">
+                <h2>
+                    <strong>ORDER ONLINE</strong>/
+                    <a data-bind="click: $root.showMenu" href="javascript:;">
+                        OUR MENU
+                    </a>
+                </h2>
+            </div>
+        </div>
+
+
+        <div class="row" data-bind="foreach: OrderDishes">
+            <div class="col-md-6">
+                <div class="item" id="Div1">
+                    <div class="info">
+                        <div class="dots"></div>
+                        <span class="name">
+                            <span data-bind="text: $index() + 1"></span>.
+                            <span data-bind="text: Name"></span>
+                        </span>
+                        <span class="price">$ <span data-bind="text: Cost"></span></span>
+                    </div>
+                    <div class="description" data-bind="text: Description">Shrimp wrapped in taro, deep fried and served with chili sauce</div>
+                    <div class="legend">
+                        <a class="add item_add" href="javascript:;" data-bind="click: $root.removeDish">REMOVE FROM ORDER</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row margin-bottom-15">
+            <div class="form-group ">
+                <div class="col-xs-offset-4 col-xs-4">
+                    <a id="btnOrder" class="btn-u btn-u-red btn-u-lg btn-block btn-brd" href="javascript:;" data-bind="click: $root.makeOrder">Make Order</a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-xs-4">
+            <div class="panel panel-green margin-bottom-40">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-gear"></i> Active </h3>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: ActiveDishes">
+                        <tr>
+                            <td data-bind="text: Name"></td>
+                            <td data-bind="text: Cost"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-yellow margin-bottom-40">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-gear"></i> Wait </h3>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: WaitDishes">
+                        <tr>
+                            <td data-bind="text: Name"></td>
+                            <td data-bind="text: Cost"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-4">
+            <div class="panel panel-red margin-bottom-40">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="fa fa-gear"></i> Done </h3>
+                </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: DoneDishes">
+                        <tr>
+                            <td data-bind="text: Name"></td>
+                            <td data-bind="text: Cost"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        
+    </div>
+</div>

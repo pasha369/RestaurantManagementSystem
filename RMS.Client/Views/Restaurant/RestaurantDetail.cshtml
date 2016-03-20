@@ -34,8 +34,10 @@
                             </span>
                         }
                     </li>
-                    <li><i class="fa fa-comment-o"></i>
-                        @Model.CommentCount reviews</li>
+                    <li>
+                        <i class="fa fa-comment-o"></i>
+                        @Model.CommentCount reviews
+                    </li>
                 </ul>
             </div>
             <div class="row ">
@@ -45,7 +47,7 @@
                     <img class="img-responsive" src='@Url.Content(Model.PhotoUrl ?? "//placehold.it/600")' alt="">
 
                     <button id="btnFavorite" class="pull-right btn btn-group">
-                        <i class="fa fa-heart"></i>
+                        <i class="fa fa-plus"></i>
                     </button>
 
                 </div>
@@ -81,13 +83,12 @@
 
         @if (HttpContext.Current.User.IsInRole("User"))
         {
-            
             <div class="col-md-12" id="Reviews">
                 <hr>
                 <div id="comment"></div>
                 <hr>
             </div>
- 
+
             <div class="col-md-12">
                 <!-- Comment Form -->
                 <div class="comment-form"></div>
@@ -117,7 +118,6 @@
                             <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#book-now">Make reservation</button>
                         }
                     </div>
-
 
                     <div class="col-md-12 jt_col column_container">
                         <div class="voffset60"></div>
@@ -157,12 +157,13 @@
     <script>
         require(["jquery",
                 "Custom/EventTrigger",
+                'toastr',
                 "Widgets/commentLstCtrl/commentLstCtrl",
                 "Widgets/commentCtrl/commentCtrl",
                 "Widgets/bookingCtrl/bookingCtrl"
         ],
             function ($) {
-
+                var toastr = require('toastr');
 
                 $(document).ready(function () {
                     var eventTrigger = new EventTrigger();
@@ -178,6 +179,7 @@
                             dataType: "json",
                             success: function () {
                                 console.log('AddFavorite: success');
+                                toastr.success("@Model.Name added to your favorite list.");
                             },
                             error: function (err) {
                                 console.log(err.status + " : " + err.statusText);

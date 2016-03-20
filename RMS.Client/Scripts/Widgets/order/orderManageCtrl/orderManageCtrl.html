@@ -1,0 +1,21 @@
+﻿<div id="order-manage-ctrl">
+    <div data-bind="foreach: Orders" class="row invoice-info">
+        <div class="col-xs-12">
+            <div class="tag-box tag-box-v3">
+                <div class="row">
+                    <h2 class="col-xs-5">Client Information:</h2>
+                    <div class="col-xs-2 pull-right">
+                        <a href="javascript:;" class="btn-u  btn-u-default  " data-bind="click: $root.GetDetail">Order detail</a>
+                    </div>
+                </div>
+                <ul class="list-unstyled">
+                    <li><strong>Client Name:</strong> <span class="text-uppercase" data-bind="text: ClientName"></span></li>
+                    <li><strong>Table:</strong> <span data-bind="text: TableNumber"></span></li>
+                    <li><strong>Status:</strong> active</li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

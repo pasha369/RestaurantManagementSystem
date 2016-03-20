@@ -80,7 +80,8 @@
                     dataType: "json",
                     data: ko.toJSON(model),
                     success: function () {
-                        toastr.success('Reservation saved');
+                        toastr.success('Reservation has been made');
+                        $('#book-now').modal('hide');
                     },
                     error: function (err) {
                         if (err.status == 401) {

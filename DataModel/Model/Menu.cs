@@ -14,6 +14,7 @@ namespace DataModel.Model
 
         public virtual List<Category> Categories { set; get; } 
     }
+
     [Table("Category")]
     public class Category
     {
@@ -28,6 +29,7 @@ namespace DataModel.Model
         public virtual List<Dish> Dishes { set; get; }
         public virtual Menu Menu { set; get; }
     }
+
     [Table("Cuisine")]
     public class Cuisine
     {
@@ -38,6 +40,7 @@ namespace DataModel.Model
         public string Name { set; get; }
         public virtual List<Restaurant> Restoraunts { set; get; }
     }
+
     [Table("Dish")]
     public class Dish
     {
@@ -49,5 +52,22 @@ namespace DataModel.Model
         [MaxLength(180)]
         public string Name { set; get; }
         public int Cost { set; get; }
+        public string Description { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual List<Ingredient> Ingredients { get; set; }
+
+    }
+
+    [Table("Ingredient")]
+    public class Ingredient
+    {
+        [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Id { get; set; }
+        [Required]
+        [MaxLength(150)]
+        public string Name { get; set; }
+        public virtual List<Dish> Dishes { get; set; }
     }
 }

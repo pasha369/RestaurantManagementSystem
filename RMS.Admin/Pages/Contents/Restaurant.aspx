@@ -24,7 +24,7 @@
         <asp:ObjectDataSource runat="server"
             ID="dsRestoraunts"
             DeleteMethod="Delete"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             InsertMethod="Add"
             DataObjectTypeName="DataModel.Model.Restaurant"
             TypeName="DataAccess.Concrete.RestaurantManager"></asp:ObjectDataSource>

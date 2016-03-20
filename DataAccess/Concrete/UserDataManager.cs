@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
-using Microsoft.VisualBasic.ApplicationServices;
 
 namespace DataAccess.Concrete
 {
@@ -15,13 +11,12 @@ namespace DataAccess.Concrete
     {
         static RestorauntDbContext _ctx = new ContextManager().Context;
 
-
-
         public List<UserInfo> GetAllUSers()
         {
 
             return _ctx.UserInfos.Where(u => u.IsBanned == false).ToList();
         }
+
         public void AddUser(UserInfo user)
         {
 
@@ -49,19 +44,21 @@ namespace DataAccess.Concrete
             _ctx.SaveChanges();
 
         }
+
         public UserInfo GetById(int id)
         {
-            return _ctx.UserInfos.FirstOrDefault(u => u.Id == id); 
+            return _ctx.UserInfos.FirstOrDefault(u => u.Id == id);
         }
+
         public void SetToBlackList(UserInfo user)
         {
-
             var curUser = _ctx.UserInfos.FirstOrDefault(u => u.Id == user.Id);
             if (curUser != null)
                 curUser.IsBanned = true;
             _ctx.Entry(curUser).State = EntityState.Modified;
             _ctx.SaveChanges();
         }
+
         public List<UserInfo> GetBlackList()
         {
 

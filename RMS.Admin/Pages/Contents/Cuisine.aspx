@@ -21,7 +21,7 @@
         <asp:ObjectDataSource runat="server"
             ID="odsCuisine"
             DeleteMethod="Delete"
-            SelectMethod="GetAll"
+            SelectMethod="Get"
             InsertMethod="Add"
             UpdateMethod="Update"
             DataObjectTypeName="DataModel.Model.Cuisine"

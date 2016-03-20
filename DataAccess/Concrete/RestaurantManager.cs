@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -38,18 +35,20 @@ namespace DataAccess.Concrete
         {
             return _ctx.Restoraunts.FirstOrDefault(r => r.Id == item.Id);
         }
-        public Restaurant GetById(int id)
+
+        public Restaurant Get(int id)
         {
             return _ctx.Restoraunts.FirstOrDefault(r => r.Id == id);
         }
 
-        public List<Restaurant> GetAll()
+        public List<Restaurant> Get()
         {
             return _ctx.Restoraunts.Include("Halls")
                 .Include(x => x.Cuisines)
                 .Include(x => x.Adress)
                 .ToList();
         }
+
         public List<DinnerTable> GetAllTable(int id)
         {
 
@@ -57,11 +56,9 @@ namespace DataAccess.Concrete
             var lstTables = new List<DinnerTable>();
             if (restaurant != null)
             {
-                lstTables = restaurant.Halls.SelectMany(h => h.Tables).ToList();
+                lstTables = restaurant.Halls?.SelectMany(h => h.Tables).ToList();
             }
             return lstTables;
         }
-
- 
     }
 }

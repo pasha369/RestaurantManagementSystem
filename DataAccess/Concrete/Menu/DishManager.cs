@@ -1,25 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract.Menu;
 using DataModel.Contexts;
 using DataModel.Model;
 
 namespace DataAccess.Concrete.Menu
 {
+    /// <summary>
+    /// Represents dish manager
+    /// </summary>
     public class DishManager: IDishManager
     {
         public RestorauntDbContext _ctx = new ContextManager().Context;
 
-        public void Add(Category category, Dish dish)
+        /// <summary>
+        /// Add dish to db.
+        /// </summary>
+        /// <param name="dish">Dish entity</param>
+        public void Add(Dish dish)
         {
-            category.Dishes.Add(dish);
+            _ctx.Dishes.Add(dish);
             _ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Remove dish.
+        /// </summary>
+        /// <param name="dishId">Dish id</param>
         public void Delete(int dishId)
         {
             var dish = _ctx.Dishes.FirstOrDefault(d => d.Id == dishId);
@@ -27,20 +34,33 @@ namespace DataAccess.Concrete.Menu
             _ctx.SaveChanges();
         }
 
+        /// <summary>
+        /// Update dish data and save changes.
+        /// </summary>
+        /// <param name="dish">Dish entity</param>
         public void Update(Dish dish)
         {
             _ctx.Entry(dish).State = EntityState.Modified;
             _ctx.SaveChanges();
         }
 
-        public void GetByCategory(Category category)
+        /// <summary>
+        /// Get query for all dishes.
+        /// </summary>
+        /// <returns>Dishes query</returns>
+        public IQueryable<Dish> Get()
         {
-            // TODO: decide whether or no
+            return _ctx.Dishes;
         }
 
-        public Dish GetById(int dishId)
+        /// <summary>
+        /// Get dish by id
+        /// </summary>
+        /// <param name="id">Dish id</param>
+        /// <returns>Dish</returns>
+        public Dish Get(int id)
         {
-            return _ctx.Dishes.FirstOrDefault(d => d.Id == dishId);
+            return _ctx.Dishes.Find(id);
         }
     }
 }

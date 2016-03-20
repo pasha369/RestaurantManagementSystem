@@ -18,7 +18,7 @@ namespace RMS.Client.Controllers.WebApi
                 var userManager = new UserManager();
                 var photoUrl = this.SavePhoto(imageFile);
 
-                var user = userManager.GetAll()
+                var user = userManager.Get()
                     .FirstOrDefault(u => u.Login == HttpContext.Current.User.Identity.Name);
                 user.PhotoUrl = photoUrl;
                 userManager.Update(user);
@@ -34,7 +34,7 @@ namespace RMS.Client.Controllers.WebApi
             {
                 var photoUrl = this.SavePhoto(imageFile);
                 var rstManager = new RestaurantManager();
-                var restaurant = rstManager.GetById(Id);
+                var restaurant = rstManager.Get(Id);
 
                 restaurant.PhotoUrl = photoUrl;
                 rstManager.Update(restaurant);

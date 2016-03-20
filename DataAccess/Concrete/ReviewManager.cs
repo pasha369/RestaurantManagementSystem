@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity.Validation;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
@@ -36,15 +33,16 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public Review GetById(int Id)
+        public Review Get(int Id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Review> GetAll()
+        public List<Review> Get()
         {
             return _ctx.Reviews.ToList();
         }
+
         public List<Review> GetByRestaurant(int RestaurantId)
         {
             return _ctx.Reviews.Where(r => r.Restaurant.Id == RestaurantId).ToList();

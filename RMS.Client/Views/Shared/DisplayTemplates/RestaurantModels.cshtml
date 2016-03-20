@@ -24,14 +24,9 @@
                     </li>
                     <li><i class="fa fa-comment-o"></i>
                         <span>@item.CommentCount</span> reviews</li>
-                    <li>
-
-                        <i class="fa fa-location-arrow"></i>
-
-                    </li>
                 </ul>
                 <h3><a href="@Url.Action("RestaurantDetail", "Restaurant", new { @Id = item.Id })">@item.Name</a></h3>
-                <p>@item.Description.Substring(0, 50) ...</p>
+                <p>@item.Description.Substring(0, 30) ...</p>
             </div>
         </div>
     </div>

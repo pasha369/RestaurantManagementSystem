@@ -38,14 +38,14 @@ namespace DataAccess.Concrete
             return _ctx.Halls.FirstOrDefault(h => h.Id == item.Id);
         }
 
-        public List<Hall> GetAll()
+        public List<Hall> Get()
         {
             return _ctx.Halls
                 .Include("Tables")
                 .Include("Restaurant").ToList();
         }
 
-        public Hall GetById(int Id)
+        public Hall Get(int Id)
         {
             return _ctx.Halls.Include("Tables").FirstOrDefault(h => h.Id == Id);
         }
