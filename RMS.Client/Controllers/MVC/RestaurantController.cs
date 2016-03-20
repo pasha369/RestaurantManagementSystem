@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 using DataModel.Model;
 using Newtonsoft.Json;
 using RMS.Client.Models.View;

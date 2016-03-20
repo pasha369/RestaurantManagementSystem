@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using DataAccess;
-using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 
 namespace RMS.Admin.Pages
 {

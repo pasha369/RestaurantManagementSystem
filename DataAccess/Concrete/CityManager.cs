@@ -30,21 +30,15 @@ namespace DataAccess.Concrete
             _ctx.SaveChanges();
         }
 
-        public City GetById(City item)
-        {
-            return _ctx.Cities.FirstOrDefault(c => c.Id == item.Id);
-        }
-
         public City Get(int id)
         {
             return _ctx.Cities.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<City> Get()
+        public IQueryable<City> Get()
         {
             return _ctx.Cities
-                .Include("Country").ToList();
+                .Include("Country");
         }
-
     }
 }

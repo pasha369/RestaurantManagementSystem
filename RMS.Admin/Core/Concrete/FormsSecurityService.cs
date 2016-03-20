@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
+﻿using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 using RMS.Admin.Core.Abstract;
 
 namespace RMS.Admin.Core.Concrete

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.User
 {
     public class ClientManager : IDataManager<ClientInfo>
     {
@@ -37,25 +35,14 @@ namespace DataAccess.Concrete
             _ctx.SaveChanges();
         }
 
-        public ClientInfo GetById(ClientInfo item)
-        {
-
-            throw new NotImplementedException();
-        }
-
         public ClientInfo Get(int Id)
         {
             return _ctx.ClientInfos.FirstOrDefault(c => c.Id == Id);
         }
-        public List<ClientInfo> Get()
-        {
-            return _ctx.ClientInfos.ToList();
-        }
-        public Restaurant GetByClientId(int Id)
-        {
-            return _ctx.ClientInfos.FirstOrDefault(c => c.Id == Id).Restaurant;
-        }
 
- 
+        public IQueryable<ClientInfo> Get()
+        {
+            return _ctx.ClientInfos;
+        }
     }
 }

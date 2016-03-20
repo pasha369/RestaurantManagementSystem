@@ -12,7 +12,7 @@
             <div class="panel-body">
                 <asp:ObjectDataSource runat="server" ID="odsEditCuisine"
                     UpdateMethod="Update"
-                    SelectMethod="GetById"
+                    SelectMethod="Get"
                     DataObjectTypeName="DataModel.Model.Restaurant"
                     TypeName="DataAccess.Concrete.RestaurantManager">
                     <SelectParameters>

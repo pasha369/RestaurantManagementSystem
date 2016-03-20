@@ -1,7 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using DataAccess.Concrete;
+﻿using DataAccess.Concrete;
 using DataAccess.Concrete.Order;
+using DataAccess.Concrete.User;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin;
 using Owin;

@@ -11,7 +11,6 @@ namespace DataAccess.Concrete
     {
         private RestorauntDbContext _ctx = new ContextManager().Context;
 
-
         public void Delete(DinnerTable item)
         {
             var tbl = _ctx.Tables.FirstOrDefault(t => t.Id == item.Id);
@@ -47,14 +46,14 @@ namespace DataAccess.Concrete
             return _ctx.Tables.FirstOrDefault(r => r.Id == item.Id);
         }
 
-        public List<DinnerTable> Get()
-        {
-            return _ctx.Tables.ToList();
-        }
-
         public DinnerTable Get(int Id)
         {
             return _ctx.Tables.FirstOrDefault(t => t.Id == Id);
+        }
+
+        public IQueryable<DinnerTable> Get()
+        {
+            return _ctx.Tables;
         }
     }
 }

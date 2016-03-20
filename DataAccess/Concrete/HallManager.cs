@@ -49,5 +49,10 @@ namespace DataAccess.Concrete
         {
             return _ctx.Halls.Include("Tables").FirstOrDefault(h => h.Id == Id);
         }
+
+        IQueryable<Hall> IDataManager<Hall>.Get()
+        {
+            return _ctx.Halls.Include("Tables");
+        }
     }
 }

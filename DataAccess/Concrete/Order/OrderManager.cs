@@ -34,11 +34,6 @@ namespace DataAccess.Concrete.Order
             _ctx.SaveChanges();
         }
 
-        public DataModel.Model.Order GetById(DataModel.Model.Order item)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Get order by id.
         /// </summary>
@@ -53,9 +48,9 @@ namespace DataAccess.Concrete.Order
         /// Get all orders.
         /// </summary>
         /// <returns>Order list</returns>
-        public List<DataModel.Model.Order> Get()
+        public IQueryable<DataModel.Model.Order> Get()
         {
-            return _ctx.Orders.ToList();
+            return _ctx.Orders;
         }
     }
 }

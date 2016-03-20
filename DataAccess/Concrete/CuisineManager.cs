@@ -43,9 +43,9 @@ namespace DataAccess.Concrete
             return _ctx.Cuisines.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<Cuisine> Get()
+        public IQueryable<Cuisine> Get()
         {
-            return _ctx.Cuisines.ToList();
+            return _ctx.Cuisines;
         }
     }
 }

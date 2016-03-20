@@ -68,9 +68,9 @@
     <Compile Include="Abstract\Menu\IManager.cs" />
     <Compile Include="Abstract\Menu\IMenuManager.cs" />
     <Compile Include="Concrete\Menu\IngredientManager.cs" />
-    <Compile Include="Concrete\AuthRepository.cs" />
+    <Compile Include="Concrete\User\AuthRepository.cs" />
     <Compile Include="Concrete\CityManager.cs" />
-    <Compile Include="Concrete\ClientManager.cs" />
+    <Compile Include="Concrete\User\ClientManager.cs" />
     <Compile Include="Concrete\ContextManager.cs" />
     <Compile Include="Concrete\CountryManager.cs" />
     <Compile Include="Concrete\CuisineManager.cs" />
@@ -86,8 +86,8 @@
     <Compile Include="Concrete\RestaurantManager.cs" />
     <Compile Include="Concrete\DinnerTableManager.cs" />
     <Compile Include="Concrete\ReviewManager.cs" />
-    <Compile Include="Concrete\UserDataManager.cs" />
-    <Compile Include="Concrete\UserManager.cs" />
+    <Compile Include="Concrete\User\UserDataManager.cs" />
+    <Compile Include="Concrete\User\UserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

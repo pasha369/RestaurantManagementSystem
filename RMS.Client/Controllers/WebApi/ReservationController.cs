@@ -42,9 +42,10 @@ namespace RMS.Client.Controllers.WebApi
                 var rstManager = new RestaurantManager();
                 var tblManager = new DinnerTableManager();
 
+                var restaurant = rstManager.Get(model.RestaurantId);
                 var reservations = rsvManager.Get().Where(x => x.Table.Restaurant.Id == model.RestaurantId);
-                var table = rstManager.GetAllTable(model.RestaurantId)
-                    .FirstOrDefault(x => reservations.FirstOrDefault(r => r.Table == x && r.From <= model.From && r.To >= model.From) == null);
+                var table = restaurant.DinnerTables
+                    .FirstOrDefault(x => x.Reservations.Exists(r => r.From <= model.From && r.To >= model.From) == false);
 
                 if (table != null)
                 {
@@ -94,8 +95,10 @@ namespace RMS.Client.Controllers.WebApi
             var date = new DateTime(year, month, day);
             var rstManager = new RestaurantManager();
 
-            List<ReservedTable> lstReservation = rstManager.GetAllTable(Id)
-                ?.Select(t => new ReservedTable(){
+            var restaurant = rstManager.Get(Id);
+            List<ReservedTable> lstReservation = restaurant.DinnerTables
+                .Select(t => new ReservedTable()
+                {
                     Id = t.Id,
                     Num = t.Number,
                     Reservations = GetReservationByTable(t.Id, date)

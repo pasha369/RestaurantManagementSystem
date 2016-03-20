@@ -24,6 +24,7 @@ namespace DataModel.Model
         public virtual List<Hall> Halls { set; get; }
         public virtual List<Cuisine> Cuisines { set; get; }
         public virtual List<Review> Reviews { set; get; }
+        public virtual List<DinnerTable> DinnerTables { get; set; }
     }
 
     public enum Status
@@ -58,6 +59,7 @@ namespace DataModel.Model
 
         public Restaurant Restaurant { set; get; }
         public virtual UserInfo Author { get; set; }
+
         public Status Status { set; get; }
     }
 
@@ -86,6 +88,7 @@ namespace DataModel.Model
         public bool IsReserved { set; get; }
         public Restaurant Restaurant { set; get; }
         public Hall Hall { set; get; }
+        public virtual List<Reservation> Reservations { get; set; } 
     }
     [Table(("Reservation"))]
     public class Reservation

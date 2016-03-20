@@ -5,7 +5,7 @@ using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.User
 {
     public class UserDataManager : IUserDataManager
     {

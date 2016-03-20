@@ -27,13 +27,13 @@
             SelectMethod="GetAllApproved"
             DeleteMethod="Delete"
             DataObjectTypeName="DataModel.Model.UserInfo"
-            TypeName="DataAccess.Concrete.UserManager"></asp:ObjectDataSource>
+            TypeName="DataAccess.Concrete.User.UserManager"></asp:ObjectDataSource>
         <asp:ObjectDataSource runat="server"
             ID="dsClients"
             SelectMethod="Get"
             DeleteMethod="Delete"
             DataObjectTypeName="DataModel.Model.ClientInfo"
-            TypeName="DataAccess.Concrete.ClientManager"></asp:ObjectDataSource>
+            TypeName="DataAccess.Concrete.User.ClientManager"></asp:ObjectDataSource>
 
 
         <ul class="nav nav-tabs">
@@ -133,7 +133,7 @@
                             ID="dsUser"
                             InsertMethod="AddUser"
                             DataObjectTypeName="DataModel.Model.UserInfo"
-                            TypeName="DataAccess.Concrete.UserDataManager"></asp:ObjectDataSource>
+                            TypeName="DataAccess.Concrete.User.UserDataManager"></asp:ObjectDataSource>
                         <div class="container">
                             <asp:FormView ID="Formview1" runat="server" DataKeyNames="Id" DefaultMode="Insert" DataSourceID="dsUser" CssClass="form-horizontal">
                                 <InsertItemTemplate>

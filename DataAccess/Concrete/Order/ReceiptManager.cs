@@ -8,7 +8,7 @@ using DataModel.Model;
 
 namespace DataAccess.Concrete.Order
 {
-    public class ReceiptManager: IDataManager<Receipt>
+    public class ReceiptManager : IDataManager<Receipt>
     {
         private RestorauntDbContext _ctx = new ContextManager().Context;
 
@@ -39,12 +39,11 @@ namespace DataAccess.Concrete.Order
             return _ctx.Receipts.Find(Id);
         }
 
-        public List<Receipt> Get()
+        public IQueryable<Receipt> Get()
         {
             return _ctx.Receipts
                 .Include(x => x.Table)
-                .Include(x => x.ClientOrders)
-                .ToList();
+                .Include(x => x.ClientOrders);
         }
     }
 }

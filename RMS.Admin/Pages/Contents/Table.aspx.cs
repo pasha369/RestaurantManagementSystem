@@ -31,7 +31,7 @@ namespace RMS.Admin.Pages.Contents
             var ddlHall = fvTable.FindControl("ddlHall") as DropDownList;
 
             var restaurantId = Convert.ToInt32(ddlRestaurant.SelectedValue);
-            var restaurant = dataManager.GetById(new DataModel.Model.Restaurant(){Id = restaurantId});
+            var restaurant = dataManager.Get(restaurantId);
 
             ddlHall.DataSource = restaurant.Halls;
             ddlHall.DataBind();

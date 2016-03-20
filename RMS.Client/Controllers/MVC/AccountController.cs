@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using AutoMapper;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 using DataModel.Model;
 using RMS.Client.Models.View;
 

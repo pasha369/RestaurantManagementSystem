@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.User
 {
     public class AuthRepository :IAuthRepository, IDisposable
     {

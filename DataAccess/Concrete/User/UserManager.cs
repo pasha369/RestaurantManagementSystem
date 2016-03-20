@@ -5,7 +5,7 @@ using DataAccess.Abstract;
 using DataModel.Contexts;
 using DataModel.Model;
 
-namespace DataAccess.Concrete
+namespace DataAccess.Concrete.User
 {
     public class UserManager : IDataManager<UserInfo>
     {
@@ -13,23 +13,16 @@ namespace DataAccess.Concrete
 
         public void Delete(UserInfo item)
         {
-            using (var _ctx = new RestorauntDbContext())
-            {
-                var user = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
-                _ctx.UserInfos.Remove(user);
-                _ctx.Entry(user).State = EntityState.Deleted;
-                _ctx.SaveChanges();
-            }
-
+            var user = _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
+            _ctx.UserInfos.Remove(user);
+            _ctx.Entry(user).State = EntityState.Deleted;
+            _ctx.SaveChanges();
         }
 
         public void Add(UserInfo item)
         {
-            using (var _ctx = new RestorauntDbContext())
-            {
-                _ctx.UserInfos.Add(item);
-                _ctx.SaveChanges();
-            }
+            _ctx.UserInfos.Add(item);
+            _ctx.SaveChanges();
         }
 
         public void Update(UserInfo item)
@@ -43,18 +36,6 @@ namespace DataAccess.Concrete
 
         }
 
-        public UserInfo GetById(UserInfo item)
-        {
-            return _ctx.UserInfos.FirstOrDefault(u => u.Id == item.Id);
-
-        }
-
-        public List<UserInfo> Get()
-        {
-            return _ctx.UserInfos.ToList();
-
-        }
-
         public List<UserInfo> GetAllApproved()
         {
             return _ctx.UserInfos.Where(u => u.IsBanned == false).ToList();
@@ -65,11 +46,14 @@ namespace DataAccess.Concrete
             return _ctx.UserInfos.FirstOrDefault(u => u.Id == Id);
         }
 
+        public IQueryable<UserInfo> Get()
+        {
+            return _ctx.UserInfos;
+        }
+
         public UserInfo GetUserByLogin(string login)
         {
             return _ctx.UserInfos.FirstOrDefault(u => u.Login == login);
         }
-
-
     }
 }

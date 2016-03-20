@@ -29,14 +29,14 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public Favorite GetById(Favorite item)
-        {
-            throw new NotImplementedException();
-        }
-
         public Favorite Get(int Id)
         {
             return _ctx.Favorites.FirstOrDefault(f => f.Id == Id);
+        }
+
+        public IQueryable<Favorite> Get()
+        {
+            return _ctx.Favorites;
         }
 
         public List<Restaurant> GetByUser(int userId)
@@ -46,11 +46,6 @@ namespace DataAccess.Concrete
                 .Select(f => f.Restaurant)
                 .ToList();
             return lstFavorite;
-        }
-
-        public List<Favorite> Get()
-        {
-            throw new NotImplementedException();
         }
 
         public void Delete(int item, int id)

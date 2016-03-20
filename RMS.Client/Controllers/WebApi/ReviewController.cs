@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Http;
 using System.Web.Services;
 using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 using DataModel.Model;
 using RMS.Client.Filters;
 using RMS.Client.Models.View;

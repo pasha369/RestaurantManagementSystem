@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Autofac;
+﻿using Autofac;
 using DataAccess.Abstract;
 using DataAccess.Abstract.Menu;
 using DataAccess.Concrete;
 using DataAccess.Concrete.Menu;
 using DataAccess.Concrete.Order;
+using DataAccess.Concrete.User;
 using DataModel.Model;
 
 namespace RMS.Client.Core.Autofac.Modules

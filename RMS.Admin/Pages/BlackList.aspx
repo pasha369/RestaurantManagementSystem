@@ -26,7 +26,7 @@
             ID="dsBanUsers"
             SelectMethod="GetBlackList"
             DataObjectTypeName="DataModel.Model.UserInfo"
-            TypeName="DataAccess.Concrete.UserDataManager"></asp:ObjectDataSource>
+            TypeName="DataAccess.Concrete.User.UserDataManager"></asp:ObjectDataSource>
 
         <asp:GridView ID="gvBlackList" runat="server" DataSourceID="dsBanUsers" AutoGenerateColumns="False" OnRowCommand="gvBlackList_RowCommand" CssClass="table table-striped table-advance table-hover">
             <Columns>

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using DataAccess.Abstract;
-using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 using DataModel.Model;
 using Microsoft.AspNet.SignalR;
 using RMS.Client.Models.View.MenuModels;

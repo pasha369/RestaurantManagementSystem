@@ -33,20 +33,14 @@ namespace DataAccess.Concrete
             _ctx.SaveChanges();
         }
 
-        public Country GetById(Country item)
-        {
-            return _ctx.Countries.FirstOrDefault(c => c.Id == item.Id);
-        }
-
         public Country Get(int id)
         {
             return _ctx.Countries.FirstOrDefault(c => c.Id == id);
         }
 
-        public List<Country> Get()
+        public IQueryable<Country> Get()
         {
-            return _ctx.Countries.ToList();
+            return _ctx.Countries;
         }
-
     }
 }

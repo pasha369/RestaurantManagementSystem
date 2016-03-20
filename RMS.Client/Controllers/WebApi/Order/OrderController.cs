@@ -8,6 +8,7 @@ using AutoMapper;
 using DataAccess.Abstract;
 using DataAccess.Abstract.Menu;
 using DataAccess.Concrete;
+using DataAccess.Concrete.User;
 using DataModel.Model;
 using RMS.Client.Models.View.MenuModels;
 using RMS.Client.Models.View.OrderModels;
@@ -82,18 +83,18 @@ namespace RMS.Client.Controllers.WebApi.Order
             var login = System.Web.HttpContext.Current.User.Identity.Name;
             var client = clientManager.Get().FirstOrDefault(c => c.UserInfo.Login == login);
             var activeOrders = _receiptManager.Get()
-                .Where(x => x.ReceiptStatus == ReceiptStatus.Open && x.Table?.Restaurant.Id == client?.Restaurant.Id)
+                .Where(x => x.ReceiptStatus == ReceiptStatus.Open && x.Table.Restaurant.Id == client.Restaurant.Id)
                 .Select(x => new
                 {
                     OrderId = x.Id,
                     ClientName = x.Client.Name,
-                    TableNumber = x.Table != null ? x.Table.Number : 0,
-                    Dishes = x.ClientOrders.Select(d => d != null ? new
+                    TableNumber = x.Table.Number,
+                    Dishes = x.ClientOrders.Select(d => new
                     {
                         Name = d.Dish.Name,
                         Description = d.Dish.Description,
                         Cost = d.Dish.Cost
-                    } : null).ToList()
+                    }).ToList()
                 })
                 .ToList();
 
@@ -108,14 +109,14 @@ namespace RMS.Client.Controllers.WebApi.Order
         [HttpPost]
         public HttpResponseMessage GetOpenOrder(int id)
         {
-            var orderDIshes = _receiptManager.Get()
-                .Where(x => x.Table != null && x.Table.Id == id && x.ReceiptStatus == ReceiptStatus.Open)
-                .Select(x => new
-                {
-                    Dishes = x.ClientOrders.Select(d => Mapper.Map<DishModel>(d.Dish)),
-                    OrderId = x.Id
-                })
-                .FirstOrDefault();
+            var order = _receiptManager.Get()
+                .FirstOrDefault(x => x.Table != null && x.Table.Id == id && x.ReceiptStatus == ReceiptStatus.Open);
+
+            var orderDIshes = new
+            {
+                Dishes = order?.ClientOrders.Select(d => Mapper.Map<DishModel>(d.Dish)),
+                OrderId = order?.Id
+            };
 
             return Request.CreateResponse(HttpStatusCode.OK, orderDIshes);
         }

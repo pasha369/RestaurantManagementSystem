@@ -20,15 +20,9 @@ namespace DataAccess.Concrete
         {
             _ctx.Reviews.Add(item);
             _ctx.SaveChanges();
-
         }
 
         public void Update(Review item)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Review GetById(Review item)
         {
             throw new NotImplementedException();
         }
@@ -38,14 +32,14 @@ namespace DataAccess.Concrete
             throw new NotImplementedException();
         }
 
-        public List<Review> Get()
+        public IQueryable<Review> Get()
         {
-            return _ctx.Reviews.ToList();
+            return _ctx.Reviews;
         }
 
-        public List<Review> GetByRestaurant(int RestaurantId)
+        public IQueryable<Review> GetByRestaurant(int RestaurantId)
         {
-            return _ctx.Reviews.Where(r => r.Restaurant.Id == RestaurantId).ToList();
+            return _ctx.Reviews.Where(r => r.Restaurant.Id == RestaurantId);
         }
 
     }

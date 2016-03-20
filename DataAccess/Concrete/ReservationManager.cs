@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using DataAccess.Abstract;
 using DataModel.Contexts;
@@ -22,11 +20,8 @@ namespace DataAccess.Concrete
 
         public void Add(Reservation item)
         {
-            
             _ctx.Reservations.Add(item);
-
             _ctx.SaveChanges();
-           
         }
 
         public void Update(Reservation item)
@@ -38,20 +33,14 @@ namespace DataAccess.Concrete
             _ctx.SaveChanges();
         }
 
-        public Reservation GetById(Reservation item)
-        {
-            throw new NotImplementedException();
-        }
-
         public Reservation Get(int id)
         {
             return _ctx.Reservations.FirstOrDefault(r => r.Id == id);
         }
 
-        public List<Reservation> Get()
+        public IQueryable<Reservation> Get()
         {
-            return _ctx.Reservations.Include(x => x.Table.Restaurant).ToList();
+            return _ctx.Reservations.Include(x => x.Table.Restaurant);
         }
-
     }
 }
