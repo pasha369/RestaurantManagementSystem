@@ -37,7 +37,10 @@
 
                     this.Date = ko.observable().extend({ required: true });
                     this.PeopleNum = ko.observable().extend({ required: true });
-                    
+
+                    this.btnClass = ko.observable();
+                    this.isAllReserved = ko.observable();
+
                     this.bookTable = function () {
                         if (!self.options.viewModel.isValid()) {
                             this.errors.showAllMessages();
@@ -49,22 +52,29 @@
                     this.errors = ko.validation.group(this);
                 };
 
-                self.options.viewModel = ko.validatedObservable(new bookingVM());
+                var viewModel = new bookingVM();
+                self.options.viewModel = ko.validatedObservable(viewModel);
                 timeOperator.fill(self.options.viewModel().AvailableTime);
-             
+
                 ko.validation.init(validationConfig, true);
                 ko.applyBindingsWithValidation(self.options.viewModel, $("#bookingctrl")[0]);
+                self._isFreeTableExists(viewModel);
             },
+
             _bookTable: function () {
                 var self = this;
                 var vm = self.options.viewModel();
 
-                var from = moment(vm.Date() + ' ' + vm.From(), "DD.MM.YYYY HH:mm").toDate();
-                var to = moment(vm.Date() + ' ' + vm.To(), "DD.MM.YYYY HH:mm").toDate();
+                var from = moment(vm.Date() + ' ' + vm.From(), "DD.MM.YYYY HH:mm");
+                var to = moment(vm.Date() + ' ' + vm.To(), "DD.MM.YYYY HH:mm");
 
                 var model = {
                     From: from,
+                    FromHour: from.hour(),
+                    FromMinutes: from.minutes(),
                     To: to,
+                    ToHour: to.hour(),
+                    ToMinutes: to.minutes(),
 
                     Date: vm.Date,
                     Msg: vm.Msg,
@@ -89,6 +99,25 @@
                         }
                     }
 
+                });
+            },
+
+            _isFreeTableExists: function(viewModel) {
+                var self = this;
+                $.ajax({
+                    type: 'POST',
+                    url: '/Restaurant/IsFreeTableExist/',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: ko.toJSON({ restaurantId: self.options.restaurantId }),
+                    success: function(response) {
+                        viewModel.isAllReserved(response.isExist);
+                        if (!response.isExist) {
+                            viewModel.btnClass("btn-u btn-u-default");
+                        } else {
+                            viewModel.btnClass("btn-u btn-u-red");
+                        }
+                    }
                 });
             },
             _setOption: function (key, value) {

@@ -34,6 +34,7 @@ namespace RMS.Client.Controllers.MVC
             foreach (var restaurant in items)
             {
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+                model.IsExistFreeTable = CheckFreeTable(restaurant.Id);
 
                 if (restaurant.Reviews != null)
                 {
@@ -65,7 +66,7 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult RestaurantListCuisine(string cuisine)
         {
             var items = _rstManager.Get()
-                .Where(r => r.Cuisines.Count != 0 && r.Cuisines.Exists(c => c.Name == cuisine))
+                .Where(r => r.Cuisines.Count != 0 && r.Cuisines.Any(c => c.Name == cuisine))
                 .ToList();
             var restaurantLst = new RestaurantLst();
             restaurantLst.CountryList.AddRange(GetTopCountry());
@@ -116,10 +117,11 @@ namespace RMS.Client.Controllers.MVC
         public ActionResult RestaurantDetail(int Id)
         {
             var restaurant = _rstManager.Get(Id);
-
+            
             if (restaurant != null)
             {
                 var model = Mapper.Map<RestaurantModel>(restaurant);
+                model.IsExistFreeTable = CheckFreeTable(restaurant.Id);
 
                 model.CommentCount = restaurant.Reviews.Count();
                 if (restaurant.Reviews.Count > 0)
@@ -187,6 +189,25 @@ namespace RMS.Client.Controllers.MVC
             favorite.User = userManager.Get().FirstOrDefault(u => u.Login == login);
             favoriteManager.Add(favorite);
             return Json(new {result = "success"}, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Check is free table exists.
+        /// </summary>
+        /// <param name="restaurantId">Restaurant id.</param>
+        /// <returns>Boolean result.</returns>
+        [HttpPost]
+        public ActionResult IsFreeTableExist(int restaurantId)
+        {
+            return Json(new {isExist = CheckFreeTable(restaurantId) }, JsonRequestBehavior.AllowGet);
+        }
+
+
+        private bool CheckFreeTable(int restaurantId)
+        {
+            return _rstManager.Get(restaurantId)
+                .DinnerTables
+                .Any(x => x.Reservations.Count == 0);
         }
 
         private RestaurantModel GetModelById(int Id)

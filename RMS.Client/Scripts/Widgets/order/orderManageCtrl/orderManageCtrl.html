@@ -1,4 +1,9 @@
 ﻿<div id="order-manage-ctrl">
+    <!-- ko if: Orders().length == 0-->
+    <div class="tag-box tag-box-v2 margin-bottom-40">
+        <h2>Orders is empty.</h2>
+    </div>
+    <!-- /ko -->​
     <div data-bind="foreach: Orders" class="row invoice-info">
         <div class="col-xs-12">
             <div class="tag-box tag-box-v3">

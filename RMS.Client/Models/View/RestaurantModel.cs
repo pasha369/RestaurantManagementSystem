@@ -10,5 +10,6 @@
         public int Rating { set; get; }
         public Address Address { get; set; }
         public int CommentCount { get; set; }
+        public bool IsExistFreeTable { get; set; }
     }
 }

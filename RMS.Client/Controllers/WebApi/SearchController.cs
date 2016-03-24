@@ -35,7 +35,8 @@ namespace RMS.Client.Controllers.WebApi
             if (!string.IsNullOrEmpty(name))
             {
                 var restaurants = _rstManager.Get()
-                    .Where(r => r.Name.ToLower().Contains(name.ToLower()));
+                    .Where(r => r.Name.ToLower().Contains(name.ToLower()) ||
+                                r.Menu.Categories.SelectMany(x => x.Dishes).Any(d => d.Name.Contains(name)));
 
                 return Mapper.Map<List<RestaurantModel>>(restaurants);
             }

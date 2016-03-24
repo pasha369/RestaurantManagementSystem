@@ -9,6 +9,11 @@
 {
     <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="~/Content/Styles/pages/profile.css">
+    <style>
+        .content.profile {
+            min-height: 500px;
+        }
+    </style>
 }
 
 <!--=== Profile ===-->
@@ -23,9 +28,9 @@
         require(["jquery", "jquery-ui",
             "Widgets/PhotoCtrl/PhotoCtrl",
             'Widgets/userCtrl/userCtrl'], function ($) {
-            $(document).ready(function () {
-                $('.content').user();
+                $(document).ready(function () {
+                    $('.content').user();
+                });
             });
-        });
     </script>
 }

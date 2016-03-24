@@ -42,7 +42,7 @@
                 </div>
 
                 <p>
-                    <input type="button" value="Reserve" class="btn-u btn-u-red" data-bind="click: $root.bookTable" />
+                    <input type="button" value="Reserve" data-bind="click: $root.bookTable, enable: isAllReserved, attr: {class: btnClass}" />
                 </p>
 
             </div>

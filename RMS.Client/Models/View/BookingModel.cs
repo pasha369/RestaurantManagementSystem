@@ -16,13 +16,20 @@ namespace RMS.Client.Models.View
         public string Phone { get; set; }
 
         public string Msg { get; set; }
-        [DataMember(IsRequired = true)]
-        [DataType(DataType.Date)]
-        public DateTime From { get; set; }
 
         [DataMember(IsRequired = true)]
-        [DataType(DataType.Date)]
+        public DateTime From { get; set; }
+
+        public int FromHour { get; set; }
+
+        public int FromMinutes { get; set; }
+
+        [DataMember(IsRequired = true)]
         public DateTime To { set; get; }
+
+        public int ToHour { get; set; }
+
+        public int ToMinutes { get; set; }
 
         [DataMember(IsRequired = true)]
         public int PeopleNum { get; set; }

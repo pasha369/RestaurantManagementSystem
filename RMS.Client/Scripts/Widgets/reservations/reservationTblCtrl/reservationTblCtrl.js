@@ -1,4 +1,4 @@
-﻿define(['knockout', 
+﻿define(['knockout',
         'jquery',
         'jquery-ui',
         'datepicker',
@@ -25,7 +25,7 @@
                 function ReservationVM() {
                     this.Client = ko.observable();
                     this.StatusTypes = ko.observableArray([]);
-                    
+
                     this.Tables = ko.observableArray([]);
                     this.Times = ko.observableArray([]);
 
@@ -40,13 +40,13 @@
                     this.Status = ko.observable();
                     this.CurStatus = ko.observable();
 
-                    this.apply = function(item) {
+                    this.apply = function (item) {
                         self._applyReservation(item);
                     };
                     this.remove = function (item) {
                         self._removeReservation(item);
                     };
-                    this.detail = function(item) {
+                    this.detail = function (item) {
                         var vm = self.options.reservationVM;
 
                         vm.Fullname(item.Fullname());
@@ -59,7 +59,7 @@
                         }
                     }
                 };
-                
+
                 self.options.reservationVM = new ReservationVM();
 
                 self._fillTimes();
@@ -72,13 +72,13 @@
                 self._getStatusLst();
 
             },
-            _getStatusLst: function() {
+            _getStatusLst: function () {
                 var self = this;
                 $.ajax({
                     type: "GET",
                     url: '/api/Reservation/GetRsvStatus/',
                     success: function (data) {
-                        $.each(data, function(key, value) {
+                        $.each(data, function (key, value) {
                             self.options.reservationVM.StatusTypes.push(value);
                         });
                     },
@@ -89,7 +89,7 @@
             },
             _changeStatus: function (curReservation) {
                 var self = this;
-                
+
                 $.ajax({
                     type: "POST",
                     url: '/api/Reservation/ChangeStatus/',
@@ -107,10 +107,10 @@
                 $.ajax({
                     type: "POST",
                     url: '/api/Reservation/ApplyReservation/' + item.Id(),
-                    success: function() {
+                    success: function () {
                         self._loadReservation(self.options.restaurantId);
                     },
-                    error: function(err) {
+                    error: function (err) {
                         console.log(err.status);
                     },
                 });
@@ -119,12 +119,12 @@
                 var self = this;
                 $.ajax({
                     type: "POST",
-                    url: '/api/Reservation/RemoveReservation/'+item.Id(),
+                    url: '/api/Reservation/RemoveReservation/' + item.Id(),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
                     success: function () {
                         self._loadReservation(self.options.restaurantId);
-                        
+
                     },
                     error: function (err) {
                         console.log(err.status);
@@ -132,16 +132,16 @@
                 });
             },
             _loadReservation: function (restaurantId) {
-                var url = '/api/Reservation/GetByRestaurant/' ;
+                var url = '/api/Reservation/GetByRestaurant/';
                 var self = this;
 
-                var day = $('input[name=day]').val() ;
-                var month = $('input[name=month]').val() ;
-                var year = $('input[name=year]').val() ;
+                var day = $('input[name=day]').val();
+                var month = $('input[name=month]').val();
+                var year = $('input[name=year]').val();
 
                 var date = moment(self.options.reservationVM.Date(), "DD.MM.YYYY").toDate();
-                
-                
+
+
                 $.ajax({
                     type: "GET",
                     url: url,
@@ -177,8 +177,8 @@
                                         Date: ko.observable(v.From.replace("T", " ")),
                                         PeopleNum: ko.observable(v.PeopleNum),
                                         Status: ko.observable(v.Status),
-                                        StatusCss : ko.computed(function () {
-                                            
+                                        StatusCss: ko.computed(function () {
+
                                             switch (this.Status) {
                                                 case 0:
                                                     return "new";
@@ -193,7 +193,7 @@
                                             }
                                         }, this),
                                         SelectedStatus: ko.computed({
-                                            read : function() {
+                                            read: function () {
                                                 var statusTypes = self.options.reservationVM.StatusTypes();
                                                 var current = "";
                                                 for (var i = 0; i < statusTypes.length; i++) {
@@ -207,10 +207,10 @@
                                             write: function (value) {
                                                 self.options.reservationVM.CurStatus(value);
                                             }
-                                            
+
                                         }, this),
 
-                                        ColIdx: ko.observable(fromIdx),
+                                        ColIdx: ko.observable(fromIdx + 1),
                                         Colspan: ko.observable(toIdx - fromIdx)
                                     };
 
@@ -220,7 +220,7 @@
                                         reservation);
                                 }
                             });
-                            
+
                             self.options.reservationVM.Tables.push(current);
 
                         });
@@ -248,7 +248,7 @@
                 }
                 return row;
             },
-            
+
             /* Fill top header of table reservations (time) from begin working 
             day to end. Transition 30 minutes.
             */
@@ -259,10 +259,10 @@
                 // begin working day.
                 current.setHours(9);
                 current.setMinutes(0);
-                
+
                 while (current.getHours() != 18) {
                     var time = moment(current).format('HH:mm');
-                    
+
                     self.options.reservationVM.Times.push(time);
                     current = add(current, 30);
                 }
@@ -278,12 +278,12 @@
             */
             _getDateIdx: function (date) {
                 var times = this.options.reservationVM.Times();
-                
+
                 var curDate = moment(date, 'YYYY-MM-DD HH:mm:ss').toDate();
                 var idx = 0;
                 for (var i = 0; i < times.length; i++) {
                     var time = moment(times[i], 'HH:mm').toDate();
-                    if (time.getHours() == curDate.getHours() ) {
+                    if (time.getHours() == curDate.getHours()) {
                         idx = i;
                         break;
                     }

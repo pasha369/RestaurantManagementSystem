@@ -43,8 +43,13 @@
             <div class="row ">
                 <div class="col-md-6 margin-bottom-20">
 
-
-                    <img class="img-responsive" src='@Url.Content(Model.PhotoUrl ?? "//placehold.it/600")' alt="">
+                    <div class="easy-block-v2">
+                        @if (!Model.IsExistFreeTable)
+                        {
+                            <div class="easy-bg-v2 rgba-red"></div>
+                        }
+                        <img class="img-responsive" src='@Url.Content(Model.PhotoUrl ?? "//placehold.it/600")' alt="">
+                    </div>
 
                     <button id="btnFavorite" class="pull-right btn btn-group">
                         <i class="fa fa-plus"></i>

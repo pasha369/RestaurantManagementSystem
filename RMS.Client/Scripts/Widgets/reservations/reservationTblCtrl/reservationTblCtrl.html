@@ -62,12 +62,14 @@
     <div class="panel-body">
         <div class="row">
             <div class="form-group col-xs-12">
-                <label for="date" class="col-xs-2">Reservation date: </label>
+                <div class="col-xs-6">
+                    <label for="date" class="col-xs-2">Reservation date: </label>                    
+                </div>
                 <div class="col-xs-6 pull-left">
                     <input type="datetime" id="date" name="date"
-                           data-bind="value: Date" class="form-control" />    
+                           data-bind="value: Date" class="form-control"/>
                 </div>
-                
+
             </div>
         </div>
 
@@ -141,14 +143,19 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title headline">Client info</h4>
                     </div>
-                    <div class="container">
-                        <div class="col-xs-5">
+                    <div class="container-fluid">
+                        <div class="col-xs-12">
                             <ul class="list-unstyled who margin-bottom-30">
                                 <li><a href="#"><i class="fa fa-user"></i><span data-bind="text: Fullname"></span></a></li>
                                 <li><a href="#"><i class="fa fa-envelope"></i><span data-bind="text: Phone"></span></a></li>
                                 <li><a href="#"><i class="fa fa-phone"></i><span data-bind="text:  Phone()"></span></a></li>
                                 <li><a href="#"><i class="fa fa-user-plus"></i><span data-bind="text: PeopleNum"></span></a></li>
                             </ul>
+                            <hr/>
+                            <div class="pull-right">
+                                <a href="javasctipt:;" class="btn-u-red"><i class="fa fa-minus"></i></a>
+                                <a href="javasctipt:;"><i class="fa fa-plus"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>

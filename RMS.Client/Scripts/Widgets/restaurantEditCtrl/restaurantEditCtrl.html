@@ -2,12 +2,19 @@
 <div id="restaurant-edit" class="panel">
 
     <form class="panel-body">
-        <h2 data-bind="text: Title" ></h2>
+        <h2 data-bind="text: Title"></h2>
 
         <div class="center-block">
             <div class="row">
                 <div class="col-md-5 ">
-                    <img class="img-responsive" data-bind="attr: { src : PhotoUrl }" />
+                    <img class="img-responsive" data-bind="attr: { src : PhotoUrl }"/>
+                    <div class="form-group padding-top-5">
+                        <div class="col-xs-offset-3">
+                            <input type="file" class="file-upload" id="uploadImg" />
+                        </div>
+                        <!--<input id="btnChangePhoto" class="btn-u btn-u-sm" value="Change photo" />-->
+                    </div>
+
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
@@ -28,14 +35,7 @@
         </div>
         <input type="hidden" id="rstId" data-bind="value: Id" />
 
-        <div class="form-group">
-
-            <!--<input id="btnChangePhoto" class="btn-u btn-u-sm" value="Change photo" />-->
-            <input type="file" class="file-upload" id="uploadImg"/>
-        </div>
-
-
-        <div class="form-group">
+        <div class="form-group margin-top-20">
             <label for="Description">Description:</label>
             <textarea rows="15"
                       name="Description" class="form-control"
@@ -44,7 +44,7 @@
         </div>
 
         <p>
-            <input type="button" class="btn btn-default" value="Save" data-bind="click: $root.saveRestaurant" />
+            <input type="button" class="btn-u btn-u-split-blue col-xs-4 col-xs-offset-4" value="Save" data-bind="click: $root.saveRestaurant" />
         </p>
     </form>
 </div>
