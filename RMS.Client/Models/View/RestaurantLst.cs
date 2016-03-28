@@ -17,18 +17,24 @@ namespace RMS.Client.Models.View
 
         public string Cuisine { get; set; }
 
-        public List<string> CountryList { get; set; }
+        public List<string> Cuisines { get; set; }
+
+        public List<string> Cities { get; set; }
+
+        public List<string> CityList { get; set; }
 
         public List<string> CuisineList { get; set; }
-
-        public IEnumerable<SelectListItem> Cuisines { get; set; }
 
         [UIHint("RestaurantModels")]
         public List<RestaurantModel> RestaurantModels { get; set; }
 
+        public int? RestaurantCount { get; set; }
+
+        public int? ItemId { get; set; }
+
         public RestaurantLst()
         {
-            this.CountryList = new List<string>();
+            this.CityList = new List<string>();
             this.CuisineList = new List<string>();
             this.RestaurantModels = new List<RestaurantModel>();
         }
@@ -36,9 +42,6 @@ namespace RMS.Client.Models.View
         public RestaurantLst(IDataManager<Cuisine> cuisinManager) : this()
         {
             _cuisinManager = cuisinManager;
-            Cuisines = _cuisinManager.Get()
-                .Select(c => new SelectListItem() { Text = c.Name, Value = c.Name }).AsEnumerable()
-            ;
         }
     }
 }

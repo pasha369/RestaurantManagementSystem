@@ -1,0 +1,153 @@
+﻿<div id="restaurant-list-ctrl" class="container content-md">
+
+    <div class="col-md-4 ">
+        <div class="panel panel-u">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="fa fa-search"></i> Filter
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div class="headline">
+                    <h4>City</h4>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" data-bind="click: $root.SelectCity.bind($data, '')"><a href="">All</a></li>
+                    <!-- ko foreach: CityList -->
+                    <li class="list-group-item"><a href="" data-bind="text: $data, click: $root.SelectCity"></a></li>
+                    <!-- /ko -->
+                    <li class="list-group-item" style="text-align: center"><a href="" data-toggle="modal" data-target="#cities"><small>See more</small></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                <div class="headline">
+                    <h4>Cuisine</h4>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" data-bind="click: $root.SelectCuisine.bind($data, '')"><a href="">All</a></li>
+                    <!-- ko foreach: CuisineList -->
+                    <li class="list-group-item"><a href="" data-bind="text: $data, click: $root.SelectCuisine"></a></li>
+                    <!-- /ko -->
+                    <li class="list-group-item" style="text-align: center"><a href="" data-toggle="modal" data-target="#cuisines"><small>See more</small></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- All Restaurants -->
+    <div class="col-md-8">
+        <div class="tag-box tag-box-v6 col-xs-12">
+            <div class="pull-left">
+                <h2>
+                    <span data-bind="text: RestaurantCount"></span> restaurants
+                </h2>
+            </div>
+            <!--<div class="pull-right">
+                <div class="form-group">
+                    <select class="form-control">
+                        <option>Review</option>
+                        <option>Star</option>
+                        <option>Newest</option>
+                    </select>
+                </div>
+            </div>-->
+        </div>
+
+        <div class="col-xs-12 margin-bottom-20" data-bind="foreach: Restaurants">
+            <!--Restaurant-->
+            <div class="row margin-bottom-20">
+                <div class="col-sm-2 sm-margin-bottom-20">
+                    <div class="easy-block-v2">
+                        <!--ko ifnot: IsExistFreeTable-->
+                        <div class="easy-bg-v2 rgba-red"></div>
+                        <!--/ko-->
+                        <img class="img-responsive" src='' alt="" data-bind="attr: {src: PhotoUrl}"><!--photo-->
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="news-v3-in-sm no-padding">
+
+                        <ul class="list-inline posted-info">
+                            <!--ko if: Rating > 0-->
+                            <li>
+                                <!--ko foreach: Rating-->
+                                <span>
+                                    <i class="fa fa-star color-green"></i>
+                                </span>
+                                <!--/ko-->
+                            </li>
+                            <!--/ko-->
+                            <li>
+                                <i class="fa fa-comment-o"></i>
+                                <span data-bind="text: CommentCount"></span> reviews
+                            </li>
+                        </ul>
+
+                        <h3>
+                            <a href="" data-bind="text: Name, attr: {href: '/Restaurant/RestaurantDetail/' + Id}"><!--Name--></a>
+                        </h3>
+                        <p data-bind="text: Description"><!--description--></p>
+                    </div>
+                </div>
+            </div>
+            <!--Restaurant-->
+        </div>
+        <ul class="pager pager-v3 pager-sm no-margin-bottom">
+            <li class="previous" data-bind="click: $root.Prev"><a href="#">&larr; Prev</a></li>
+            <!--<li class="page-amount"><span data-bind="text: ItemId() + 1"></span> of 3</li>-->
+            <li class="next" data-bind="click: $root.Next"><a href="#">Next &rarr;</a></li>
+        </ul>
+
+        <div class="clearfix margin-bottom-20">
+            <hr>
+        </div>
+
+    </div>
+    <!--MODAL CUISINES-->
+    <div id="cuisines" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Cuisine</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!--ko foreach: Cuisines-->
+                        <div class="col-lg-3 col-xs-5 margin-left-10 ">
+                            <a class="btn btn-u col-xs-12 margin-top-20" data-bind="text: $data, click: $root.SelectCuisine" data-dismiss="modal"></a>
+                        </div>
+                        <!--/ko-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END MODAL CUISINES-->
+    <!--MODAL CITY-->
+    <div id="cities" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>City</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!--ko foreach: Cities-->
+                        <div class="col-lg-3 col-xs-5 margin-left-10">
+                            <a class="btn btn-u col-xs-12 margin-top-20" data-bind="text: $data, click: $root.SelectCity" data-dismiss="modal"></a>
+                        </div>
+                        <!--/ko-->
+                    </div>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--END MODAL CITY-->
+</div>

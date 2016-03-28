@@ -21,7 +21,7 @@
 </div>
 
 
-<div class="container content-md">
+@*<div class="container content-md">
     <div class="col-md-4 visible-lg-block">
         <div class="panel-sea" style="margin-top: -40px;">
             <div class="panel-body">
@@ -46,7 +46,7 @@
                         <li class="list-group-item"><a href="@Url.Action("RestaurantListCuisine", "Restaurant", new {@cuisine = item})">@item</a></li>
                     }
 
-                    @*<li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>*@
+                    @*<li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>
                 </ul>
             </div>
         </div>
@@ -66,4 +66,28 @@
 
     </div>
     <!-- End All Restaurants -->
-</div>
+  
+</div>*@
+
+<div id="restaurants"></div>
+
+
+@section Scripts
+{
+    <script>
+        require(["jquery",
+                "Custom/EventTrigger",
+                'toastr',
+                "Widgets/restaurant/restaurantListCtrl/restaurantListCtrl"
+        ],
+            function ($) {
+                var toastr = require('toastr');
+
+                $(document).ready(function () {
+                    var eventTrigger = new EventTrigger();
+                    $("#restaurants").restaurantList();
+                   
+                });
+            });
+    </script>
+}

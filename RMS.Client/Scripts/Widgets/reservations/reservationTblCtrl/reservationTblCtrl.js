@@ -52,6 +52,7 @@
                         vm.Fullname(item.Fullname());
                         vm.Phone(item.Phone());
                         vm.PeopleNum(item.PeopleNum());
+                        vm.Msg(item.Msg());
                     };
                     this.statusChanged = function (obj, event) {
                         if (event.originalEvent) { //user changed

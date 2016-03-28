@@ -107,7 +107,7 @@ namespace RMS.Client.Controllers.WebApi
                 {
                     Id = t.Id,
                     Num = t.Number,
-                    Reservations = t.Reservations.Any() ? GetReservationByTable(t.Id, date) : new List<BookingModel>()
+                    Reservations = t.Reservations.Count() > 0 ? GetReservationByTable(t.Id, date) : new List<BookingModel>()
                 })
                 .ToList();
 

@@ -28,6 +28,8 @@ namespace RMS.Client.Core.Autofac.Modules
                 .As<IDataManager<ClientInfo>>().InstancePerRequest();
             builder.Register(r => new CountryManager())
                 .As<IDataManager<Country>>().InstancePerRequest();
+            builder.Register(r => new CityManager())
+                .As<IDataManager<City>>().InstancePerRequest();
             builder.Register(r => new CuisineManager())
                 .As<IDataManager<Cuisine>>().InstancePerRequest();
             builder.Register(r => new DinnerTableManager())

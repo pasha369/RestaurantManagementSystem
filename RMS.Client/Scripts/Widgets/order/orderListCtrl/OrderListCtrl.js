@@ -71,24 +71,31 @@
                     }
                     switch (prevStatus) {
                         case "Active":
-                            $.each(self.options.viewModel.ActiveDishes(), function(k, v) {
-                                if (v.Name == dish.Name) {
-                                    self.options.viewModel.ActiveDishes.remove(v);
-                                }
-                            });
+                            if (self.options.viewModel.ActiveDishes().length > 0) {
+                                $.each(self.options.viewModel.ActiveDishes(), function(k, v) {
+                                    if (v.Name == dish.Name) {
+                                        self.options.viewModel.ActiveDishes.splice(k, 1);
+                                    }
+                                });
+                            }
                             break;
                         case "Wait":
-                            $.each(self.options.viewModel.WaitDishes(), function (k, v) {
-                                if (v.Name == dish.Name) {
-                                    self.options.viewModel.WaitDishes.remove(dish);
-                                }
-                            }); break;
+                            if (self.options.viewModel.WaitDishes().length > 0) {
+                                $.each(self.options.viewModel.WaitDishes(), function(k, v) {
+                                    if (v.Name == dish.Name) {
+                                        self.options.viewModel.WaitDishes.splice(k, 1);
+                                    }
+                                });
+                            }
+                            break;
                         case "Ready":
-                            $.each(self.options.viewModel.DoneDishes(), function (k, v) {
-                                if (v.Name == dish.Name) {
-                                    self.options.viewModel.DoneDishes.remove(dish);
-                                }
-                            });
+                            if (self.options.viewModel.DoneDishes().length > 0) {
+                                $.each(self.options.viewModel.DoneDishes(), function(k, v) {
+                                    if (v.Name == dish.Name) {
+                                        self.options.viewModel.DoneDishes.splice(k, 1);
+                                    }
+                                });
+                            }
                             break;
 
                         default: break;
