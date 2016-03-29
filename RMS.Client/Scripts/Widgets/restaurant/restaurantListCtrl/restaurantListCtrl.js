@@ -72,7 +72,6 @@
                 cuisine = !(typeof cuisine === 'undefined') ? cuisine : '';
 
                 var self = this;
-                // TODO: ...
                 $.ajax({
                     type: 'POST',
                     url: '/Restaurant/GetRestaurantPage/',
@@ -90,10 +89,12 @@
                         self.options.viewModel.CuisineList(restaurantLst.CuisineList);
                         self.options.viewModel.RestaurantCount(restaurantLst.RestaurantCount);
                         self.options.viewModel.Restaurants([]);
+                        var restaurants = [];
                         $.each(restaurantLst.RestaurantModels, function (k, value) {
                             value.PhotoUrl = value.PhotoUrl.replace("~", "");
-                            self.options.viewModel.Restaurants.push(value);
+                            restaurants.push(value);
                         });
+                        self.options.viewModel.Restaurants(restaurants);
                     }
                 });
             },

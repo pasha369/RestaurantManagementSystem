@@ -341,6 +341,11 @@
     <Content Include="Images\default\food-salad-restaurant-person.jpg" />
     <Content Include="Images\default\default-restaurant.jpg" />
     <Content Include="Images\default\no_image_profile.jpg" />
+    <Content Include="Images\users_pic\bazikalo.jpg" />
+    <Content Include="Images\users_pic\kaffein.jpg" />
+    <Content Include="Images\users_pic\restaurant1.jpeg" />
+    <Content Include="Images\users_pic\rst.jpg" />
+    <Content Include="Images\users_pic\th.jpg" />
     <Content Include="Scripts\Custom\EventTrigger.js" />
     <Content Include="Scripts\Custom\PhotoUpload.js" />
     <Content Include="Scripts\Custom\timeOperations.js" />
@@ -444,7 +449,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\users_pic\" />
     <Folder Include="Views\Restaurant\PartialViews\" />
   </ItemGroup>
   <ItemGroup>
