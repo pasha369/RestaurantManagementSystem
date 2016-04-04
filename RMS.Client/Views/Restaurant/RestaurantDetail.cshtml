@@ -23,7 +23,7 @@
 
     <div class="col-md-12">
         <div id="About">
-            <h1>@Html.DisplayFor(model => model.Name), <small>Alabama</small></h1>
+            <h1>@Html.DisplayFor(model => model.Name), <small>@Model.CityName</small></h1>
             <div class="list-group-item-text " style="padding: 10px;">
                 <ul class="list-unstyled list-inline ">
                     <li>
@@ -48,13 +48,14 @@
                         {
                             <div class="easy-bg-v2 rgba-red"></div>
                         }
-                        <img class="img-responsive" src='@Url.Content(Model.PhotoUrl ?? "//placehold.it/600")' alt="">
+                        <img class="img-responsive" src="@Url.Content(@Model.PhotoUrl)" alt="">
                     </div>
-
-                    <button id="btnFavorite" class="pull-right btn btn-group">
-                        <i class="fa fa-plus"></i>
-                    </button>
-
+                    @if (HttpContext.Current.User.IsInRole("User"))
+                    {
+                        <button id="btnFavorite" class="pull-right btn btn-group">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    }
                 </div>
                 <div class="col-md-6 ">
                     <div class="fadeInRight animated">
@@ -66,8 +67,7 @@
                                     <li>
                                         <address>
                                             <i class="fa fa-location-arrow"></i>
-                                            507 Calles Street
-                                            Austin, TX, 78702
+                                            @Model.LongAddress
                                         </address>
                                     </li>
                                     <li><i class="fa fa-phone"></i>@Model.PhoneNumber</li>

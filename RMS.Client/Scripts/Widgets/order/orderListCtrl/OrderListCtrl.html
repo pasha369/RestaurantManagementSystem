@@ -174,8 +174,18 @@
 
         <div class="row margin-bottom-15">
             <div class="form-group ">
-                <div class="col-lg-offset-4 col-lg-4">
-                    <a id="btnOrder" class="btn-u btn-u-red btn-u-lg btn-block btn-brd" href="javascript:;" data-bind="click: $root.makeOrder">Make Order</a>
+                <div class="col-lg-offset-2 col-lg-4">
+                    <button id="btnOrder"
+                       href="javascript:;"
+                       data-bind="click: $root.makeOrder, enable: IsCanOrder,
+                       attr: { 'class' : IsCanOrder() 
+                        ? 'btn btn-u btn-u-red btn-u-lg btn-block'
+                        : 'btn btn-u btn-u-red btn-u-lg btn-block disabled'}">
+                        Make Order
+                    </button>
+                </div>
+                <div class="col-lg-4">
+                    <a id="btnPay" class="btn-u btn-u-orange btn-u-lg btn-block btn-brd" data-bind="click: $root.payWithPaypal">Pay</a>
                 </div>
             </div>
         </div>

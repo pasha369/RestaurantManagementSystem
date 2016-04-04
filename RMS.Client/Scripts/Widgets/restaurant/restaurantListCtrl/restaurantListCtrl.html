@@ -1,4 +1,35 @@
 ﻿<div id="restaurant-list-ctrl" class="container content-md">
+    
+    <style>
+        #restaurant-list-ctrl {
+            position: relative;
+        }
+        .ajax-wrapper {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(250, 250, 250, 1);
+            z-index: 9999;
+        }
+        .ajax-loader {
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto; /* presto! */
+            z-index: 9999;
+        }
+        .ajax-wrapper img {
+            width: 10%;
+        }
+    </style>
+
+    <!--ko if: IsAjaxLoader-->
+    <div class="ajax-wrapper">
+        <img src="http://www.cafe-amazon.com/images/admin/loading_ani.gif" class="ajax-loader ">
+    </div>
+    <!--/ko-->
+
 
     <div class="col-md-4 ">
         <div class="panel panel-u">
@@ -60,7 +91,7 @@
                         <!--ko ifnot: IsExistFreeTable-->
                         <div class="easy-bg-v2 rgba-red"></div>
                         <!--/ko-->
-                        <img class="img-responsive" src='' alt="" data-bind="attr: {src: PhotoUrl}"><!--photo-->
+                        <img style="min-height: 70px" class="img-responsive" src='' alt="" data-bind="attr: {src: PhotoUrl}"><!--photo-->
                     </div>
                 </div>
                 <div class="col-sm-7">

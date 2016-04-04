@@ -20,6 +20,8 @@
 
 
                 function restaurantVM() {
+                    this.IsAjaxLoader = ko.observable(); 
+
                     this.RestaurantCount = ko.observable();
                     this.CityList = ko.observableArray([]);
                     this.CuisineList = ko.observableArray([]);
@@ -67,11 +69,12 @@
             },
 
             _loadRestaurants: function (itemId, city, cuisine) {
+                var self = this;
                 itemId = itemId > 0 ? itemId : null;
                 city = !(typeof city === 'undefined') ? city : '';
                 cuisine = !(typeof cuisine === 'undefined') ? cuisine : '';
-
-                var self = this;
+                self.options.viewModel.IsAjaxLoader(true);
+                
                 $.ajax({
                     type: 'POST',
                     url: '/Restaurant/GetRestaurantPage/',
@@ -92,9 +95,11 @@
                         var restaurants = [];
                         $.each(restaurantLst.RestaurantModels, function (k, value) {
                             value.PhotoUrl = value.PhotoUrl.replace("~", "");
+                            value.Description = value.Description.length > 50 ? value.Description.substring(0, 50) + '...' : value.Description;
                             restaurants.push(value);
                         });
                         self.options.viewModel.Restaurants(restaurants);
+                        self.options.viewModel.IsAjaxLoader(false);
                     }
                 });
             },

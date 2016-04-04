@@ -11,7 +11,7 @@ namespace RMS.Client.Models.View.OrderModels
         /// <summary>
         /// Gets or sets id.
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         /// Gets or sets Dishes.

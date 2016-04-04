@@ -1,0 +1,11 @@
+﻿@model dynamic
+
+@{
+    ViewBag.Title = "title";
+    Layout = "";
+}
+
+<h2>title</h2>
+
+@Html.ActionLink("Pay Direct With Credit Card", "PaymentWithCreditCard", "Paypal")
+@Html.ActionLink("Pay with Paypal Account", "PaymentWithPaypal", "Paypal")

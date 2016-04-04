@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DataAccess.Concrete;
@@ -121,7 +122,7 @@ namespace RMS.Admin.Pages
             var rstManager = new RestaurantManager();
 
             var ddl = sender as DropDownList;
-            ddl.DataSource = rstManager.Get();
+            ddl.DataSource = rstManager.Get().ToList();
             
         }
 
@@ -130,7 +131,7 @@ namespace RMS.Admin.Pages
             var userManager = new UserManager();
 
             var ddl = sender as DropDownList;
-            ddl.DataSource = userManager.Get();
+            ddl.DataSource = userManager.Get().ToList();
         }
     }
 }

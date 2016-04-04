@@ -33,10 +33,20 @@
                 // Create a function that the hub can call back to display messages.
                 order.client.addOrderToPage = function (order, tableNumber) {
                     // Add the message to the page. 
-                    self.options.viewModel.Orders.push({
-                        Order: order,
-                        TableNumber: tableNumber
+                    var currentOrder = null;
+                    $.each(self.options.viewModel.Orders(), function(k, v) {
+                        if (v.Order.Id == order.Id) {
+                            currentOrder = v;
+                        }
                     });
+                    if (currentOrder != null) {
+                        currentOrder.Order = order;
+                    } else {
+                        self.options.viewModel.Orders.push({
+                            Order: order,
+                            TableNumber: tableNumber
+                        });
+                    }
                 };
                 $.connection.hub.start().done();
                 this.options.viewModel = new OrderManageVM();
@@ -52,7 +62,7 @@
                     success: function(data) {
                         $.each(data, function(k, v) {
                             self.options.viewModel.Orders.push({
-                                Order: { OrderId: v.OrderId, Dishes: v.Dishes },
+                                Order: { Id: v.Id, Dishes: v.Dishes },
                                 TableNumber: v.TableNumber,
                                 ClientName: v.ClientName
                             });

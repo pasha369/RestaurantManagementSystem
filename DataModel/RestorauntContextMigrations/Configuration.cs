@@ -18,25 +18,25 @@ namespace DataModel.RestorauntContextMigrations
 
         protected override void Seed(DataModel.Contexts.RestorauntDbContext context)
         {
-            //// Country
+            // Country
             //context.Countries.AddOrUpdate(x => x.Id,
-            //    new Country() { Id = 1, Name = "Angola" },
-            //    new Country() { Id = 2, Name = "Albania" },
-            //    new Country() { Id = 3, Name = "Australia" },
-            //    new Country() { Id = 4, Name = "Bahrain" },
-            //    new Country() { Id = 5, Name = "Brazil" },
-            //    new Country() { Id = 6, Name = "Denmark" },
-            //    new Country() { Id = 7, Name = "France" },
-            //    new Country() { Id = 8, Name = " Germany" },
-            //    new Country() { Id = 9, Name = " Ukraine" }
-            //    );
-            //// City
+                //new Country() { Id = 1, Name = "Angola" },
+                //new Country() { Id = 3, Name = "Australia" },
+                //new Country() { Id = 2, Name = "Albania" },
+                //new Country() { Id = 4, Name = "Bahrain" },
+                //new Country() { Id = 5, Name = "Brazil" },
+                //new Country() { Id = 6, Name = "Denmark" },
+                //new Country() { Id = 7, Name = "France" },
+                //new Country() { Id = 8, Name = " Germany" },
+                //new Country() { Id = 9, Name = " Ukraine" }
+                //);
+            // City
             //context.Cities.AddOrUpdate(x => x.Id,
-            //    new City() { Id = 1, Name = "Paris", Country = context.Countries.FirstOrDefault(c => c.Id == 7) },
-            //    new City() { Id = 2, Name = "Bavaria", Country = context.Countries.FirstOrDefault(c => c.Id == 8) },
-            //    new City() { Id = 3, Name = "Rivne", Country = context.Countries.FirstOrDefault(c => c.Id == 9) }
+            //    new City() { Id = 1, Name = "Rivne", Country = context.Countries.FirstOrDefault(c => c.Id == 9) },
+            //    new City() { Id = 2, Name = "Kiev", Country = context.Countries.FirstOrDefault(c => c.Id == 9) },
+            //    new City() { Id = 3, Name = "Lviv", Country = context.Countries.FirstOrDefault(c => c.Id == 9) }
             //    );
-            //// Cuisine
+            // Cuisine
             //context.Cuisines.AddOrUpdate(x => x.Id,
             //    new Cuisine() { Id = 1, Name = "American" },
             //    new Cuisine() { Id = 2, Name = "Chinese" },
@@ -182,8 +182,8 @@ namespace DataModel.RestorauntContextMigrations
             //        Restaurant = context.Restoraunts.FirstOrDefault(r => r.Id == 2),
             //        UserInfo = context.UserInfos.FirstOrDefault(u => u.Id == 2)
             //    });
-
-            context.SaveChanges();
+            //
+            //context.SaveChanges();
 
         }
     }

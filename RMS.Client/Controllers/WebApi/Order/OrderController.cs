@@ -46,30 +46,70 @@ namespace RMS.Client.Controllers.WebApi.Order
         [HttpPost]
         public HttpResponseMessage MakeOrder(OrderItemModel order)
         {
+            Receipt receipt;
+            if (order.Id.HasValue)
+            {
+                receipt = UpdateReceipt(order);
+            }
+            else
+            {
+                receipt = CreateReceipt(order);
+            }
+            order.Id = receipt.Id;
+            order.Dishes = receipt.ClientOrders
+                .Where(x => x.Dish != null)
+                .Select(x => new DishItemModel
+                {
+                    Id = x.Dish.Id,
+                    Name = x.Dish.Name,
+                    Cost = x.Dish.Cost,
+                    Description = x.Dish.Description
+                })
+                .ToList();
+            return this.Request.CreateResponse(HttpStatusCode.OK, order);
+        }
+
+        public Receipt CreateReceipt(OrderItemModel order)
+        {
             var receipt = new Receipt();
-            if (order.Id != NEW)
-            {
-                receipt = _receiptManager.Get(order.Id);
-            }
-
             var clientOrderList = new List<DataModel.Model.Order>();
-            foreach (var dish in order.Dishes)
-            {
-                var orderEntity = new DataModel.Model.Order();
-                orderEntity.Dish = _dishManager.Get(dish.Id);
-                orderEntity.Restaurant = _restaurantManager.Get(order.RestaurantId);
-                orderEntity.Created = DateTime.Now;
+            AddDishesToOrderList(order, clientOrderList);
 
-                clientOrderList.Add(orderEntity);
-            }
             receipt.Client = GetCurrentUser();
             receipt.ClientOrders = clientOrderList;
             receipt.CurrentDateTime = DateTime.Now;
             receipt.Table = _tableManager.Get(order.TableId);
             receipt.ReceiptStatus = ReceiptStatus.Open;
-
             _receiptManager.Add(receipt);
-            return this.Request.CreateResponse(HttpStatusCode.OK, receipt.Id);
+            return receipt;
+        }
+
+        public Receipt UpdateReceipt(OrderItemModel order)
+        {
+            var receipt = _receiptManager.Get(order.Id.Value);
+
+            var clientOrderList = new List<DataModel.Model.Order>();
+            AddDishesToOrderList(order, clientOrderList);
+
+            receipt.ClientOrders.AddRange(clientOrderList);
+            receipt.ReceiptStatus = ReceiptStatus.Open;
+
+            _receiptManager.Update(receipt);
+            return receipt;
+        }
+
+        private void AddDishesToOrderList(OrderItemModel order, List<DataModel.Model.Order> clientOrderList)
+        {
+            foreach (var dish in order.Dishes)
+            {
+                var orderEntity = new DataModel.Model.Order();
+                orderEntity.Dish = _dishManager.Get(dish.Id);
+                orderEntity.Status = OrderStatus.Active;
+                orderEntity.Restaurant = _restaurantManager.Get(order.RestaurantId);
+                orderEntity.Created = DateTime.Now;
+
+                clientOrderList.Add(orderEntity);
+            }
         }
 
         /// <summary>
@@ -86,14 +126,18 @@ namespace RMS.Client.Controllers.WebApi.Order
                 .Where(x => x.ReceiptStatus == ReceiptStatus.Open && x.Table.Restaurant.Id == client.Restaurant.Id)
                 .Select(x => new
                 {
-                    OrderId = x.Id,
+                    Id = x.Id,
                     ClientName = x.Client.Name,
                     TableNumber = x.Table.Number,
-                    Dishes = x.ClientOrders.Select(d => new
+                    Dishes = x.ClientOrders
+                    .Where(d => d.Dish != null)
+                    .Select(d => new
                     {
+                        Id =d.Dish.Id,
                         Name = d.Dish.Name,
                         Description = d.Dish.Description,
-                        Cost = d.Dish.Cost
+                        Cost = d.Dish.Cost,
+                        Status = d.Status.ToString()
                     }).ToList()
                 })
                 .ToList();
@@ -112,13 +156,25 @@ namespace RMS.Client.Controllers.WebApi.Order
             var order = _receiptManager.Get()
                 .FirstOrDefault(x => x.Table != null && x.Table.Id == id && x.ReceiptStatus == ReceiptStatus.Open);
 
-            var orderDIshes = new
+            if (order != null)
             {
-                Dishes = order?.ClientOrders.Select(d => Mapper.Map<DishModel>(d.Dish)),
-                OrderId = order?.Id
-            };
-
-            return Request.CreateResponse(HttpStatusCode.OK, orderDIshes);
+                var orderDIshes = new
+                {
+                    Dishes = order.ClientOrders
+                    .Where(d => d.Dish != null)
+                    .Select(d => new
+                    {
+                        Id = d.Dish.Id,
+                        Name = d.Dish.Name,
+                        Cost = d.Dish.Cost,
+                        Description = d.Dish.Description,
+                        Status = d.Status.ToString()
+                    }),
+                    Id = order?.Id
+                };
+                return Request.CreateResponse(HttpStatusCode.OK, orderDIshes);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, new { });
         }
 
         /// <summary>

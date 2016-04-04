@@ -182,7 +182,11 @@ namespace RMS.Client.Controllers.MVC
             {
                 var model = Mapper.Map<RestaurantModel>(restaurant);
                 model.IsExistFreeTable = CheckFreeTable(restaurant.Id);
-
+                if (restaurant.Adress != null)
+                {
+                    model.LongAddress = $"{restaurant.Adress.Street}, {restaurant.Adress.City.Name}";
+                    model.CityName = restaurant.Adress.City.Name;
+                }
                 model.CommentCount = restaurant.Reviews.Count();
                 if (restaurant.Reviews.Count > 0)
                 {

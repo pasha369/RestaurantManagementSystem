@@ -21,10 +21,15 @@
 
                 function OrderListVM() {
                     this.OrderDishes = ko.observableArray([]);
+                    this.OrderId = ko.observable();
 
                     this.ActiveDishes = ko.observableArray([]);
                     this.WaitDishes = ko.observableArray([]);
                     this.DoneDishes = ko.observableArray([]);
+
+                    this.IsCanOrder = ko.computed(function () {
+                        return this.OrderDishes().length > 0;
+                    }, this);
 
                     this.showMenu = function () {
                         $("#menu").show();
@@ -34,6 +39,10 @@
                     this.removeDish = function (dish) {
                         self.options.viewModel.OrderDishes.remove(dish);
                         toastr.success(dish.Name + " was removed from order.");
+                    }
+
+                    this.payWithPaypal = function () {
+                        window.location.href = '/Paypal/PaymentWithPaypal?orderId=' + self.options.orderId;
                     }
 
                     this.makeOrder = function () {
@@ -64,16 +73,12 @@
 
                 // Create a function that the hub can call back to display messages.
                 self.options.orderHub.client.onChangeDishStatus = function (dish, status, prevStatus) {
-                    var dish = {
-                        Name: dish.Name,
-                        Description: dish.Description,
-                        Cost: 10
-                    }
+                   
                     switch (prevStatus) {
                         case "Active":
                             if (self.options.viewModel.ActiveDishes().length > 0) {
-                                $.each(self.options.viewModel.ActiveDishes(), function(k, v) {
-                                    if (v.Name == dish.Name) {
+                                $.each(self.options.viewModel.ActiveDishes(), function (k, v) {
+                                    if (v.Id === dish.Id) {
                                         self.options.viewModel.ActiveDishes.splice(k, 1);
                                     }
                                 });
@@ -81,8 +86,8 @@
                             break;
                         case "Wait":
                             if (self.options.viewModel.WaitDishes().length > 0) {
-                                $.each(self.options.viewModel.WaitDishes(), function(k, v) {
-                                    if (v.Name == dish.Name) {
+                                $.each(self.options.viewModel.WaitDishes(), function (k, v) {
+                                    if (v.Id === dish.Id) {
                                         self.options.viewModel.WaitDishes.splice(k, 1);
                                     }
                                 });
@@ -90,8 +95,8 @@
                             break;
                         case "Ready":
                             if (self.options.viewModel.DoneDishes().length > 0) {
-                                $.each(self.options.viewModel.DoneDishes(), function(k, v) {
-                                    if (v.Name == dish.Name) {
+                                $.each(self.options.viewModel.DoneDishes(), function (k, v) {
+                                    if (v.Id === dish.Id) {
                                         self.options.viewModel.DoneDishes.splice(k, 1);
                                     }
                                 });
@@ -118,14 +123,35 @@
 
             _getOpenOrder: function () {
                 var self = this;
+                var active = [];
+                var wait = [];
+                var done = [];
+
                 $.ajax({
                     type: 'POST',
                     url: '/api/Order/GetOpenOrder/' + self.options.tableId,
-                    success: function (data) {
-                        self.options.orderId = data.OrderId;
-                        $.each(data.Dishes, function(k, v) {
-                            self.options.viewModel.OrderDishes.push(v);
+                    success: function (order) {
+                        self.options.orderId = order.Id;
+                        self.options.viewModel.OrderId(order.Id);
+                        $.each(order.Dishes, function (k, v) {
+                            switch (v.Status) {
+                                case "Active":
+                                    active.push(v);
+                                    break;
+                                case "Wait":
+                                    wait.push(v);
+                                    break;
+                                case "Ready":
+                                    done.push(v);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            //self.options.viewModel.OrderDishes.push(v);
                         });
+                        self._addDishesByStatus("Active", active);
+                        self._addDishesByStatus("Wait", wait);
+                        self._addDishesByStatus("Done", done);
                     }
                 });
             },
@@ -143,13 +169,10 @@
                         TableId: self.options.tableId
                     },
                     dataType: 'json',
-                    success: function (orderId) {
-
-                        self.options.orderHub.server.send({
-                            OrderId: orderId,
-                            Dishes: self.options.viewModel.OrderDishes(),
-                            RestaurantId: self.options.restaurantId
-                        }, self.options.tableId);
+                    success: function (order) {
+                        self.options.orderId = order.Id;
+                        self.options.orderHub.server.send(order, self.options.tableId);
+                        self._moveToActive();
                         toastr.success("Order was created. Please wait your order in progress...");
                     }
                 });
@@ -157,6 +180,33 @@
 
             _orderHub: function () {
 
+            },
+
+            _addDishesByStatus: function (status, dishes) {
+                var self = this;
+                switch (status) {
+                    case "Active":
+                        self.options.viewModel.ActiveDishes(dishes);
+                        break;
+                    case "Wait":
+                        self.options.viewModel.WaitDishes(dishes);
+                        break;
+                    case "Done":
+                        self.options.viewModel.DoneDishes(dishes);
+                        break;
+                    default:
+                        return false;
+                }
+                return true;
+            },
+
+            _moveToActive: function() {
+                var vw = this.options.viewModel;
+                var dishes = vw.OrderDishes().slice();
+
+                ko.utils.arrayPushAll(vw.ActiveDishes, dishes);
+                vw.ActiveDishes.valueHasMutated();
+                vw.OrderDishes.removeAll();
             },
 
             _setOption: function (key, value) {

@@ -22,25 +22,25 @@
                     this.StatusTypes = ko.observableArray(['Wait', 'Active', 'Ready']);
                     this.Dishes = ko.observableArray([]);
                     this.Total = ko.observable();
-                    this.CloseOrder = function() {
+                    this.CloseOrder = function () {
                         self._closeOrder();
                     }
 
-                    this.BackToOrders = function() {
+                    this.BackToOrders = function () {
                         $('.order-detail').hide();
                         $('.orders').show();
                     }
 
                     this.StatusChanged = function (item) {
-                        
-                        self.options.orderHub.server.changeDishStatus(item, self.options.order.OrderId, item.Status);
+
+                        self.options.orderHub.server.changeDishStatus(item, self.options.order.Id, item.Status);
                         console.log(item);
                     }
                 }
 
                 this.options.viewModel = new OrderDetailVM();
 
-                self.options.orderHub =  $.connection.orderHub;
+                self.options.orderHub = $.connection.orderHub;
                 $.connection.hub.start().done();
 
                 self._initOrderDetail();
@@ -50,16 +50,19 @@
             _initOrderDetail: function () {
                 var self = this;
                 var vm = self.options.viewModel;
-                var total = 0;
-                $.each(self.options.order.Dishes, function (k, v) {
-                    vm.Dishes.push({
-                        Name: v.Name,
-                        Description: v.Description,
-                        Cost: v.Cost,
-                        Status: 'Active',
-                    });
-                    total += v.Cost;
-                });
+
+                Array.prototype.sum = function (prop) {
+                    var total = 0;
+                    for (var i = 0; i < this.length; i++) {
+                        total += this[i][prop];
+                    }
+                    return total;
+                }
+
+                var total = self.options.order.Dishes.sum("Cost");
+                
+                ko.utils.arrayPushAll(vm.Dishes, self.options.order.Dishes);
+                vm.Dishes.valueHasMutated();
                 vm.Total(total);
             },
 
@@ -67,13 +70,13 @@
                 var self = this;
                 $.ajax({
                     type: 'POST',
-                    url: '/api/Order/CloseOrder/' + self.options.order.OrderId,
-                    success: function(data) {
+                    url: '/api/Order/CloseOrder/' + self.options.order.Id,
+                    success: function (data) {
                         // TODO: implement close order.
                         // TODO: implement remove from list order after close.
                         // TODO: implement notification on close.
                     }
-                })  
+                })
             },
 
             _setOption: function (key, value) {

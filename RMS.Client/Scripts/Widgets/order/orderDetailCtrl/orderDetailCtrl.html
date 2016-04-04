@@ -11,6 +11,7 @@
             <table class="table table-striped invoice-table table-responsive">
                 <thead>
                     <tr>
+                        <th style="display:none">Item</th>
                         <th>#</th>
                         <th>Item</th>
                         <th class="hidden-sm">Description</th>
@@ -20,6 +21,7 @@
                 </thead>
                 <tbody data-bind="foreach: Dishes">
                     <tr>
+                        <td style="display:none" data-bind="text: Id"></td>
                         <td data-bind="text: $index()"></td>
                         <td data-bind="text: Name"></td>
                         <td data-bind="text: Description" class="hidden-sm">At vero eos et accusamus etofficia mollitia</td>
@@ -27,14 +29,14 @@
                         <td>
                             <select id="to" class="form-control"
                                     data-bind="options : $root.StatusTypes,
-                                value : Status,
-                                optionsCaption : 'Choose...', event:{ change: $root.StatusChanged} "></select>
+                                    value : Status,
+                                    optionsCaption : 'Choose...', event:{ change: $root.StatusChanged} "></select>
                         </td>
                     </tr>
                 </tbody>
-            </table>    
+            </table>
         </div>
-        
+
         <div class="row">
             <div class="col-xs-12 text-right">
                 <ul class="list-unstyled invoice-total-info">

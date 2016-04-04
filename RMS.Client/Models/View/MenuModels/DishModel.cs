@@ -36,5 +36,10 @@ namespace RMS.Client.Models.View.MenuModels
         /// Gets or sets description.
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// Gets or sets status.
+        /// </summary>
+        public string Status { get; set; }
     }
 }

@@ -40,6 +40,7 @@ namespace RMS.Client.Hubs
             var receipt = _receiptManager
                 .Get(receiptId);
             var order = receipt.ClientOrders
+                .Where(x => x.Dish != null)
                 .FirstOrDefault(x => x.Dish.Name == dish.Name);
             var prevStatus = order.Status.ToString();
             order.Status = (OrderStatus) Enum.Parse(typeof(OrderStatus), status);

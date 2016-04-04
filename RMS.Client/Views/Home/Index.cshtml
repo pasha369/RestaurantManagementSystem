@@ -33,7 +33,7 @@
             <div class="col-xs-4">
                 <div class="easy-block-v2">
                     <div class="easy-bg-v2 rgba-blue">Top</div>
-                    <img src="~/Images/default/default-restaurant.jpg" />
+                    <img class="img-responsive" style="height: 150px" src="@Url.Content(@restaurant.PhotoUrl)"/>
                     <h3>@restaurant.Name</h3>
                     <a class="btn-u btn-u-sm" href="@Url.Action("RestaurantDetail", "Restaurant", new {Id = restaurant.Id})">Detail</a>
                 </div>
