@@ -1,16 +1,8 @@
 ﻿@model RMS.Client.Models.View.RestaurantLst
 
-@using System.Collections
-@using System.Web.Optimization
-
 @{
     ViewBag.Title = "RestaurantList";
     Layout = "~/Views/Shared/_BaseLayout.cshtml";
-}
-
-@section PageStyle
-{
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css" />
 }
 
 <div class="breadcrumbs">
@@ -20,56 +12,7 @@
     <!--/container-->
 </div>
 
-
-@*<div class="container content-md">
-    <div class="col-md-4 visible-lg-block">
-        <div class="panel-sea" style="margin-top: -40px;">
-            <div class="panel-body">
-                <div class="headline">
-                    <h2>Countries</h2>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All countries</a></li>
-                    @foreach (var item in Model.CountryList)
-                    {
-                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCountry", "Restaurant", new { @country = item })">@item</a></li>
-                    }
-                    <li class="list-group-item"><a href="@Url.Action("ContriesPage", "Countries")"><small>See all countries</small></a></li>
-                </ul>
-                <div class="headline">
-                    <h2>Cuisine</h2>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item"><a href="@Url.Action("RestaurantList")">All cuisines</a></li>
-                    @foreach (var item in Model.CuisineList)
-                    {
-                        <li class="list-group-item"><a href="@Url.Action("RestaurantListCuisine", "Restaurant", new {@cuisine = item})">@item</a></li>
-                    }
-
-                    @*<li class="list-group-item"><a href="#"><small>See all cuisine</small></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- All Restaurants -->
-    <div class="col-md-6" data-bind="foreach: Restaurants">
-        <!-- Restaurants-->
-        <div class="row margin-bottom-20">
-            @Html.DisplayFor(m => m.RestaurantModels)
-        </div>
-        <!--/end row-->
-        <!-- End Restaurants-->
-
-        <div class="clearfix margin-bottom-20">
-            <hr>
-        </div>
-
-    </div>
-    <!-- End All Restaurants -->
-  
-</div>*@
-
-<div id="restaurants"></div>
+<div id="restaurants" style="min-height: 400px; "></div>
 
 
 @section Scripts
@@ -86,7 +29,6 @@
                 $(document).ready(function () {
                     var eventTrigger = new EventTrigger();
                     $("#restaurants").restaurantList();
-                   
                 });
             });
     </script>

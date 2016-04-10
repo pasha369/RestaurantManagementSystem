@@ -3,6 +3,7 @@
         'jquery-ui',
         'datepicker',
         'moment',
+        'Custom/timeOperations',
         'text!Widgets/reservations/reservationTblCtrl/reservationTblCtrl.html'],
     function (ko, $, datepicker) {
         var moment = require('moment');
@@ -21,6 +22,7 @@
 
                 self.element.html(this.options.view);
                 Datepicker.initDatepicker();
+                var timeOperator = new TimeOperator();
 
                 function ReservationVM() {
                     this.Client = ko.observable();
@@ -63,7 +65,8 @@
 
                 self.options.reservationVM = new ReservationVM();
 
-                self._fillTimes();
+                timeOperator.fill(self.options.reservationVM.Times, 9, 18);
+                //self._fillTimes();
                 self.options.reservationVM.Date.subscribe(function (newValue) {
                     self._loadReservation(self.options.restaurantId);
                 });
@@ -232,48 +235,31 @@
                     }
                 });
             },
-            /* Clear space beetwen id and id + length. After 
-            set in current position td with field colspan which contains 
-            data about reservation.
-            */
+            
+            /**
+             * Clear space beetwen id and id + length. After 
+             * set in current position td with field colspan which contains 
+             * data about reservation.
+             * @param { Reservation start at hour with id. } id 
+             * @param { Reservation length. } length 
+             * @param { Result array. } data 
+             * @param { Reservation. } item 
+             */
             _insert: function (id, length, data, item) {
                 data.splice(id, length, item);
             },
-            /* Fill every cell in table row open.
-            */
+
+            /**
+             * Fill empty cell inside row.
+             * @param { Result row. } row 
+             */
             _fillRow: function (row) {
-                row = [];
                 var times = this.options.reservationVM.Times();
-                for (var i = 0; i < times.length; i++) {
-                    row.push(null);
-                }
+                row = new Array(times.length);
                 return row;
             },
 
-            /* Fill top header of table reservations (time) from begin working 
-            day to end. Transition 30 minutes.
-            */
-            _fillTimes: function () {
-                var self = this;
-
-                var current = new Date();
-                // begin working day.
-                current.setHours(9);
-                current.setMinutes(0);
-
-                while (current.getHours() != 18) {
-                    var time = moment(current).format('HH:mm');
-
-                    self.options.reservationVM.Times.push(time);
-                    current = add(current, 30);
-                }
-
-                // add minutes to time.
-                function add(time, min) {
-                    return new Date(time.getTime() + min * 60000);
-                }
-
-            },
+           
             /* Get index current time in array Times.
             For set cell in correct position.
             */

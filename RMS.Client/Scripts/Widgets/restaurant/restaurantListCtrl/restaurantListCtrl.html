@@ -1,32 +1,15 @@
-﻿<div id="restaurant-list-ctrl" class="container content-md">
-    
-    <style>
-        #restaurant-list-ctrl {
-            position: relative;
-        }
-        .ajax-wrapper {
-            width: 100%;
-            height: 100%;
-            background-color: rgba(250, 250, 250, 1);
-            z-index: 9999;
-        }
-        .ajax-loader {
-            position: absolute;
-            left: 0;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            margin: auto; /* presto! */
-            z-index: 9999;
-        }
-        .ajax-wrapper img {
-            width: 10%;
-        }
-    </style>
+﻿<link rel="stylesheet" href="restaurantListCtrl.css"/>
+
+<div id="restaurant-list-ctrl" class="container content-md">
 
     <!--ko if: IsAjaxLoader-->
     <div class="ajax-wrapper">
-        <img src="http://www.cafe-amazon.com/images/admin/loading_ani.gif" class="ajax-loader ">
+        <div class="cssload-thecube ajax-loader">
+            <div class="cssload-cube cssload-c1"></div>
+            <div class="cssload-cube cssload-c2"></div>
+            <div class="cssload-cube cssload-c4"></div>
+            <div class="cssload-cube cssload-c3"></div>
+        </div>
     </div>
     <!--/ko-->
 
@@ -83,15 +66,15 @@
             </div>-->
         </div>
 
-        <div class="col-xs-12 margin-bottom-20" data-bind="foreach: Restaurants">
+        <div class="col-xs-12 margin-bottom-20 restaurants" data-bind="foreach: Restaurants">
             <!--Restaurant-->
             <div class="row margin-bottom-20">
-                <div class="col-sm-2 sm-margin-bottom-20">
+                <div class="col-sm-4 sm-margin-bottom-20">
                     <div class="easy-block-v2">
                         <!--ko ifnot: IsExistFreeTable-->
                         <div class="easy-bg-v2 rgba-red"></div>
                         <!--/ko-->
-                        <img style="min-height: 70px" class="img-responsive" src='' alt="" data-bind="attr: {src: PhotoUrl}"><!--photo-->
+                        <img class="img-responsive" src='' alt="" data-bind="attr: {src: PhotoUrl}"><!--photo-->
                     </div>
                 </div>
                 <div class="col-sm-7">

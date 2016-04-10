@@ -26,7 +26,7 @@
                     <div class="form-group col-md-6" data-bind="validationElement: From">
                         <label>From: </label>
                         <select id="from" class="form-control"
-                            data-bind="options : AvailableTime,
+                            data-bind="options : FromTimes,
                                        value : From,
                                        optionsCaption : 'Choose...' ">
                         </select>
@@ -34,16 +34,16 @@
                     <div class="form-group col-md-6" data-bind="validationElement: To">
                         <label>To: </label>
                         <select id="to" class="form-control"
-                            data-bind="options : AvailableTime,
+                            data-bind="options : ToTimes,
                                        value : To,
                                        optionsCaption : 'Choose...' ">
                         </select>
                     </div>
                 </div>
 
-                <p>
+                <div class="form-group col-xs-offset-3 col-xs-6">
                     <input type="button" value="Reserve" data-bind="click: $root.bookTable, enable: isAllReserved, attr: {class: btnClass}" />
-                </p>
+                </div>
 
             </div>
         </div>

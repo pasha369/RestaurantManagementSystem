@@ -1,7 +1,6 @@
 /* Add here all your css styles (customizations) */
 .preloader {
     position: absolute;
-
     background: white;
     background-image: url('../../Images/ajax_loader.gif');
     background-position: center center;
@@ -11,10 +10,24 @@
     height: 200px;
     z-index: 1001;
 }
+
 .preloader-background {
     position: relative;
     background: white;
     color: white;
-
     z-index: 1000;
+}
+
+.topbar {
+    position: absolute !important;
+    display: block;
+    left: 10px;
+}
+
+.loginbar {
+    padding: 0px; 
+}
+
+.text-center {
+    text-align: center;
 }

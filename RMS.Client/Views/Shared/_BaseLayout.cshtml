@@ -61,7 +61,7 @@
                 <!-- End Logo -->
                 <!-- Topbar -->
                 <div class="topbar">
-                    <ul class="loginbar pull-right">
+                    <ul class="loginbar pull-left">
 
                         @if (ViewBag.Username == string.Empty)
                         {
@@ -90,15 +90,14 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
                 <div class="no-padding">
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav pull-right">
+
                         <li>
                             <a href="@Url.Action("Index", "Home")">Home</a>
                         </li>
                         <li>
                             <a href="@Url.Action("RestaurantList", "Restaurant")">Restaurants</a>
                         </li>
-
-
                         <!-- Search Block -->
                         <li>
                             <i class="search fa fa-search search-btn"></i>

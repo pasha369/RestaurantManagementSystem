@@ -28,8 +28,9 @@
                 });
                 
                 function bookingVM() {
-                    this.AvailableTime = ko.observableArray([]);
-                    
+                    this.FromTimes = ko.observableArray([]);
+                    this.ToTimes = ko.observableArray([]);
+
                     this.From = ko.observable().extend({ required: true });
                     this.To = ko.observable().extend({ required: true });
 
@@ -48,13 +49,21 @@
                             self._bookTable();
                         }
                     };
-                    
+
                     this.errors = ko.validation.group(this);
                 };
 
                 var viewModel = new bookingVM();
                 self.options.viewModel = ko.validatedObservable(viewModel);
-                timeOperator.fill(self.options.viewModel().AvailableTime);
+                viewModel.From.subscribe(function (newValue) {
+                    var date = moment(newValue, "HH:mm");
+                    var hourDependFrom = [];
+                    timeOperator.fill(hourDependFrom, date.hour(), 18);
+                    viewModel.ToTimes(hourDependFrom);
+                });
+
+                timeOperator.fill(self.options.viewModel().FromTimes, 9, 18);
+                timeOperator.fill(self.options.viewModel().ToTimes, 9, 18);
 
                 ko.validation.init(validationConfig, true);
                 ko.applyBindingsWithValidation(self.options.viewModel, $("#bookingctrl")[0]);
@@ -113,9 +122,9 @@
                     success: function(response) {
                         viewModel.isAllReserved(response.isExist);
                         if (!response.isExist) {
-                            viewModel.btnClass("btn-u btn-u-default");
+                            viewModel.btnClass("btn-block btn btn-u btn-u-red disabled");
                         } else {
-                            viewModel.btnClass("btn-u btn-u-red");
+                            viewModel.btnClass("btn-block btn btn-u btn-u-red");
                         }
                     }
                 });

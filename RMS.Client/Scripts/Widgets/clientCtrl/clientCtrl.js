@@ -31,31 +31,37 @@
 
                 $('#btnProfile').on('click', function () {
                     self.options.current.hide();
+                    $("#order-detail-ctrl").hide();
                     self.options.current = $('.client-profile').userProfile("LoadProfile");;
                     self.options.current.show();
                 });
                 $('#btnRestaurant').on('click', function () {
                     self.options.current.hide();
+                    $("#order-detail-ctrl").hide();
                     self.options.current = $('.restaurant');
                     self.options.current.show();
                 });
                 $('#btnReservetions').on('click', function () {
                     self.options.current.hide();
+                    $("#order-detail-ctrl").hide();
                     self.options.current = $('.reserved-tbl');
                     self.options.current.show();
                 });
                 $('#btnOrder').on('click', function () {
                     self.options.current.hide();
+                    $("#order-detail-ctrl").hide();
                     self.options.current = $('.orders');
                     self.options.current.show();
                 });
                 $('#btnMenu').on('click', function () {
                     self.options.current.hide();
+                    $("#order-detail-ctrl").hide();
                     self.options.current = $('.restaurant-menu');
                     self.options.current.show();
                 });
                 $('#btnSettings').on('click', function () {
                     self.options.current.hide();
+                    $("#order-detail-ctrl").hide();
                     self.options.current = $('.client-settings');
                     self.options.current.show();
                 });

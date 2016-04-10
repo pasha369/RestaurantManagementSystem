@@ -24,22 +24,51 @@
 <!--=== End Search Block ===-->
 <!--=== Content ===-->
 <div class="container">
-    <div class="headline margin-bottom-35">
-        <h2>Most popular</h2>
+    <div class="row text-center">
+        <div class="col-lg-4 col-md-4 col-sm-4">
+
+            <h3 class="headline">Reserve your Table</h3>
+
+            <span class="col-xs-12">Select from the list of our partner restaurants with their offers, and reserve your table!</span>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+
+            <h3 class="headline">Discover New Places to Dine </h3>
+
+            <span class="col-xs-12">
+                Interesting places to eat, with great service and amazing food, is what you find here.
+            </span>
+
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4">
+
+            <h3 class="headline">Save and Earn</h3>
+
+            <span class="col-xs-12 col_centered font12">
+                Get cash backs, rewards, discounts and vouchers!
+            </span>
+
+        </div>
     </div>
-    <div class="row">
+    <div class="row margin-top-20">
+        <div class="headline margin-bottom-35 text-center">
+            <h2>Most popular</h2>
+        </div>
         @foreach (var restaurant in Model.Restaurants)
         {
             <div class="col-xs-4">
-                <div class="easy-block-v2">
+                <div class="easy-block-v2" style="height: 120px">
                     <div class="easy-bg-v2 rgba-blue">Top</div>
-                    <img class="img-responsive" style="height: 150px" src="@Url.Content(@restaurant.PhotoUrl)"/>
-                    <h3>@restaurant.Name</h3>
-                    <a class="btn-u btn-u-sm" href="@Url.Action("RestaurantDetail", "Restaurant", new {Id = restaurant.Id})">Detail</a>
+                    <img class="img-responsive" src="@Url.Content(@restaurant.PhotoUrl)" />
+                </div>
+                <div class="form-group col-xs-12">
+                    <h3 class="col-xs-offset-2 col-xs-7 text-center"><a href="@Url.Action("RestaurantDetail", "Restaurant", new {Id = restaurant.Id})">@restaurant.Name</a></h3>
                 </div>
             </div>
         }
     </div>
+    
 </div>
 <!--=== End Content ===-->
 @section Scripts

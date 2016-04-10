@@ -2,9 +2,11 @@
         'jquery',
         'jquery-ui',
         'toastr',
-        'text!Widgets/restaurant/restaurantListCtrl/restaurantListCtrl.html'],
+        'text!Widgets/restaurant/restaurantListCtrl/restaurantListCtrl.html',
+       ],
     function (ko, $, photoUpload) {
         var toastr = require('toastr');
+
         $.widget("cc.restaurantList", {
 
             // These options will be used as defaults
@@ -13,11 +15,19 @@
                 viewModel: null
             },
 
+            loadtCss: function (url) {
+                var link = document.createElement("link");
+                link.type = "text/css";
+                link.rel = "stylesheet";
+                link.href = url;
+                document.getElementsByTagName("head")[0].appendChild(link);
+            },
+
             // Set up the widget
             _create: function () {
                 var self = this;
                 this.element.html(this.options.view);
-
+                this.loadtCss('/Scripts/Widgets/restaurant/restaurantListCtrl/restaurantListCtrl.css');
 
                 function restaurantVM() {
                     this.IsAjaxLoader = ko.observable(); 

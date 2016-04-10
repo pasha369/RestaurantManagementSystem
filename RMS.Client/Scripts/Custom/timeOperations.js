@@ -8,16 +8,21 @@
         function add(time, min) {
             return new Date(time.getTime() + min * 60000);
         }
+
         /**
-         * fill time array by step 30 minutes.
-        */
-        this.fill = function (array) {
+         * Fill top header of table reservations (time) from begin working 
+         * day to end. Transition 30 minutes.
+         * @param { Result array. } array 
+         * @param { Hour when working day start.} startHour 
+         * @param { Hour when working day ending. } endHour 
+         */
+        this.fill = function (array, startHour, endHour) {
             var current = new Date();
-            // begin working day.
-            current.setHours(9);
+
+            current.setHours(startHour);
             current.setMinutes(0);
 
-            while (current.getHours() != 18) {
+            while (current.getHours() != endHour) {
                 var time = moment(current).format('HH:mm');
                 array.push(time);
                 current = add(current, 30);

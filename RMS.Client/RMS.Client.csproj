@@ -427,6 +427,7 @@
     <Content Include="Scripts\Widgets\reservations\reservationUserCtrl\reservationUserCtrl.js" />
     <Content Include="Scripts\Widgets\restaurantEditCtrl\restaurantEditCtrl.html" />
     <Content Include="Scripts\Widgets\restaurantEditCtrl\restaurantEditCtrl.js" />
+    <Content Include="Scripts\Widgets\restaurant\restaurantListCtrl\restaurantListCtrl.css" />
     <Content Include="Scripts\Widgets\restaurant\restaurantListCtrl\restaurantListCtrl.html" />
     <Content Include="Scripts\Widgets\restaurant\restaurantListCtrl\restaurantListCtrl.js" />
     <Content Include="Scripts\Widgets\searchCtrl\searchCtrl.html" />
