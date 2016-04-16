@@ -1,4 +1,5 @@
-﻿@model dynamic
+﻿@using RMS.Resources
+@model dynamic
 
 @{
     ViewBag.Title = "title";
@@ -11,8 +12,8 @@
             <div class="service-block service-block-sea service-or">
                 <div class="service-bg"></div>
                 <i class="icon-custom icon-color-light rounded-x fa fa-check"></i>
-                <h2 class="heading-md">Your Payment was successful </h2>
-                <p>Thank you for your payment. Your transaction has been completed.</p>
+                <h2 class="heading-md">@Resources.Your_Payment_was_successful </h2>
+                <p>@Resources.Thank_you_for_your_payment_Your_transaction_has_been_completed</p>
             </div>
         </div>
     </div>

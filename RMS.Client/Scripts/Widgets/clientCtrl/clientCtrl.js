@@ -21,9 +21,9 @@
                 self.element.html(self.options.view);
                 self._loadRestaurant();
                 
-                self.options.current = $('.client-profile').userProfile();
+                // $('.client-profile').userProfile().hide();
+                self.options.current = $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id });
                 $('.orders').orderManageCtrl().hide();
-                $('.restaurant').restaurantEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.reserved-tbl').reservationTbl({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.restaurant-menu').menuEdit({ restaurantId: self.options.restaurant.Id }).hide();
                 $('.client-settings').settings().hide();

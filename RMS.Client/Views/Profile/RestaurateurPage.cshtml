@@ -16,8 +16,15 @@
 }
 
 <!--=== Profile ===-->
-<div class="container content profile">
-
+<div class="container-fluid content profile">
+    <div class="ajax-wrapper">
+        <div class="cssload-thecube ajax-loader">
+            <div class="cssload-cube cssload-c1"></div>
+            <div class="cssload-cube cssload-c2"></div>
+            <div class="cssload-cube cssload-c4"></div>
+            <div class="cssload-cube cssload-c3"></div>
+        </div>
+    </div>
 </div>
 <!--=== End Profile ===-->
 
@@ -30,7 +37,12 @@
                     $('.content').client();
                 });
             });
-
+        $(document).ajaxStart(function () {
+            $(".ajax-wrapper").show();
+        });
+        $(document).ajaxComplete(function () {
+            $(".ajax-wrapper").hide();
+        });
     </script>
 }
 

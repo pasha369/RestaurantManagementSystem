@@ -44,13 +44,14 @@
                     dataType: "json",
                     success: function (data) {
                         $.each(data, function (key, value) {
-                            var reservation = value.Restaurant;
+                            var reservation = value.Table.Restaurant;
                             reservation.Description = reservation.Description.substring(0, 200) + '...';
                             if (reservation.PhotoUrl) {
                                 reservation.PhotoUrl = reservation.PhotoUrl.replace("~", "");
                             }
-                            reservation.TableId = value.TableId;
-                            vm.Restaurants.push(value.Restaurant);
+                            reservation.TableId = value.Table.TableId;
+                            reservation.Status = value.Status;
+                            vm.Restaurants.push(reservation);
                         });
                     },
                     error: function (err) {

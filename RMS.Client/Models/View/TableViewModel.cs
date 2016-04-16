@@ -10,5 +10,6 @@ namespace RMS.Client.Models.View
         public int TableId { get; set; }
         public int Number { get; set; }
         public RestaurantModel Restaurant{ get; set; }
+        public string Status { get; set; }
     }
 }

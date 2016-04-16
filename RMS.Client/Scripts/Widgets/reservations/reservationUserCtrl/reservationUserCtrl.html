@@ -3,7 +3,7 @@
     <div class="tag-box tag-box-v2 margin-bottom-40">
         <h2>My reservation is empty.</h2>
     </div>
-    <!-- /ko -->​
+    <!-- /ko -->
     <div data-bind="foreach: Restaurants">
         <ul class="list-group">
             <li class="list-group-item panel">
@@ -11,11 +11,20 @@
                     <div class="col-sm-5 col-md-4">
                         <img data-bind="attr: { src : PhotoUrl ? PhotoUrl : '//placehold.it/200'}" class="img-thumbnail img-responsive image_square">
                         <div class="col-xs-offset-3 col-lg-6 col-xs-6">
-                            <button class="btn btn-primary btn-block" data-bind="click: $root.enter" data-toggle="modal">Enter</button>
+                            <!--ko if: Status == "Confirmed"-->
+                            <button class="btn btn-u btn-block" data-bind="click: $root.enter" data-toggle="modal">Enter</button>
+                            <!--/ko-->
                         </div>
+                        <!--ko if: Status == "New"-->
+                        <div class="row">
+                            <span class="label label-orange col-xs-12">Wait until you reservation will confirm...</span>
+                        </div>
+                        <!--/ko-->
                     </div>
+
                     <div class="col-lg-7 col-xs-12" style="word-break: break-all;">
-                        <h2><a href="#" data-bind="text: Name"></a>
+                        <h2>
+                            <a href="#" data-bind="text: Name"></a>
                         </h2>
                         <div style="word-break: break-all;" data-bind="text: Description"></div>
                     </div>

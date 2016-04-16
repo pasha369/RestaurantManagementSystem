@@ -9,16 +9,19 @@
             <div class="tag-box tag-box-v3">
                 <div class="row">
                     <h2 class="col-xs-5">Client Information:</h2>
-                    <div class="pull-right">
-                        <a href="javascript:;" class="btn-u  btn-u-default  " data-bind="click: $root.GetDetail">Order detail</a>
-                    </div>
+                    
                 </div>
                 <ul class="list-unstyled">
                     <li><strong>Client Name:</strong> <span class="text-uppercase" data-bind="text: ClientName"></span></li>
                     <li><strong>Table:</strong> <span data-bind="text: TableNumber"></span></li>
-                    <li><strong>Status:</strong> active</li>
-
-                </ul>
+                    <li>
+                        <div class="row text-center">
+                            <div class="col-xs-offset-3">
+                                <a href="javascript:;" class="btn-u col-xs-7" data-bind="click: $root.GetDetail">Order detail</a>
+                            </div>
+                        </div>
+                    </li>
+</ul>
             </div>
         </div>
 

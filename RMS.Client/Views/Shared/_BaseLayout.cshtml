@@ -1,4 +1,5 @@
-﻿@{
+﻿@using RMS.Resources
+@{
     ViewBag.Title = "_BaseLayout";
     ViewBag.Username = User.Identity.Name;
 }
@@ -65,15 +66,15 @@
 
                         @if (ViewBag.Username == string.Empty)
                         {
-                            <li><a href="@Url.Action("Register", "Account")">Register</a></li>
+                            <li><a href="@Url.Action("Register", "Account")">@Resources.Register</a></li>
                             <li class="topbar-devider"></li>
-                            <li><a href="@Url.Action("Login", "Account")">Login</a></li>
+                            <li><a href="@Url.Action("Login", "Account")">@Resources.Login</a></li>
                         }
                         else
                         {
                             <li><a href="@Url.Action("ProfilePage", "Profile")">@ViewBag.Username</a></li>
                             <li class="topbar-devider"></li>
-                            <li><a href="@Url.Action("Logout", "Account")">Logout</a></li>
+                            <li><a href="@Url.Action("Logout", "Account")">@Resources.Logout</a></li>
                         }
 
                     </ul>
@@ -93,10 +94,10 @@
                     <ul class="nav navbar-nav pull-right">
 
                         <li>
-                            <a href="@Url.Action("Index", "Home")">Home</a>
+                            <a href="@Url.Action("Index", "Home")">@Resources.Home</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("RestaurantList", "Restaurant")">Restaurants</a>
+                            <a href="@Url.Action("RestaurantList", "Restaurant")">@Resources.Restaurants</a>
                         </li>
                         <!-- Search Block -->
                         <li>

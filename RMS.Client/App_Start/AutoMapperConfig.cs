@@ -35,6 +35,9 @@ namespace RMS.Client.App_Start
                 .CreateMap<DinnerTable, TableViewModel>()
                 .ForMember(m => m.TableId, o => o.MapFrom(c => c.Id))
                 .ForMember(m => m.Restaurant, o => o.MapFrom(c => c.Restaurant));
+            Mapper
+                .CreateMap<Reservation, ReservationViewModel>()
+                .ForMember(m => m.Status, o => o.MapFrom(c => c.Status.ToString()));
         }
     }
 }

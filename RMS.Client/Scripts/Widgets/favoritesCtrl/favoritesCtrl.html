@@ -13,15 +13,23 @@
                         <img data-bind="attr: { src : PhotoUrl ? PhotoUrl : '//placehold.it/200'}" class="img-thumbnail img-responsive image_square">
                     </div>
                     <div class="col-sm-7 resource-contents">
-                        <button class="btn warning pull-right" data-bind="click: $root.remove"><span class="fa fa-close"></span></button>
+                        <a class="warning pull-right" href="javascript:;" data-bind="click: $root.remove"><span class="fa fa-close"></span></a>
                         <h2 class="resouce-name"><a href="#" data-bind="text: Name"></a>
                         </h2>
                         <div data-bind="text: Description"></div>
                     </div>
                     <div class="col-sm-12 col-md-12 resource-props margin-top-20">
                         <div class="action-buttons">
-                            <a class="btn btn-primary col-xs-5" role="button" data-bind="attr: {href: '/Restaurant/RestaurantDetail/' + Id}">Details</a>
-                            <button class="btn btn-primary col-xs-offset-1 col-xs-5" data-bind="click: $root.reserve" data-toggle="modal" data-target="#book-now">Make reservation</button>
+                            <a class="btn btn-u col-lg-3 col-lg-offset-2 margin-bottom-15 col-xs-12"
+                               role="button"
+                               data-bind="attr: {href: '/Restaurant/RestaurantDetail/' + Id}">
+                                Details
+                            </a>
+                            <button class="btn btn-u col-lg-3 col-lg-offset-1 col-xs-12"
+                                    data-bind="click: $root.reserve"
+                                    data-toggle="modal" data-target="#book-now">
+                                Make reservation
+                            </button>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
-﻿@model RMS.Client.Models.View.HomeViewModel
+﻿@using RMS.Resources
+@model RMS.Client.Models.View.HomeViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -53,11 +54,11 @@
     </div>
     <div class="row margin-top-20">
         <div class="headline margin-bottom-35 text-center">
-            <h2>Most popular</h2>
+            <h2>@Resources.Most_Popular</h2>
         </div>
         @foreach (var restaurant in Model.Restaurants)
         {
-            <div class="col-xs-4">
+            <div class="col-xs-12 col-lg-4">
                 <div class="easy-block-v2" style="height: 120px">
                     <div class="easy-bg-v2 rgba-blue">Top</div>
                     <img class="img-responsive" src="@Url.Content(@restaurant.PhotoUrl)" />

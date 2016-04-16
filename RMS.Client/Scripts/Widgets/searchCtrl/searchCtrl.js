@@ -38,7 +38,7 @@
             _loadRestaurants: function () {
                 var self = this;
                 var vm = self.options.viewModel;
-
+                $('.ajax-wrapper').show();
                 $.ajax({
                     type: 'GET',
                     url: '/api/Search/FindByName',
@@ -54,8 +54,10 @@
                             value.Description = value.Description.substring(0, 200) + '...';
                             vm.Restaurants.push(value);
                         });
+                        $('.ajax-wrapper').hide();
                     },
                     error: function (err) {
+                        $('.ajax-wrapper').hide();
                         console.log(err.status + " : " + err.statusText);
                     }
                 });

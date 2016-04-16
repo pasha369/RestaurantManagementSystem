@@ -111,6 +111,22 @@
                 });
             },
 
+            _getFreeTimeStart: function () {
+                // TODO: use when will be created method for getting date from to to time.
+                var self = this;
+                $.ajax({
+                    type: 'POST',
+                    url: "/Restaurant/GetFreeHours/",
+                    data: {
+                        date: moment('2016.4.10 00:00').format("DD.MM.YYYY HH:mm"),
+                        restaurantId: self.options.restaurantId
+                    },
+                    success: function(result) {
+                        console.log(result);
+                    }
+                });
+            },
+
             _isFreeTableExists: function(viewModel) {
                 var self = this;
                 $.ajax({

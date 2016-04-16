@@ -19,7 +19,7 @@ namespace RMS.Client.Controllers.MVC
     {
         private IDataManager<Restaurant> _rstManager;
         private IDataManager<Cuisine> _cuisineManager;
-        private IDataManager<City> _cityManager; 
+        private IDataManager<City> _cityManager;
 
         public RestaurantController(IDataManager<Restaurant> rstManager, IDataManager<Cuisine> cuisineManager, IDataManager<City> cityManager)
         {
@@ -79,15 +79,18 @@ namespace RMS.Client.Controllers.MVC
             var restaurantLst = new RestaurantLst(_cuisineManager);
             restaurantLst.RestaurantCount = restaurants.Count();
 
-            if (firstItemId.HasValue)
+            if (firstItemId.HasValue && restaurants.Count() > firstItemId.Value)
             {
-                restaurants = _rstManager.Get().OrderBy(x => x.Id).Skip(firstItemId.Value).Take(perPage);
+                restaurants = restaurants
+                                        .OrderBy(x => x.Id)
+                                        .Skip(firstItemId.Value)
+                                        .Take(perPage);
             }
             else
             {
                 restaurants = restaurants.Take(perPage);
             }
-            
+
 
             restaurantLst.CityList.AddRange(GetTopCity());
             restaurantLst.CuisineList.AddRange(GetTopCuisine());
@@ -266,6 +269,36 @@ namespace RMS.Client.Controllers.MVC
             return Json(new { isExist = CheckFreeTable(restaurantId) }, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetFreeHours(DateTime date, int restaurantId)
+        {
+            // TODO: Method for get from date.
+            var end = new DateTime(date.Year, date.Month, date.Day, 18, 0, 0);
+            var start = new DateTime(date.Year, date.Month, date.Day, 9, 0, 0);
+            var times = new List<DateTime>();
+            while (end > start)
+            {
+                start = start.AddMinutes(30);
+                times.Add(start);
+            }
+            var timeList = new List<string>();
+
+            foreach (var time in times)
+            {
+                var isExistFreeTable = _rstManager.Get(restaurantId)
+                        .DinnerTables
+                        .Where(x => !x.Reservations
+                                        .Any(r => r.From.Year == time.Year 
+                                                    && r.From.Month == time.Month 
+                                                    && r.From.Day == time.Day 
+                                                    ||( r.From > time && r.To < time)));
+                if (!isExistFreeTable.Any())
+                {
+                    timeList.Add($"{time.Hour}:{time.Minute}");
+                }
+            }
+
+            return Json(timeList, JsonRequestBehavior.AllowGet);
+        }
 
         private bool CheckFreeTable(int restaurantId)
         {

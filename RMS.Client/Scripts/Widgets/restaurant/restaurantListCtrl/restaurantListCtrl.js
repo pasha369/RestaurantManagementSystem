@@ -46,7 +46,7 @@
                         if ((vm.ItemId() - 3) >= 0) {
                             vm.ItemId(vm.ItemId() - 3);
                         }
-                        self._loadRestaurants(vm.ItemId());
+                        self._loadRestaurants(vm.ItemId(), vm.SelectedCity(), vm.SelectedCuisine());
                     }
 
                     this.Next = function () {
@@ -54,7 +54,7 @@
                         if ((vm.ItemId() + 3) <= vm.RestaurantCount()) {
                             vm.ItemId(vm.ItemId() + 3);
                         }
-                        self._loadRestaurants(vm.ItemId());
+                        self._loadRestaurants(vm.ItemId(), vm.SelectedCity(), vm.SelectedCuisine());
                     }
 
                     this.SelectCity = function (item) {

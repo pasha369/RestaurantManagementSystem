@@ -76,15 +76,14 @@ namespace RMS.Client.Controllers.WebApi
         /// </summary>
         /// <returns>User reserved restaurants</returns>
         [HttpGet]
-        public List<TableViewModel> GetUserReservation()
+        public List<ReservationViewModel> GetUserReservation()
         {
             var user = GetUserByLogin();
-            var tableList = rsvManager.Get()
-                .Where(r => r.User.Id == user.Id && r.Status == ReservationStatus.Confirmed)
-                .Select(r => r.Table);
-            var modelLst = Mapper.Map<List<TableViewModel>>(tableList);
-
-            return modelLst;
+            var reservationEntities = rsvManager.Get()
+                .Where(r => r.User.Id == user.Id)
+                .ToList();
+            var reservationList = Mapper.Map<List<ReservationViewModel>>(reservationEntities);
+            return reservationList;
         }
 
         /// <summary>

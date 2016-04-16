@@ -31,6 +31,10 @@ namespace DataAccess.Concrete
         public void Add(Restaurant item)
         {
             item.Menu = new DataModel.Model.Menu();
+            if (string.IsNullOrEmpty(item.PhotoUrl))
+            {
+                item.PhotoUrl = "~/Images/default/default-restaurant.png";
+            }
             _ctx.Restoraunts.Add(item);
             _ctx.SaveChanges();
         }

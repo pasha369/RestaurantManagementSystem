@@ -209,6 +209,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CultureHelper.cs" />
     <Compile Include="Hubs\OrderHub.cs" />
     <Compile Include="Models\View\Address.cs" />
     <Compile Include="Models\View\BookingModel.cs" />
@@ -221,6 +222,7 @@
     <Compile Include="Models\View\ProfileModel.cs" />
     <Compile Include="Models\View\RegisterModel.cs" />
     <Compile Include="Models\View\ReservationLst.cs" />
+    <Compile Include="Models\View\ReservationViewModel.cs" />
     <Compile Include="Models\View\ReservedTable.cs" />
     <Compile Include="Models\View\RestaurantLst.cs" />
     <Compile Include="Models\View\RestaurantModel.cs" />
@@ -346,6 +348,7 @@
     <None Include="Properties\PublishProfiles\rstms - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\rstms - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-2.0.2.intellisense.js" />
+    <Content Include="Images\default\default-restaurant.PNG" />
     <Content Include="Images\default\food-salad-restaurant-person.jpg" />
     <Content Include="Images\default\default-restaurant.jpg" />
     <Content Include="Images\default\no_image_profile.jpg" />
@@ -434,7 +437,9 @@
     <Content Include="Scripts\Widgets\searchCtrl\searchCtrl.js" />
     <Content Include="Scripts\Widgets\userCtrl\userCtrl.html" />
     <Content Include="Scripts\Widgets\userCtrl\userCtrl.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -476,6 +481,10 @@
     <ProjectReference Include="..\DataModel\DataModel.csproj">
       <Project>{d9832e98-d8c7-4fc8-9096-440fbcebc7b7}</Project>
       <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RMS.Resources\RMS.Resources.csproj">
+      <Project>{f9dfddd1-153b-4577-80b2-ba02faa22fbe}</Project>
+      <Name>RMS.Resources</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
